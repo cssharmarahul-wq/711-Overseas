@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>711 OVERSEAS | Corporate Advisory, Accountancy, Trading & Compliance</title>
+  <title>711 OVERSEAS | Corporate Advisory, Trading, Tax & Private Intel</title>
   
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#050B14">
-  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. Corporate Accountancy, Stock Trading Advisory, DSC, Tax Planning & Governance.">
+  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. Corporate Accountancy, Stock Trading Advisory, DSC, Tax Planning & Private Intelligence.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="711 Overseas">
@@ -63,17 +63,6 @@
 </head>
 <body class="min-h-screen pb-24 md:pb-12">
 
-  <!-- Top Announcement / PWA Install Notification -->
-  <div id="pwa-install-banner" class="hidden bg-gradient-to-r from-brand-goldDark to-brand-navy border-b border-brand-gold/40 px-4 py-2 text-xs md:text-sm text-brand-goldLight flex items-center justify-between">
-    <div class="flex items-center space-x-2">
-      <i class="fa-solid fa-mobile-screen-button text-brand-gold"></i>
-      <span>Install the <strong>711 Overseas</strong> App for offline calculators & priority desk.</span>
-    </div>
-    <button id="btn-install-app" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded shadow text-xs hover:bg-brand-goldLight transition">
-      Install Now
-    </button>
-  </div>
-
   <!-- Main Navigation -->
   <header class="sticky top-0 z-50 bg-brand-midnight/95 backdrop-blur border-b border-brand-gold/20">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -86,25 +75,32 @@
           <p class="text-[10px] uppercase tracking-widest text-slate-400">Build Your Wealth</p>
         </div>
       </div>
-      <div class="flex items-center space-x-2 md:space-x-3">
-        <a href="#booking-section" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight px-3 py-2 rounded-lg text-xs font-semibold transition hidden sm:inline-block">
-          <i class="fa-solid fa-calendar-check mr-1"></i> Book Slot
-        </a>
-        <a href="https://wa.me/919914984371?text=Hello%2C%20I%20need%20assistance%20from%20711%20Overseas" target="_blank" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-4 py-2 rounded-lg text-xs md:text-sm flex items-center space-x-2 transition shadow">
-          <i class="fa-brands fa-whatsapp text-base"></i>
-          <span class="hidden sm:inline">Priority Desk</span>
-        </a>
+      <div class="flex items-center space-x-2">
+        <!-- Admin Publisher Trigger -->
+        <button onclick="openAdminModal()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+          <i class="fa-solid fa-bullhorn text-brand-gold"></i>
+          <span class="hidden sm:inline">Broadcast Desk</span>
+        </button>
+
+        <!-- Member Auth Button -->
+        <button id="auth-btn" onclick="toggleAuthModal()" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center space-x-1 shadow">
+          <i class="fa-solid fa-user-lock"></i>
+          <span id="auth-btn-text">Client Login</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Quick Nav Chips (Horizontal Scroll on Mobile) -->
-  <div class="bg-brand-navy/60 border-b border-slate-800 py-2.5 px-4 overflow-x-auto">
+  <!-- Quick Nav Chips -->
+  <div class="bg-brand-navy/60 border-b border-slate-800 py-2 px-4 overflow-x-auto">
     <div class="max-w-7xl mx-auto flex space-x-2 whitespace-nowrap text-xs font-medium text-slate-300">
-      <a href="#trading-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-emerald-500/30 text-emerald-400">
-        📈 Stock Trading Advisory
+      <a href="#intel-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-brand-gold/40 text-brand-goldLight">
+        🔒 Members Intelligence
       </a>
-      <a href="#accountancy-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-brand-gold/30 text-brand-goldLight">
+      <a href="#trading-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-emerald-500/30 text-emerald-400">
+        📈 Trading Advisory
+      </a>
+      <a href="#accountancy-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-slate-700">
         📊 Accountancy & MIS
       </a>
       <a href="#dsc-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-slate-700">
@@ -113,41 +109,55 @@
       <a href="#notice-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-red-500/30 text-red-300">
         🛡️ Notice Defense
       </a>
-      <a href="#plans-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-slate-700">
-        💼 Retainers & Plans
-      </a>
-      <a href="#booking-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-blue-500/30 text-blue-300">
-        📅 1-on-1 Consultation
-      </a>
     </div>
   </div>
 
   <!-- Hero Section -->
-  <section class="relative px-4 pt-10 pb-12 overflow-hidden border-b border-brand-gold/10">
+  <section class="relative px-4 pt-8 pb-10 overflow-hidden border-b border-brand-gold/10">
     <div class="max-w-4xl mx-auto text-center relative z-10">
-      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/10 text-brand-gold border border-brand-gold/30 mb-4">
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-gold/10 text-brand-gold border border-brand-gold/30 mb-3">
         Seven Eleven Overseas Management Consultants
       </span>
-      <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-100 leading-tight mb-4">
-        Strategic Capital, Corporate Tax & <span class="gold-gradient-text">Complete Compliance</span>
+      <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-100 leading-tight mb-3">
+        Strategic Capital, Corporate Tax & <span class="gold-gradient-text">Private Intelligence</span>
       </h2>
-      <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-8">
-        Your integrated desk for Equity Trading Strategies, Corporate Accountancy, Class 3 Digital Signatures, Direct & Indirect Tax, and Regulatory Defense.
+      <p class="text-slate-300 text-xs md:text-sm max-w-2xl mx-auto mb-6">
+        Real-time technical setups, corporate governance, Class 3 digital signatures, and member-exclusive regulatory broadcasts.
       </p>
 
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="#trading-section" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-3 rounded-lg text-sm shadow transition">
-          <i class="fa-solid fa-chart-line mr-2"></i> Stock Trading Advisory
+        <a href="#intel-section" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-4 py-2.5 rounded-lg text-xs md:text-sm shadow transition">
+          <i class="fa-solid fa-lock-open mr-1.5"></i> Access Members Intel
         </a>
-        <a href="#accountancy-section" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-5 py-3 rounded-lg text-sm shadow transition">
-          <i class="fa-solid fa-file-invoice-dollar mr-2"></i> Accountancy & Bookkeeping
-        </a>
+        <button onclick="openAdminModal()" class="bg-brand-card hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight font-bold px-4 py-2.5 rounded-lg text-xs md:text-sm transition">
+          <i class="fa-solid fa-satellite-dish mr-1.5"></i> Post Advice & Broadcast
+        </button>
       </div>
     </div>
   </section>
 
+  <!-- MEMBERS-ONLY INTEL & BLOG FEED (GATED) -->
+  <section id="intel-section" class="max-w-4xl mx-auto px-4 py-8">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h3 class="font-display font-bold text-xl text-slate-100 flex items-center">
+          <i class="fa-solid fa-shield-halved text-brand-gold mr-2"></i> Private Advisory & News Feed
+        </h3>
+        <p class="text-xs text-slate-400">Exclusive technical trade setups, tax circulars, and regulatory advisories.</p>
+      </div>
+      <div id="auth-status-badge" class="px-2.5 py-1 rounded text-[11px] font-semibold bg-red-950/60 text-red-400 border border-red-800/50">
+        Locked (Guest)
+      </div>
+    </div>
+
+    <!-- Feed Container -->
+    <div id="feed-container" class="space-y-4">
+      <!-- Injected via JavaScript -->
+    </div>
+  </section>
+
   <!-- MODULE 1: Stock Trading & Capital Markets Advisory -->
-  <section id="trading-section" class="max-w-4xl mx-auto px-4 py-10">
+  <section id="trading-section" class="max-w-4xl mx-auto px-4 py-8">
     <div class="bg-brand-navy rounded-2xl p-6 md:p-8 emerald-glow">
       <div class="flex items-center space-x-3 mb-4">
         <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-400 text-xl">
@@ -159,61 +169,44 @@
         </div>
       </div>
 
-      <p class="text-slate-300 text-xs md:text-sm mb-6 leading-relaxed">
-        Trading success is built on risk containment, position sizing, and systematic setups. Access market analysis, swing setups, and portfolio risk evaluation.
-      </p>
-
-      <!-- Interactive Position Size & Risk Calculator -->
-      <div class="bg-brand-surface rounded-xl p-5 border border-slate-800 mb-6">
-        <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center">
+      <!-- Risk Calculator -->
+      <div class="bg-brand-surface rounded-xl p-4 border border-slate-800 mb-5">
+        <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-3 flex items-center">
           <i class="fa-solid fa-calculator mr-2"></i> Position Size & Risk Calculator
         </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
           <div>
             <label class="block text-[11px] text-slate-400 mb-1">Trading Capital (₹)</label>
-            <input type="number" id="trade-capital" value="500000" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none focus:border-emerald-500" oninput="calcTrade()">
+            <input type="number" id="trade-capital" value="500000" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none" oninput="calcTrade()">
           </div>
           <div>
             <label class="block text-[11px] text-slate-400 mb-1">Entry Price (₹)</label>
-            <input type="number" id="trade-entry" value="1000" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none focus:border-emerald-500" oninput="calcTrade()">
+            <input type="number" id="trade-entry" value="1000" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none" oninput="calcTrade()">
           </div>
           <div>
             <label class="block text-[11px] text-slate-400 mb-1">Stop Loss (₹)</label>
-            <input type="number" id="trade-sl" value="960" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none focus:border-emerald-500" oninput="calcTrade()">
+            <input type="number" id="trade-sl" value="960" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none" oninput="calcTrade()">
           </div>
         </div>
-
         <div class="bg-brand-midnight/70 rounded-lg p-3 flex flex-wrap items-center justify-between text-xs border border-emerald-500/20">
-          <div>
-            <span class="text-slate-400">Max Risk (1.5% Cap):</span>
-            <span class="text-red-400 font-bold ml-1" id="res-risk">₹ 7,500</span>
-          </div>
-          <div>
-            <span class="text-slate-400">Suggested Quantity:</span>
-            <span class="text-emerald-400 font-bold ml-1 text-sm" id="res-qty">187 Shares</span>
-          </div>
-          <div>
-            <span class="text-slate-400">Capital Required:</span>
-            <span class="text-brand-gold font-bold ml-1" id="res-cap">₹ 1,87,000</span>
-          </div>
+          <div><span class="text-slate-400">Max Risk (1.5%):</span> <span class="text-red-400 font-bold ml-1" id="res-risk">₹ 7,500</span></div>
+          <div><span class="text-slate-400">Suggested Qty:</span> <span class="text-emerald-400 font-bold ml-1" id="res-qty">187 Shares</span></div>
+          <div><span class="text-slate-400">Required Capital:</span> <span class="text-brand-gold font-bold ml-1" id="res-cap">₹ 1,87,000</span></div>
         </div>
       </div>
 
       <div class="flex flex-col sm:flex-row gap-3">
-        <button onclick="requestTradingAdvisory('Portfolio Health-Check')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
-          <i class="fa-solid fa-briefcase"></i>
-          <span>Request Portfolio Risk Audit</span>
+        <button onclick="requestTradingAdvisory('Portfolio Health-Check')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
+          <i class="fa-solid fa-briefcase"></i><span>Request Portfolio Risk Audit</span>
         </button>
-        <button onclick="requestTradingAdvisory('Technical Chart Analysis')" class="flex-1 bg-brand-surface hover:bg-brand-card border border-emerald-500/40 text-emerald-300 font-bold py-3 px-4 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
-          <i class="fa-solid fa-chart-simple"></i>
-          <span>Get Technical Setup Strategy</span>
+        <button onclick="requestTradingAdvisory('Technical Chart Analysis')" class="flex-1 bg-brand-surface hover:bg-brand-card border border-emerald-500/40 text-emerald-300 font-bold py-2.5 px-4 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
+          <i class="fa-solid fa-chart-simple"></i><span>Get Technical Setup Strategy</span>
         </button>
       </div>
-      <p class="text-[10px] text-slate-500 mt-3 italic">*Market investments are subject to market risks. Analysis provided is for technical evaluation, educational research, and strategic capital structuring.</p>
     </div>
   </section>
 
-  <!-- MODULE 2: Corporate Accountancy & Bookkeeping Desk -->
+  <!-- MODULE 2: Corporate Accountancy -->
   <section id="accountancy-section" class="max-w-4xl mx-auto px-4 py-6">
     <div class="bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
       <div class="flex items-center space-x-3 mb-4">
@@ -221,195 +214,36 @@
           <i class="fa-solid fa-calculator"></i>
         </div>
         <div>
-          <h3 class="font-display font-bold text-xl text-slate-100">Corporate Accountancy & MIS Reporting</h3>
+          <h3 class="font-display font-bold text-xl text-slate-100">Corporate Accountancy & Bookkeeping</h3>
           <p class="text-xs text-slate-400">Full-cycle bookkeeping, ledger reconciliation, and financial controllership</p>
         </div>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div class="bg-brand-surface/70 rounded-xl p-4 border border-slate-800">
-          <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2">Monthly Scope Covered</h4>
-          <ul class="text-xs text-slate-300 space-y-1.5">
-            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Daily/Monthly Bookkeeping (Tally / Cloud ERP)</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> 2B/2A GST vs Purchase Ledger Reconciliation</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Bank Statement & Payment Gateway Clearing</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Monthly Profit & Loss, Balance Sheet & Cashflow MIS</li>
-          </ul>
-        </div>
-        <div class="bg-brand-surface/70 rounded-xl p-4 border border-slate-800">
-          <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2">Estimate Monthly Plan</h4>
-          <div class="space-y-3 text-xs">
-            <div>
-              <label class="text-slate-400">Monthly Transaction Volume:</label>
-              <select id="acc-vol" class="w-full mt-1 bg-brand-midnight border border-slate-700 rounded-lg p-2 text-slate-200 outline-none" onchange="calcAccountancy()">
-                <option value="basic">Up to 100 Transactions (Small Business / Freelancer)</option>
-                <option value="growth">100 – 400 Transactions (Growing Pvt Ltd / LLP)</option>
-                <option value="enterprise">400+ Transactions (High Volume / Multi-Branch)</option>
-              </select>
-            </div>
-            <div class="flex items-center justify-between pt-1">
-              <span class="text-slate-400">Starting Retainer:</span>
-              <span class="text-lg font-bold text-brand-gold" id="acc-price">₹ 4,500 / month</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <button onclick="orderAccountancyWhatsApp()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition shadow">
         <i class="fa-brands fa-whatsapp text-base"></i>
-        <span>Request Customized Accounting Retainer</span>
+        <span>Request Accounting Retainer Onboarding</span>
       </button>
     </div>
   </section>
 
-  <!-- MODULE 3: Restored Retainers & Pricing Plans (From Old Wix Site) -->
-  <section id="plans-section" class="max-w-4xl mx-auto px-4 py-8">
-    <div class="text-center mb-6">
-      <h3 class="font-display font-bold text-xl text-slate-100">Advisory Retainers & Pricing Plans</h3>
-      <p class="text-xs text-slate-400">Transparent packages for ongoing corporate health</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <!-- Plan 1 -->
-      <div class="bg-brand-navy rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Compliance Basic</span>
-          <div class="text-xl font-bold font-display text-brand-gold mt-1 mb-3">₹ 2,999 <span class="text-xs text-slate-400 font-normal">/ mo</span></div>
-          <ul class="text-xs text-slate-300 space-y-2 mb-4">
-            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> GST Filing (GSTR-1 & 3B)</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> TDS Payment & Return</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> Statutory Due Date Alerts</li>
-          </ul>
-        </div>
-        <button onclick="selectPlan('Compliance Basic')" class="w-full bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight py-2 rounded-lg text-xs font-semibold">Choose Plan</button>
-      </div>
-
-      <!-- Plan 2 (Featured) -->
-      <div class="bg-brand-navy rounded-xl p-5 border-2 border-brand-gold flex flex-col justify-between relative shadow-lg">
-        <div class="absolute -top-2.5 right-4 bg-brand-gold text-brand-midnight text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest">Popular</div>
-        <div>
-          <span class="text-[10px] uppercase font-bold text-brand-gold tracking-wider">Growth Controllership</span>
-          <div class="text-xl font-bold font-display text-brand-gold mt-1 mb-3">₹ 6,999 <span class="text-xs text-slate-400 font-normal">/ mo</span></div>
-          <ul class="text-xs text-slate-300 space-y-2 mb-4">
-            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> Complete Bookkeeping + Tally</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> GST, TDS & Advance Tax Planning</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> Monthly MIS Dashboard</li>
-            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> 1 Token Class 3 DSC Included</li>
-          </ul>
-        </div>
-        <button onclick="selectPlan('Growth Controllership')" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight py-2 rounded-lg text-xs font-bold">Choose Plan</button>
-      </div>
-
-      <!-- Plan 3 -->
-      <div class="bg-brand-navy rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">Capital & Wealth Desk</span>
-          <div class="text-xl font-bold font-display text-emerald-400 mt-1 mb-3">₹ 9,999 <span class="text-xs text-slate-400 font-normal">/ mo</span></div>
-          <ul class="text-xs text-slate-300 space-y-2 mb-4">
-            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Weekly Equity Market Setups</li>
-            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Portfolio Risk Audit</li>
-            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Corporate Tax Structuring</li>
-            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Priority Notice Representation</li>
-          </ul>
-        </div>
-        <button onclick="selectPlan('Capital & Wealth Desk')" class="w-full bg-brand-surface hover:bg-brand-card border border-emerald-500/40 text-emerald-300 py-2 rounded-lg text-xs font-semibold">Choose Plan</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODULE 4: 1-on-1 Consultation Booking Engine (Restored Wix Bookings) -->
-  <section id="booking-section" class="max-w-4xl mx-auto px-4 py-8">
-    <div class="bg-brand-navy rounded-2xl p-6 md:p-8 border border-blue-500/30">
-      <div class="flex items-center space-x-3 mb-4">
-        <div class="p-3 bg-blue-500/10 rounded-xl text-blue-400 text-xl">
-          <i class="fa-solid fa-calendar-days"></i>
-        </div>
-        <div>
-          <h3 class="font-display font-bold text-xl text-slate-100">Schedule a 1-on-1 Advisory Session</h3>
-          <p class="text-xs text-slate-400">Direct booking for corporate compliance, trading review, or notice defense</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-        <div>
-          <label class="block text-xs text-slate-300 mb-1">Consultation Topic</label>
-          <select id="book-topic" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-blue-500">
-            <option>Stock Trading & Portfolio Risk Review</option>
-            <option>Corporate Accountancy & Bookkeeping Setup</option>
-            <option>Income Tax / GST Notice Rejoinder Review</option>
-            <option>Class 3 DSC Urgent Issuance</option>
-            <option>Comprehensive Business Tax Planning</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs text-slate-300 mb-1">Preferred Time Window</label>
-          <select id="book-slot" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-blue-500">
-            <option>Morning (10:00 AM – 1:00 PM)</option>
-            <option>Afternoon (2:00 PM – 5:00 PM)</option>
-            <option>Evening / Market Close (5:30 PM – 7:30 PM)</option>
-          </select>
-        </div>
-      </div>
-
-      <button onclick="bookSlotWhatsApp()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
-        <i class="fa-regular fa-calendar-check text-base"></i>
-        <span>Confirm Session via WhatsApp</span>
-      </button>
-    </div>
-  </section>
-
-  <!-- MODULE 5: Interactive Class 3 DSC Desk -->
-  <section id="dsc-section" class="max-w-4xl mx-auto px-4 py-8">
+  <!-- MODULE 3: Class 3 DSC Desk -->
+  <section id="dsc-section" class="max-w-4xl mx-auto px-4 py-6">
     <div class="bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
       <div class="flex items-center space-x-3 mb-4">
-        <div class="p-3 bg-brand-gold/10 rounded-xl text-brand-gold text-xl">
-          <i class="fa-solid fa-signature"></i>
-        </div>
+        <div class="p-3 bg-brand-gold/10 rounded-xl text-brand-gold text-xl"><i class="fa-solid fa-signature"></i></div>
         <div>
           <h3 class="font-display font-bold text-xl text-slate-100">Instant Class 3 DSC Desk</h3>
-          <p class="text-xs text-slate-400">Paperless issuance for MCA, GST, Income Tax, and e-Tendering</p>
+          <p class="text-xs text-slate-400">Paperless verification for MCA, GST, Income Tax, and e-Tenders</p>
         </div>
       </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-        <div>
-          <label class="block text-xs text-slate-300 mb-1">Applicant Type</label>
-          <select id="dsc-type" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none" onchange="calculateDSC()">
-            <option value="individual">Individual (Director / Proprietor)</option>
-            <option value="organization">Organization / Company</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs text-slate-300 mb-1">Certificate Scope</label>
-          <select id="dsc-scope" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none" onchange="calculateDSC()">
-            <option value="signing">Signing Only (MCA, GST, ITR)</option>
-            <option value="combo">Signing + Encryption (e-Tender, ICEGATE)</option>
-          </select>
-        </div>
-        <div>
-          <label class="block text-xs text-slate-300 mb-1">Hardware Token</label>
-          <select id="dsc-token" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none" onchange="calculateDSC()">
-            <option value="token">Includes FIPS USB Token</option>
-            <option value="cert">Download Only</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="bg-brand-surface/70 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800">
-        <div>
-          <span class="text-xs text-slate-400">Estimated Total:</span>
-          <div class="text-2xl font-bold font-display text-brand-gold" id="dsc-price">₹ 1,800</div>
-        </div>
-        <button onclick="orderDSCWhatsApp()" class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>Order via WhatsApp Desk</span>
-        </button>
-      </div>
+      <button onclick="orderDSCWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition shadow">
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>Order Class 3 DSC via WhatsApp Desk</span>
+      </button>
     </div>
   </section>
 
-  <!-- MODULE 6: Emergency Notice Defense Desk -->
-  <section id="notice-section" class="max-w-4xl mx-auto px-4 py-8">
+  <!-- MODULE 4: Emergency Notice Defense Desk -->
+  <section id="notice-section" class="max-w-4xl mx-auto px-4 py-6">
     <div class="bg-red-950/20 border border-red-800/40 rounded-2xl p-6 md:p-8">
       <div class="flex items-center space-x-3 mb-3">
         <i class="fa-solid fa-triangle-exclamation text-red-500 text-2xl"></i>
@@ -418,11 +252,10 @@
       <p class="text-slate-300 text-xs md:text-sm mb-4">
         Income Tax Sec 148A/143(2) or GST SCN DRC-01 demand careful evidentiary rejoinders. We provide case review and authorized representation.
       </p>
-
       <div class="flex flex-col sm:flex-row gap-3">
-        <input type="text" id="notice-num" placeholder="Enter Notice / DIN / Section Number" class="flex-1 bg-brand-surface border border-slate-700 rounded-lg px-4 py-2.5 text-xs md:text-sm text-slate-200 outline-none focus:border-red-500">
+        <input type="text" id="notice-num" placeholder="Enter Notice / DIN / Section Number" class="flex-1 bg-brand-surface border border-slate-700 rounded-lg px-4 py-2 text-xs md:text-sm text-slate-200 outline-none focus:border-red-500">
         <button onclick="sendNoticeWhatsApp()" class="bg-red-700 hover:bg-red-600 text-white font-bold px-6 py-2.5 rounded-lg text-xs md:text-sm transition">
-          Submit for Urgent Legal Review
+          Submit for Urgent Review
         </button>
       </div>
     </div>
@@ -430,26 +263,122 @@
 
   <!-- Mobile Bottom Sticky App Bar -->
   <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-brand-midnight/95 border-t border-slate-800 px-4 py-2.5 flex items-center justify-around text-[10px] text-slate-400">
+    <a href="#intel-section" class="flex flex-col items-center hover:text-brand-gold">
+      <i class="fa-solid fa-shield-halved text-sm mb-0.5"></i>
+      <span>Intel Feed</span>
+    </a>
     <a href="#trading-section" class="flex flex-col items-center hover:text-emerald-400">
       <i class="fa-solid fa-chart-line text-sm mb-0.5"></i>
       <span>Trading</span>
-    </a>
-    <a href="#accountancy-section" class="flex flex-col items-center hover:text-brand-gold">
-      <i class="fa-solid fa-file-invoice-dollar text-sm mb-0.5"></i>
-      <span>Accounts</span>
     </a>
     <a href="#dsc-section" class="flex flex-col items-center hover:text-brand-gold">
       <i class="fa-solid fa-key text-sm mb-0.5"></i>
       <span>DSC</span>
     </a>
-    <a href="#booking-section" class="flex flex-col items-center hover:text-blue-400">
-      <i class="fa-regular fa-calendar text-sm mb-0.5"></i>
-      <span>Book</span>
-    </a>
-    <a href="https://wa.me/919914984371" class="flex flex-col items-center text-green-400 font-bold">
-      <i class="fa-brands fa-whatsapp text-base mb-0.5"></i>
-      <span>Chat</span>
-    </a>
+    <button onclick="openAdminModal()" class="flex flex-col items-center text-brand-gold font-bold">
+      <i class="fa-solid fa-bullhorn text-sm mb-0.5"></i>
+      <span>Broadcast</span>
+    </button>
+  </div>
+
+  <!-- AUTHENTICATION MODAL (CLIENT LOGIN) -->
+  <div id="auth-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-brand-navy border border-brand-gold/40 rounded-2xl max-w-sm w-full p-6 relative">
+      <button onclick="toggleAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 rounded-full bg-brand-gold/10 border border-brand-gold/40 flex items-center justify-center mx-auto mb-2 text-brand-gold">
+          <i class="fa-solid fa-user-lock text-xl"></i>
+        </div>
+        <h4 class="font-display font-bold text-lg text-slate-100">Client Access Portal</h4>
+        <p class="text-xs text-slate-400">Sign in to view proprietary setups and regulatory updates.</p>
+      </div>
+
+      <div class="space-y-3 mb-4">
+        <div>
+          <label class="block text-[11px] text-slate-400 mb-1">Phone / Client ID</label>
+          <input type="text" id="login-id" placeholder="+91 9914984371" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-brand-gold">
+        </div>
+        <div>
+          <label class="block text-[11px] text-slate-400 mb-1">Access PIN / Password</label>
+          <input type="password" id="login-pass" placeholder="Enter password (e.g. 1234)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-brand-gold">
+        </div>
+      </div>
+
+      <button onclick="handleLogin()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition mb-2">
+        Unlock Advisory Feed
+      </button>
+      <p class="text-[10px] text-slate-500 text-center">Need access credentials? Message our desk on WhatsApp.</p>
+    </div>
+  </div>
+
+  <!-- ADMIN BROADCAST DESK MODAL (PIN: 7110) -->
+  <div id="admin-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-6 relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <!-- PIN Check Screen -->
+      <div id="admin-pin-screen">
+        <div class="text-center mb-5">
+          <i class="fa-solid fa-key text-brand-gold text-2xl mb-2"></i>
+          <h4 class="font-display font-bold text-lg text-slate-100">Admin Authorization</h4>
+          <p class="text-xs text-slate-400">Enter master PIN to unlock the broadcast publisher desk.</p>
+        </div>
+        <input type="password" id="admin-pin" placeholder="Enter PIN (Default: 7110)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm text-slate-200 outline-none mb-4 focus:border-brand-gold">
+        <button onclick="verifyAdminPIN()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded-lg text-xs">
+          Verify Authorization
+        </button>
+      </div>
+
+      <!-- Publishing Screen (Hidden until PIN verified) -->
+      <div id="admin-publish-screen" class="hidden">
+        <div class="mb-4">
+          <span class="text-[10px] uppercase font-bold text-brand-gold tracking-widest">Publisher Center</span>
+          <h4 class="font-display font-bold text-lg text-slate-100">Broadcast Advice & News</h4>
+          <p class="text-xs text-slate-400">Posts to members blog & triggers instant WhatsApp group broadcast.</p>
+        </div>
+
+        <div class="space-y-3 mb-5">
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">Headline / Advisory Title</label>
+            <input type="text" id="post-title" placeholder="e.g. NIFTY Technical Setup / GST Amnesty Update" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-brand-gold">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1">Category</label>
+              <select id="post-cat" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-200 outline-none">
+                <option value="MARKET SETUP">📈 Stock Market Setup</option>
+                <option value="TAX CIRCULAR">📑 Direct / Indirect Tax</option>
+                <option value="COMPLIANCE ALERT">⚖️ Corporate Governance</option>
+                <option value="URGENT NOTICE">🚨 Statutory Notice Advisory</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] text-slate-400 mb-1">Urgency Level</label>
+              <select id="post-urgency" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-200 outline-none">
+                <option value="High Alert">🔴 High Priority</option>
+                <option value="Action Required">🟡 Action Required</option>
+                <option value="Informational">🟢 Informational</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">Advisory Body / Full Details</label>
+            <textarea id="post-content" rows="4" placeholder="Enter the complete advisory, stop-loss, circular explanation, or strategic action..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-brand-gold"></textarea>
+          </div>
+        </div>
+
+        <button onclick="publishAndBroadcast()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition shadow">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Publish to Feed & Broadcast to Group</span>
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Footer Contact -->
@@ -468,42 +397,195 @@
 
   <!-- Scripts -->
   <script>
-    // Service Worker Registration
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW failed', err));
-      });
+    // Master Admin PIN
+    const ADMIN_MASTER_PIN = "7110";
+
+    // Feed Storage (Persisted in localStorage + Seed default items)
+    const DEFAULT_FEED = [
+      {
+        id: 1,
+        title: "Swing Setup: Banking Index Support & Reversal Strategy",
+        category: "MARKET SETUP",
+        urgency: "Action Required",
+        date: "Today",
+        content: "Index testing major trendline support with positive divergence on 4H chart. Risk contained at 1.5% max capital allocation. Stop-loss and target zones issued to members desk.",
+        lockedSnippet: "Index testing major trendline support with positive divergence on 4H chart... [Login to view entry & target levels]"
+      },
+      {
+        id: 2,
+        title: "GST Advisory: ITC Reversal Under Rule 37A & Supplier Non-Payment",
+        category: "TAX CIRCULAR",
+        urgency: "High Alert",
+        date: "Yesterday",
+        content: "Critical notice for registered entities: Verify Form GSTR-2B against recipient ledgers before upcoming quarterly cut-off. Failure to reverse attracts automated DRC-01B notices.",
+        lockedSnippet: "Critical notice for registered entities: Verify Form GSTR-2B against recipient ledgers... [Login to view checklist]"
+      }
+    ];
+
+    function getPosts() {
+      const stored = localStorage.getItem('711_feed_posts');
+      return stored ? JSON.parse(stored) : DEFAULT_FEED;
     }
 
-    // PWA Install Prompt Listener
-    let deferredPrompt;
-    const banner = document.getElementById('pwa-install-banner');
-    const installBtn = document.getElementById('btn-install-app');
+    function savePosts(posts) {
+      localStorage.setItem('711_feed_posts', JSON.stringify(posts));
+    }
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      banner.classList.remove('hidden');
-    });
+    // Render Feed based on Login State
+    function renderFeed() {
+      const isLoggedIn = localStorage.getItem('711_user_logged_in') === 'true';
+      const container = document.getElementById('feed-container');
+      const badge = document.getElementById('auth-status-badge');
+      const authBtnText = document.getElementById('auth-btn-text');
+      const posts = getPosts();
 
-    if (installBtn) {
-      installBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          const { outcome } = await deferredPrompt.userChoice;
-          if (outcome === 'accepted') banner.classList.add('hidden');
-          deferredPrompt = null;
+      if (isLoggedIn) {
+        badge.className = "px-2.5 py-1 rounded text-[11px] font-semibold bg-emerald-950/60 text-emerald-400 border border-emerald-800/50";
+        badge.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> Member Active';
+        authBtnText.textContent = "Log Out";
+      } else {
+        badge.className = "px-2.5 py-1 rounded text-[11px] font-semibold bg-red-950/60 text-red-400 border border-red-800/50";
+        badge.innerHTML = '<i class="fa-solid fa-lock mr-1"></i> Locked (Guest)';
+        authBtnText.textContent = "Client Login";
+      }
+
+      container.innerHTML = posts.map(post => {
+        if (isLoggedIn) {
+          return `
+            <div class="bg-brand-navy rounded-xl p-5 border border-slate-800 transition hover:border-brand-gold/40">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-surface text-brand-gold uppercase tracking-wider">${post.category}</span>
+                <span class="text-[10px] text-slate-400">${post.date} · <strong class="text-brand-goldLight">${post.urgency}</strong></span>
+              </div>
+              <h4 class="font-display font-bold text-sm md:text-base text-slate-100 mb-2">${post.title}</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">${post.content}</p>
+              <div class="mt-3 pt-3 border-t border-slate-800 flex justify-end">
+                <button onclick="sharePostWhatsApp('${post.title}')" class="text-[11px] text-green-400 hover:text-green-300 font-semibold flex items-center">
+                  <i class="fa-brands fa-whatsapp mr-1"></i> Share to Group
+                </button>
+              </div>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="bg-brand-navy/60 rounded-xl p-5 border border-slate-800 relative overflow-hidden">
+              <div class="flex items-center justify-between mb-2 opacity-60">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-surface text-slate-400 uppercase">${post.category}</span>
+                <span class="text-[10px] text-slate-500">${post.date}</span>
+              </div>
+              <h4 class="font-display font-bold text-sm md:text-base text-slate-200 mb-2">${post.title}</h4>
+              <p class="text-xs text-slate-400 filter blur-[1.5px] select-none">${post.content}</p>
+              <div class="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between">
+                <span class="text-[11px] text-brand-gold font-semibold"><i class="fa-solid fa-lock mr-1"></i> Confidential Client Intelligence</span>
+                <button onclick="toggleAuthModal()" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs hover:bg-brand-goldLight transition">
+                  Unlock
+                </button>
+              </div>
+            </div>
+          `;
         }
-      });
+      }).join('');
     }
 
-    // Trading Position Calculator
+    // Authentication Handlers
+    function toggleAuthModal() {
+      const isLoggedIn = localStorage.getItem('711_user_logged_in') === 'true';
+      if (isLoggedIn) {
+        localStorage.removeItem('711_user_logged_in');
+        renderFeed();
+      } else {
+        document.getElementById('auth-modal').classList.toggle('hidden');
+      }
+    }
+
+    function handleLogin() {
+      const id = document.getElementById('login-id').value.trim();
+      const pass = document.getElementById('login-pass').value.trim();
+
+      if (id && pass) {
+        localStorage.setItem('711_user_logged_in', 'true');
+        document.getElementById('auth-modal').classList.add('hidden');
+        renderFeed();
+      } else {
+        alert('Please enter your Client ID / Phone and password.');
+      }
+    }
+
+    // Admin Publishing & Instant Group Broadcast
+    function openAdminModal() {
+      document.getElementById('admin-modal').classList.remove('hidden');
+      document.getElementById('admin-pin-screen').classList.remove('hidden');
+      document.getElementById('admin-publish-screen').classList.add('hidden');
+    }
+
+    function closeAdminModal() {
+      document.getElementById('admin-modal').classList.add('hidden');
+    }
+
+    function verifyAdminPIN() {
+      const pin = document.getElementById('admin-pin').value.trim();
+      if (pin === ADMIN_MASTER_PIN) {
+        document.getElementById('admin-pin-screen').classList.add('hidden');
+        document.getElementById('admin-publish-screen').classList.remove('hidden');
+      } else {
+        alert('Incorrect Authorization PIN.');
+      }
+    }
+
+    function publishAndBroadcast() {
+      const title = document.getElementById('post-title').value.trim();
+      const category = document.getElementById('post-cat').value;
+      const urgency = document.getElementById('post-urgency').value;
+      const content = document.getElementById('post-content').value.trim();
+
+      if (!title || !content) {
+        alert('Please enter both a title and the advisory body.');
+        return;
+      }
+
+      // Add to internal feed
+      const posts = getPosts();
+      const newPost = {
+        id: Date.now(),
+        title,
+        category,
+        urgency,
+        date: "Just now",
+        content,
+        lockedSnippet: content.substring(0, 70) + "..."
+      };
+      posts.unshift(newPost);
+      savePosts(posts);
+
+      // Auto login admin so they see the published post
+      localStorage.setItem('711_user_logged_in', 'true');
+      renderFeed();
+      closeAdminModal();
+
+      // Dispatch to WhatsApp Group Broadcast
+      const broadcastMsg = `📢 *711 OVERSEAS | OFFICIAL ADVISORY BROADCAST*%0A%0A` +
+        `🏷️ *Category:* ${encodeURIComponent(category)}%0A` +
+        `⚠️ *Urgency:* ${encodeURIComponent(urgency)}%0A` +
+        `📌 *Headline:* ${encodeURIComponent(title)}%0A%0A` +
+        `📝 *Summary & Action:*%0A${encodeURIComponent(content)}%0A%0A` +
+        `🔒 *Full Members Portal:* https://cssharmarahul-wq.github.io/711-Overseas/%0A` +
+        `Seven Eleven Overseas Management Consultants`;
+
+      window.open(`https://wa.me/?text=${broadcastMsg}`, '_blank');
+    }
+
+    function sharePostWhatsApp(title) {
+      const msg = `📢 *Advisory from 711 Overseas*%0A%0A*${encodeURIComponent(title)}*%0A%0AAccess the verified breakdown on the members desk: https://cssharmarahul-wq.github.io/711-Overseas/`;
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+
+    // Trading Calculator
     function calcTrade() {
       const cap = parseFloat(document.getElementById('trade-capital').value) || 0;
       const entry = parseFloat(document.getElementById('trade-entry').value) || 0;
       const sl = parseFloat(document.getElementById('trade-sl').value) || 0;
 
-      const maxRisk = cap * 0.015; // 1.5% max risk
+      const maxRisk = cap * 0.015;
       document.getElementById('res-risk').textContent = '₹ ' + Math.round(maxRisk).toLocaleString('en-IN');
 
       const riskPerShare = entry - sl;
@@ -520,85 +602,36 @@
 
     function requestTradingAdvisory(type) {
       const cap = document.getElementById('trade-capital').value;
-      const msg = `*Stock Trading & Market Advisory Request*%0A%0A` +
-        `• Inquiry: ${encodeURIComponent(type)}%0A` +
-        `• Portfolio / Capital Base: ₹ ${encodeURIComponent(cap)}%0A%0A` +
-        `Please connect me for a technical consultation.`;
+      const msg = `*Stock Trading & Market Advisory Request*%0A%0A• Inquiry: ${encodeURIComponent(type)}%0A• Capital Base: ₹ ${encodeURIComponent(cap)}%0A%0APlease connect me for an analysis slot.`;
       window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
-    }
-
-    // Accountancy Pricing Calculator
-    function calcAccountancy() {
-      const vol = document.getElementById('acc-vol').value;
-      let price = '₹ 4,500 / month';
-      if (vol === 'growth') price = '₹ 8,500 / month';
-      if (vol === 'enterprise') price = '₹ 15,000+ / month';
-      document.getElementById('acc-price').textContent = price;
     }
 
     function orderAccountancyWhatsApp() {
-      const volText = document.getElementById('acc-vol').options[document.getElementById('acc-vol').selectedIndex].text;
-      const price = document.getElementById('acc-price').textContent;
-      const msg = `*Corporate Accountancy & Bookkeeping Inquiry*%0A%0A` +
-        `• Volume Tier: ${encodeURIComponent(volText)}%0A` +
-        `• Est Retainer: ${encodeURIComponent(price)}%0A%0A` +
-        `Please provide scope onboarding details.`;
+      const msg = `*Corporate Accountancy Inquiry*%0A%0AI would like to onboard for monthly bookkeeping, MIS, and GST reconciliation.`;
       window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
-    }
-
-    // Consultation Slot Booking
-    function bookSlotWhatsApp() {
-      const topic = document.getElementById('book-topic').value;
-      const slot = document.getElementById('book-slot').value;
-      const msg = `*1-on-1 Consultation Booking*%0A%0A` +
-        `• Selected Topic: ${encodeURIComponent(topic)}%0A` +
-        `• Preferred Slot: ${encodeURIComponent(slot)}%0A%0A` +
-        `Please confirm your availability.`;
-      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
-    }
-
-    // Plan Selection
-    function selectPlan(planName) {
-      const msg = `*Retainer Plan Inquiry*%0A%0AI would like to enroll in the *${encodeURIComponent(planName)}* package. Please share the agreement details.`;
-      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
-    }
-
-    // DSC Calculator
-    function calculateDSC() {
-      const type = document.getElementById('dsc-type').value;
-      const scope = document.getElementById('dsc-scope').value;
-      const token = document.getElementById('dsc-token').value;
-
-      let total = 1200;
-      if (type === 'organization') total += 1000;
-      if (scope === 'combo') total += 600;
-      if (token === 'token') total += 600;
-
-      document.getElementById('dsc-price').textContent = '₹ ' + total.toLocaleString('en-IN');
     }
 
     function orderDSCWhatsApp() {
-      const type = document.getElementById('dsc-type').options[document.getElementById('dsc-type').selectedIndex].text;
-      const scope = document.getElementById('dsc-scope').options[document.getElementById('dsc-scope').selectedIndex].text;
-      const token = document.getElementById('dsc-token').options[document.getElementById('dsc-token').selectedIndex].text;
-      const price = document.getElementById('dsc-price').textContent;
-
-      const msg = `*New Class 3 DSC Request*%0A%0A` +
-        `• Type: ${encodeURIComponent(type)}%0A` +
-        `• Scope: ${encodeURIComponent(scope)}%0A` +
-        `• Hardware: ${encodeURIComponent(token)}%0A` +
-        `• Est Price: ${encodeURIComponent(price)}%0A%0A` +
-        `Please send paperless verification steps.`;
-
+      const msg = `*Class 3 DSC Urgent Request*%0A%0APlease send paperless verification steps.`;
       window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
     }
 
     function sendNoticeWhatsApp() {
       const num = document.getElementById('notice-num').value.trim();
-      const text = num ? `Notice/Section Ref: ${num}` : 'Urgent Tax/Regulatory Notice';
+      const text = num ? `Notice Ref: ${num}` : 'Urgent Tax/Regulatory Notice';
       const msg = `*Urgent Notice Defense Inquiry*%0A%0A${encodeURIComponent(text)}%0A%0APlease review my case timeline.`;
       window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
     }
+
+    // Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW failed', err));
+      });
+    }
+
+    // Initialize Feed on Load
+    renderFeed();
   </script>
 </body>
 </html>
