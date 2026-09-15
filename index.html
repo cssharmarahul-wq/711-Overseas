@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>711 OVERSEAS | Corporate Advisory, Tax & DSC Portal</title>
+  <title>711 OVERSEAS | Corporate Advisory, Accountancy, Trading & Compliance</title>
   
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#050B14">
-  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. Digital Signatures, Direct & Indirect Tax, Corporate Compliance.">
+  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. Corporate Accountancy, Stock Trading Advisory, DSC, Tax Planning & Governance.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="711 Overseas">
@@ -32,7 +32,8 @@
               gold: '#D4AF37',
               goldLight: '#F3E5AB',
               goldDark: '#8C6510',
-              accent: '#38BDF8'
+              accent: '#38BDF8',
+              emerald: '#10B981'
             }
           },
           fontFamily: {
@@ -54,15 +55,19 @@
       border: 1px solid rgba(212, 175, 55, 0.35);
       box-shadow: 0 0 20px rgba(212, 175, 55, 0.08);
     }
+    .emerald-glow {
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.08);
+    }
   </style>
 </head>
-<body class="min-h-screen pb-20 md:pb-10">
+<body class="min-h-screen pb-24 md:pb-12">
 
   <!-- Top Announcement / PWA Install Notification -->
   <div id="pwa-install-banner" class="hidden bg-gradient-to-r from-brand-goldDark to-brand-navy border-b border-brand-gold/40 px-4 py-2 text-xs md:text-sm text-brand-goldLight flex items-center justify-between">
     <div class="flex items-center space-x-2">
       <i class="fa-solid fa-mobile-screen-button text-brand-gold"></i>
-      <span>Install the <strong>711 Overseas</strong> Portal on your device for fast offline access.</span>
+      <span>Install the <strong>711 Overseas</strong> App for offline calculators & priority desk.</span>
     </div>
     <button id="btn-install-app" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded shadow text-xs hover:bg-brand-goldLight transition">
       Install Now
@@ -81,14 +86,41 @@
           <p class="text-[10px] uppercase tracking-widest text-slate-400">Build Your Wealth</p>
         </div>
       </div>
-      <div class="flex items-center space-x-3">
-        <a href="https://wa.me/919914984371?text=Hello%2C%20I%20need%20assistance%20with%20DSC%20and%20Tax%20Advisory" target="_blank" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-4 py-2 rounded-lg text-xs md:text-sm flex items-center space-x-2 transition shadow">
+      <div class="flex items-center space-x-2 md:space-x-3">
+        <a href="#booking-section" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight px-3 py-2 rounded-lg text-xs font-semibold transition hidden sm:inline-block">
+          <i class="fa-solid fa-calendar-check mr-1"></i> Book Slot
+        </a>
+        <a href="https://wa.me/919914984371?text=Hello%2C%20I%20need%20assistance%20from%20711%20Overseas" target="_blank" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-4 py-2 rounded-lg text-xs md:text-sm flex items-center space-x-2 transition shadow">
           <i class="fa-brands fa-whatsapp text-base"></i>
           <span class="hidden sm:inline">Priority Desk</span>
         </a>
       </div>
     </div>
   </header>
+
+  <!-- Quick Nav Chips (Horizontal Scroll on Mobile) -->
+  <div class="bg-brand-navy/60 border-b border-slate-800 py-2.5 px-4 overflow-x-auto">
+    <div class="max-w-7xl mx-auto flex space-x-2 whitespace-nowrap text-xs font-medium text-slate-300">
+      <a href="#trading-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-emerald-500/30 text-emerald-400">
+        📈 Stock Trading Advisory
+      </a>
+      <a href="#accountancy-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-brand-gold/30 text-brand-goldLight">
+        📊 Accountancy & MIS
+      </a>
+      <a href="#dsc-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-slate-700">
+        🔑 Class 3 DSC
+      </a>
+      <a href="#notice-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-red-500/30 text-red-300">
+        🛡️ Notice Defense
+      </a>
+      <a href="#plans-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-slate-700">
+        💼 Retainers & Plans
+      </a>
+      <a href="#booking-section" class="bg-brand-surface hover:bg-brand-card px-3 py-1.5 rounded-full border border-blue-500/30 text-blue-300">
+        📅 1-on-1 Consultation
+      </a>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section class="relative px-4 pt-10 pb-12 overflow-hidden border-b border-brand-gold/10">
@@ -97,27 +129,239 @@
         Seven Eleven Overseas Management Consultants
       </span>
       <h2 class="text-3xl md:text-5xl font-display font-extrabold text-slate-100 leading-tight mb-4">
-        Stop Losing Money to Inefficient Taxes & <span class="gold-gradient-text">Statutory Penalties</span>
+        Strategic Capital, Corporate Tax & <span class="gold-gradient-text">Complete Compliance</span>
       </h2>
       <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-8">
-        Integrated Corporate Governance, Class 3 Digital Signatures, Direct & Indirect Tax Structuring, and Department Notice Representation.
+        Your integrated desk for Equity Trading Strategies, Corporate Accountancy, Class 3 Digital Signatures, Direct & Indirect Tax, and Regulatory Defense.
       </p>
 
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="#dsc-section" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-5 py-3 rounded-lg text-sm shadow transition">
-          <i class="fa-solid fa-key mr-2"></i> Get Class 3 DSC Today
+        <a href="#trading-section" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-3 rounded-lg text-sm shadow transition">
+          <i class="fa-solid fa-chart-line mr-2"></i> Stock Trading Advisory
         </a>
-        <a href="#notice-section" class="bg-brand-card hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight font-bold px-5 py-3 rounded-lg text-sm transition">
-          <i class="fa-solid fa-shield-halved mr-2"></i> Notice Defense Desk
+        <a href="#accountancy-section" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-5 py-3 rounded-lg text-sm shadow transition">
+          <i class="fa-solid fa-file-invoice-dollar mr-2"></i> Accountancy & Bookkeeping
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Class 3 DSC Desk -->
-  <section id="dsc-section" class="max-w-4xl mx-auto px-4 py-12">
+  <!-- MODULE 1: Stock Trading & Capital Markets Advisory -->
+  <section id="trading-section" class="max-w-4xl mx-auto px-4 py-10">
+    <div class="bg-brand-navy rounded-2xl p-6 md:p-8 emerald-glow">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="p-3 bg-emerald-500/10 rounded-xl text-emerald-400 text-xl">
+          <i class="fa-solid fa-chart-candlestick"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-100">Stock Trading & Capital Market Advisory</h3>
+          <p class="text-xs text-slate-400">Technical chart setups, risk management, and capital allocation strategy</p>
+        </div>
+      </div>
+
+      <p class="text-slate-300 text-xs md:text-sm mb-6 leading-relaxed">
+        Trading success is built on risk containment, position sizing, and systematic setups. Access market analysis, swing setups, and portfolio risk evaluation.
+      </p>
+
+      <!-- Interactive Position Size & Risk Calculator -->
+      <div class="bg-brand-surface rounded-xl p-5 border border-slate-800 mb-6">
+        <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center">
+          <i class="fa-solid fa-calculator mr-2"></i> Position Size & Risk Calculator
+        </h4>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">Trading Capital (₹)</label>
+            <input type="number" id="trade-capital" value="500000" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none focus:border-emerald-500" oninput="calcTrade()">
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">Entry Price (₹)</label>
+            <input type="number" id="trade-entry" value="1000" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none focus:border-emerald-500" oninput="calcTrade()">
+          </div>
+          <div>
+            <label class="block text-[11px] text-slate-400 mb-1">Stop Loss (₹)</label>
+            <input type="number" id="trade-sl" value="960" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-sm text-slate-100 outline-none focus:border-emerald-500" oninput="calcTrade()">
+          </div>
+        </div>
+
+        <div class="bg-brand-midnight/70 rounded-lg p-3 flex flex-wrap items-center justify-between text-xs border border-emerald-500/20">
+          <div>
+            <span class="text-slate-400">Max Risk (1.5% Cap):</span>
+            <span class="text-red-400 font-bold ml-1" id="res-risk">₹ 7,500</span>
+          </div>
+          <div>
+            <span class="text-slate-400">Suggested Quantity:</span>
+            <span class="text-emerald-400 font-bold ml-1 text-sm" id="res-qty">187 Shares</span>
+          </div>
+          <div>
+            <span class="text-slate-400">Capital Required:</span>
+            <span class="text-brand-gold font-bold ml-1" id="res-cap">₹ 1,87,000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button onclick="requestTradingAdvisory('Portfolio Health-Check')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Request Portfolio Risk Audit</span>
+        </button>
+        <button onclick="requestTradingAdvisory('Technical Chart Analysis')" class="flex-1 bg-brand-surface hover:bg-brand-card border border-emerald-500/40 text-emerald-300 font-bold py-3 px-4 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
+          <i class="fa-solid fa-chart-simple"></i>
+          <span>Get Technical Setup Strategy</span>
+        </button>
+      </div>
+      <p class="text-[10px] text-slate-500 mt-3 italic">*Market investments are subject to market risks. Analysis provided is for technical evaluation, educational research, and strategic capital structuring.</p>
+    </div>
+  </section>
+
+  <!-- MODULE 2: Corporate Accountancy & Bookkeeping Desk -->
+  <section id="accountancy-section" class="max-w-4xl mx-auto px-4 py-6">
     <div class="bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
-      <div class="flex items-center space-x-3 mb-6">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="p-3 bg-brand-gold/10 rounded-xl text-brand-gold text-xl">
+          <i class="fa-solid fa-calculator"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-100">Corporate Accountancy & MIS Reporting</h3>
+          <p class="text-xs text-slate-400">Full-cycle bookkeeping, ledger reconciliation, and financial controllership</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div class="bg-brand-surface/70 rounded-xl p-4 border border-slate-800">
+          <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2">Monthly Scope Covered</h4>
+          <ul class="text-xs text-slate-300 space-y-1.5">
+            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Daily/Monthly Bookkeeping (Tally / Cloud ERP)</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> 2B/2A GST vs Purchase Ledger Reconciliation</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Bank Statement & Payment Gateway Clearing</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Monthly Profit & Loss, Balance Sheet & Cashflow MIS</li>
+          </ul>
+        </div>
+        <div class="bg-brand-surface/70 rounded-xl p-4 border border-slate-800">
+          <h4 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2">Estimate Monthly Plan</h4>
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="text-slate-400">Monthly Transaction Volume:</label>
+              <select id="acc-vol" class="w-full mt-1 bg-brand-midnight border border-slate-700 rounded-lg p-2 text-slate-200 outline-none" onchange="calcAccountancy()">
+                <option value="basic">Up to 100 Transactions (Small Business / Freelancer)</option>
+                <option value="growth">100 – 400 Transactions (Growing Pvt Ltd / LLP)</option>
+                <option value="enterprise">400+ Transactions (High Volume / Multi-Branch)</option>
+              </select>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="text-slate-400">Starting Retainer:</span>
+              <span class="text-lg font-bold text-brand-gold" id="acc-price">₹ 4,500 / month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="orderAccountancyWhatsApp()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition shadow">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        <span>Request Customized Accounting Retainer</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- MODULE 3: Restored Retainers & Pricing Plans (From Old Wix Site) -->
+  <section id="plans-section" class="max-w-4xl mx-auto px-4 py-8">
+    <div class="text-center mb-6">
+      <h3 class="font-display font-bold text-xl text-slate-100">Advisory Retainers & Pricing Plans</h3>
+      <p class="text-xs text-slate-400">Transparent packages for ongoing corporate health</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- Plan 1 -->
+      <div class="bg-brand-navy rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Compliance Basic</span>
+          <div class="text-xl font-bold font-display text-brand-gold mt-1 mb-3">₹ 2,999 <span class="text-xs text-slate-400 font-normal">/ mo</span></div>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4">
+            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> GST Filing (GSTR-1 & 3B)</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> TDS Payment & Return</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> Statutory Due Date Alerts</li>
+          </ul>
+        </div>
+        <button onclick="selectPlan('Compliance Basic')" class="w-full bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight py-2 rounded-lg text-xs font-semibold">Choose Plan</button>
+      </div>
+
+      <!-- Plan 2 (Featured) -->
+      <div class="bg-brand-navy rounded-xl p-5 border-2 border-brand-gold flex flex-col justify-between relative shadow-lg">
+        <div class="absolute -top-2.5 right-4 bg-brand-gold text-brand-midnight text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest">Popular</div>
+        <div>
+          <span class="text-[10px] uppercase font-bold text-brand-gold tracking-wider">Growth Controllership</span>
+          <div class="text-xl font-bold font-display text-brand-gold mt-1 mb-3">₹ 6,999 <span class="text-xs text-slate-400 font-normal">/ mo</span></div>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4">
+            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> Complete Bookkeeping + Tally</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> GST, TDS & Advance Tax Planning</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> Monthly MIS Dashboard</li>
+            <li><i class="fa-solid fa-check text-brand-gold mr-1"></i> 1 Token Class 3 DSC Included</li>
+          </ul>
+        </div>
+        <button onclick="selectPlan('Growth Controllership')" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight py-2 rounded-lg text-xs font-bold">Choose Plan</button>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="bg-brand-navy rounded-xl p-5 border border-slate-800 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">Capital & Wealth Desk</span>
+          <div class="text-xl font-bold font-display text-emerald-400 mt-1 mb-3">₹ 9,999 <span class="text-xs text-slate-400 font-normal">/ mo</span></div>
+          <ul class="text-xs text-slate-300 space-y-2 mb-4">
+            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Weekly Equity Market Setups</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Portfolio Risk Audit</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Corporate Tax Structuring</li>
+            <li><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Priority Notice Representation</li>
+          </ul>
+        </div>
+        <button onclick="selectPlan('Capital & Wealth Desk')" class="w-full bg-brand-surface hover:bg-brand-card border border-emerald-500/40 text-emerald-300 py-2 rounded-lg text-xs font-semibold">Choose Plan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE 4: 1-on-1 Consultation Booking Engine (Restored Wix Bookings) -->
+  <section id="booking-section" class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-brand-navy rounded-2xl p-6 md:p-8 border border-blue-500/30">
+      <div class="flex items-center space-x-3 mb-4">
+        <div class="p-3 bg-blue-500/10 rounded-xl text-blue-400 text-xl">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-xl text-slate-100">Schedule a 1-on-1 Advisory Session</h3>
+          <p class="text-xs text-slate-400">Direct booking for corporate compliance, trading review, or notice defense</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+        <div>
+          <label class="block text-xs text-slate-300 mb-1">Consultation Topic</label>
+          <select id="book-topic" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-blue-500">
+            <option>Stock Trading & Portfolio Risk Review</option>
+            <option>Corporate Accountancy & Bookkeeping Setup</option>
+            <option>Income Tax / GST Notice Rejoinder Review</option>
+            <option>Class 3 DSC Urgent Issuance</option>
+            <option>Comprehensive Business Tax Planning</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs text-slate-300 mb-1">Preferred Time Window</label>
+          <select id="book-slot" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none focus:border-blue-500">
+            <option>Morning (10:00 AM – 1:00 PM)</option>
+            <option>Afternoon (2:00 PM – 5:00 PM)</option>
+            <option>Evening / Market Close (5:30 PM – 7:30 PM)</option>
+          </select>
+        </div>
+      </div>
+
+      <button onclick="bookSlotWhatsApp()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
+        <i class="fa-regular fa-calendar-check text-base"></i>
+        <span>Confirm Session via WhatsApp</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- MODULE 5: Interactive Class 3 DSC Desk -->
+  <section id="dsc-section" class="max-w-4xl mx-auto px-4 py-8">
+    <div class="bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
+      <div class="flex items-center space-x-3 mb-4">
         <div class="p-3 bg-brand-gold/10 rounded-xl text-brand-gold text-xl">
           <i class="fa-solid fa-signature"></i>
         </div>
@@ -127,36 +371,36 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-2">Applicant Type</label>
-          <select id="dsc-type" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-sm text-slate-200 focus:border-brand-gold outline-none" onchange="calculateDSC()">
+          <label class="block text-xs text-slate-300 mb-1">Applicant Type</label>
+          <select id="dsc-type" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none" onchange="calculateDSC()">
             <option value="individual">Individual (Director / Proprietor)</option>
             <option value="organization">Organization / Company</option>
           </select>
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-2">Certificate Scope</label>
-          <select id="dsc-scope" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-sm text-slate-200 focus:border-brand-gold outline-none" onchange="calculateDSC()">
+          <label class="block text-xs text-slate-300 mb-1">Certificate Scope</label>
+          <select id="dsc-scope" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none" onchange="calculateDSC()">
             <option value="signing">Signing Only (MCA, GST, ITR)</option>
             <option value="combo">Signing + Encryption (e-Tender, ICEGATE)</option>
           </select>
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-2">Hardware Token</label>
-          <select id="dsc-token" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-sm text-slate-200 focus:border-brand-gold outline-none" onchange="calculateDSC()">
+          <label class="block text-xs text-slate-300 mb-1">Hardware Token</label>
+          <select id="dsc-token" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-200 outline-none" onchange="calculateDSC()">
             <option value="token">Includes FIPS USB Token</option>
-            <option value="cert">Download Only (Have My Own Token)</option>
+            <option value="cert">Download Only</option>
           </select>
         </div>
       </div>
 
       <div class="bg-brand-surface/70 rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800">
         <div>
-          <span class="text-xs text-slate-400">Estimated Total (Inclusive of verification):</span>
+          <span class="text-xs text-slate-400">Estimated Total:</span>
           <div class="text-2xl font-bold font-display text-brand-gold" id="dsc-price">₹ 1,800</div>
         </div>
-        <button onclick="orderDSCWhatsApp()" class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg text-sm flex items-center justify-center space-x-2 transition">
+        <button onclick="orderDSCWhatsApp()" class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold px-6 py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition">
           <i class="fa-brands fa-whatsapp text-lg"></i>
           <span>Order via WhatsApp Desk</span>
         </button>
@@ -164,25 +408,49 @@
     </div>
   </section>
 
-  <!-- Emergency Notice Defense Section -->
+  <!-- MODULE 6: Emergency Notice Defense Desk -->
   <section id="notice-section" class="max-w-4xl mx-auto px-4 py-8">
     <div class="bg-red-950/20 border border-red-800/40 rounded-2xl p-6 md:p-8">
-      <div class="flex items-center space-x-3 mb-4">
+      <div class="flex items-center space-x-3 mb-3">
         <i class="fa-solid fa-triangle-exclamation text-red-500 text-2xl"></i>
         <h3 class="font-display font-bold text-xl text-slate-100">Received a Tax or Regulatory Notice?</h3>
       </div>
-      <p class="text-slate-300 text-xs md:text-sm mb-6">
-        A poorly drafted rejoinder to an Income Tax Section 148A/143(2) or GST SCN DRC-01 can lead to severe penalties. We provide structured evidence documentation and authorized representation before adjudicating authorities.
+      <p class="text-slate-300 text-xs md:text-sm mb-4">
+        Income Tax Sec 148A/143(2) or GST SCN DRC-01 demand careful evidentiary rejoinders. We provide case review and authorized representation.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-3">
-        <input type="text" id="notice-num" placeholder="Enter Notice / DIN / Section Number" class="flex-1 bg-brand-surface border border-slate-700 rounded-lg px-4 py-2.5 text-sm text-slate-200 outline-none focus:border-red-500">
-        <button onclick="sendNoticeWhatsApp()" class="bg-red-700 hover:bg-red-600 text-white font-bold px-6 py-2.5 rounded-lg text-sm transition">
+        <input type="text" id="notice-num" placeholder="Enter Notice / DIN / Section Number" class="flex-1 bg-brand-surface border border-slate-700 rounded-lg px-4 py-2.5 text-xs md:text-sm text-slate-200 outline-none focus:border-red-500">
+        <button onclick="sendNoticeWhatsApp()" class="bg-red-700 hover:bg-red-600 text-white font-bold px-6 py-2.5 rounded-lg text-xs md:text-sm transition">
           Submit for Urgent Legal Review
         </button>
       </div>
     </div>
   </section>
+
+  <!-- Mobile Bottom Sticky App Bar -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-brand-midnight/95 border-t border-slate-800 px-4 py-2.5 flex items-center justify-around text-[10px] text-slate-400">
+    <a href="#trading-section" class="flex flex-col items-center hover:text-emerald-400">
+      <i class="fa-solid fa-chart-line text-sm mb-0.5"></i>
+      <span>Trading</span>
+    </a>
+    <a href="#accountancy-section" class="flex flex-col items-center hover:text-brand-gold">
+      <i class="fa-solid fa-file-invoice-dollar text-sm mb-0.5"></i>
+      <span>Accounts</span>
+    </a>
+    <a href="#dsc-section" class="flex flex-col items-center hover:text-brand-gold">
+      <i class="fa-solid fa-key text-sm mb-0.5"></i>
+      <span>DSC</span>
+    </a>
+    <a href="#booking-section" class="flex flex-col items-center hover:text-blue-400">
+      <i class="fa-regular fa-calendar text-sm mb-0.5"></i>
+      <span>Book</span>
+    </a>
+    <a href="https://wa.me/919914984371" class="flex flex-col items-center text-green-400 font-bold">
+      <i class="fa-brands fa-whatsapp text-base mb-0.5"></i>
+      <span>Chat</span>
+    </a>
+  </div>
 
   <!-- Footer Contact -->
   <footer class="mt-16 border-t border-brand-gold/20 py-8 px-4 text-center text-xs text-slate-400">
@@ -218,18 +486,84 @@
       banner.classList.remove('hidden');
     });
 
-    installBtn.addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-          banner.classList.add('hidden');
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') banner.classList.add('hidden');
+          deferredPrompt = null;
         }
-        deferredPrompt = null;
-      }
-    });
+      });
+    }
 
-    // Dynamic DSC Pricing Calculator
+    // Trading Position Calculator
+    function calcTrade() {
+      const cap = parseFloat(document.getElementById('trade-capital').value) || 0;
+      const entry = parseFloat(document.getElementById('trade-entry').value) || 0;
+      const sl = parseFloat(document.getElementById('trade-sl').value) || 0;
+
+      const maxRisk = cap * 0.015; // 1.5% max risk
+      document.getElementById('res-risk').textContent = '₹ ' + Math.round(maxRisk).toLocaleString('en-IN');
+
+      const riskPerShare = entry - sl;
+      if (riskPerShare > 0 && entry > 0) {
+        const qty = Math.floor(maxRisk / riskPerShare);
+        const reqCap = qty * entry;
+        document.getElementById('res-qty').textContent = qty.toLocaleString('en-IN') + ' Shares';
+        document.getElementById('res-cap').textContent = '₹ ' + Math.round(reqCap).toLocaleString('en-IN');
+      } else {
+        document.getElementById('res-qty').textContent = 'Invalid SL';
+        document.getElementById('res-cap').textContent = '—';
+      }
+    }
+
+    function requestTradingAdvisory(type) {
+      const cap = document.getElementById('trade-capital').value;
+      const msg = `*Stock Trading & Market Advisory Request*%0A%0A` +
+        `• Inquiry: ${encodeURIComponent(type)}%0A` +
+        `• Portfolio / Capital Base: ₹ ${encodeURIComponent(cap)}%0A%0A` +
+        `Please connect me for a technical consultation.`;
+      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+    }
+
+    // Accountancy Pricing Calculator
+    function calcAccountancy() {
+      const vol = document.getElementById('acc-vol').value;
+      let price = '₹ 4,500 / month';
+      if (vol === 'growth') price = '₹ 8,500 / month';
+      if (vol === 'enterprise') price = '₹ 15,000+ / month';
+      document.getElementById('acc-price').textContent = price;
+    }
+
+    function orderAccountancyWhatsApp() {
+      const volText = document.getElementById('acc-vol').options[document.getElementById('acc-vol').selectedIndex].text;
+      const price = document.getElementById('acc-price').textContent;
+      const msg = `*Corporate Accountancy & Bookkeeping Inquiry*%0A%0A` +
+        `• Volume Tier: ${encodeURIComponent(volText)}%0A` +
+        `• Est Retainer: ${encodeURIComponent(price)}%0A%0A` +
+        `Please provide scope onboarding details.`;
+      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+    }
+
+    // Consultation Slot Booking
+    function bookSlotWhatsApp() {
+      const topic = document.getElementById('book-topic').value;
+      const slot = document.getElementById('book-slot').value;
+      const msg = `*1-on-1 Consultation Booking*%0A%0A` +
+        `• Selected Topic: ${encodeURIComponent(topic)}%0A` +
+        `• Preferred Slot: ${encodeURIComponent(slot)}%0A%0A` +
+        `Please confirm your availability.`;
+      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+    }
+
+    // Plan Selection
+    function selectPlan(planName) {
+      const msg = `*Retainer Plan Inquiry*%0A%0AI would like to enroll in the *${encodeURIComponent(planName)}* package. Please share the agreement details.`;
+      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+    }
+
+    // DSC Calculator
     function calculateDSC() {
       const type = document.getElementById('dsc-type').value;
       const scope = document.getElementById('dsc-scope').value;
@@ -241,10 +575,8 @@
       if (token === 'token') total += 600;
 
       document.getElementById('dsc-price').textContent = '₹ ' + total.toLocaleString('en-IN');
-      return total;
     }
 
-    // WhatsApp Direct Dispatch
     function orderDSCWhatsApp() {
       const type = document.getElementById('dsc-type').options[document.getElementById('dsc-type').selectedIndex].text;
       const scope = document.getElementById('dsc-scope').options[document.getElementById('dsc-scope').selectedIndex].text;
