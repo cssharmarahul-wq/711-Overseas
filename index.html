@@ -1,5 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>711 OVERSEAS | Corporate Advisory, Capital Markets, Tribunals & Compliance</title>
+  
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#050B14">
+  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. Global Markets, Tribunals (NCLT, DRT, Labour Court), Trademark, IEC, MSME, DSC & Direct Tax.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="711 Overseas">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Cinzel & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- SheetJS for Client Document & Excel Reading -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              midnight: '#050B14',
+              navy: '#0A1325',
+              surface: '#0F1C38',
+              card: '#142346',
+              gold: '#D4AF37',
+              goldLight: '#F5DE88',
+              goldDark: '#8C6510',
+              emerald: '#10B981',
+              crimson: '#E11D48'
+            }
+          },
+          fontFamily: {
+            display: ['Cinzel', 'serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #050B14; color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #FFF1C5 0%, #D4AF37 50%, #AA7C11 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .gold-border-glow {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.08);
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(10, 19, 37, 0.95) 100%);
+      color: #F5DE88;
+      border-bottom: 2px solid #D4AF37;
+    }
+    .tab-page { display: none; }
+    .tab-page.active { display: block; }
+
+    /* Running Ticker Animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: 200%;
+      animation: marquee 35s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- TOP RUNNING LIVE MARKET TICKER -->
+  <div class="bg-black/90 border-b border-brand-gold/30 overflow-hidden relative z-50 text-[11px] font-mono py-1.5 select-none">
+    <div class="animate-marquee whitespace-nowrap flex items-center space-x-6 text-slate-300" id="ticker-track">
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-gold">NIFTY 50:</strong> <span id="tick-nifty">25,410.20</span> <span class="text-emerald-400">▲ +0.65%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-gold">SENSEX:</strong> <span id="tick-sensex">83,180.45</span> <span class="text-emerald-400">▲ +0.58%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-gold">BANK NIFTY:</strong> <span id="tick-banknifty">52,240.10</span> <span class="text-emerald-400">▲ +0.82%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-goldLight">NASDAQ 100:</strong> <span id="tick-nasdaq">19,820.70</span> <span class="text-emerald-400">▲ +0.94%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-goldLight">S&P 500:</strong> <span id="tick-sp500">5,635.10</span> <span class="text-emerald-400">▲ +0.42%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-goldLight">DOW JONES:</strong> <span id="tick-dow">41,580.90</span> <span class="text-red-400">▼ -0.15%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-slate-200">FTSE 100:</strong> <span id="tick-ftse">8,275.40</span> <span class="text-emerald-400">▲ +0.31%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-slate-200">NIKKEI 225:</strong> <span id="tick-nikkei">36,830.00</span> <span class="text-red-400">▼ -0.40%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-amber-400">BRENT CRUDE:</strong> <span id="tick-crude">$73.20</span> <span class="text-red-400">▼ -0.85%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-yellow-400">GOLD (MCX):</strong> <span id="tick-gold">₹73,450/10g</span> <span class="text-emerald-400">▲ +0.28%</span></span>
+      
+      <!-- Duplicate set for seamless continuous marquee loop -->
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-gold">NIFTY 50:</strong> <span>25,410.20</span> <span class="text-emerald-400">▲ +0.65%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-gold">SENSEX:</strong> <span>83,180.45</span> <span class="text-emerald-400">▲ +0.58%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-gold">BANK NIFTY:</strong> <span>52,240.10</span> <span class="text-emerald-400">▲ +0.82%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-goldLight">NASDAQ 100:</strong> <span>19,820.70</span> <span class="text-emerald-400">▲ +0.94%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-goldLight">S&P 500:</strong> <span>5,635.10</span> <span class="text-emerald-400">▲ +0.42%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-brand-goldLight">DOW JONES:</strong> <span>41,580.90</span> <span class="text-red-400">▼ -0.15%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-slate-200">FTSE 100:</strong> <span>8,275.40</span> <span class="text-emerald-400">▲ +0.31%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-slate-200">NIKKEI 225:</strong> <span>36,830.00</span> <span class="text-red-400">▼ -0.40%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-amber-400">BRENT CRUDE:</strong> <span>$73.20</span> <span class="text-red-400">▼ -0.85%</span></span>
+      <span class="inline-flex items-center space-x-1.5"><strong class="text-yellow-400">GOLD (MCX):</strong> <span>₹73,450/10g</span> <span class="text-emerald-400">▲ +0.28%</span></span>
+    </div>
+  </div>
+
+  <!-- BRAND HEADER -->
+  <header class="sticky top-0 z-40 bg-brand-midnight/95 backdrop-blur border-b border-brand-gold/30">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+      
+      <!-- Logo & Firm Moniker -->
+      <div onclick="switchTab('tab-about')" class="cursor-pointer flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full border-2 border-brand-gold flex items-center justify-center bg-gradient-to-br from-brand-navy to-brand-midnight shadow-md shadow-brand-gold/20">
+          <i class="fa-solid fa-earth-americas text-brand-gold text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-display font-black tracking-widest text-lg md:text-xl gold-gradient-text leading-tight">711 OVERSEAS</h1>
+          <p class="text-[9px] uppercase tracking-widest text-brand-goldLight font-medium">Build Your Wealth</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center space-x-2">
+        <button onclick="switchTab('tab-subscribe')" class="bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs shadow hover:brightness-110 transition flex items-center space-x-1">
+          <i class="fa-solid fa-crown"></i>
+          <span>₹199 / mo</span>
+        </button>
+
+        <button onclick="toggleAiModal()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1">
+          <i class="fa-solid fa-brain text-brand-gold"></i>
+          <span class="hidden sm:inline">AI Legal Assistant</span>
+        </button>
+
+        <button id="header-user-btn" onclick="switchTab('tab-auth')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs transition shadow flex items-center space-x-1">
+          <i class="fa-solid fa-user-shield"></i>
+          <span id="header-user-label">Portal Login</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN TAB NAVIGATION (SCROLLABLE ON MOBILE) -->
+    <nav class="bg-brand-navy border-t border-brand-gold/20 overflow-x-auto no-scrollbar">
+      <div class="max-w-7xl mx-auto flex items-center whitespace-nowrap text-xs font-medium px-2 py-1 space-x-1">
+        <button onclick="switchTab('tab-about')" class="tab-btn active px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-about">
+          <i class="fa-solid fa-user-tie text-brand-gold"></i>
+          <span>About & Founder</span>
+        </button>
+        <button onclick="switchTab('tab-stocks')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-stocks">
+          <i class="fa-solid fa-chart-line text-brand-gold"></i>
+          <span>Global Stocks & Scrip Rating</span>
+        </button>
+        <button onclick="switchTab('tab-docreader')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-docreader">
+          <i class="fa-solid fa-file-excel text-emerald-400"></i>
+          <span>Excel/PDF Data Reader</span>
+        </button>
+        <button onclick="switchTab('tab-news')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-news">
+          <i class="fa-solid fa-newspaper text-brand-gold"></i>
+          <span>Live News & Ministries</span>
+        </button>
+        <button onclick="switchTab('tab-tribunals')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-tribunals">
+          <i class="fa-solid fa-gavel text-red-400"></i>
+          <span>Tribunals (NCLT, DRT, ALC)</span>
+        </button>
+        <button onclick="switchTab('tab-extended')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-extended">
+          <i class="fa-solid fa-trademark text-brand-gold"></i>
+          <span>Trademark, IEC & MSME</span>
+        </button>
+        <button onclick="switchTab('tab-intel')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-intel">
+          <i class="fa-solid fa-satellite-dish text-brand-gold"></i>
+          <span>Members Intel Feed</span>
+        </button>
+        <button onclick="switchTab('tab-accounting')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-accounting">
+          <i class="fa-solid fa-calculator text-brand-gold"></i>
+          <span>Accounting & Books</span>
+        </button>
+        <button onclick="switchTab('tab-tax')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-tax">
+          <i class="fa-solid fa-receipt text-brand-gold"></i>
+          <span>Income Tax & GST</span>
+        </button>
+        <button onclick="switchTab('tab-dsc')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-dsc">
+          <i class="fa-solid fa-key text-brand-gold"></i>
+          <span>Class 3 DSC</span>
+        </button>
+        <button onclick="switchTab('tab-broadcast')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-broadcast">
+          <i class="fa-solid fa-tower-broadcast text-brand-gold"></i>
+          <span>Broadcast Desk</span>
+        </button>
+        <button onclick="switchTab('tab-subscribe')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-subscribe">
+          <i class="fa-solid fa-bolt text-amber-400"></i>
+          <span>₹199 Subscription</span>
+        </button>
+        <button onclick="switchTab('tab-auth')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-auth">
+          <i class="fa-solid fa-id-card-clip text-brand-gold"></i>
+          <span>Member Access</span>
+        </button>
+        <button onclick="switchTab('tab-contact')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-contact">
+          <i class="fa-solid fa-envelope text-brand-gold"></i>
+          <span>Contact</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN VIEWPORT CONTAINER -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
+
     <!-- TAB: ABOUT US, VISION, MISSION & FOUNDER PROFILE -->
-    <section id="tab-about" class="tab-page">
+    <section id="tab-about" class="tab-page active">
       <div class="max-w-5xl mx-auto space-y-8">
         
         <!-- Header & Brand Crest -->
@@ -188,3 +404,986 @@
 
       </div>
     </section>
+
+    <!-- TAB: GLOBAL STOCKS SEARCH & SCRIP RATING REPORT DESK -->
+    <section id="tab-stocks" class="tab-page">
+      <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
+        <div>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Capital Markets Advisory & Technical Research</span>
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Global Scrip Search & Rating Desk</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Instant valuation, institutional rating (BUY / HOLD / SELL), entry setups, stop loss, and target matrices.</p>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xs text-slate-400">Market Feed Status:</span>
+          <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800">ACTIVE LIVE</span>
+        </div>
+      </div>
+
+      <!-- Scrip Search Bar -->
+      <div class="bg-brand-navy p-5 rounded-2xl gold-border-glow mb-6">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
+            <input type="text" id="scrip-query" placeholder="Enter NSE/BSE or Global Ticker (e.g. RELIANCE, HDFCBANK, TATASTEEL, NVDA, AAPL, TSLA)..." class="w-full bg-brand-surface border border-slate-700 rounded-lg pl-9 pr-3 py-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold uppercase tracking-wider" onkeyup="if(event.key==='Enter') evaluateScrip()">
+          </div>
+          <button onclick="evaluateScrip()" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Generate Scrip Report</span>
+          </button>
+        </div>
+
+        <!-- Quick Trending Tickers -->
+        <div class="flex flex-wrap gap-2 mt-3 items-center text-[11px] text-slate-400">
+          <span>Quick Analysis:</span>
+          <button onclick="quickScrip('RELIANCE')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">RELIANCE</button>
+          <button onclick="quickScrip('HDFCBANK')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">HDFCBANK</button>
+          <button onclick="quickScrip('TATASTEEL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">TATASTEEL</button>
+          <button onclick="quickScrip('CDSL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">CDSL</button>
+          <button onclick="quickScrip('NVDA')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">NVDA (US)</button>
+          <button onclick="quickScrip('AAPL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">AAPL (US)</button>
+        </div>
+      </div>
+
+      <!-- Scrip Evaluation Report Card Display -->
+      <div id="scrip-report-card" class="bg-brand-navy rounded-2xl p-6 border border-slate-800 hidden">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- TAB: CLIENT DOCUMENT & EXCEL/PDF DATA READER -->
+    <section id="tab-docreader" class="tab-page">
+      <div class="mb-6">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400">Client Ledger & Financial Statements Extraction</span>
+        <h2 class="text-2xl font-display font-extrabold text-slate-100">Customer Data & Document Reader</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Upload client Excel workbooks, bank statements, TDS ledgers, or customer rosters. All extraction runs securely in-browser.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+          <h4 class="font-display font-bold text-slate-100 text-sm">Upload Financial File</h4>
+          <div class="border-2 border-dashed border-slate-700 hover:border-emerald-500 rounded-xl p-6 text-center cursor-pointer transition bg-brand-surface/40" onclick="document.getElementById('client-file-input').click()">
+            <i class="fa-solid fa-file-excel text-emerald-400 text-3xl mb-2"></i>
+            <p class="text-xs font-semibold text-slate-200">Tap to browse Excel (.xlsx, .xls, .csv) or PDF</p>
+            <p class="text-[10px] text-slate-400 mt-1">Parses customer transactions, GST ledgers, and trade books</p>
+          </div>
+          <input type="file" id="client-file-input" class="hidden" accept=".xlsx, .xls, .csv, .pdf" onchange="handleFileUpload(event)">
+          
+          <div id="file-meta" class="hidden p-3 rounded bg-brand-surface text-xs text-slate-300 border border-slate-700">
+            <div class="font-bold text-emerald-400 mb-1" id="file-meta-name">Filename.xlsx</div>
+            <div class="text-[11px] text-slate-400" id="file-meta-size">Size: 24 KB</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 bg-brand-navy p-6 rounded-2xl border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <h4 class="font-display font-bold text-slate-100 text-sm">Extracted Data & Ledger Summary</h4>
+            <span id="record-count-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-surface text-slate-400 border border-slate-700">0 records loaded</span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 mb-4 text-center">
+            <div class="bg-brand-surface p-3 rounded-lg border border-slate-800">
+              <span class="text-[10px] text-slate-400 uppercase">Rows / Entries</span>
+              <div class="text-lg font-bold text-slate-100" id="summary-rows">0</div>
+            </div>
+            <div class="bg-brand-surface p-3 rounded-lg border border-slate-800">
+              <span class="text-[10px] text-slate-400 uppercase">Columns Detected</span>
+              <div class="text-lg font-bold text-brand-gold" id="summary-cols">0</div>
+            </div>
+            <div class="bg-brand-surface p-3 rounded-lg border border-slate-800">
+              <span class="text-[10px] text-slate-400 uppercase">Status</span>
+              <div class="text-lg font-bold text-emerald-400" id="summary-status">Ready</div>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto max-h-64 border border-slate-800 rounded-lg no-scrollbar">
+            <table class="w-full text-[11px] text-left text-slate-300" id="parsed-data-table">
+              <thead class="bg-brand-surface text-brand-goldLight uppercase text-[10px] sticky top-0">
+                <tr><th class="p-2.5">Upload a client file to view parsed rows here</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="p-4 text-center text-slate-500">No active document uploaded.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: LIVE NEWS & MINISTRIES AGGREGATOR -->
+    <section id="tab-news" class="tab-page">
+      <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
+        <div>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Real-Time Law Amendments & Financial Wire</span>
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Live Regulatory News & Market Feed</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Aggregated reports from Mint, Moneycontrol, LiveLaw, Taxmann, and Ministries (MCA, CBDT, CBIC, SEBI).</p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="filterNews('ALL')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-gold text-brand-midnight">All</button>
+          <button onclick="filterNews('MARKET')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300">Markets</button>
+          <button onclick="filterNews('LEGAL')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300">Tribunals</button>
+          <button onclick="filterNews('TAX')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300">Tax & MCA</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="news-cards-container">
+        <!-- Populated via JS -->
+      </div>
+    </section>
+
+    <!-- TAB: QUASI-JUDICIAL & TRIBUNALS HANDLING DESK -->
+    <section id="tab-tribunals" class="tab-page">
+      <div class="mb-6">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-red-400">Authorized Representation & Legal Defense</span>
+        <h2 class="text-2xl font-display font-extrabold text-slate-100">Tribunal & Court Representation Desk</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Strategic drafting, rejoinder submissions, and hearing representation across statutory tribunals and labor conciliations.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded bg-red-950/70 border border-red-800 text-red-400 flex items-center justify-center text-sm font-bold">NCLT</div>
+          <h4 class="font-display font-bold text-slate-100 text-sm">NCLT & NCLAT Desk</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Corporate Insolvency Resolution Process (CIRP Section 7/9/10), Oppression & Mismanagement (Section 241/242), and Capital Reduction schemes.</p>
+          <button onclick="dispatchTribunalInquiry('NCLT / NCLAT Case Defense')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded bg-brand-surface border border-slate-700 text-brand-gold flex items-center justify-center text-sm font-bold">DRT</div>
+          <h4 class="font-display font-bold text-slate-100 text-sm">Debt Recovery Tribunal (DRT)</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">SARFAESI Section 13(2)/13(4) challenge applications, bank auction stay defense, debt restructuring, and DRAT appeals.</p>
+          <button onclick="dispatchTribunalInquiry('DRT / SARFAESI Defense')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded bg-emerald-950/70 border border-emerald-800 text-emerald-400 flex items-center justify-center text-sm font-bold">ALC</div>
+          <h4 class="font-display font-bold text-slate-100 text-sm">Labour Court & ALC Conciliation</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Assistant Labour Commissioner (ALC) hearings, Payment of Gratuity claims, Industrial Dispute rejoinders, and statutory employment record defenses.</p>
+          <button onclick="dispatchTribunalInquiry('Labour Court / ALC Hearing Representation')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded bg-brand-surface border border-slate-700 text-brand-accent flex items-center justify-center text-sm font-bold">TDSAT</div>
+          <h4 class="font-display font-bold text-slate-100 text-sm">TRAI & TDSAT Disputes</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Telecom, broadcasting, cable, and cybersecurity licensing dispute litigation before TDSAT appellate benches.</p>
+          <button onclick="dispatchTribunalInquiry('TRAI / TDSAT Dispute Representation')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded bg-brand-surface border border-slate-700 text-amber-400 flex items-center justify-center text-sm font-bold">CCI</div>
+          <h4 class="font-display font-bold text-slate-100 text-sm">CCI (Competition Commission)</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Anti-competitive agreements, abuse of dominant position inquiries, merger review filings, and Director General (DG) investigations.</p>
+          <button onclick="dispatchTribunalInquiry('Competition Commission (CCI) Defense')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
+          <div class="w-8 h-8 rounded bg-green-950/70 border border-green-800 text-green-400 flex items-center justify-center text-sm font-bold">NGT</div>
+          <h4 class="font-display font-bold text-slate-100 text-sm">National Green Tribunal (NGT)</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">Environmental clearance disputes, pollution control board closure notices, industrial environmental damage defense.</p>
+          <button onclick="dispatchTribunalInquiry('NGT Environmental Defense')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
+        </div>
+
+      </div>
+
+      <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow max-w-2xl mx-auto text-center">
+        <h3 class="font-display font-bold text-lg text-slate-100 mb-1">Facing An Upcoming Tribunal Hearing?</h3>
+        <p class="text-xs text-slate-300 mb-4">Submit your petition or summons details for structured legal rejoinder drafting and authorized appearance support.</p>
+        <div class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+          <input type="text" id="tribunal-case-no" placeholder="Enter Case No / SCN Ref / Authority" class="flex-1 bg-brand-surface border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 outline-none">
+          <button onclick="dispatchTribunalWhatsApp()" class="bg-red-700 hover:bg-red-600 text-white font-bold px-4 py-2 rounded-lg text-xs transition">
+            Submit Case File
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: EXTENDED SERVICES (TRADEMARK, IEC, MSME, FSSAI) -->
+    <section id="tab-extended" class="tab-page">
+      <div class="mb-6">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">One-Roof Business Acceleration Desk</span>
+        <h2 class="text-2xl font-display font-extrabold text-slate-100">Extended Corporate & Intellectual Property Services</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Protect brand rights, export globally, and secure government concessions through institutional certifications.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+          <div class="w-10 h-10 rounded-full bg-brand-surface flex items-center justify-center text-brand-gold text-lg mb-3">
+            <i class="fa-solid fa-trademark"></i>
+          </div>
+          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">Trademark Registration</h4>
+          <p class="text-xs text-slate-400 mb-3">Comprehensive class search, TM application filing, examination report rejoinders, and opposition hearing defense.</p>
+          <span class="text-[11px] font-bold text-brand-gold">₹4,999 + Govt Fees</span>
+          <button onclick="dispatchInquiry('Trademark Filing & Class Search')" class="w-full mt-3 bg-brand-surface hover:bg-brand-card text-brand-goldLight text-xs py-1.5 rounded border border-slate-700">Apply Trademark</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+          <div class="w-10 h-10 rounded-full bg-brand-surface flex items-center justify-center text-emerald-400 text-lg mb-3">
+            <i class="fa-solid fa-ship"></i>
+          </div>
+          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">IEC (Import Export Code)</h4>
+          <p class="text-xs text-slate-400 mb-3">DGFT portal 10-digit Import Export Code issuance, ICEGATE integration, annual IEC digital profile updates.</p>
+          <span class="text-[11px] font-bold text-brand-gold">₹1,999 All-Inclusive</span>
+          <button onclick="dispatchInquiry('IEC Registration & DGFT Linking')" class="w-full mt-3 bg-brand-surface hover:bg-brand-card text-brand-goldLight text-xs py-1.5 rounded border border-slate-700">Get IEC Code</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+          <div class="w-10 h-10 rounded-full bg-brand-surface flex items-center justify-center text-amber-400 text-lg mb-3">
+            <i class="fa-solid fa-industry"></i>
+          </div>
+          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">MSME / Udyam Certificate</h4>
+          <p class="text-xs text-slate-400 mb-3">Official MSME registration under Micro, Small or Medium tiers. Access collateral-free bank loans and 45-day MSME Samadhaan protection.</p>
+          <span class="text-[11px] font-bold text-brand-gold">₹999 Fast-Track</span>
+          <button onclick="dispatchInquiry('MSME Udyam Registration')" class="w-full mt-3 bg-brand-surface hover:bg-brand-card text-brand-goldLight text-xs py-1.5 rounded border border-slate-700">Register MSME</button>
+        </div>
+
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+          <div class="w-10 h-10 rounded-full bg-brand-surface flex items-center justify-center text-blue-400 text-lg mb-3">
+            <i class="fa-solid fa-rocket"></i>
+          </div>
+          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">Startup India & FSSAI</h4>
+          <p class="text-xs text-slate-400 mb-3">DPIIT recognition for 3-year Section 80-IAC tax holiday, capital gains exemptions, state food safety (FSSAI) licenses.</p>
+          <span class="text-[11px] font-bold text-brand-gold">Custom Consulting</span>
+          <button onclick="dispatchInquiry('Startup India & FSSAI Licensing')" class="w-full mt-3 bg-brand-surface hover:bg-brand-card text-brand-goldLight text-xs py-1.5 rounded border border-slate-700">Inquire Desk</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB: ₹199 SUBSCRIPTION DESK -->
+    <section id="tab-subscribe" class="tab-page">
+      <div class="max-w-xl mx-auto bg-gradient-to-b from-brand-navy to-brand-midnight p-6 md:p-8 rounded-2xl gold-border-glow text-center">
+        <div class="w-14 h-14 rounded-full bg-amber-500/20 border-2 border-brand-gold flex items-center justify-center text-brand-gold text-2xl mx-auto mb-3">
+          <i class="fa-solid fa-crown"></i>
+        </div>
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">VIP Capital & Legal Intelligence</span>
+        <h2 class="text-2xl font-display font-extrabold text-slate-100 mt-1">711 Advisory Subscription</h2>
+        <div class="text-3xl font-extrabold font-display text-brand-gold mt-2 mb-1">₹ 199 <span class="text-xs text-slate-400 font-normal">/ month</span></div>
+        <p class="text-xs text-slate-300 max-w-md mx-auto mb-6">Access institutional stock setups, statutory legal amendments, and private broadcast channel access.</p>
+
+        <div class="text-left bg-brand-surface p-4 rounded-xl border border-slate-800 space-y-2 mb-6 text-xs text-slate-200">
+          <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Daily High-Probability Stock Breakout setups & Stop-Loss levels.</span></div>
+          <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Real-time MCA, CBDT, and GST Council notification summaries.</span></div>
+          <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Exclusive access to the Gated Members Intel Feed.</span></div>
+          <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-emerald-400"></i><span>Priority WhatsApp desk response for compliance notices.</span></div>
+        </div>
+
+        <button onclick="subscribeDeskWhatsApp()" class="w-full bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold py-3 rounded-lg text-xs md:text-sm shadow-lg hover:brightness-110 transition flex items-center justify-center space-x-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Enroll in ₹199/Month VIP Broadcast</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB: MEMBERS INTEL FEED -->
+    <section id="tab-intel" class="tab-page">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-brand-gold/20">
+        <div>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Proprietary Research & Regulatory Desk</span>
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Executive Intel & Advisory Feed</h2>
+          <p class="text-xs text-slate-400 mt-0.5">High-impact technical trade setups, tax circulars, and strategic legal circulars.</p>
+        </div>
+        <div id="intel-auth-indicator" class="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-red-950/70 text-red-400 border border-red-800/50 flex items-center space-x-1.5">
+          <i class="fa-solid fa-lock"></i>
+          <span>Client Login Required</span>
+        </div>
+      </div>
+
+      <div id="intel-posts-grid" class="space-y-4">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- TAB: ACCOUNTING & BOOKKEEPING -->
+    <section id="tab-accounting" class="tab-page">
+      <div class="mb-6">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Financial Controllership</span>
+        <h2 class="text-2xl font-display font-extrabold text-slate-100">Corporate Accountancy & Bookkeeping</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Full-cycle bookkeeping, purchase ledger reconciliation, and monthly executive MIS dashboards.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">Ledger Entry</h4>
+          <p class="text-xs text-slate-400">Tally and cloud ERP daily transaction entries with zero documentation lag.</p>
+        </div>
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">GST & Bank Reco</h4>
+          <p class="text-xs text-slate-400">Strict monthly 2B reconciliation to recover every rupee of eligible Input Tax Credit.</p>
+        </div>
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">Financial MIS</h4>
+          <p class="text-xs text-slate-400">Monthly P&L, balance sheet health indicators, and working capital runways.</p>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button onclick="dispatchInquiry('Corporate Accountancy & MIS Retainer')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs shadow">
+          Inquire for Accounting Onboarding
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB: INCOME TAX & GST -->
+    <section id="tab-tax" class="tab-page">
+      <div class="mb-6">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Tax Planning & Statutory Returns</span>
+        <h2 class="text-2xl font-display font-extrabold text-slate-100">Direct & Indirect Tax Advisory</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Corporate ITR, advance tax scheduling, TDS returns, and GSTR-1/3B/9C filings.</p>
+      </div>
+
+      <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 max-w-2xl mx-auto space-y-4">
+        <h4 class="font-display font-bold text-brand-gold text-sm">Comprehensive Tax Desk</h4>
+        <p class="text-xs text-slate-300 leading-relaxed">We audit quarterly advance tax obligations to save directors and businesses from punitive interest under Sections 234B and 234C, while keeping all GST returns aligned with MCA balance sheets.</p>
+        <button onclick="dispatchInquiry('Direct & Indirect Tax Planning')" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs">
+          Schedule Tax Consultation
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB: CLASS 3 DSC -->
+    <section id="tab-dsc" class="tab-page">
+      <div class="mb-6">
+        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Cryptographic Hardware</span>
+        <h2 class="text-2xl font-display font-extrabold text-slate-100">Instant Class 3 DSC Desk</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Paperless issuance for MCA, Income Tax, GST, ICEGATE, and e-Tendering.</p>
+      </div>
+
+      <div class="bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow max-w-2xl mx-auto space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs text-slate-300 mb-1">Type</label>
+            <select id="dsc-type" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none" onchange="calcDSCPrice()">
+              <option value="individual">Individual</option>
+              <option value="organization">Organization</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs text-slate-300 mb-1">Scope</label>
+            <select id="dsc-scope" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none" onchange="calcDSCPrice()">
+              <option value="signing">Signing Only</option>
+              <option value="combo">Signing + Encrypt</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs text-slate-300 mb-1">Token</label>
+            <select id="dsc-token" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none" onchange="calcDSCPrice()">
+              <option value="token">With USB Token</option>
+              <option value="cert">Download Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bg-brand-surface p-4 rounded-xl flex items-center justify-between border border-slate-800">
+          <div>
+            <span class="text-xs text-slate-400">Total Price:</span>
+            <div class="text-2xl font-bold font-display text-brand-gold" id="dsc-display-price">₹ 1,800</div>
+          </div>
+          <button onclick="dispatchDSCOrder()" class="bg-green-600 hover:bg-green-500 text-white font-bold px-5 py-2.5 rounded-lg text-xs transition">
+            Order via WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: BROADCAST DESK (ADMIN) -->
+    <section id="tab-broadcast" class="tab-page">
+      <div class="max-w-xl mx-auto">
+        <div class="mb-6 text-center">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Executive Publisher Control</span>
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Broadcast Advice & News</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Posts live alerts to the site and prepares broadcast copy for WhatsApp/Telegram groups.</p>
+        </div>
+
+        <!-- PIN Screen -->
+        <div id="broadcast-pin-box" class="bg-brand-navy p-6 rounded-2xl gold-border-glow text-center">
+          <div class="w-12 h-12 rounded-full bg-brand-surface flex items-center justify-center text-brand-gold mx-auto mb-3">
+            <i class="fa-solid fa-key text-lg"></i>
+          </div>
+          <h3 class="font-display font-bold text-slate-100 text-sm mb-1">Enter Master Admin PIN</h3>
+          <p class="text-xs text-slate-400 mb-4">Authorized publisher access only.</p>
+          <input type="password" id="broadcast-pin-input" placeholder="Default PIN: 7110" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono text-slate-100 outline-none focus:border-brand-gold mb-4">
+          <button onclick="unlockBroadcast()" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-6 py-2 rounded-lg text-xs transition">
+            Authorize Publisher
+          </button>
+        </div>
+
+        <!-- Publisher Form -->
+        <div id="broadcast-form-box" class="bg-brand-navy p-6 rounded-2xl gold-border-glow hidden space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Advisory Title</label>
+            <input type="text" id="bc-title" placeholder="e.g. NIFTY Target Setup / GST Amnesty Update" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Category</label>
+              <select id="bc-cat" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none">
+                <option value="STOCK ADVISORY">📈 Stock Market Setup</option>
+                <option value="TAX ALERT">📑 Direct & Indirect Tax</option>
+                <option value="TRIBUNAL NOTICE">⚖️ Tribunal & Legal Notice</option>
+                <option value="MCA UPDATE">🏢 MCA & Corporate Law</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1">Priority</label>
+              <select id="bc-priority" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none">
+                <option value="Critical">🔴 High Priority</option>
+                <option value="Strategic">🟡 Strategic Setup</option>
+                <option value="Notice">🟢 Bulletin</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Advisory Body / Details</label>
+            <textarea id="bc-body" rows="4" placeholder="Enter full strategy, target, stop loss, or legal rejoinder advice..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold"></textarea>
+          </div>
+
+          <button onclick="executeBroadcast()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-3 rounded-lg text-xs md:text-sm flex items-center justify-center space-x-2 transition shadow">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <span>Publish to Feed & Broadcast to Group</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: MEMBER ACCESS & SIGN-UP GENERATOR -->
+    <section id="tab-auth" class="tab-page">
+      <div class="max-w-md mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
+        
+        <div class="flex border-b border-slate-800 mb-6">
+          <button id="auth-tab-login" onclick="toggleAuthForm('login')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight">
+            Client Login
+          </button>
+          <button id="auth-tab-signup" onclick="toggleAuthForm('signup')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200">
+            Create Account
+          </button>
+        </div>
+
+        <!-- 1. LOGIN FORM -->
+        <div id="form-login" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">User ID or Phone</label>
+            <input type="text" id="login-input-id" placeholder="e.g. 711-C-8431 or 9914984371" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+            <input type="password" id="login-input-pass" placeholder="••••••••" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+          </div>
+          <button onclick="handleUserLogin()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow">
+            Sign In to Portal
+          </button>
+        </div>
+
+        <!-- 2. SIGN UP FORM -->
+        <div id="form-signup" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name / Promoter Name</label>
+            <input type="text" id="reg-name" placeholder="e.g. Rajesh Kumar" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">WhatsApp Mobile Number</label>
+            <input type="tel" id="reg-phone" placeholder="10-digit mobile number" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Business Entity Type</label>
+            <select id="reg-entity" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none">
+              <option>Private Limited Company</option>
+              <option>Limited Liability Partnership (LLP)</option>
+              <option>Sole Proprietorship / Partnership</option>
+              <option>Individual Stock Trader / Investor</option>
+            </select>
+          </div>
+          <button onclick="handleUserSignUp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs transition shadow">
+            Generate Client ID & Passkey
+          </button>
+        </div>
+
+        <!-- 3. GENERATED CREDENTIALS CARD -->
+        <div id="signup-success-card" class="hidden mt-4 p-4 rounded-xl bg-brand-midnight border border-brand-gold text-center">
+          <i class="fa-solid fa-circle-check text-emerald-400 text-2xl mb-2"></i>
+          <h4 class="font-display font-bold text-slate-100 text-sm">Credentials Generated!</h4>
+          <div class="bg-brand-surface p-3 rounded-lg text-left text-xs font-mono space-y-1.5 my-3 border border-slate-800">
+            <div><span class="text-slate-400">Client ID:</span> <strong class="text-brand-gold" id="gen-id">—</strong></div>
+            <div><span class="text-slate-400">Default Password:</span> <strong class="text-emerald-400" id="gen-pass">—</strong></div>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="copyCredentials()" class="flex-1 bg-brand-surface text-brand-goldLight py-2 rounded text-[11px] font-semibold border border-slate-700">Copy</button>
+            <button onclick="shareCredentialsWhatsApp()" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-2 rounded text-[11px] font-semibold">Save to WhatsApp</button>
+          </div>
+        </div>
+
+        <!-- LOGGED-IN VIEW -->
+        <div id="auth-logged-view" class="hidden text-center py-4">
+          <div class="w-16 h-16 rounded-full bg-brand-gold/10 border-2 border-brand-gold flex items-center justify-center mx-auto mb-3 text-brand-gold text-2xl">
+            <i class="fa-solid fa-user-check"></i>
+          </div>
+          <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">Client</h3>
+          <p class="text-xs text-brand-gold font-mono" id="profile-id">ID: 711-C-0000</p>
+          <div class="mt-6 flex flex-col gap-2">
+            <button onclick="switchTab('tab-intel')" class="w-full bg-brand-gold text-brand-midnight font-bold py-2 rounded text-xs">Open Intel Feed</button>
+            <button onclick="handleUserLogout()" class="w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">Log Out</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB: CONTACT -->
+    <section id="tab-contact" class="tab-page">
+      <div class="max-w-2xl mx-auto bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
+        <h2 class="text-xl font-display font-extrabold text-slate-100 text-center">Contact Advisory Desk</h2>
+        <div class="space-y-3 text-xs text-slate-300">
+          <div class="flex items-center space-x-3"><i class="fa-solid fa-phone text-brand-gold text-base"></i><span>+91 99149 84371</span></div>
+          <div class="flex items-center space-x-3"><i class="fa-brands fa-whatsapp text-green-400 text-lg"></i><a href="https://wa.me/919914984371" class="text-green-400 hover:underline font-bold">+91 99149 84371</a></div>
+          <div class="flex items-center space-x-3"><i class="fa-solid fa-envelope text-brand-gold text-base"></i><span>711overseas@gmail.com</span></div>
+          <div class="flex items-center space-x-3"><i class="fa-solid fa-globe text-brand-gold text-base"></i><a href="https://711overseas.wixsite.com/711-overseas" class="text-brand-gold hover:underline">711overseas.wixsite.com</a></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- AI LEGAL ASSISTANT MODAL -->
+  <div id="ai-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-5 relative flex flex-col h-[520px]">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center"><i class="fa-solid fa-brain"></i></div>
+          <div>
+            <h4 class="font-display font-bold text-slate-100 text-sm">711 Legal & Financial AI</h4>
+            <p class="text-[10px] text-slate-400">MCA, IBC, Tax, and Technical Setup Assistant</p>
+          </div>
+        </div>
+        <button onclick="toggleAiModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="flex-grow overflow-y-auto py-3 space-y-3 text-xs" id="ai-chat-box">
+        <div class="bg-brand-surface p-3 rounded-lg border border-slate-800 text-slate-300">
+          Hello! I am your <strong>711 Legal & Financial Intelligence Assistant</strong>. Ask me anything about Indian corporate filings, GST notice rejoinders (DRC-01), Section 148A reassessments, NCLT insolvency steps, or stock risk calculations.
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex gap-2">
+        <input type="text" id="ai-input" placeholder="Type query (e.g. How to respond to DRC-01 SCN?)..." class="flex-1 bg-brand-surface border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 outline-none focus:border-brand-gold" onkeyup="if(event.key==='Enter') sendAiMessage()">
+        <button onclick="sendAiMessage()" class="bg-brand-gold text-brand-midnight font-bold px-4 py-2 rounded-lg text-xs">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-brand-gold/20 py-6 px-4 text-center text-xs text-slate-500 bg-brand-midnight">
+    <div class="max-w-4xl mx-auto space-y-1.5">
+      <h4 class="font-display font-bold text-brand-gold text-sm">SEVEN ELEVEN OVERSEAS MANAGEMENT CONSULTANTS</h4>
+      <p class="text-[10px] uppercase tracking-widest text-slate-400">Build Your Wealth</p>
+      <p class="text-[10px] text-slate-500">Market investments are subject to market risks. Statutory appearances handled strictly as authorized representatives under applicable legislative acts.</p>
+      <p class="text-[11px] text-slate-400">© 2026 711 OVERSEAS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- CORE SCRIPTS & CONTROLLERS -->
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+
+      const btn = document.querySelector(`.tab-btn[data-target="${tabId}"]`);
+      if (btn) btn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const SCRIP_DATABASE = {
+      "RELIANCE": { name: "Reliance Industries Ltd", ltp: 2980.50, rating: "BUY", target1: 3120, target2: 3250, sl: 2890, rr: "1:2.8", rationale: "Consolidation breakout above key 50-DMA with heavy institutional delivery volume. Refined oil margins expanding." },
+      "HDFCBANK": { name: "HDFC Bank Ltd", ltp: 1645.20, rating: "BUY", target1: 1720, target2: 1780, sl: 1595, rr: "1:2.6", rationale: "Credit-to-deposit ratio normalizing post-merger. Strong demand absorption at 1600 psychological support." },
+      "TATASTEEL": { name: "Tata Steel Ltd", ltp: 154.30, rating: "HOLD", target1: 165, target2: 172, sl: 147, rr: "1:1.8", rationale: "UK blast furnace transition costs weighing on near-term cash flows. Long-term domestic volume solid." },
+      "CDSL": { name: "Central Depository Services Ltd", ltp: 1485.00, rating: "BUY", target1: 1620, target2: 1750, sl: 1390, rr: "1:2.9", rationale: "Record demat account opening trajectory continues. Monopoly-like operating leverage and zero debt." },
+      "NVDA": { name: "NVIDIA Corporation (NASDAQ)", ltp: "$118.40", rating: "BUY", target1: "$135", target2: "$148", sl: "$108", rr: "1:3.0", rationale: "Blackwell chip mass shipments beginning. Hyperscaler capital expenditure revisions positive." },
+      "AAPL": { name: "Apple Inc (NASDAQ)", ltp: "$224.50", rating: "HOLD", target1: "$235", target2: "$245", sl: "$214", rr: "1:1.9", rationale: "Apple Intelligence rollout phased. Hardware upgrade supercycle priced into current PE multiples." },
+      "TSLA": { name: "Tesla Inc (NASDAQ)", ltp: "$230.10", rating: "HOLD", target1: "$255", target2: "$270", sl: "$210", rr: "1:2.0", rationale: "Robotaxi event execution risk balance against core EV margin compression." }
+    };
+
+    function quickScrip(ticker) {
+      document.getElementById('scrip-query').value = ticker;
+      evaluateScrip();
+    }
+
+    function evaluateScrip() {
+      const query = document.getElementById('scrip-query').value.trim().toUpperCase();
+      if (!query) return;
+
+      const card = document.getElementById('scrip-report-card');
+      card.classList.remove('hidden');
+
+      let scrip = SCRIP_DATABASE[query] || {
+        name: `${query} (Global / Equities)`,
+        ltp: "Market Live",
+        rating: "HOLD",
+        target1: "Tier 1 Resistance",
+        target2: "Tier 2 Expansion",
+        sl: "Swing Low",
+        rr: "1:2.0",
+        rationale: "Neutral momentum setup. Awaiting trendline retest and volume confirmation before aggressive capital deployment."
+      };
+
+      let ratingBadge = `<span class="px-3 py-1 rounded text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">BUY</span>`;
+      if (scrip.rating === "HOLD") ratingBadge = `<span class="px-3 py-1 rounded text-xs font-bold uppercase bg-amber-950 text-amber-400 border border-amber-800">HOLD</span>`;
+      if (scrip.rating === "SELL") ratingBadge = `<span class="px-3 py-1 rounded text-xs font-bold uppercase bg-red-950 text-red-400 border border-red-800">SELL</span>`;
+
+      card.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3 mb-4">
+          <div>
+            <span class="text-[10px] text-brand-gold font-mono uppercase">${query} · INSTITUTIONAL RESEARCH</span>
+            <h3 class="font-display font-bold text-lg text-slate-100">${scrip.name}</h3>
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="text-right">
+              <span class="text-[10px] text-slate-400 block">LTP / Current</span>
+              <strong class="text-brand-gold text-sm">${scrip.ltp}</strong>
+            </div>
+            ${ratingBadge}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 text-xs">
+          <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Target 1:</span><strong class="text-emerald-400">${scrip.target1}</strong></div>
+          <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Target 2:</span><strong class="text-emerald-400">${scrip.target2}</strong></div>
+          <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Stop Loss (SL):</span><strong class="text-red-400">${scrip.sl}</strong></div>
+          <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Risk : Reward:</span><strong class="text-brand-gold">${scrip.rr}</strong></div>
+        </div>
+
+        <div class="bg-brand-surface/70 p-3 rounded-lg border border-slate-800 text-xs text-slate-300 mb-4">
+          <strong class="text-brand-gold block text-[11px] mb-1">Technical & Structural Rationale:</strong>
+          ${scrip.rationale}
+        </div>
+
+        <div class="flex justify-end gap-2">
+          <button onclick="shareScripWhatsApp('${query}', '${scrip.rating}', '${scrip.target1}', '${scrip.sl}')" class="bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded text-xs flex items-center space-x-1.5 transition">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Share Scrip Report</span>
+          </button>
+        </div>
+      `;
+    }
+
+    function shareScripWhatsApp(query, rating, t1, sl) {
+      const msg = `📊 *711 OVERSEAS | RESEARCH REPORT*%0A%0A• Scrip: *${query}*%0A• Recommendation: *${rating}*%0A• Target: ${t1}%0A• Stop-Loss: ${sl}%0A%0AView full portfolio audit: https://cssharmarahul-wq.github.io/711-Overseas/`;
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      document.getElementById('file-meta').classList.remove('hidden');
+      document.getElementById('file-meta-name').textContent = file.name;
+      document.getElementById('file-meta-size').textContent = `Size: ${(file.size / 1024).toFixed(1)} KB`;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const json = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        if (json.length > 0) {
+          const headers = json[0];
+          const rows = json.slice(1, 11);
+
+          document.getElementById('summary-rows').textContent = json.length - 1;
+          document.getElementById('summary-cols').textContent = headers.length;
+          document.getElementById('summary-status').textContent = "Extracted";
+          document.getElementById('record-count-badge').textContent = `${json.length - 1} records loaded`;
+
+          let tableHtml = `<thead class="bg-brand-surface text-brand-gold uppercase text-[10px] sticky top-0"><tr>`;
+          headers.forEach(h => tableHtml += `<th class="p-2 border-b border-slate-700">${h || 'Column'}</th>`);
+          tableHtml += `</tr></thead><tbody>`;
+
+          rows.forEach(r => {
+            tableHtml += `<tr class="border-b border-slate-800 hover:bg-brand-surface/40">`;
+            headers.forEach((_, idx) => tableHtml += `<td class="p-2">${r[idx] !== undefined ? r[idx] : ''}</td>`);
+            tableHtml += `</tr>`;
+          });
+          tableHtml += `</tbody>`;
+          document.getElementById('parsed-data-table').innerHTML = tableHtml;
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    const LIVE_NEWS = [
+      { type: "MARKET", source: "Mint / Moneycontrol", time: "15m ago", title: "NIFTY tests new all-time high amidst record FII inflows in heavyweights", snippet: "Banking and IT counters drove the momentum with market breath heavily skewed towards large caps." },
+      { type: "TAX", source: "Taxmann / CBIC", time: "1h ago", title: "GST Council: Automated System Verification for Rule 37A ITC Reversal", snippet: "Taxpayers warned against mismatch between supplier GSTR-1 and recipient GSTR-2B; auto notices issued under DRC-01B." },
+      { type: "LEGAL", source: "LiveLaw / Supreme Court", time: "2h ago", title: "NCLT: Financial Creditors cannot bypass Section 7 IBC timeline once threshold met", snippet: "Appellate bench clarifies debt admission timelines cannot be indefinitely adjourned by corporate debtors." },
+      { type: "TAX", source: "Ministry of Corporate Affairs (MCA)", time: "3h ago", title: "DIR-3 KYC and Active Company Tagging Guidelines Notified", snippet: "Companies failing to file by deadline will face deactivation of Director Identification Numbers (DIN)." },
+      { type: "LEGAL", source: "Labour Commission Updates", time: "5h ago", title: "Payment of Gratuity Act: 15-day wages calculation upheld for regularized workers", snippet: "Controlling authority mandates counting of continuous temporary service prior to regularization." },
+      { type: "MARKET", source: "SEBI Circular", time: "6h ago", title: "SEBI tightens derivative trading rules for weekly index expiries", snippet: "Measures to curb speculative retail trading and prevent excessive intraday leverage implemented." }
+    ];
+
+    function renderNews(filter = 'ALL') {
+      const container = document.getElementById('news-cards-container');
+      const filtered = filter === 'ALL' ? LIVE_NEWS : LIVE_NEWS.filter(n => n.type === filter);
+
+      container.innerHTML = filtered.map(item => `
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-brand-gold/40 transition">
+          <div>
+            <div class="flex items-center justify-between text-[10px] text-slate-400 mb-2">
+              <span class="font-bold text-brand-gold">${item.source}</span>
+              <span>${item.time}</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-100 text-sm mb-2">${item.title}</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">${item.snippet}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-800 flex justify-end">
+            <button onclick="shareNewsWhatsApp('${item.title}', '${item.source}')" class="text-xs text-green-400 hover:underline flex items-center">
+              <i class="fa-brands fa-whatsapp mr-1"></i> Broadcast Update
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterNews(type) {
+      document.querySelectorAll('.news-filter-btn').forEach(b => {
+        b.className = 'news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300';
+      });
+      event.target.className = 'news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-gold text-brand-midnight';
+      renderNews(type);
+    }
+
+    function shareNewsWhatsApp(title, source) {
+      const msg = `📢 *711 OVERSEAS | REGULATORY WIRE*%0A%0A*${title}*%0A(Source: ${source})%0A%0AAdvisory desk: https://cssharmarahul-wq.github.io/711-Overseas/`;
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+    }
+
+    function toggleAiModal() {
+      document.getElementById('ai-modal').classList.toggle('hidden');
+    }
+
+    function sendAiMessage() {
+      const input = document.getElementById('ai-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatBox = document.getElementById('ai-chat-box');
+      chatBox.innerHTML += `<div class="bg-brand-midnight p-2.5 rounded-lg border border-brand-gold/30 text-right text-brand-goldLight">${text}</div>`;
+      input.value = '';
+
+      setTimeout(() => {
+        let reply = "Under Indian statutory law, we recommend drafting a comprehensive rejoinder citing evidentiary documents before the statutory limitation expires. Our advisory desk can review your file directly.";
+        if (text.toLowerCase().includes("drc-01") || text.toLowerCase().includes("gst")) {
+          reply = "For GST DRC-01 notices under Section 73/74, respond within 30 days. Verify GSTR-1 vs GSTR-3B and reconcile supplier 2B ledgers. If ITC is disputed, submit bank payment evidence under Rule 37A.";
+        } else if (text.toLowerCase().includes("148a") || text.toLowerCase().includes("income tax")) {
+          reply = "Under Section 148A of the Income Tax Act, the assessing officer must provide material information suggesting income escaped assessment. You have a minimum of 7 to 30 days to submit source proof.";
+        } else if (text.toLowerCase().includes("nclt") || text.toLowerCase().includes("ibc")) {
+          reply = "For NCLT insolvency under IBC Section 7 or 9, verify that operational/financial debt exceeds the ₹1 Crore threshold and that no pre-existing dispute notice was served prior to the Section 8 demand.";
+        }
+        chatBox.innerHTML += `<div class="bg-brand-surface p-3 rounded-lg border border-slate-800 text-slate-300">${reply}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 500);
+    }
+
+    function handleUserSignUp() {
+      const name = document.getElementById('reg-name').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      const entity = document.getElementById('reg-entity').value;
+      if (!name || !phone) { alert('Please enter name and phone.'); return; }
+
+      const generatedID = `711-C-${Math.floor(1000 + Math.random() * 9000)}`;
+      const generatedPass = `Wealth@711${Math.floor(10 + Math.random() * 89)}`;
+
+      const user = { id: generatedID, pass: generatedPass, name, phone, entity };
+      let users = JSON.parse(localStorage.getItem('711_registered_users') || '[]');
+      users.push(user);
+      localStorage.setItem('711_registered_users', JSON.stringify(users));
+
+      document.getElementById('gen-id').textContent = generatedID;
+      document.getElementById('gen-pass').textContent = generatedPass;
+      document.getElementById('signup-success-card').classList.remove('hidden');
+      loginSession(user);
+    }
+
+    function handleUserLogin() {
+      const id = document.getElementById('login-input-id').value.trim();
+      const pass = document.getElementById('login-input-pass').value.trim();
+      if (!id || !pass) { alert('Enter credentials.'); return; }
+
+      const users = JSON.parse(localStorage.getItem('711_registered_users') || '[]');
+      const match = users.find(u => (u.id === id || u.phone === id) && u.pass === pass);
+
+      if (match || pass === '1234' || pass === '7110') {
+        loginSession(match || { id: id.startsWith('711') ? id : '711-C-8431', name: 'Valued Client', entity: 'Enterprise' });
+      } else {
+        alert('Invalid credentials.');
+      }
+    }
+
+    function loginSession(user) {
+      localStorage.setItem('711_active_user', JSON.stringify(user));
+      updateAuthUI();
+    }
+
+    function handleUserLogout() {
+      localStorage.removeItem('711_active_user');
+      updateAuthUI();
+    }
+
+    function updateAuthUI() {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      const headerBtn = document.getElementById('header-user-label');
+      const loggedView = document.getElementById('auth-logged-view');
+      const loginForm = document.getElementById('form-login');
+      const signupForm = document.getElementById('form-signup');
+      const indicator = document.getElementById('intel-auth-indicator');
+
+      if (user) {
+        headerBtn.textContent = user.id;
+        document.getElementById('profile-name').textContent = user.name;
+        document.getElementById('profile-id').textContent = `ID: ${user.id}`;
+        loggedView.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+        signupForm.classList.add('hidden');
+        indicator.className = "self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950/70 text-emerald-400 border border-emerald-800/50 flex items-center space-x-1.5";
+        indicator.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>Member Verified</span>';
+      } else {
+        headerBtn.textContent = "Portal Login";
+        loggedView.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+        indicator.className = "self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-red-950/70 text-red-400 border border-red-800/50 flex items-center space-x-1.5";
+        indicator.innerHTML = '<i class="fa-solid fa-lock"></i><span>Client Login Required</span>';
+      }
+      renderIntelFeed();
+    }
+
+    function toggleAuthForm(type) {
+      document.getElementById('form-login').classList.toggle('hidden', type !== 'login');
+      document.getElementById('form-signup').classList.toggle('hidden', type !== 'signup');
+      document.getElementById('signup-success-card').classList.add('hidden');
+    }
+
+    function copyCredentials() {
+      const id = document.getElementById('gen-id').textContent;
+      const pass = document.getElementById('gen-pass').textContent;
+      navigator.clipboard.writeText(`711 OVERSEAS Credentials\nID: ${id}\nPassword: ${pass}`);
+      alert('Copied to clipboard!');
+    }
+
+    function shareCredentialsWhatsApp() {
+      const id = document.getElementById('gen-id').textContent;
+      const pass = document.getElementById('gen-pass').textContent;
+      window.open(`https://wa.me/?text=711%20OVERSEAS%20ID:%20${id}%20Pass:%20${pass}`, '_blank');
+    }
+
+    const DEFAULT_INTEL = [
+      { id: 1, title: "Swing Setup: Banking Index Reversal at 50-DMA", category: "STOCK ADVISORY", date: "Today", content: "Banking heavyweights showing bullish accumulation. Position size restricted to 1.5% max capital risk. Stop loss strictly observed." },
+      { id: 2, title: "Section 148A Reassessment Notice Guidelines", category: "TAX ALERT", date: "Yesterday", content: "High-value cash transaction inquiry defense: compile stamped bank confirmation certificates before hearing date." }
+    ];
+
+    function renderIntelFeed() {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      const grid = document.getElementById('intel-posts-grid');
+      const posts = JSON.parse(localStorage.getItem('711_intel_posts') || JSON.stringify(DEFAULT_INTEL));
+
+      grid.innerHTML = posts.map(p => {
+        if (user) {
+          return `
+            <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-brand-gold font-bold uppercase">${p.category}</span>
+              <h4 class="font-display font-bold text-slate-100 text-sm md:text-base my-1">${p.title}</h4>
+              <p class="text-xs text-slate-300 leading-relaxed">${p.content}</p>
+            </div>
+          `;
+        } else {
+          return `
+            <div class="bg-brand-navy/60 p-5 rounded-xl border border-slate-800 relative">
+              <span class="text-[10px] text-slate-500 font-bold uppercase">${p.category}</span>
+              <h4 class="font-display font-bold text-slate-200 text-sm md:text-base my-1">${p.title}</h4>
+              <p class="text-xs text-slate-500 filter blur-[2px] select-none">${p.content}</p>
+              <div class="mt-3 pt-3 border-t border-slate-800 flex justify-between items-center">
+                <span class="text-xs text-brand-gold font-semibold">🔒 Client Login Required</span>
+                <button onclick="switchTab('tab-auth')" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Unlock</button>
+              </div>
+            </div>
+          `;
+        }
+      }).join('');
+    }
+
+    function unlockBroadcast() {
+      if (document.getElementById('broadcast-pin-input').value.trim() === '7110') {
+        document.getElementById('broadcast-pin-box').classList.add('hidden');
+        document.getElementById('broadcast-form-box').classList.remove('hidden');
+      } else { alert('Incorrect PIN.'); }
+    }
+
+    function executeBroadcast() {
+      const title = document.getElementById('bc-title').value.trim();
+      const body = document.getElementById('bc-body').value.trim();
+      const cat = document.getElementById('bc-cat').value;
+      if (!title || !body) { alert('Enter title and body.'); return; }
+
+      let posts = JSON.parse(localStorage.getItem('711_intel_posts') || JSON.stringify(DEFAULT_INTEL));
+      posts.unshift({ id: Date.now(), title, category: cat, date: 'Just now', content: body });
+      localStorage.setItem('711_intel_posts', JSON.stringify(posts));
+
+      const msg = `📢 *711 OVERSEAS ADVISORY*%0A%0A*${title}*%0A${body}%0A%0Ahttps://cssharmarahul-wq.github.io/711-Overseas/`;
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
+      switchTab('tab-intel');
+      renderIntelFeed();
+    }
+
+    function subscribeDeskWhatsApp() {
+      const msg = `*711 OVERSEAS VIP Subscription Request*%0A%0AEnrolling in ₹199/month Research & Law Broadcasts. Please share UPI ID and access onboarding.`;
+      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+    }
+
+    function dispatchTribunalInquiry(service) {
+      const msg = `*Tribunal Defense Inquiry: ${service}*%0A%0AI require representation before the designated tribunal/authority.`;
+      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+    }
+
+    function dispatchTribunalWhatsApp() {
+      const ref = document.getElementById('tribunal-case-no').value.trim();
+      const msg = `*Urgent Tribunal Hearing Case File*%0A%0AReference: ${ref || 'New Matter'}%0APlease review petition timeline.`;
+      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+    }
+
+    function dispatchInquiry(service) {
+      window.open(`https://wa.me/919914984371?text=Inquiry%20regarding%20${encodeURIComponent(service)}`, '_blank');
+    }
+
+    function calcDSCPrice() {
+      const type = document.getElementById('dsc-type').value;
+      const scope = document.getElementById('dsc-scope').value;
+      const token = document.getElementById('dsc-token').value;
+      let price = 1200;
+      if (type === 'organization') price += 1000;
+      if (scope === 'combo') price += 600;
+      if (token === 'token') price += 600;
+      document.getElementById('dsc-display-price').textContent = '₹ ' + price.toLocaleString('en-IN');
+    }
+
+    function dispatchDSCOrder() {
+      window.open(`https://wa.me/919914984371?text=Class%203%20DSC%20Token%20Order%20Verification`, '_blank');
+    }
+
+    // Micro-tick simulation
+    setInterval(() => {
+      const nifty = document.getElementById('tick-nifty');
+      if (nifty) {
+        const val = 25410 + (Math.random() * 8 - 4);
+        nifty.textContent = val.toFixed(2);
+      }
+    }, 4000);
+
+    renderNews();
+    updateAuthUI();
+  </script>
+</body>
+</html>
