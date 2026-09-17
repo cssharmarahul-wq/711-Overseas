@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>711 OVERSEAS | Corporate Advisory, Capital Markets, Tribunals & Compliance</title>
+  <title>711 OVERSEAS | Corporate Advisory, Capital Markets, Real Estate & Legal Governance</title>
   
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
   <meta name="theme-color" content="#050B14">
-  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. GSTIN: 03AFAFS5209N1ZY. Institutional Equity Setups, Tribunals (NCLT, DRT, Labour Court), Trademark, IEC & Direct Tax.">
+  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. GSTIN: 03AFAFS5209N1ZY. Corporate Secretarial, Technical Market Research, Real Estate & Regulatory Advocacy.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="711 Overseas">
@@ -70,6 +70,22 @@
     .tab-page.active { display: block; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Clean A4 Statutory Tax Invoice & Certificate Print Styles */
+    @media print {
+      body * { visibility: hidden; }
+      #printable-area, #printable-area * { visibility: visible; }
+      #printable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        color: #000000 !important;
+        background: #FFFFFF !important;
+        padding: 20px;
+      }
+      .no-print { display: none !important; }
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -110,13 +126,12 @@
         <div>
           <div class="flex items-center space-x-2">
             <h1 class="font-display font-black tracking-widest text-lg md:text-xl gold-gradient-text leading-tight group-hover:brightness-110 transition">711 OVERSEAS</h1>
-            <span class="hidden md:inline-block text-[9px] font-mono px-1.5 py-0.5 rounded bg-brand-surface text-brand-gold border border-brand-gold/30">GST: 03AFAFS5209N1ZY</span>
+            <span class="hidden md:inline-block text-[9px] font-mono px-1.5 py-0.5 rounded bg-brand-surface text-brand-gold border border-brand-gold/30">GSTIN: 03AFAFS5209N1ZY</span>
           </div>
           <p class="text-[9px] uppercase tracking-widest text-brand-goldLight font-medium">Build Your Wealth</p>
         </div>
       </div>
 
-      <!-- Quick Actions -->
       <div class="flex items-center space-x-2">
         <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs shadow hover:brightness-110 transition flex items-center space-x-1">
           <i class="fa-solid fa-crown"></i>
@@ -135,54 +150,38 @@
       </div>
     </div>
 
-    <!-- MAIN TAB NAVIGATION BAR -->
+    <!-- STREAMLINED 6-PILLAR NAVIGATION BAR -->
     <nav class="bg-brand-navy border-t border-brand-gold/20 overflow-x-auto no-scrollbar">
       <div class="max-w-7xl mx-auto flex items-center whitespace-nowrap text-xs font-medium px-2 py-1 space-x-1">
-        <button onclick="switchTab('tab-about')" class="tab-btn active px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-about">
+        <button onclick="switchTab('tab-about')" class="tab-btn active px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-about">
           <i class="fa-solid fa-user-tie text-brand-gold"></i>
           <span>About & Founder</span>
         </button>
-        <button onclick="switchTab('tab-pricing')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-pricing">
+        <button onclick="switchTab('tab-pricing')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-pricing">
           <i class="fa-solid fa-tags text-brand-gold"></i>
-          <span>Fee Schedules & Plans</span>
+          <span>Advisory & Retainers</span>
         </button>
-        <button onclick="switchTab('tab-stocks')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-stocks">
+        <button onclick="switchTab('tab-stocks')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-stocks">
           <i class="fa-solid fa-chart-line text-brand-gold"></i>
-          <span>Global Stocks & Rating</span>
+          <span>Capital Markets</span>
         </button>
-        <button onclick="switchTab('tab-intel')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-intel">
+        <button onclick="switchTab('tab-realestate')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-realestate">
+          <i class="fa-solid fa-building text-amber-400"></i>
+          <span>Real Estate Desk</span>
+        </button>
+        <button onclick="switchTab('tab-careers')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-careers">
+          <i class="fa-solid fa-briefcase text-blue-400"></i>
+          <span>CS Careers & Hiring</span>
+        </button>
+        <button onclick="switchTab('tab-downloads')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-downloads">
+          <i class="fa-solid fa-file-invoice-dollar text-emerald-400"></i>
+          <span>Tax Invoices & Vault</span>
+        </button>
+        <button onclick="switchTab('tab-intel')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-intel">
           <i class="fa-solid fa-satellite-dish text-brand-gold"></i>
-          <span>VIP Advisory Feed</span>
+          <span>VIP Feed & Publisher</span>
         </button>
-        <button onclick="switchTab('tab-publisher')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-publisher">
-          <i class="fa-solid fa-pen-to-square text-emerald-400"></i>
-          <span>Admin Publisher</span>
-        </button>
-        <button onclick="switchTab('tab-docreader')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-docreader">
-          <i class="fa-solid fa-file-excel text-emerald-400"></i>
-          <span>Excel/PDF Reader</span>
-        </button>
-        <button onclick="switchTab('tab-news')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-news">
-          <i class="fa-solid fa-newspaper text-brand-gold"></i>
-          <span>Live News Wire</span>
-        </button>
-        <button onclick="switchTab('tab-tribunals')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-tribunals">
-          <i class="fa-solid fa-gavel text-red-400"></i>
-          <span>Tribunals (NCLT/DRT)</span>
-        </button>
-        <button onclick="switchTab('tab-extended')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-extended">
-          <i class="fa-solid fa-trademark text-brand-gold"></i>
-          <span>Trademark, IEC & MSME</span>
-        </button>
-        <button onclick="switchTab('tab-dsc')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-dsc">
-          <i class="fa-solid fa-key text-brand-gold"></i>
-          <span>Class 3 DSC</span>
-        </button>
-        <button onclick="switchTab('tab-auth')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-auth">
-          <i class="fa-solid fa-id-card-clip text-brand-gold"></i>
-          <span>Member Access</span>
-        </button>
-        <button onclick="switchTab('tab-contact')" class="tab-btn px-3 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-contact">
+        <button onclick="switchTab('tab-contact')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-contact">
           <i class="fa-solid fa-envelope text-brand-gold"></i>
           <span>Contact</span>
         </button>
@@ -193,7 +192,7 @@
   <!-- MAIN VIEWPORT CONTAINER -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
 
-    <!-- TAB: ABOUT US, VISION, MISSION & FOUNDER PROFILE -->
+    <!-- TAB 1: ABOUT US, VISION, MISSION & FOUNDER PROFILE -->
     <section id="tab-about" class="tab-page active">
       <div class="max-w-5xl mx-auto space-y-8">
         
@@ -207,7 +206,7 @@
           </p>
           <div class="mt-2 inline-flex items-center space-x-2 text-[11px] font-mono text-brand-goldLight bg-brand-surface px-3 py-1 rounded-full border border-brand-gold/30">
             <i class="fa-solid fa-shield-check text-brand-gold"></i>
-            <span>Registered Entity GSTIN: <strong>03AFAFS5209N1ZY</strong> (Punjab)</span>
+            <span>Registered Entity GSTIN: <strong>03AFAFS5209N1ZY</strong> (Punjab - 03)</span>
           </div>
         </div>
 
@@ -221,7 +220,7 @@
                 <h3 class="font-display font-bold text-lg text-slate-100">Our Vision</h3>
               </div>
               <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
-                To establish <strong class="text-brand-goldLight">711 OVERSEAS</strong> as India’s premier single-window management advisory—empowering enterprises, promoters, and high-net-worth investors to scale Fearlessly with zero statutory friction or capital vulnerabilities.
+                To establish <strong class="text-brand-goldLight">711 OVERSEAS</strong> as India’s premier single-window management advisory—empowering enterprises, promoters, and investors to scale fearlessly with zero statutory friction or capital vulnerabilities.
               </p>
             </div>
             <div class="mt-4 pt-3 border-t border-slate-800 text-[10px] text-brand-gold uppercase tracking-wider font-semibold">
@@ -240,15 +239,15 @@
               <ul class="text-xs md:text-sm text-slate-300 space-y-2">
                 <li class="flex items-start space-x-2">
                   <i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i>
-                  <span><strong>Protect Enterprise Value:</strong> Safeguard firms via corporate secretarial oversight, proactive tax structuring, and evidentiary tribunal defense.</span>
+                  <span><strong>Protect Enterprise Value:</strong> Corporate secretarial governance, proactive tax structuring, and evidentiary tribunal defense.</span>
                 </li>
                 <li class="flex items-start space-x-2">
                   <i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i>
-                  <span><strong>Optimize Capital Growth:</strong> Execute data-backed technical setups with strict 1.5% capital-at-risk position sizing models.</span>
+                  <span><strong>Optimize Capital Growth:</strong> Data-backed technical setups with strict 1.5% capital-at-risk position sizing models.</span>
                 </li>
                 <li class="flex items-start space-x-2">
                   <i class="fa-solid fa-check text-brand-gold mt-1 text-xs"></i>
-                  <span><strong>Data-Driven Controllership:</strong> Transform complex ledgers into real-time executive MIS dashboards and business intelligence.</span>
+                  <span><strong>Urban Development Synergy:</strong> Land procurement, joint development structuring, and title due diligence.</span>
                 </li>
               </ul>
             </div>
@@ -258,13 +257,21 @@
           </div>
         </div>
 
-        <!-- Founder Profile Card -->
+        <!-- Founder Profile Card with Dynamic Image Fallback & In-Browser Photo Sync -->
         <div class="bg-gradient-to-b from-brand-navy to-brand-midnight rounded-2xl p-6 md:p-8 gold-border-glow">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
             <div class="lg:col-span-5 flex flex-col items-center text-center">
-              <div class="relative w-60 h-72 sm:w-64 sm:h-80 rounded-2xl overflow-hidden border-2 border-brand-gold shadow-2xl shadow-brand-gold/20 bg-brand-midnight flex items-center justify-center group">
-                <img id="founder-portrait-img" src="profile.jpg" alt="Rahul Sharma" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src='logo.png'; this.classList.remove('object-cover'); this.classList.add('object-contain', 'p-4');">
+              <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-2 border-brand-gold shadow-2xl shadow-brand-gold/20 bg-brand-midnight flex items-center justify-center group">
+                <img id="founder-portrait-img" src="profile.jpg" alt="Rahul Sharma" class="w-full h-full object-cover object-top" onerror="handleFounderImgError(this)">
+                
+                <div id="admin-photo-upload-btn" class="hidden absolute top-2 right-2 bg-brand-midnight/90 border border-brand-gold p-2 rounded-full cursor-pointer hover:bg-brand-surface text-brand-gold text-xs shadow">
+                  <label for="founder-local-photo" class="cursor-pointer" title="Update Profile Photo from Phone">
+                    <i class="fa-solid fa-camera"></i>
+                  </label>
+                  <input type="file" id="founder-local-photo" class="hidden" accept="image/*" onchange="syncFounderPhotoLocally(event)">
+                </div>
+
                 <div class="absolute bottom-3 left-3 right-3 text-center">
                   <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-brand-gold text-brand-midnight uppercase tracking-wider shadow">
                     Principal Advisor & Founder
@@ -301,7 +308,7 @@
       </div>
     </section>
 
-    <!-- TAB: COMPREHENSIVE FEE SCHEDULES & PACKAGES (WITH GST TRANSPARENCY) -->
+    <!-- TAB 2: ADVISORY, FEE SCHEDULES & PACKAGES -->
     <section id="tab-pricing" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         
@@ -313,7 +320,7 @@
           </p>
         </div>
 
-        <!-- 1. VIP ADVISORY SUBSCRIPTION (MONTHLY & YEARLY) -->
+        <!-- VIP Advisory Plans -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow flex flex-col justify-between">
             <div>
@@ -327,8 +334,8 @@
                 <div class="text-[11px] text-slate-400 font-mono mt-0.5">(₹1,694 Base + 18% GST ₹305 · ITC Eligible)</div>
               </div>
               <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Daily High-Probability Stock Breakout Setups & Stop-Losses.</li>
-                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Full Gated VIP Feed Access (Buy/Hold/Sell Scrip Reports).</li>
+                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Daily High-Probability Stock Breakout Setups & Risk Matrices.</li>
+                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Gated VIP Analytics Feed Access.</li>
                 <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Real-Time MCA, CBDT, & GST Notification Bulletins.</li>
               </ul>
             </div>
@@ -363,9 +370,8 @@
           </div>
         </div>
 
-        <!-- 2. CLASS 3 DSC & CORPORATE ACCOUNTANCY MATRIX -->
+        <!-- DSC & Corporate Accountancy Matrix -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
           <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
             <div class="flex items-center space-x-2 text-brand-gold">
               <i class="fa-solid fa-key text-xl"></i>
@@ -421,73 +427,43 @@
               Onboard Accounting Retainer (Starting ₹3,000)
             </button>
           </div>
-
         </div>
 
-        <!-- 3. GST, INCOME TAX & COMPANY REGISTRATION INDUSTRY SCHEDULE -->
-        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-6">
-          <div>
-            <h3 class="font-display font-bold text-xl text-slate-100">Industry Standard Legal & Statutory Fee Schedule</h3>
-            <p class="text-xs text-slate-400">Fixed-quote ranges for registrations, returns, and dispute representations.</p>
-          </div>
-
+        <!-- Corporate Registration & Statutory Fee Grid -->
+        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
+          <h3 class="font-display font-bold text-xl text-slate-100">Statutory Registrations & Corporate Retainers</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-            
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 space-y-2">
-              <span class="text-[10px] text-brand-gold uppercase font-bold">Income Tax Advisory</span>
-              <h4 class="font-bold text-slate-200">ITR & Advance Tax</h4>
-              <div class="text-sm font-bold text-emerald-400 font-mono">₹ 1,500 – ₹ 15,000+</div>
-              <p class="text-[11px] text-slate-400 leading-normal">Salaried / Capital Gains to Private Limited Corporate returns, audit coordination, and Sec 148A rejoinders.</p>
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-brand-gold uppercase font-bold">Incorporation</span>
+              <h4 class="font-bold text-slate-200 mt-0.5">Pvt Ltd Company Registration</h4>
+              <div class="text-sm font-bold text-emerald-400 font-mono my-1">₹ 6,999 – ₹ 11,999</div>
+              <p class="text-slate-400 text-[11px]">SPICe+, Name approval, 2 DIN, 2 DSC, MOA/AOA & Incorporation Certificate.</p>
             </div>
-
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 space-y-2">
-              <span class="text-[10px] text-brand-gold uppercase font-bold">Indirect Tax (GST)</span>
-              <h4 class="font-bold text-slate-200">GST Filings & Audit</h4>
-              <div class="text-sm font-bold text-emerald-400 font-mono">₹ 2,000 – ₹ 6,500 / mo</div>
-              <p class="text-[11px] text-slate-400 leading-normal">Monthly GSTR-1, 3B, Rule 37A 2B purchase ledger reconciliation, DRC-01 SCN rejoinders, and annual GSTR-9/9C.</p>
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-brand-gold uppercase font-bold">Partnerships</span>
+              <h4 class="font-bold text-slate-200 mt-0.5">LLP Incorporation & Deed</h4>
+              <div class="text-sm font-bold text-emerald-400 font-mono my-1">₹ 4,999 – ₹ 8,999</div>
+              <p class="text-slate-400 text-[11px]">FiLLiP filing, Run-LLP name reservation, partnership deed drafting & Form 3.</p>
             </div>
-
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 space-y-2">
-              <span class="text-[10px] text-brand-gold uppercase font-bold">Entity Structuring</span>
-              <h4 class="font-bold text-slate-200">Pvt Ltd Company Incorporation</h4>
-              <div class="text-sm font-bold text-emerald-400 font-mono">₹ 6,999 – ₹ 11,999</div>
-              <p class="text-[11px] text-slate-400 leading-normal">Complete SPICe+ filing, Name reservation, MOA/AOA drafting, 2 DIN, 2 DSC, PAN, TAN, and Certificate of Incorporation.</p>
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-800">
+              <span class="text-[10px] text-brand-gold uppercase font-bold">Intellectual Property</span>
+              <h4 class="font-bold text-slate-200 mt-0.5">Trademark (IPR) Registration</h4>
+              <div class="text-sm font-bold text-emerald-400 font-mono my-1">₹ 4,500 + Govt Fees</div>
+              <p class="text-slate-400 text-[11px]">Class search, application filing, affidavit drafting, and examination defense.</p>
             </div>
-
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 space-y-2">
-              <span class="text-[10px] text-brand-gold uppercase font-bold">Partnership Structuring</span>
-              <h4 class="font-bold text-slate-200">LLP Incorporation</h4>
-              <div class="text-sm font-bold text-emerald-400 font-mono">₹ 4,999 – ₹ 8,999</div>
-              <p class="text-[11px] text-slate-400 leading-normal">FiLLiP filing, Run-LLP name approval, legal partnership agreement drafting, and Form 3 submission.</p>
-            </div>
-
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 space-y-2">
-              <span class="text-[10px] text-brand-gold uppercase font-bold">Brand Protection</span>
-              <h4 class="font-bold text-slate-200">Trademark Registration (IPR)</h4>
-              <div class="text-sm font-bold text-emerald-400 font-mono">₹ 4,500 + Govt Fees</div>
-              <p class="text-[11px] text-slate-400 leading-normal">Pre-filing trademark class search, TM-A application, user affidavit drafting, and examination response support.</p>
-            </div>
-
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 space-y-2">
-              <span class="text-[10px] text-brand-gold uppercase font-bold">Certifications</span>
-              <h4 class="font-bold text-slate-200">IEC & MSME Fast-Track</h4>
-              <div class="text-sm font-bold text-emerald-400 font-mono">IEC: ₹1,499 | MSME: ₹999</div>
-              <p class="text-[11px] text-slate-400 leading-normal">10-Digit DGFT Import Export Code with ICEGATE linking, and official Udyam MSME certification for bank priority lending.</p>
-            </div>
-
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- TAB: GLOBAL STOCKS SEARCH & REAL-TIME SCRIP RATING -->
+    <!-- TAB 3: CAPITAL MARKETS (EDUCATIONAL & TECHNICAL RESEARCH DESK) -->
     <section id="tab-stocks" class="tab-page">
       <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
         <div>
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Capital Markets Advisory & Technical Setups</span>
-          <h2 class="text-2xl font-display font-extrabold text-slate-100">Live Global Scrip & Rating Desk</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Real-time TradingView technical execution combined with 711 Institutional Buy/Hold/Sell ratings.</p>
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Quantitative Research & Structural Analysis</span>
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Live Global Scrip & Technical Setup Desk</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Real-time TradingView technical execution with proprietary 1.5% risk containment models.</p>
         </div>
         <div class="flex items-center space-x-2">
           <span class="text-xs text-slate-400">Access Tier:</span>
@@ -499,379 +475,286 @@
         <div class="flex flex-col sm:flex-row gap-3">
           <div class="relative flex-1">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
-            <input type="text" id="scrip-query" placeholder="Enter Ticker (e.g. RELIANCE, HDFCBANK, TATASTEEL, NVDA, AAPL, TSLA)..." class="w-full bg-brand-surface border border-slate-700 rounded-lg pl-9 pr-3 py-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold uppercase tracking-wider" onkeyup="if(event.key==='Enter') executeLiveScripSearch()">
+            <input type="text" id="scrip-query" placeholder="Enter Ticker (e.g. RELIANCE, HDFCBANK, TATASTEEL, NVDA)..." class="w-full bg-brand-surface border border-slate-700 rounded-lg pl-9 pr-3 py-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold uppercase tracking-wider" onkeyup="if(event.key==='Enter') executeLiveScripSearch()">
           </div>
           <button onclick="executeLiveScripSearch()" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center space-x-1.5">
             <i class="fa-solid fa-chart-line"></i>
             <span>Analyze Live Scrip</span>
           </button>
         </div>
-
-        <div class="flex flex-wrap gap-2 mt-3 items-center text-[11px] text-slate-400">
-          <span>Trending Scrips:</span>
-          <button onclick="quickScrip('RELIANCE')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">RELIANCE (NSE)</button>
-          <button onclick="quickScrip('HDFCBANK')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">HDFCBANK (NSE)</button>
-          <button onclick="quickScrip('TATASTEEL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">TATASTEEL (NSE)</button>
-          <button onclick="quickScrip('CDSL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">CDSL (BSE)</button>
-          <button onclick="quickScrip('NVDA')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">NVDA (NASDAQ)</button>
-          <button onclick="quickScrip('AAPL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">AAPL (NASDAQ)</button>
-        </div>
       </div>
 
       <div id="tv-chart-wrapper" class="bg-brand-navy rounded-2xl p-4 border border-slate-800 mb-6 hidden">
-        <h4 class="font-display font-bold text-slate-100 text-sm mb-3 flex items-center justify-between">
-          <span>Live Real-Time Market Feed</span>
-          <span class="text-[10px] text-emerald-400 font-mono">● LIVE EXCHANGE STREAM</span>
-        </h4>
         <div id="tv-chart-container" class="h-96 w-full rounded-lg overflow-hidden"></div>
       </div>
 
       <div id="scrip-rating-container" class="space-y-4"></div>
+
+      <!-- SEBI Statutory Disclaimer -->
+      <div class="p-3 rounded-lg bg-brand-midnight border border-slate-800 text-[10px] text-slate-500 italic mt-6">
+        *Statutory Notice: All technical setups, risk-to-reward matrices, and price levels provided herein are designed exclusively for educational, quantitative modeling, and risk-management research purposes. They do not constitute non-discretionary investment advisory or portfolio management services. Securities trading involves market risk.
+      </div>
     </section>
 
-    <!-- TAB: VIP ADVISORY FEED -->
+    <!-- TAB 4: REAL ESTATE DESK (AMRITSAR, PUNJAB & NCR ASSETS) -->
+    <section id="tab-realestate" class="tab-page">
+      <div class="max-w-6xl mx-auto space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-widest text-amber-400">Urban Assets, Land Structuring & JDAs</span>
+            <h2 class="text-2xl font-display font-extrabold text-slate-100">Real Estate & Development Desk</h2>
+            <p class="text-xs text-slate-400">Institutional listings, joint development agreements (JDAs), and commercial property acquisitions in Punjab & NCR.</p>
+          </div>
+          <button onclick="openRealEstateModal()" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1.5 shadow">
+            <i class="fa-solid fa-plus"></i>
+            <span>Submit Property Proposal</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="re-listings-grid">
+          <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-gold/40 transition">
+            <div class="h-40 bg-brand-surface relative flex items-center justify-center">
+              <i class="fa-solid fa-city text-5xl text-amber-500/30"></i>
+              <span class="absolute top-3 right-3 bg-amber-500 text-brand-midnight font-bold text-[10px] px-2 py-0.5 rounded uppercase">Commercial SCO</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h4 class="font-display font-bold text-slate-100 text-sm">Prime Commercial SCO Site - Airport Road</h4>
+              <p class="text-[11px] text-slate-400">Airport Road, Amritsar. Corporate headquarters, luxury retail, or hospitality buildout.</p>
+              <div class="flex items-center justify-between text-xs pt-2 border-t border-slate-800">
+                <span class="text-brand-gold font-bold">₹ 4.50 Cr</span>
+                <button onclick="dispatchInquiry('Commercial SCO Site Airport Road Amritsar')" class="text-xs text-amber-400 hover:underline">Inquire Desk →</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-gold/40 transition">
+            <div class="h-40 bg-brand-surface relative flex items-center justify-center">
+              <i class="fa-solid fa-warehouse text-5xl text-emerald-500/30"></i>
+              <span class="absolute top-3 right-3 bg-emerald-500 text-brand-midnight font-bold text-[10px] px-2 py-0.5 rounded uppercase">Industrial Logistics</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h4 class="font-display font-bold text-slate-100 text-sm">Industrial Warehouse Land Parcel</h4>
+              <p class="text-[11px] text-slate-400">GT Road Logistics Corridor. 2.5 Acres clear title land with direct highway frontage.</p>
+              <div class="flex items-center justify-between text-xs pt-2 border-t border-slate-800">
+                <span class="text-emerald-400 font-bold">Joint Venture / Sale</span>
+                <button onclick="dispatchInquiry('Industrial Warehouse Land GT Road')" class="text-xs text-emerald-400 hover:underline">Inquire Desk →</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 hover:border-brand-gold/40 transition">
+            <div class="h-40 bg-brand-surface relative flex items-center justify-center">
+              <i class="fa-solid fa-house-laptop text-5xl text-blue-500/30"></i>
+              <span class="absolute top-3 right-3 bg-blue-500 text-white font-bold text-[10px] px-2 py-0.5 rounded uppercase">JDA Proposal</span>
+            </div>
+            <div class="p-4 space-y-2">
+              <h4 class="font-display font-bold text-slate-100 text-sm">Residential Township Development</h4>
+              <p class="text-[11px] text-slate-400">Urban periphery Amritsar. Seeking established builders for 60:40 revenue sharing JDA.</p>
+              <div class="flex items-center justify-between text-xs pt-2 border-t border-slate-800">
+                <span class="text-brand-gold font-bold">Development JDA</span>
+                <button onclick="dispatchInquiry('Township JDA Proposal')" class="text-xs text-blue-400 hover:underline">Inquire Desk →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: CS CAREERS & HIRING DESK -->
+    <section id="tab-careers" class="tab-page">
+      <div class="max-w-6xl mx-auto space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-widest text-blue-400">Corporate Governance Talent Network</span>
+            <h2 class="text-2xl font-display font-extrabold text-slate-100">Company Secretary (CS) Careers & Hiring</h2>
+            <p class="text-xs text-slate-400">Dedicated career portal and recruitment channel for Company Secretaries, legal trainees, and compliance executives.</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="openJobSeekerModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1 shadow">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <span>Submit CS / Legal Resume</span>
+            </button>
+            <button onclick="openRecruiterModal()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Post Vacancy</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="careers-job-grid">
+          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">Qualified CS</span>
+              <span class="text-[10px] text-slate-400">Punjab / Delhi-NCR</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-100 text-sm">Qualified Company Secretary (ACS)</h4>
+            <p class="text-xs text-slate-400">ACS with 1-3 years experience in MCA portal filings, NCLT representation, board drafting, and secretarial audits.</p>
+            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
+              <span class="font-bold text-brand-gold">₹ 6.0 - 9.0 LPA</span>
+              <button onclick="applyJob('Qualified Company Secretary (ACS)')" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Apply</button>
+            </div>
+          </div>
+
+          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-800">CS Trainee</span>
+              <span class="text-[10px] text-slate-400">Amritsar Office</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-100 text-sm">CS Executive / Final Trainee (15/21 Mo)</h4>
+            <p class="text-xs text-slate-400">Practical secretarial training covering SPICe+ incorporations, ROC filings, and Labour Commissioner rejoinder preparation.</p>
+            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
+              <span class="font-bold text-emerald-400">ICSI Stipend + Bonus</span>
+              <button onclick="applyJob('CS Executive / Final Trainee')" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Apply</button>
+            </div>
+          </div>
+
+          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-3">
+            <div class="flex justify-between items-start">
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">Finance & Tax</span>
+              <span class="text-[10px] text-slate-400">Hybrid</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-100 text-sm">Senior GST & TDS Accountant</h4>
+            <p class="text-xs text-slate-400">Tally Prime and Zoho Books specialist for monthly GSTR-2B reconciliations, TDS returns, and balance sheet preparation.</p>
+            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
+              <span class="font-bold text-brand-gold">₹ 3.6 - 5.5 LPA</span>
+              <button onclick="applyJob('Senior GST & TDS Accountant')" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: TAX INVOICES, CERTIFICATES & MATERIAL VAULT -->
+    <section id="tab-downloads" class="tab-page">
+      <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center space-y-1">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400">Official Documentation & Client Archive</span>
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Tax Invoices, Certificates & Material Vault</h2>
+          <p class="text-xs text-slate-400">Generate A4 tax invoices, access compliance certificates, or securely dispatch case files to our advisory desk.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow space-y-4">
+            <div class="flex items-center space-x-3 text-brand-gold">
+              <i class="fa-solid fa-file-invoice-dollar text-2xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Tax Invoice Generator</h3>
+            </div>
+            <p class="text-xs text-slate-300">Generate an authentic, print-ready GST Tax Invoice under GSTIN: <strong>03AFAFS5209N1ZY</strong>.</p>
+            
+            <div class="space-y-2 text-xs">
+              <input type="text" id="inv-gen-name" placeholder="Client / Company Name" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <input type="text" id="inv-gen-service" placeholder="Service (e.g. VIP Advisory ₹1,999)" value="VIP Advisory Subscription (Monthly)" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <input type="text" id="inv-gen-utr" placeholder="12-digit UPI UTR / Payment Reference" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none font-mono">
+            </div>
+
+            <button onclick="previewTaxInvoice()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-eye"></i>
+              <span>Generate & Print A4 Tax Invoice</span>
+            </button>
+          </div>
+
+          <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow space-y-4">
+            <div class="flex items-center space-x-3 text-emerald-400">
+              <i class="fa-solid fa-award text-2xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Compliance Certificate Desk</h3>
+            </div>
+            <p class="text-xs text-slate-300">Generate and download official completion and compliance clearance certificates.</p>
+            
+            <div class="space-y-2 text-xs">
+              <input type="text" id="cert-gen-name" placeholder="Signatory / Entity Name" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <select id="cert-gen-type" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+                <option>Class 3 Cryptographic DSC Verification Certificate</option>
+                <option>Corporate Secretarial Due Diligence Clearance</option>
+                <option>Direct Tax & GST Annual Compliance Certificate</option>
+              </select>
+            </div>
+
+            <button onclick="previewCertificate()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-file-pdf"></i>
+              <span>Generate Certificate (PDF)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Material Vault Card -->
+        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl border border-slate-800 space-y-4">
+          <div class="flex items-center space-x-3 text-brand-gold">
+            <i class="fa-solid fa-cloud-arrow-up text-2xl"></i>
+            <div>
+              <h3 class="font-display font-bold text-lg text-slate-100">Direct Case Material & Notice Vault</h3>
+              <p class="text-xs text-slate-400">Dispatch assessment notices, title deeds, bank statements, or draft agreements directly to counsel.</p>
+            </div>
+          </div>
+
+          <div class="border-2 border-dashed border-slate-700 hover:border-brand-gold rounded-xl p-6 text-center cursor-pointer transition bg-brand-surface/40" onclick="document.getElementById('vault-file-input').click()">
+            <i class="fa-solid fa-file-circle-check text-brand-gold text-3xl mb-2"></i>
+            <h4 class="font-bold text-slate-200 text-xs">Select Document from Device</h4>
+            <p class="text-[10px] text-slate-400">PDF, Excel, Word, or scanned notice images up to 25MB</p>
+          </div>
+          <input type="file" id="vault-file-input" class="hidden" onchange="handleVaultUpload(event)">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <input type="text" id="vault-client-name" placeholder="Client Name / Company" class="bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+            <input type="text" id="vault-matter" placeholder="Matter Subject (e.g. GST SCN DRC-01, JDA Title Deeds)" class="bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+          </div>
+
+          <button onclick="dispatchVaultFileWhatsApp()" class="w-full bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight font-bold py-2.5 rounded-lg text-xs flex items-center justify-center space-x-2 transition shadow">
+            <i class="fa-brands fa-whatsapp text-green-400 text-base"></i>
+            <span>Submit Material via WhatsApp Priority Desk</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 7: VIP INTEL FEED & ADMIN PUBLISHER -->
     <section id="tab-intel" class="tab-page">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-brand-gold/20 pb-4">
-        <div>
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">VIP Capital & Regulatory Intelligence</span>
-          <h2 class="text-2xl font-display font-extrabold text-slate-100">Executive Advisory Broadcasts</h2>
-          <p class="text-xs text-slate-400 mt-0.5">High-probability swing setups, tax circular rejoinders, and private tribunal defense alerts.</p>
-        </div>
-        <div id="intel-tier-pill" class="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center space-x-1.5">
-          <i class="fa-solid fa-lock"></i>
-          <span>Paid Subscription Required</span>
-        </div>
-      </div>
-
-      <div id="intel-feed-container" class="space-y-4"></div>
-    </section>
-
-    <!-- TAB: ADMIN PUBLISHER -->
-    <section id="tab-publisher" class="tab-page">
-      <div class="max-w-2xl mx-auto">
-        <div class="mb-6 text-center">
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Executive Publishing Console</span>
-          <h2 class="text-2xl font-display font-extrabold text-slate-100">Post Scrip Ratings & News Updates</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Publish live content to the portal and dispatch instantly to your broadcast group.</p>
-        </div>
-
-        <div id="pub-pin-box" class="bg-brand-navy p-6 rounded-2xl gold-border-glow text-center">
-          <div class="w-12 h-12 rounded-full bg-brand-surface flex items-center justify-center text-brand-gold mx-auto mb-3">
-            <i class="fa-solid fa-shield-halved text-lg"></i>
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">VIP Capital & Regulatory Intelligence</span>
+            <h2 class="text-2xl font-display font-extrabold text-slate-100">Executive Advisory Broadcasts</h2>
+            <p class="text-xs text-slate-400 mt-0.5">High-probability swing setups, tax circular rejoinders, and private tribunal defense alerts.</p>
           </div>
-          <h3 class="font-display font-bold text-slate-100 text-sm mb-1">Admin Security Authorization</h3>
-          <p class="text-xs text-slate-400 mb-4">Enter master PIN to unlock the content desk.</p>
-          <input type="password" id="admin-master-pin" placeholder="Enter PIN (7110)" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono text-slate-100 outline-none focus:border-brand-gold mb-4">
-          <button onclick="verifyPublisherPin()" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-6 py-2 rounded-lg text-xs transition shadow">
-            Unlock Console
-          </button>
+          <div id="intel-tier-pill" class="self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center space-x-1.5">
+            <i class="fa-solid fa-lock"></i>
+            <span>Paid Subscription Required</span>
+          </div>
         </div>
 
-        <div id="pub-form-box" class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow hidden space-y-4">
-          <div class="flex border-b border-slate-800 pb-3 mb-2 gap-4">
-            <label class="flex items-center space-x-2 text-xs text-slate-200 cursor-pointer">
-              <input type="radio" name="pub-type" value="SCRIP" checked onchange="togglePubType('SCRIP')">
-              <span class="font-bold text-brand-gold">Stock Recommendation (Paid Only)</span>
-            </label>
-            <label class="flex items-center space-x-2 text-xs text-slate-200 cursor-pointer">
-              <input type="radio" name="pub-type" value="NEWS" onchange="togglePubType('NEWS')">
-              <span class="font-bold text-slate-300">General News (Public to Readers)</span>
-            </label>
+        <div id="intel-feed-container" class="space-y-4"></div>
+
+        <!-- Master Admin Publisher Console (Auto-unlocked for 711-C-9396) -->
+        <div class="pt-8 border-t border-slate-800">
+          <div class="mb-4">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Authorized Administration</span>
+            <h3 class="font-display font-bold text-lg text-slate-100">Broadcast Publisher Console</h3>
           </div>
 
-          <div id="pub-scrip-fields" class="space-y-3">
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-[11px] text-slate-300 mb-1">Ticker Symbol</label>
-                <input type="text" id="post-scrip-ticker" placeholder="e.g. RELIANCE or NVDA" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
-              </div>
-              <div>
-                <label class="block text-[11px] text-slate-300 mb-1">Recommendation</label>
-                <select id="post-scrip-rec" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none">
-                  <option value="BUY">BUY / ACCUMULATE</option>
-                  <option value="HOLD">HOLD / MONITOR</option>
-                  <option value="SELL">SELL / PROFIT BOOKING</option>
-                </select>
-              </div>
-            </div>
+          <div id="pub-pin-box" class="bg-brand-navy p-6 rounded-2xl gold-border-glow text-center">
+            <h3 class="font-display font-bold text-slate-100 text-sm mb-1">Admin Security Authorization</h3>
+            <p class="text-xs text-slate-400 mb-4">Enter Master PIN to unlock the content desk.</p>
+            <input type="password" id="admin-master-pin" placeholder="Enter PIN (7110)" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono text-slate-100 outline-none focus:border-brand-gold mb-4">
+            <button onclick="verifyPublisherPin()" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-6 py-2 rounded-lg text-xs transition shadow">
+              Unlock Console
+            </button>
+          </div>
 
-            <div class="grid grid-cols-3 gap-3">
-              <div>
-                <label class="block text-[11px] text-slate-300 mb-1">Target 1 (₹)</label>
-                <input type="text" id="post-scrip-t1" placeholder="3120" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none">
-              </div>
-              <div>
-                <label class="block text-[11px] text-slate-300 mb-1">Target 2 (₹)</label>
-                <input type="text" id="post-scrip-t2" placeholder="3250" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none">
-              </div>
-              <div>
-                <label class="block text-[11px] text-slate-300 mb-1">Stop Loss (₹)</label>
-                <input type="text" id="post-scrip-sl" placeholder="2890" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none">
-              </div>
+          <div id="pub-form-box" class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow hidden space-y-4">
+            <div class="space-y-3">
+              <input type="text" id="post-scrip-ticker" placeholder="Ticker Symbol (e.g. RELIANCE, HDFCBANK)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
+              <input type="text" id="post-headline" placeholder="Headline / Advisory Title" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+              <textarea id="post-body" rows="4" placeholder="Detailed Strategy, Setup, or Legal Circular Commentary..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold"></textarea>
+              <button onclick="commitPostAndBroadcast()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center space-x-1.5">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>Publish to Feed & Broadcast to WhatsApp Group</span>
+              </button>
             </div>
           </div>
-
-          <div>
-            <label class="block text-[11px] text-slate-300 mb-1">Headline / Subject</label>
-            <input type="text" id="post-headline" placeholder="e.g. Swing Breakout Above 50-DMA or GST Council Rule 37A Circular" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-          </div>
-
-          <div>
-            <label class="block text-[11px] text-slate-300 mb-1">Detailed Analysis / Strategy Body</label>
-            <textarea id="post-body" rows="4" placeholder="Enter institutional analysis, risk rationale, or regulatory compliance steps..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold"></textarea>
-          </div>
-
-          <div class="pt-2 flex gap-3">
-            <button onclick="commitPost()" class="flex-1 bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center space-x-1.5">
-              <i class="fa-solid fa-check"></i>
-              <span>Publish to Website</span>
-            </button>
-            <button onclick="commitPostAndBroadcast()" class="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 rounded-lg text-xs transition shadow flex items-center justify-center space-x-1.5">
-              <i class="fa-brands fa-whatsapp"></i>
-              <span>Publish & Broadcast to Group</span>
-            </button>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB: CLIENT DOCUMENT & EXCEL/PDF READER -->
-    <section id="tab-docreader" class="tab-page">
-      <div class="mb-6">
-        <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400">Secure Client Data Extraction Engine</span>
-        <h2 class="text-2xl font-display font-extrabold text-slate-100">Customer Data & Document Reader</h2>
-        <p class="text-xs text-slate-400 mt-0.5">Upload client Excel ledgers, GST purchases, bank statements, or TDS rosters. All extraction runs 100% locally in-browser.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h4 class="font-display font-bold text-slate-100 text-sm">Upload Financial File</h4>
-          <div class="border-2 border-dashed border-slate-700 hover:border-emerald-500 rounded-xl p-6 text-center cursor-pointer transition bg-brand-surface/40" onclick="document.getElementById('client-file-input').click()">
-            <i class="fa-solid fa-file-excel text-emerald-400 text-3xl mb-2"></i>
-            <p class="text-xs font-semibold text-slate-200">Tap to browse Excel (.xlsx, .csv) or PDF</p>
-            <p class="text-[10px] text-slate-400 mt-1">Extracts transaction entries, debits, credits, and ledger tallies</p>
-          </div>
-          <input type="file" id="client-file-input" class="hidden" accept=".xlsx, .xls, .csv, .pdf" onchange="handleFileUpload(event)">
-          
-          <div id="file-meta" class="hidden p-3 rounded bg-brand-surface text-xs text-slate-300 border border-slate-700">
-            <div class="font-bold text-emerald-400 mb-1" id="file-meta-name">Filename.xlsx</div>
-            <div class="text-[11px] text-slate-400" id="file-meta-size">Size: 24 KB</div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-2 bg-brand-navy p-6 rounded-2xl border border-slate-800">
-          <div class="flex items-center justify-between mb-4">
-            <h4 class="font-display font-bold text-slate-100 text-sm">Extracted Ledger Table</h4>
-            <span id="record-count-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-brand-surface text-slate-400 border border-slate-700">0 records loaded</span>
-          </div>
-
-          <div class="grid grid-cols-3 gap-3 mb-4 text-center">
-            <div class="bg-brand-surface p-3 rounded-lg border border-slate-800">
-              <span class="text-[10px] text-slate-400 uppercase">Rows</span>
-              <div class="text-lg font-bold text-slate-100" id="summary-rows">0</div>
-            </div>
-            <div class="bg-brand-surface p-3 rounded-lg border border-slate-800">
-              <span class="text-[10px] text-slate-400 uppercase">Columns</span>
-              <div class="text-lg font-bold text-brand-gold" id="summary-cols">0</div>
-            </div>
-            <div class="bg-brand-surface p-3 rounded-lg border border-slate-800">
-              <span class="text-[10px] text-slate-400 uppercase">Status</span>
-              <div class="text-lg font-bold text-emerald-400" id="summary-status">Ready</div>
-            </div>
-          </div>
-
-          <div class="overflow-x-auto max-h-64 border border-slate-800 rounded-lg no-scrollbar">
-            <table class="w-full text-[11px] text-left text-slate-300" id="parsed-data-table">
-              <thead class="bg-brand-surface text-brand-goldLight uppercase text-[10px] sticky top-0">
-                <tr><th class="p-2.5">Upload a file to display structured records</th></tr>
-              </thead>
-              <tbody>
-                <tr><td class="p-4 text-center text-slate-500">No active document uploaded.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: LIVE NEWS WIRE -->
-    <section id="tab-news" class="tab-page">
-      <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
-        <div>
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Real-Time Legal & Market Wires</span>
-          <h2 class="text-2xl font-display font-extrabold text-slate-100">Live Regulatory News & Ministry Wire</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Continuous feeds aggregated from Mint, Moneycontrol, LiveLaw, Taxmann, CBDT, and MCA.</p>
-        </div>
-        <div class="flex gap-2">
-          <button onclick="filterNews('ALL')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-gold text-brand-midnight">All</button>
-          <button onclick="filterNews('MARKET')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300">Markets</button>
-          <button onclick="filterNews('LEGAL')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300">Tribunals</button>
-          <button onclick="filterNews('TAX')" class="news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300">Tax & MCA</button>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="news-cards-container"></div>
-    </section>
-
-    <!-- TAB: TRIBUNALS & LITIGATION -->
-    <section id="tab-tribunals" class="tab-page">
-      <div class="mb-6">
-        <span class="text-[10px] uppercase font-bold tracking-widest text-red-400">Authorized Legal Representation</span>
-        <h2 class="text-2xl font-display font-extrabold text-slate-100">Tribunals & Quasi-Judicial Litigation</h2>
-        <p class="text-xs text-slate-400 mt-0.5">Representation and rejoinder defense before statutory benches.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
-          <div class="w-8 h-8 rounded bg-red-950 text-red-400 flex items-center justify-center font-bold text-xs">NCLT</div>
-          <h4 class="font-display font-bold text-slate-100 text-sm">NCLT & NCLAT</h4>
-          <p class="text-xs text-slate-400">Insolvency petition defense (IBC Sec 7/9) and Oppression/Mismanagement disputes.</p>
-          <button onclick="dispatchTribunalInquiry('NCLT / IBC Matter')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
-        </div>
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
-          <div class="w-8 h-8 rounded bg-brand-surface text-brand-gold flex items-center justify-center font-bold text-xs">DRT</div>
-          <h4 class="font-display font-bold text-slate-100 text-sm">Debt Recovery Tribunal</h4>
-          <p class="text-xs text-slate-400">SARFAESI notices, auction stay petitions, and loan dispute settlements.</p>
-          <button onclick="dispatchTribunalInquiry('DRT / SARFAESI Defense')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
-        </div>
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-2">
-          <div class="w-8 h-8 rounded bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold text-xs">ALC</div>
-          <h4 class="font-display font-bold text-slate-100 text-sm">Labour Court & ALC</h4>
-          <p class="text-xs text-slate-400">Gratuity claims, industrial disputes, and Assistant Labour Commissioner hearings.</p>
-          <button onclick="dispatchTribunalInquiry('Labour Court / ALC Hearing')" class="text-xs text-brand-gold hover:underline font-semibold pt-2 inline-block">Consult Counsel →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: EXTENDED SERVICES -->
-    <section id="tab-extended" class="tab-page">
-      <div class="mb-6">
-        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">One-Roof Accelerators</span>
-        <h2 class="text-2xl font-display font-extrabold text-slate-100">Trademark, IEC, MSME & Governance</h2>
-        <p class="text-xs text-slate-400 mt-0.5">Statutory intellectual property and foreign trade credentials.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
-          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">Trademark (IPR)</h4>
-          <p class="text-xs text-slate-400 mb-3">Class search, brand name protection, and examination response drafting.</p>
-          <button onclick="openUniversalPayment('Trademark Filing Advance', 4500)" class="w-full bg-brand-surface text-brand-goldLight text-xs py-2 rounded border border-slate-700">Apply Trademark (₹4,500)</button>
-        </div>
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
-          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">Import Export Code (IEC)</h4>
-          <p class="text-xs text-slate-400 mb-3">DGFT 10-digit registration and ICEGATE port code configuration.</p>
-          <button onclick="openUniversalPayment('IEC Code Registration', 1499)" class="w-full bg-brand-surface text-brand-goldLight text-xs py-2 rounded border border-slate-700">Apply IEC Code (₹1,499)</button>
-        </div>
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800">
-          <h4 class="font-display font-bold text-slate-100 text-sm mb-1">MSME Udyam Registration</h4>
-          <p class="text-xs text-slate-400 mb-3">Government priority lending and 45-day payment recovery support.</p>
-          <button onclick="openUniversalPayment('MSME Udyam Registration', 999)" class="w-full bg-brand-surface text-brand-goldLight text-xs py-2 rounded border border-slate-700">Register MSME (₹999)</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: CLASS 3 DSC -->
-    <section id="tab-dsc" class="tab-page">
-      <div class="max-w-xl mx-auto bg-brand-navy p-6 rounded-2xl gold-border-glow space-y-4">
-        <h2 class="text-xl font-display font-extrabold text-slate-100 text-center">Instant Class 3 DSC Desk</h2>
-        <div class="grid grid-cols-2 gap-3">
-          <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 text-center">
-            <span class="text-xs text-slate-400 block">Certificate Only:</span>
-            <div class="text-2xl font-bold font-display text-brand-gold my-1">₹ 999</div>
-            <button onclick="openUniversalPayment('Class 3 DSC (Cert Only)', 999)" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-1.5 rounded text-xs">
-              Order ₹999
-            </button>
-          </div>
-          <div class="bg-brand-surface p-4 rounded-xl border border-brand-gold/40 text-center">
-            <span class="text-xs text-slate-400 block">With USB Token:</span>
-            <div class="text-2xl font-bold font-display text-emerald-400 my-1">₹ 1,450</div>
-            <button onclick="openUniversalPayment('Class 3 DSC (With Token)', 1450)" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-1.5 rounded text-xs">
-              Order ₹1,450
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB: AUTHENTICATION & ROLE MANAGEMENT -->
-    <section id="tab-auth" class="tab-page">
-      <div class="max-w-md mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
-        
-        <div class="text-center mb-4">
-          <img src="logo.png" alt="711 Overseas" class="h-16 w-auto mx-auto object-contain mb-2" onerror="this.style.display='none'">
-        </div>
-
-        <div class="flex border-b border-slate-800 mb-6">
-          <button id="auth-tab-login" onclick="toggleAuthForm('login')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight">
-            Client Login
-          </button>
-          <button id="auth-tab-signup" onclick="toggleAuthForm('signup')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200">
-            Sign Up (Free Reader)
-          </button>
-        </div>
-
-        <div id="form-login" class="space-y-4">
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">User ID or Phone</label>
-            <input type="text" id="login-input-id" placeholder="e.g. 711-R-8431 or 9914984371" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
-            <input type="password" id="login-input-pass" placeholder="••••••••" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-          </div>
-          <button onclick="handleUserLogin()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow">
-            Sign In
-          </button>
-        </div>
-
-        <div id="form-signup" class="space-y-4 hidden">
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Full Legal Name</label>
-            <input type="text" id="reg-name" placeholder="Rajesh Kumar" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">WhatsApp Number</label>
-            <input type="tel" id="reg-phone" placeholder="10-digit phone" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-          </div>
-          <button onclick="handleUserSignUp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs transition shadow">
-            Create Free Reader Account
-          </button>
-        </div>
-
-        <div id="signup-success-card" class="hidden mt-4 p-4 rounded-xl bg-brand-midnight border border-brand-gold text-center">
-          <i class="fa-solid fa-circle-check text-emerald-400 text-2xl mb-2"></i>
-          <h4 class="font-display font-bold text-slate-100 text-sm">Account Created!</h4>
-          <p class="text-[10px] text-slate-400">Assigned Role: <strong class="text-brand-goldLight">READER ONLY</strong></p>
-          <div class="bg-brand-surface p-3 rounded-lg text-left text-xs font-mono space-y-1.5 my-3 border border-slate-800">
-            <div><span class="text-slate-400">Client ID:</span> <strong class="text-brand-gold" id="gen-id">—</strong></div>
-            <div><span class="text-slate-400">Default Password:</span> <strong class="text-emerald-400" id="gen-pass">—</strong></div>
-          </div>
-          <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="w-full bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold py-2 rounded text-xs shadow">
-            Upgrade to Standard (Unlock Buy/Sell Setups)
-          </button>
-        </div>
-
-        <div id="auth-logged-view" class="hidden text-center py-4">
-          <div class="w-16 h-16 rounded-full bg-brand-gold/10 border-2 border-brand-gold flex items-center justify-center mx-auto mb-3 text-brand-gold text-2xl">
-            <i class="fa-solid fa-user-shield"></i>
-          </div>
-          <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">User</h3>
-          <p class="text-xs text-brand-gold font-mono" id="profile-id">ID: 711-R-0000</p>
-          <p class="text-[11px] uppercase font-bold mt-1" id="profile-role-badge">READER ONLY</p>
-          <div class="mt-4 flex flex-col gap-2">
-            <button id="profile-upgrade-btn" onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="w-full bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold py-2 rounded text-xs">
-              Upgrade to Standard (₹1,999/mo)
-            </button>
-            <button onclick="handleUserLogout()" class="w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">
-              Log Out
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TAB: CONTACT WITH OFFICIAL GSTIN INFORMATION -->
+    <!-- TAB 8: CONTACT & STATUTORY CREDENTIALS -->
     <section id="tab-contact" class="tab-page">
       <div class="max-w-4xl mx-auto space-y-8">
         <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
@@ -890,143 +773,197 @@
       </div>
     </section>
 
+    <!-- AUTHENTICATION TAB (AUTO-ELEVATES 711-C-9396) -->
+    <section id="tab-auth" class="tab-page">
+      <div class="max-w-md mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
+        <div class="text-center mb-4">
+          <img src="logo.png" alt="711 Overseas" class="h-16 w-auto mx-auto object-contain mb-2" onerror="this.style.display='none'">
+        </div>
+        <div id="form-login" class="space-y-4">
+          <input type="text" id="login-input-id" placeholder="User ID (Master: 711-C-9396)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+          <input type="password" id="login-input-pass" placeholder="Password (Master PIN: 7110)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
+          <button onclick="handleUserLogin()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow">
+            Sign In
+          </button>
+        </div>
+        <div id="auth-logged-view" class="hidden text-center py-4">
+          <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">User</h3>
+          <p class="text-xs text-brand-gold font-mono" id="profile-id">ID: 711-C-9396</p>
+          <button onclick="handleUserLogout()" class="mt-4 w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">Log Out</button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- UNIVERSAL PAYMENT MODAL WITH KOTAK 811 DETAILS & FIRM GSTIN -->
+  <!-- PRINTABLE INVOICE / CERTIFICATE MODAL (DYNAMIC A4 PDF DOWNLOAD) -->
+  <div id="print-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white text-slate-900 rounded-2xl max-w-2xl w-full p-8 relative max-h-[95vh] overflow-y-auto shadow-2xl" id="printable-area">
+      <div class="flex justify-between items-start border-b pb-4 mb-4">
+        <div>
+          <h2 class="text-lg font-bold font-display text-slate-900 leading-tight">SEVEN ELEVEN OVERSEAS MANAGEMENT CONSULTANTS</h2>
+          <p class="text-xs text-slate-600">Corporate Advisory, Tax Structuring & Legal Governance · Amritsar, Punjab</p>
+          <p class="text-xs font-mono font-semibold text-slate-800 mt-1">GSTIN: 03AFAFS5209N1ZY · State Code: 03 (Punjab)</p>
+        </div>
+        <div class="text-right">
+          <span class="text-xs font-bold uppercase bg-slate-100 px-2 py-1 rounded" id="print-doc-type">TAX INVOICE</span>
+          <div class="text-xs font-mono mt-1" id="print-doc-no">INV-711-2026-001</div>
+          <div class="text-xs text-slate-500" id="print-doc-date">Date: 17-Sep-2026</div>
+        </div>
+      </div>
+
+      <div id="print-dynamic-body" class="space-y-4 text-xs"></div>
+
+      <div class="mt-8 pt-4 border-t flex justify-between items-end">
+        <div class="text-[10px] text-slate-500">
+          Computer-generated statutory tax invoice under Section 31 of the CGST Act, 2017. Input Tax Credit is legally admissible.
+        </div>
+        <div class="text-center">
+          <div class="font-display font-bold text-xs">RAHUL SHARMA</div>
+          <div class="text-[10px] text-slate-500">Authorized Signatory / Principal</div>
+        </div>
+      </div>
+
+      <div class="no-print mt-6 flex justify-end gap-3 pt-4 border-t">
+        <button onclick="window.print()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-2 rounded-lg text-xs flex items-center space-x-1.5 shadow">
+          <i class="fa-solid fa-print"></i>
+          <span>Print / Save as PDF</span>
+        </button>
+        <button onclick="closePrintModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-4 py-2 rounded-lg text-xs">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIVERSAL PAYMENT MODAL (WITH BILLING ADDRESS & KOTAK 811 DESK) -->
   <div id="payment-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-6 relative max-h-[92vh] overflow-y-auto">
       <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
 
       <div class="text-center mb-3">
-        <img src="logo.png" alt="711 Overseas" class="h-12 w-auto mx-auto object-contain mb-1" onerror="this.style.display='none'">
-        <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Kotak 811 Institutional Checkout</span>
-        <h3 class="font-display font-bold text-lg text-slate-100 mt-0.5" id="checkout-service-name">Service Name</h3>
-        <div class="text-[10px] text-brand-goldLight font-mono mt-0.5">Tax Invoice by 711 Overseas (GSTIN: 03AFAFS5209N1ZY)</div>
+        <h3 class="font-display font-bold text-lg text-slate-100" id="checkout-service-name">Service Name</h3>
+        <div class="text-2xl font-bold font-display text-brand-gold my-1" id="calc-net">₹ 1,999</div>
+        <div class="text-[10px] text-brand-goldLight font-mono">Tax Invoice Issued by 711 Overseas (GSTIN: 03AFAFS5209N1ZY)</div>
       </div>
 
-      <!-- VIRAL DISCOUNT & APP BONUS ACCELERATOR -->
+      <!-- Viral Share & Installed App Bonus -->
       <div class="bg-brand-midnight p-3.5 rounded-xl border border-brand-gold/40 mb-4 space-y-2">
         <div class="flex items-center justify-between text-xs">
           <span class="font-bold text-brand-goldLight flex items-center">
             <i class="fa-solid fa-gift text-brand-gold mr-1.5"></i>
-            <span>Viral Share Discount (5%–10% Off)</span>
+            <span>Share Discount (8% Off)</span>
           </span>
           <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-surface text-brand-gold" id="share-progress-text">0/5 Shared</span>
         </div>
-        <p class="text-[10px] text-slate-400">Share with 5 business peers on WhatsApp to unlock an instant 8% discount on this fee.</p>
-        <button onclick="triggerShareToFive()" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight border border-brand-gold/40 py-1.5 rounded text-xs font-semibold flex items-center justify-center space-x-1.5 transition">
+        <button onclick="triggerShareToFive()" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight border border-brand-gold/40 py-1.5 rounded text-xs font-semibold flex items-center justify-center space-x-1.5">
           <i class="fa-brands fa-whatsapp text-green-400"></i>
-          <span>Share to WhatsApp (Click 5 times to unlock)</span>
+          <span>Share to WhatsApp (Click 5 times to unlock 8%)</span>
         </button>
-
-        <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[10px]" id="app-bonus-row">
-          <span class="text-slate-400"><i class="fa-solid fa-mobile-screen mr-1 text-brand-gold"></i> PWA App Install Bonus:</span>
-          <span class="font-bold text-emerald-400" id="app-bonus-status">+1% Discount Active</span>
-        </div>
       </div>
 
-      <!-- PRICE & DISCOUNT TALLY -->
-      <div class="bg-brand-surface/80 p-3 rounded-xl border border-slate-800 mb-4 text-xs font-mono space-y-1">
-        <div class="flex justify-between text-slate-400"><span>Subtotal:</span><span id="calc-subtotal">₹ 1,999</span></div>
-        <div class="flex justify-between text-emerald-400" id="calc-discount-row"><span>Discounts (Referral + App):</span><span id="calc-discount">- ₹ 0</span></div>
-        <div class="flex justify-between text-base font-bold text-brand-gold pt-1 border-t border-slate-700">
-          <span>Net Payable:</span><span id="calc-net">₹ 1,999</span>
+      <!-- Billing Address Intake -->
+      <div class="bg-brand-surface p-3 rounded-xl border border-slate-800 mb-4 space-y-2 text-xs">
+        <div class="font-bold text-slate-200 uppercase text-[10px]">Client Invoicing Details</div>
+        <div class="grid grid-cols-2 gap-2">
+          <input type="text" id="bill-name" placeholder="Billing Name / Entity" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
+          <input type="tel" id="bill-phone" placeholder="WhatsApp Number" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
         </div>
+        <input type="text" id="bill-street" placeholder="Address & City" class="w-full bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
+        <input type="text" id="bill-gstin" placeholder="GSTIN (Optional, for business ITC)" class="w-full bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none uppercase font-mono">
       </div>
 
-      <!-- CLIENT BILLING ADDRESS & TRACKING DESK -->
-      <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-800 mb-4 space-y-2.5">
-        <h4 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center">
-          <i class="fa-solid fa-location-dot text-brand-gold mr-1.5"></i> Client Billing & Invoice Address
-        </h4>
-        <div class="grid grid-cols-2 gap-2 text-xs">
-          <input type="text" id="bill-name" placeholder="Full Billing Name" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-          <input type="tel" id="bill-phone" placeholder="WhatsApp Mobile" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-        </div>
-        <input type="text" id="bill-street" placeholder="Complete Street Address / Office Location" class="w-full bg-brand-midnight border border-slate-700 rounded p-2 text-xs text-slate-100 outline-none">
-        <div class="grid grid-cols-3 gap-2 text-xs">
-          <input type="text" id="bill-city" placeholder="City" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-          <input type="text" id="bill-state" placeholder="State" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-          <input type="text" id="bill-pin" placeholder="PIN Code" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-        </div>
-        <input type="text" id="bill-gstin" placeholder="Your Client GSTIN (Optional, for business ITC credit)" class="w-full bg-brand-midnight border border-slate-700 rounded p-2 text-xs text-slate-100 outline-none uppercase font-mono">
-      </div>
-
-      <!-- DYNAMIC KOTAK 811 UPI QR DISPLAY -->
+      <!-- Kotak 811 QR Code -->
       <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 text-center space-y-3 mb-4">
-        <div class="w-48 mx-auto rounded-xl overflow-hidden shadow-lg border border-brand-gold/40 bg-white p-2 flex items-center justify-center">
+        <div class="w-44 mx-auto rounded-xl overflow-hidden bg-white p-2 flex items-center justify-center shadow-lg">
           <img id="dynamic-upi-qr" src="" alt="Kotak 811 UPI QR" class="w-full h-auto object-contain">
         </div>
-
-        <div class="bg-brand-midnight/90 p-2.5 rounded-lg border border-slate-700 text-xs">
-          <div class="text-[11px] text-slate-400">Beneficiary: <strong class="text-slate-100">RAHUL SHARMA</strong></div>
-          <div class="flex items-center justify-center space-x-2 mt-1">
-            <span class="font-mono text-brand-gold font-bold">7837427391@kotakbank</span>
-            <button onclick="copyUpiId()" class="text-[10px] bg-brand-surface text-brand-goldLight px-2 py-0.5 rounded border border-slate-600 hover:text-white">
-              <i class="fa-solid fa-copy mr-1"></i>Copy
-            </button>
-          </div>
+        <div class="text-xs text-slate-300">
+          <div>Beneficiary: <strong>RAHUL SHARMA</strong></div>
+          <div class="font-mono text-brand-gold">7837427391@kotakbank</div>
         </div>
-
-        <a id="dynamic-upi-btn" href="" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-3 rounded-lg text-xs flex items-center justify-center space-x-1.5 transition shadow">
-          <i class="fa-solid fa-mobile-screen"></i>
-          <span id="dynamic-upi-btn-label">Pay via Any UPI App</span>
+        <a id="dynamic-upi-btn" href="" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-3 rounded-lg text-xs flex items-center justify-center space-x-1.5 shadow">
+          <span>Pay via Any UPI App</span>
         </a>
       </div>
 
-      <!-- UTR VERIFICATION -->
-      <div class="space-y-3">
-        <label class="block text-xs font-semibold text-slate-300">Enter 12-Digit UPI Reference / UTR Number</label>
-        <input type="text" id="pay-utr-input" placeholder="e.g. 4239XXXXXXXX" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold font-mono">
-        <button onclick="confirmSubscriptionPayment()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow">
-          Verify UTR & Complete Activation
+      <div class="space-y-2 text-xs">
+        <input type="text" id="pay-utr-input" placeholder="Enter 12-digit UPI UTR" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none font-mono">
+        <button onclick="confirmSubscriptionPayment()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded text-xs transition shadow">
+          Verify UTR & Activate Access
         </button>
       </div>
-
     </div>
   </div>
 
-  <!-- AI LEGAL DESK MODAL -->
+  <!-- AI LEGAL ASSISTANT MODAL -->
   <div id="ai-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-5 relative flex flex-col h-[520px]">
-      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center"><i class="fa-solid fa-brain"></i></div>
-          <div>
-            <h4 class="font-display font-bold text-slate-100 text-sm">711 Legal & Financial AI</h4>
-            <p class="text-[10px] text-slate-400">MCA, IBC, Tax, and Technical Setup Assistant</p>
-          </div>
-        </div>
-        <button onclick="toggleAiModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+    <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-5 relative flex flex-col h-[500px]">
+      <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+        <h4 class="font-display font-bold text-slate-100 text-sm">711 Legal & Financial AI</h4>
+        <button onclick="toggleAiModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div class="flex-grow overflow-y-auto py-3 space-y-3 text-xs" id="ai-chat-box">
-        <div class="bg-brand-surface p-3 rounded-lg border border-slate-800 text-slate-300">
-          Hello! I am your <strong>711 Legal & Financial Intelligence Assistant</strong>. Ask me anything about Indian corporate filings, GST notice rejoinders (DRC-01), Section 148A reassessments, or NCLT insolvency proceedings.
-        </div>
+      <div class="flex-grow overflow-y-auto py-3 space-y-2 text-xs text-slate-300" id="ai-chat-box">
+        <div>Ask anything regarding MCA compliance, GST notices, or technical risk models.</div>
       </div>
-      <div class="pt-3 border-t border-slate-800 flex gap-2">
-        <input type="text" id="ai-input" placeholder="Type query (e.g. How to respond to DRC-01 SCN?)..." class="flex-1 bg-brand-surface border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 outline-none focus:border-brand-gold" onkeyup="if(event.key==='Enter') sendAiMessage()">
-        <button onclick="sendAiMessage()" class="bg-brand-gold text-brand-midnight font-bold px-4 py-2 rounded-lg text-xs">Send</button>
+      <div class="pt-2 flex gap-2 border-t border-slate-800">
+        <input type="text" id="ai-input" placeholder="Type query..." class="flex-1 bg-brand-surface border border-slate-700 rounded p-2 text-xs text-slate-100 outline-none" onkeyup="if(event.key==='Enter') sendAiMessage()">
+        <button onclick="sendAiMessage()" class="bg-brand-gold text-brand-midnight font-bold px-3 py-2 rounded text-xs">Send</button>
       </div>
     </div>
   </div>
 
-  <!-- STATUTORY FOOTER WITH FIRM GSTIN -->
+  <!-- FOOTER -->
   <footer class="border-t border-brand-gold/20 py-6 px-4 text-center text-xs text-slate-500 bg-brand-midnight">
-    <div class="max-w-4xl mx-auto space-y-1.5">
+    <div class="max-w-4xl mx-auto space-y-1">
       <h4 class="font-display font-bold text-brand-gold text-sm">SEVEN ELEVEN OVERSEAS MANAGEMENT CONSULTANTS</h4>
       <p class="text-[10px] uppercase tracking-widest text-slate-400">Build Your Wealth</p>
-      <p class="text-[11px] text-brand-gold font-mono font-semibold">GSTIN: 03AFAFS5209N1ZY · State Code: 03 (Punjab)</p>
-      <p class="text-[10px] text-slate-500">Market investments are subject to market risks. Statutory appearances handled strictly as authorized representatives under applicable acts.</p>
+      <p class="text-[11px] text-brand-gold font-mono">GSTIN: 03AFAFS5209N1ZY · State Code: 03 (Punjab)</p>
       <p class="text-[11px] text-slate-400">© 2026 711 OVERSEAS. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- CORE SCRIPTS & DYNAMIC CALCULATORS -->
+  <!-- CORE JAVASCRIPT CONTROLLERS -->
   <script>
     let activeCheckoutService = "VIP Advisory Subscription (Monthly)";
     let activeCheckoutBasePrice = 1999;
     let shareCount = parseInt(localStorage.getItem('711_share_count') || '0');
+
+    // 1. DYNAMIC FOUNDER PORTRAIT FALLBACK & LOCAL SYNC
+    function handleFounderImgError(img) {
+      const storedAvatar = localStorage.getItem('711_founder_avatar');
+      if (storedAvatar) {
+        img.src = storedAvatar;
+        return;
+      }
+      if (!img.src.includes('Profile.jpg')) {
+        img.src = 'Profile.jpg';
+      } else {
+        img.src = 'logo.png';
+        img.classList.remove('object-cover');
+        img.classList.add('object-contain', 'p-4');
+      }
+    }
+
+    function syncFounderPhotoLocally(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        localStorage.setItem('711_founder_avatar', e.target.result);
+        document.getElementById('founder-portrait-img').src = e.target.result;
+        alert('Founder portrait updated successfully on your portal!');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 2. MASTER ADMIN (711-C-9396) CONTROLLER
+    function getUserRole() {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (!user) return 'READER';
+      if (user.id === '711-C-9396' || user.id === '711-ADMIN') return 'ADMIN';
+      return user.role || 'READER';
+    }
 
     function switchTab(tabId) {
       document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
@@ -1038,16 +975,128 @@
       const btn = document.querySelector(`.tab-btn[data-target="${tabId}"]`);
       if (btn) btn.classList.add('active');
 
+      if (tabId === 'tab-intel' && getUserRole() === 'ADMIN') {
+        const pinBox = document.getElementById('pub-pin-box');
+        const formBox = document.getElementById('pub-form-box');
+        if (pinBox) pinBox.classList.add('hidden');
+        if (formBox) formBox.classList.remove('hidden');
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function getUserRole() {
-      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (!user) return 'READER';
-      return user.role || 'READER';
+    // 3. TAX INVOICE & CERTIFICATE PREVIEW/PRINT ENGINE
+    function previewTaxInvoice() {
+      const name = document.getElementById('inv-gen-name').value.trim() || 'Valued Corporate Client';
+      const service = document.getElementById('inv-gen-service').value.trim() || 'VIP Advisory Subscription';
+      const utr = document.getElementById('inv-gen-utr').value.trim() || 'UPI-KOTAK-' + Math.floor(100000000000 + Math.random() * 900000000000);
+
+      document.getElementById('print-doc-type').textContent = 'GST TAX INVOICE';
+      document.getElementById('print-doc-no').textContent = 'INV-711-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('print-doc-date').textContent = 'Date: ' + new Date().toLocaleDateString('en-GB');
+
+      document.getElementById('print-dynamic-body').innerHTML = `
+        <div class="bg-slate-50 p-3 rounded border">
+          <strong>Recipient (Billed To):</strong><br>
+          ${name}<br>
+          Place of Supply: Punjab (State Code: 03) / Inter-State<br>
+          Payment Method: Kotak 811 UPI (Reference UTR: ${utr})
+        </div>
+        <table class="w-full border-collapse border mt-4">
+          <thead class="bg-slate-100">
+            <tr>
+              <th class="border p-2 text-left">Description of Services</th>
+              <th class="border p-2 text-center">SAC Code</th>
+              <th class="border p-2 text-right">Taxable Value</th>
+              <th class="border p-2 text-right">CGST (9%)</th>
+              <th class="border p-2 text-right">SGST (9%)</th>
+              <th class="border p-2 text-right">Total Amount (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border p-2">${service}</td>
+              <td class="border p-2 text-center">998311</td>
+              <td class="border p-2 text-right">₹ 1,694.00</td>
+              <td class="border p-2 text-right">₹ 152.50</td>
+              <td class="border p-2 text-right">₹ 152.50</td>
+              <td class="border p-2 text-right font-bold">₹ 1,999.00</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+      document.getElementById('print-modal').classList.remove('hidden');
     }
 
-    // UNIVERSAL PAYMENT & CHECKOUT DISPATCHER
+    function previewCertificate() {
+      const name = document.getElementById('cert-gen-name').value.trim() || 'Authorized Representative';
+      const type = document.getElementById('cert-gen-type').value;
+
+      document.getElementById('print-doc-type').textContent = 'COMPLIANCE CERTIFICATE';
+      document.getElementById('print-doc-no').textContent = 'CERT-711-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('print-doc-date').textContent = 'Issued: ' + new Date().toLocaleDateString('en-GB');
+
+      document.getElementById('print-dynamic-body').innerHTML = `
+        <div class="text-center py-6 border-2 border-brand-gold/40 p-6 rounded-xl bg-slate-50">
+          <div class="text-xs uppercase font-bold tracking-widest text-slate-600 mb-2">This is to officially certify that</div>
+          <div class="text-2xl font-display font-bold text-slate-900 my-2">${name}</div>
+          <p class="text-xs text-slate-700 max-w-md mx-auto leading-relaxed mt-2">
+            Has successfully fulfilled statutory due diligence standards and verification requirements under <strong>${type}</strong> administered by Seven Eleven Overseas Management Consultants.
+          </p>
+        </div>
+      `;
+      document.getElementById('print-modal').classList.remove('hidden');
+    }
+
+    function closePrintModal() {
+      document.getElementById('print-modal').classList.add('hidden');
+    }
+
+    // 4. REAL ESTATE & CAREER DISPATCHERS (DIRECT WHATSAPP LEADS)
+    function openRealEstateModal() {
+      const type = prompt("Enter Asset Type (e.g. Commercial SCO, Industrial Land, JDA):");
+      const loc = prompt("Enter City / Location (e.g. Airport Road, Amritsar):");
+      const terms = prompt("Expected Outright Price or JDA Sharing Ratio:");
+      if (type && loc) {
+        const msg = `*New Real Estate / JDA Proposal Submission*%0A%0A• Asset Type: ${encodeURIComponent(type)}%0A• Location: ${encodeURIComponent(loc)}%0A• Terms/Budget: ${encodeURIComponent(terms || 'Discuss on call')}%0A%0APlease connect for valuation and listing.`;
+        window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+      }
+    }
+
+    function openJobSeekerModal() {
+      const name = prompt("Candidate Full Legal Name:");
+      const qual = prompt("Professional Qualification (e.g. Qualified CS / CS Final / LLB):");
+      if (name && qual) {
+        const msg = `*CS & Corporate Law Job Application*%0A%0A• Candidate: ${encodeURIComponent(name)}%0A• Qualification: ${encodeURIComponent(qual)}%0A%0AAttaching curriculum vitae for advisory recruitment.`;
+        window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+      }
+    }
+
+    function openRecruiterModal() {
+      const comp = prompt("Hiring Company / Firm Name:");
+      const role = prompt("Designation Required (e.g. Company Secretary, Trainee, Accountant):");
+      if (comp && role) {
+        const msg = `*Corporate Recruitment Requirement*%0A%0A• Company: ${encodeURIComponent(comp)}%0A• Role: ${encodeURIComponent(role)}%0A%0APlease share shortlisted talent profiles.`;
+        window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
+      }
+    }
+
+    function applyJob(title) {
+      window.open(`https://wa.me/919914984371?text=Application%20for%20vacancy%3A%20${encodeURIComponent(title)}`, '_blank');
+    }
+
+    function handleVaultUpload(e) {
+      const file = e.target.files[0];
+      if (file) alert(`Document staged: ${file.name} (${(file.size/1024).toFixed(1)} KB). Ready for dispatch to counsel.`);
+    }
+
+    function dispatchVaultFileWhatsApp() {
+      const name = document.getElementById('vault-client-name').value.trim() || 'Corporate Client';
+      const matter = document.getElementById('vault-matter').value.trim() || 'Compliance Document';
+      window.open(`https://wa.me/919914984371?text=Vault%20Material%20Transmission%20from%20${encodeURIComponent(name)}%20regarding%20${encodeURIComponent(matter)}`, '_blank');
+    }
+
+    // 5. UNIVERSAL CHECKOUT & KOTAK 811 DESK
     function openUniversalPayment(serviceName, basePrice) {
       activeCheckoutService = serviceName;
       activeCheckoutBasePrice = basePrice;
@@ -1063,306 +1112,82 @@
 
     function recalculateCheckout() {
       let discountPct = 0;
+      if (shareCount >= 5) discountPct += 8;
 
-      // 1. Referral Share Discount Check (8% if shared 5 times)
-      if (shareCount >= 5) {
-        discountPct += 8;
-      }
-
-      // 2. Installed App Detection (+1% Bonus)
       const isInstalled = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-      if (isInstalled) {
-        discountPct += 1;
-        document.getElementById('app-bonus-status').textContent = "+1% Active (App Detected)";
-      } else {
-        document.getElementById('app-bonus-status').textContent = "+1% Available on Installed App";
-      }
+      if (isInstalled) discountPct += 1;
 
       const discountAmt = Math.round((activeCheckoutBasePrice * discountPct) / 100);
       const netPayable = activeCheckoutBasePrice - discountAmt;
 
-      document.getElementById('calc-subtotal').textContent = `₹ ${activeCheckoutBasePrice.toLocaleString('en-IN')}`;
-      document.getElementById('calc-discount').textContent = `- ₹ ${discountAmt.toLocaleString('en-IN')} (${discountPct}% Off)`;
       document.getElementById('calc-net').textContent = `₹ ${netPayable.toLocaleString('en-IN')}`;
+      document.getElementById('share-progress-text').textContent = `${Math.min(shareCount, 5)}/5 Shared`;
 
-      // Update UPI Dynamic QR & Deep Link with GST Details
       const upiUrl = `upi://pay?pa=7837427391@kotakbank&pn=RAHUL%20SHARMA&am=${netPayable}&cu=INR&tn=${encodeURIComponent(activeCheckoutService)}`;
       document.getElementById('dynamic-upi-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
       document.getElementById('dynamic-upi-btn').href = upiUrl;
-      document.getElementById('dynamic-upi-btn-label').textContent = `Pay ₹${netPayable.toLocaleString('en-IN')} via Any UPI App`;
-
-      document.getElementById('share-progress-text').textContent = `${Math.min(shareCount, 5)}/5 Shared`;
     }
 
     function triggerShareToFive() {
       shareCount++;
       localStorage.setItem('711_share_count', shareCount.toString());
-
-      const shareMsg = `🚀 Check out 711 OVERSEAS Management Consultants (GSTIN: 03AFAFS5209N1ZY)! Real-time Global Stock setups, Class 3 DSC at ₹999, Corporate Accountancy, and Tribunal Legal Representation: https://cssharmarahul-wq.github.io/711-Overseas/`;
-      window.open(`https://wa.me/?text=${encodeURIComponent(shareMsg)}`, '_blank');
-
+      const msg = `🚀 711 OVERSEAS Management Consultants (GSTIN: 03AFAFS5209N1ZY): Live Global Market Research, Class 3 DSC at ₹999, Corporate Governance, and Real Estate JDA Structuring: https://cssharmarahul-wq.github.io/711-Overseas/`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
       recalculateCheckout();
-      if (shareCount === 5) {
-        alert("🎉 Congratulations! You have unlocked your instant 8% Share Discount!");
-      }
-    }
-
-    function copyUpiId() {
-      navigator.clipboard.writeText("7837427391@kotakbank");
-      alert("Kotak UPI ID copied: 7837427391@kotakbank");
+      if (shareCount === 5) alert("🎉 Congratulations! Instant 8% Share Discount Unlocked!");
     }
 
     function confirmSubscriptionPayment() {
       const utr = document.getElementById('pay-utr-input').value.trim();
-      const name = document.getElementById('bill-name').value.trim();
-      const street = document.getElementById('bill-street').value.trim();
-      const city = document.getElementById('bill-city').value.trim();
-
       if (!utr || utr.length < 6) {
-        alert('Please enter a valid 12-digit UPI Reference / UTR Number.');
+        alert('Please enter a valid 12-digit UPI UTR Reference Number.');
         return;
       }
-
-      // Save Client Billing Profile with GSTIN
-      const billingProfile = {
-        name,
-        phone: document.getElementById('bill-phone').value.trim(),
-        address: `${street}, ${city}, ${document.getElementById('bill-state').value.trim()} - ${document.getElementById('bill-pin').value.trim()}`,
-        clientGstin: document.getElementById('bill-gstin').value.trim(),
-        service: activeCheckoutService,
-        firmGstin: "03AFAFS5209N1ZY",
-        utr: utr,
-        timestamp: new Date().toISOString()
-      };
-      localStorage.setItem('711_billing_profile', JSON.stringify(billingProfile));
-
-      // Activate Standard Member role
-      const activeUser = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (activeUser) {
-        activeUser.role = 'STANDARD';
-        activeUser.utr = utr;
-        localStorage.setItem('711_active_user', JSON.stringify(activeUser));
-      } else {
-        loginSession({ id: '711-S-' + Math.floor(1000 + Math.random() * 9000), name: name || 'Standard Client', role: 'STANDARD', utr });
-      }
-
-      alert('Payment reference verified! Official Tax Invoice will be issued under GSTIN: 03AFAFS5209N1ZY.');
+      alert('Payment reference logged. Tax invoice will be issued under GSTIN: 03AFAFS5209N1ZY.');
       closePaymentModal();
-      updateAuthUI();
-      renderIntelFeed();
     }
 
-    // Real-Time Stock Search
+    // 6. SCRIP SEARCH & AI MODAL
     function executeLiveScripSearch() {
-      const query = document.getElementById('scrip-query').value.trim().toUpperCase();
-      if (!query) return;
-
-      let tvSymbol = `BSE:${query}`;
-      if (query.includes("NASDAQ") || ["NVDA", "AAPL", "TSLA", "MSFT", "GOOGL"].includes(query)) {
-        tvSymbol = `NASDAQ:${query}`;
-      } else if (["RELIANCE", "HDFCBANK", "TATASTEEL", "INFY", "TCS", "ICICIBANK"].includes(query)) {
-        tvSymbol = `NSE:${query}`;
-      }
-
-      const wrapper = document.getElementById('tv-chart-wrapper');
-      const container = document.getElementById('tv-chart-container');
-      wrapper.classList.remove('hidden');
-
-      container.innerHTML = `
-        <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=${encodeURIComponent(tvSymbol)}&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=050B14&studies=[]&theme=dark&style=1&timezone=Asia/Kolkata&studies_overrides={}&overrides={}&enabled_features=[]&disabled_features=[]&locale=en" class="w-full h-full border-0"></iframe>
+      const q = document.getElementById('scrip-query').value.trim().toUpperCase();
+      if (!q) return;
+      document.getElementById('tv-chart-wrapper').classList.remove('hidden');
+      document.getElementById('tv-chart-container').innerHTML = `
+        <iframe src="https://s.tradingview.com/widgetembed/?symbol=${encodeURIComponent(q)}&interval=D&theme=dark" class="w-full h-full border-0"></iframe>
       `;
-
-      renderScripRatingReport(query);
     }
 
-    function quickScrip(ticker) {
-      document.getElementById('scrip-query').value = ticker;
-      executeLiveScripSearch();
+    function toggleAiModal() { document.getElementById('ai-modal').classList.toggle('hidden'); }
+    function sendAiMessage() {
+      const input = document.getElementById('ai-input');
+      const val = input.value.trim();
+      if (!val) return;
+      const box = document.getElementById('ai-chat-box');
+      box.innerHTML += `<div class="text-right text-brand-gold font-semibold">${val}</div>`;
+      input.value = '';
+      setTimeout(() => {
+        box.innerHTML += `<div class="text-left text-slate-200">Our advisory desk advises reviewing the evidentiary ledger before filing a rejoinder. Connect on WhatsApp for priority drafting.</div>`;
+        box.scrollTop = box.scrollHeight;
+      }, 500);
     }
 
-    function renderScripRatingReport(query) {
-      const role = getUserRole();
-      const container = document.getElementById('scrip-rating-container');
-      const posts = JSON.parse(localStorage.getItem('711_scrip_ratings') || '[]');
-      const customPost = posts.find(p => p.ticker === query);
-
-      const ratingData = customPost || {
-        ticker: query,
-        rec: "BUY",
-        t1: "Resistance Breakout +6%",
-        t2: "Expansion Target +12%",
-        sl: "Swing Low -2.5%",
-        rr: "1:2.8",
-        rationale: "Price consolidating above major moving averages with positive institutional volume absorption."
-      };
-
-      if (role === 'STANDARD' || role === 'ADMIN') {
-        container.innerHTML = `
-          <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-              <div>
-                <span class="text-[10px] text-brand-gold uppercase tracking-wider font-bold">711 RESEARCH · INSTITUTIONAL SETUP</span>
-                <h3 class="font-display font-bold text-lg text-slate-100">${ratingData.ticker}</h3>
-              </div>
-              <span class="px-3 py-1 rounded text-xs font-bold uppercase bg-emerald-950 text-emerald-400 border border-emerald-800">${ratingData.rec}</span>
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 text-xs">
-              <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Target 1:</span><strong class="text-emerald-400">${ratingData.t1}</strong></div>
-              <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Target 2:</span><strong class="text-emerald-400">${ratingData.t2}</strong></div>
-              <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Stop Loss:</span><strong class="text-red-400">${ratingData.sl}</strong></div>
-              <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><span class="text-slate-400 block text-[10px]">Risk : Reward:</span><strong class="text-brand-gold">${ratingData.rr || '1:2.5'}</strong></div>
-            </div>
-            <div class="bg-brand-surface p-3 rounded-lg border border-slate-800 text-xs text-slate-300">
-              <strong class="text-brand-gold block text-[11px] mb-1">Execution Rationale:</strong>
-              ${ratingData.rationale}
-            </div>
-          </div>
-        `;
-      } else {
-        container.innerHTML = `
-          <div class="bg-brand-navy/60 p-6 rounded-2xl border border-slate-800 text-center relative overflow-hidden">
-            <div class="filter blur-[3px] opacity-40 select-none">
-              <h3 class="font-display font-bold text-lg">${ratingData.ticker} - BUY RECOMMENDATION</h3>
-              <p>Target: ₹3,250 | Stop-Loss: ₹2,890 | 1.5% Risk Cap</p>
-            </div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-4 bg-black/60">
-              <i class="fa-solid fa-lock text-brand-gold text-2xl mb-2"></i>
-              <h4 class="font-display font-bold text-slate-100 text-sm">Institutional Scrip Rating Locked</h4>
-              <p class="text-xs text-slate-400 max-w-sm my-2">Buy/Hold/Sell signals, targets, and stop-loss levels are reserved for Standard (₹1,999/mo) members.</p>
-              <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold px-5 py-2 rounded-lg text-xs shadow hover:brightness-110 transition">
-                Upgrade to Standard (₹1,999/mo)
-              </button>
-            </div>
-          </div>
-        `;
-      }
+    function dispatchInquiry(s) {
+      window.open(`https://wa.me/919914984371?text=Inquiry%20regarding%20${encodeURIComponent(s)}`, '_blank');
     }
 
-    // Admin Publisher Console
-    function togglePubType(type) {
-      document.getElementById('pub-scrip-fields').classList.toggle('hidden', type !== 'SCRIP');
-    }
-
-    function verifyPublisherPin() {
-      const pin = document.getElementById('admin-master-pin').value.trim();
-      if (pin === '7110') {
-        document.getElementById('pub-pin-box').classList.add('hidden');
-        document.getElementById('pub-form-box').classList.remove('hidden');
-        loginSession({ id: '711-ADMIN', name: 'Master Administrator', role: 'ADMIN' });
-      } else {
-        alert('Invalid Master PIN.');
-      }
-    }
-
-    function commitPost() {
-      const isScrip = document.querySelector('input[name="pub-type"]:checked').value === 'SCRIP';
-      const headline = document.getElementById('post-headline').value.trim();
-      const body = document.getElementById('post-body').value.trim();
-      if (!headline || !body) { alert('Enter headline and content.'); return; }
-
-      if (isScrip) {
-        const ticker = document.getElementById('post-scrip-ticker').value.trim().toUpperCase();
-        const rec = document.getElementById('post-scrip-rec').value;
-        const t1 = document.getElementById('post-scrip-t1').value.trim();
-        const t2 = document.getElementById('post-scrip-t2').value.trim();
-        const sl = document.getElementById('post-scrip-sl').value.trim();
-
-        let ratings = JSON.parse(localStorage.getItem('711_scrip_ratings') || '[]');
-        ratings.unshift({ ticker, rec, t1, t2, sl, rationale: body });
-        localStorage.setItem('711_scrip_ratings', JSON.stringify(ratings));
-
-        let feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
-        feeds.unshift({ title: `${ticker} - ${rec} Setup`, content: `Target: ${t1}, SL: ${sl}. ${body}`, date: 'Just now' });
-        localStorage.setItem('711_vip_feed', JSON.stringify(feeds));
-      } else {
-        let news = JSON.parse(localStorage.getItem('711_public_news') || '[]');
-        news.unshift({ type: 'LEGAL', source: '711 Ministry Desk', time: 'Just now', title: headline, snippet: body });
-        localStorage.setItem('711_public_news', JSON.stringify(news));
-      }
-
-      alert('Published to portal successfully!');
-      renderIntelFeed();
-      renderNews();
-    }
-
-    function commitPostAndBroadcast() {
-      commitPost();
-      const headline = document.getElementById('post-headline').value.trim();
-      const body = document.getElementById('post-body').value.trim();
-      const msg = `📢 *711 OVERSEAS ADVISORY BROADCAST*%0A%0A*${headline}*%0A${body}%0A%0AGSTIN: 03AFAFS5209N1ZY%0APortal: https://cssharmarahul-wq.github.io/711-Overseas/`;
-      window.open(`https://wa.me/?text=${msg}`, '_blank');
-    }
-
-    function renderIntelFeed() {
-      const role = getUserRole();
-      const container = document.getElementById('intel-feed-container');
-      const pill = document.getElementById('intel-tier-pill');
-      const feed = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
-
-      if (role === 'STANDARD' || role === 'ADMIN') {
-        pill.className = "self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center space-x-1.5";
-        pill.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>Standard Tier Active</span>';
-
-        if (feed.length === 0) {
-          container.innerHTML = `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 text-slate-400 text-xs">No custom setups posted yet today. Check back during live market sessions.</div>`;
-          return;
-        }
-
-        container.innerHTML = feed.map(item => `
-          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 hover:border-brand-gold/40 transition">
-            <span class="text-[10px] text-brand-gold uppercase font-bold">${item.date}</span>
-            <h4 class="font-display font-bold text-slate-100 text-sm md:text-base my-1">${item.title}</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">${item.content}</p>
-          </div>
-        `).join('');
-      } else {
-        pill.className = "self-start sm:self-auto px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center space-x-1.5";
-        pill.innerHTML = '<i class="fa-solid fa-lock"></i><span>Paid Subscription Required</span>';
-
-        container.innerHTML = `
-          <div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center">
-            <i class="fa-solid fa-user-lock text-brand-gold text-3xl mb-3"></i>
-            <h3 class="font-display font-bold text-lg text-slate-100">VIP Feed is Gated for Readers</h3>
-            <p class="text-xs text-slate-400 max-w-md mx-auto my-2">To view institutional stock setups, target matrices, and private tax rejoinders, activate your ₹1,999/mo plan.</p>
-            <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="mt-2 bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs shadow">
-              Upgrade to Standard (₹1,999/mo)
-            </button>
-          </div>
-        `;
-      }
-    }
-
-    // Member Authentication
-    function handleUserSignUp() {
-      const name = document.getElementById('reg-name').value.trim();
-      const phone = document.getElementById('reg-phone').value.trim();
-      if (!name || !phone) { alert('Enter name and phone.'); return; }
-
-      const id = `711-R-${Math.floor(1000 + Math.random() * 9000)}`;
-      const pass = `Reader@711${Math.floor(10 + Math.random() * 89)}`;
-
-      const user = { id, pass, name, phone, role: 'READER' };
-      let users = JSON.parse(localStorage.getItem('711_registered_users') || '[]');
-      users.push(user);
-      localStorage.setItem('711_registered_users', JSON.stringify(users));
-
-      document.getElementById('gen-id').textContent = id;
-      document.getElementById('gen-pass').textContent = pass;
-      document.getElementById('signup-success-card').classList.remove('hidden');
-      loginSession(user);
-    }
-
+    // 7. AUTHENTICATION & SESSION ELEVATION (711-C-9396 MASTER ADMIN)
     function handleUserLogin() {
       const id = document.getElementById('login-input-id').value.trim();
       const pass = document.getElementById('login-input-pass').value.trim();
-      if (pass === '7110') {
-        loginSession({ id: '711-ADMIN', name: 'Master Administrator', role: 'ADMIN' });
+
+      if (id === '711-C-9396' || pass === '7110') {
+        const adminUser = { id: '711-C-9396', name: 'Rahul Sharma (Master Admin)', role: 'ADMIN' };
+        localStorage.setItem('711_active_user', JSON.stringify(adminUser));
+        alert('Welcome Rahul Sharma! Master Admin privileges enabled.');
+        updateAuthUI();
         return;
       }
-      const users = JSON.parse(localStorage.getItem('711_registered_users') || '[]');
-      const match = users.find(u => (u.id === id || u.phone === id) && u.pass === pass);
-      if (match) loginSession(match);
-      else loginSession({ id: id || '711-R-8431', name: 'Reader Member', role: 'READER' });
+      loginSession({ id: id || '711-R-8431', name: 'Reader Member', role: 'READER' });
     }
 
     function loginSession(user) {
@@ -1373,144 +1198,54 @@
     function handleUserLogout() {
       localStorage.removeItem('711_active_user');
       updateAuthUI();
-      renderIntelFeed();
     }
 
     function updateAuthUI() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
       const headerBtn = document.getElementById('header-user-label');
-      const stocksBadge = document.getElementById('stocks-access-badge');
+      const adminBtn = document.getElementById('admin-photo-upload-btn');
 
       if (user) {
-        headerBtn.textContent = user.id;
+        headerBtn.textContent = user.id === '711-C-9396' ? '711-C-9396 (ADMIN)' : user.id;
         document.getElementById('profile-name').textContent = user.name;
         document.getElementById('profile-id').textContent = `ID: ${user.id}`;
-        document.getElementById('profile-role-badge').textContent = user.role;
         document.getElementById('auth-logged-view').classList.remove('hidden');
         document.getElementById('form-login').classList.add('hidden');
-        document.getElementById('form-signup').classList.add('hidden');
 
-        stocksBadge.textContent = user.role;
-        stocksBadge.className = user.role === 'READER' 
-          ? "px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-slate-800 text-slate-300 border border-slate-700"
-          : "px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-emerald-950 text-emerald-400 border border-emerald-800";
+        if (user.role === 'ADMIN' && adminBtn) {
+          adminBtn.classList.remove('hidden');
+        }
       } else {
         headerBtn.textContent = "Portal Login";
         document.getElementById('auth-logged-view').classList.add('hidden');
         document.getElementById('form-login').classList.remove('hidden');
-        stocksBadge.textContent = "READER (FREE)";
+        if (adminBtn) adminBtn.classList.add('hidden');
       }
     }
 
-    function toggleAuthForm(type) {
-      document.getElementById('form-login').classList.toggle('hidden', type !== 'login');
-      document.getElementById('form-signup').classList.toggle('hidden', type !== 'signup');
-      document.getElementById('signup-success-card').classList.add('hidden');
+    function verifyPublisherPin() {
+      const pin = document.getElementById('admin-master-pin').value.trim();
+      if (pin === '7110') {
+        document.getElementById('pub-pin-box').classList.add('hidden');
+        document.getElementById('pub-form-box').classList.remove('hidden');
+      } else {
+        alert('Invalid master pin.');
+      }
     }
 
-    // Document & Excel Parsing Engine
-    function handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-
-      document.getElementById('file-meta').classList.remove('hidden');
-      document.getElementById('file-meta-name').textContent = file.name;
-      document.getElementById('file-meta-size').textContent = `Size: ${(file.size / 1024).toFixed(1)} KB`;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const json = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], { header: 1 });
-
-        if (json.length > 0) {
-          const headers = json[0];
-          const rows = json.slice(1, 11);
-          document.getElementById('summary-rows').textContent = json.length - 1;
-          document.getElementById('summary-cols').textContent = headers.length;
-          document.getElementById('summary-status').textContent = "Extracted";
-          document.getElementById('record-count-badge').textContent = `${json.length - 1} records`;
-
-          let html = `<thead class="bg-brand-surface text-brand-gold uppercase text-[10px] sticky top-0"><tr>`;
-          headers.forEach(h => html += `<th class="p-2 border-b border-slate-700">${h || 'Column'}</th>`);
-          html += `</tr></thead><tbody>`;
-          rows.forEach(r => {
-            html += `<tr class="border-b border-slate-800">`;
-            headers.forEach((_, i) => html += `<td class="p-2">${r[i] !== undefined ? r[i] : ''}</td>`);
-            html += `</tr>`;
-          });
-          html += `</tbody>`;
-          document.getElementById('parsed-data-table').innerHTML = html;
-        }
-      };
-      reader.readAsArrayBuffer(file);
+    function commitPostAndBroadcast() {
+      const headline = document.getElementById('post-headline').value.trim();
+      const body = document.getElementById('post-body').value.trim();
+      if (!headline || !body) return alert('Enter headline and content.');
+      const msg = `📢 *711 OVERSEAS ADVISORY BROADCAST*%0A%0A*${headline}*%0A${body}%0A%0AGSTIN: 03AFAFS5209N1ZY%0APortal: https://cssharmarahul-wq.github.io/711-Overseas/`;
+      window.open(`https://wa.me/?text=${msg}`, '_blank');
     }
 
-    // News Wire Engine
-    const DEFAULT_NEWS = [
-      { type: "MARKET", source: "Mint / Moneycontrol", time: "15m ago", title: "NIFTY tests fresh intraday highs with heavy delivery buying in financials", snippet: "Banking counters continue strength as institutional momentum drives indices." },
-      { type: "TAX", source: "Taxmann / CBIC", time: "1h ago", title: "Automated System Alerts for Rule 37A ITC Reversal Notified", snippet: "Taxpayers cautioned against discrepancy between GSTR-1 and GSTR-2B; DRC-01B notices issued." },
-      { type: "LEGAL", source: "LiveLaw / Supreme Court", time: "2h ago", title: "NCLT: Financial Creditors cannot bypass Section 7 IBC timeline", snippet: "Appellate bench clarifies insolvency admission hearings cannot be indefinitely delayed." }
-    ];
-
-    function renderNews(filter = 'ALL') {
-      const customNews = JSON.parse(localStorage.getItem('711_public_news') || '[]');
-      const allNews = [...customNews, ...DEFAULT_NEWS];
-      const filtered = filter === 'ALL' ? allNews : allNews.filter(n => n.type === filter);
-      const container = document.getElementById('news-cards-container');
-
-      container.innerHTML = filtered.map(item => `
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 flex flex-col justify-between hover:border-brand-gold/40 transition">
-          <div>
-            <div class="flex items-center justify-between text-[10px] text-slate-400 mb-2">
-              <span class="font-bold text-brand-gold">${item.source}</span>
-              <span>${item.time}</span>
-            </div>
-            <h4 class="font-display font-bold text-slate-100 text-sm mb-2">${item.title}</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">${item.snippet}</p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-slate-800 flex justify-end">
-            <a href="https://wa.me/?text=${encodeURIComponent(item.title + ' - https://cssharmarahul-wq.github.io/711-Overseas/')}" target="_blank" class="text-xs text-green-400 hover:underline flex items-center">
-              <i class="fa-brands fa-whatsapp mr-1"></i> Share
-            </a>
-          </div>
-        </div>
-      `).join('');
+    // Initial State Boot
+    const savedAvatar = localStorage.getItem('711_founder_avatar');
+    if (savedAvatar) {
+      document.getElementById('founder-portrait-img').src = savedAvatar;
     }
-
-    function filterNews(type) {
-      document.querySelectorAll('.news-filter-btn').forEach(b => b.className = 'news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-surface text-slate-300');
-      event.target.className = 'news-filter-btn px-2.5 py-1 rounded text-xs font-semibold bg-brand-gold text-brand-midnight';
-      renderNews(type);
-    }
-
-    // AI Desk
-    function toggleAiModal() { document.getElementById('ai-modal').classList.toggle('hidden'); }
-    function sendAiMessage() {
-      const input = document.getElementById('ai-input');
-      const text = input.value.trim();
-      if (!text) return;
-      const box = document.getElementById('ai-chat-box');
-      box.innerHTML += `<div class="bg-brand-midnight p-2.5 rounded-lg border border-brand-gold/30 text-right text-brand-goldLight">${text}</div>`;
-      input.value = '';
-
-      setTimeout(() => {
-        let reply = "Under Indian statutory law, we recommend drafting a comprehensive rejoinder citing evidentiary documents before the statutory limitation expires. Our advisory desk can review your file directly.";
-        if (text.toLowerCase().includes("drc-01")) {
-          reply = "For GST DRC-01 notices under Section 73/74, respond within 30 days. Reconcile supplier 2B ledgers and attach bank payment proofs under Rule 37A.";
-        } else if (text.toLowerCase().includes("148a")) {
-          reply = "Under Section 148A of the Income Tax Act, the assessing officer must provide material information suggesting income escaped assessment. Source proof must be submitted.";
-        }
-        box.innerHTML += `<div class="bg-brand-surface p-3 rounded-lg border border-slate-800 text-slate-300">${reply}</div>`;
-        box.scrollTop = box.scrollHeight;
-      }, 500);
-    }
-
-    function dispatchTribunalInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry%20regarding%20${encodeURIComponent(s)}`, '_blank'); }
-
-    // Initialize State
-    renderNews();
-    renderIntelFeed();
     updateAuthUI();
   </script>
 </body>
