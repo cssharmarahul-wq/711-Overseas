@@ -9,7 +9,6 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
   <meta name="theme-color" content="#050B14">
-  <meta name="description" content="Seven Eleven Overseas Management Consultants - Build Your Wealth. GSTIN: 03AFAFS5209N1ZY. Corporate Secretarial, Technical Market Research, Real Estate & Regulatory Advocacy.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="711 Overseas">
@@ -19,35 +18,13 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- SheetJS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              midnight: '#050B14',
-              navy: '#0A1325',
-              surface: '#0F1C38',
-              card: '#142346',
-              gold: '#D4AF37',
-              goldLight: '#F5DE88',
-              goldDark: '#8C6510',
-              emerald: '#10B981',
-              crimson: '#E11D48'
-            }
-          },
-          fontFamily: {
-            display: ['Cinzel', 'serif'],
-            sans: ['Inter', 'sans-serif']
-          }
-        }
-      }
+      theme: { extend: { colors: { brand: { midnight: '#050B14', navy: '#0A1325', surface: '#0F1C38', card: '#142346', gold: '#D4AF37', goldLight: '#F5DE88' } }, fontFamily: { display: ['Cinzel', 'serif'], sans: ['Inter', 'sans-serif'] } } }
     }
   </script>
   <style>
@@ -55,29 +32,22 @@
     .gold-gradient-text { background: linear-gradient(135deg, #FFF1C5 0%, #D4AF37 50%, #AA7C11 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .gold-border-glow { border: 1px solid rgba(212, 175, 55, 0.4); box-shadow: 0 0 25px rgba(212, 175, 55, 0.08); }
     .tab-btn.active { background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(10, 19, 37, 0.95) 100%); color: #F5DE88; border-bottom: 2px solid #D4AF37; }
-    .tab-page { display: none; }
-    .tab-page.active { display: block; }
+    .tab-page { display: none; } .tab-page.active { display: block; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    @media print {
-      body * { visibility: hidden; }
-      #printable-area, #printable-area * { visibility: visible; }
-      #printable-area { position: absolute; left: 0; top: 0; width: 100%; color: #000000 !important; background: #FFFFFF !important; padding: 20px; }
-      .no-print { display: none !important; }
-    }
+    @media print { body * { visibility: hidden; } #printable-area, #printable-area * { visibility: visible; } #printable-area { position: absolute; left: 0; top: 0; width: 100%; color: #000!important; background: #FFF!important; padding: 20px; } .no-print { display: none !important; } }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- OFFICIAL TRADINGVIEW REAL-TIME CFD TICKER TAPE -->
+  <!-- OFFICIAL TRADINGVIEW TICKER (USING BSE EQUIVALENTS TO BYPASS NSE BAN) -->
   <div class="tradingview-widget-container bg-black/90 border-b border-brand-gold/30">
     <div class="tradingview-widget-container__widget"></div>
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
     {
       "symbols": [
         { "description": "SENSEX", "proName": "BSE:SENSEX" },
-        { "description": "NIFTY 50", "proName": "TVC:NIFTY" },
-        { "description": "BANK NIFTY", "proName": "TVC:BANKNIFTY" },
+        { "description": "NIFTY 50 (SENSEX 50)", "proName": "BSE:SENSEX50" },
+        { "description": "BANK NIFTY (BANKEX)", "proName": "BSE:BANKEX" },
         { "description": "NASDAQ 100", "proName": "CAPITALCOM:NAS100" },
         { "description": "GOLD (XAU/USD)", "proName": "OANDA:XAUUSD" },
         { "description": "CRUDE OIL", "proName": "TVC:USOIL" },
@@ -92,94 +62,65 @@
     </script>
   </div>
 
-  <!-- BRAND HEADER -->
   <header class="sticky top-0 z-40 bg-brand-midnight/95 backdrop-blur border-b border-brand-gold/30">
     <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
       <div onclick="switchTab('tab-about')" class="cursor-pointer flex items-center space-x-3 group">
         <div class="h-11 w-11 sm:h-12 sm:w-12 rounded-xl overflow-hidden border border-brand-gold/60 bg-brand-midnight p-0.5 shadow-md shadow-brand-gold/20 flex items-center justify-center">
-          <img src="logo.png" alt="711 Overseas" class="h-full w-full object-contain" onerror="this.style.display='none'; document.getElementById('header-fallback-icon').classList.remove('hidden');">
-          <div id="header-fallback-icon" class="hidden text-brand-gold text-xl font-bold"><i class="fa-solid fa-earth-americas"></i></div>
+          <img src="logo.png" alt="711 Overseas" class="h-full w-full object-contain" onerror="this.style.display='none'">
         </div>
         <div>
           <div class="flex items-center space-x-2">
             <h1 class="font-display font-black tracking-widest text-lg md:text-xl gold-gradient-text leading-tight group-hover:brightness-110 transition">711 OVERSEAS</h1>
-            <span class="hidden md:inline-block text-[9px] font-mono px-1.5 py-0.5 rounded bg-brand-surface text-brand-gold border border-brand-gold/30">GSTIN: 03AFAFS5209N1ZY</span>
           </div>
           <p class="text-[9px] uppercase tracking-widest text-brand-goldLight font-medium">Build Your Wealth</p>
         </div>
       </div>
       <div class="flex items-center space-x-2">
-        <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs shadow hover:brightness-110 transition flex items-center space-x-1">
-          <i class="fa-solid fa-crown"></i><span>VIP (₹1,999)</span>
+        <button onclick="openUniversalPayment('VIP Advisory Subscription', 1999)" class="bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs shadow transition">
+          <i class="fa-solid fa-crown"></i> <span>VIP (₹1,999)</span>
         </button>
-        <button id="header-user-btn" onclick="switchTab('tab-auth')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs transition shadow flex items-center space-x-1">
-          <i class="fa-solid fa-user-shield"></i><span id="header-user-label">Portal Login</span>
+        <button id="header-user-btn" onclick="switchTab('tab-auth')" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs transition shadow">
+          <i class="fa-solid fa-user-shield"></i> <span id="header-user-label">Login</span>
         </button>
       </div>
     </div>
-    <!-- NAVIGATION BAR -->
     <nav class="bg-brand-navy border-t border-brand-gold/20 overflow-x-auto no-scrollbar">
       <div class="max-w-7xl mx-auto flex items-center whitespace-nowrap text-xs font-medium px-2 py-1 space-x-1">
-        <button onclick="switchTab('tab-about')" class="tab-btn active px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-about">
-          <i class="fa-solid fa-user-tie text-brand-gold"></i><span>About & Founder</span>
-        </button>
-        <button onclick="switchTab('tab-pricing')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-pricing">
-          <i class="fa-solid fa-tags text-brand-gold"></i><span>Advisory & Retainers</span>
-        </button>
-        <button onclick="switchTab('tab-stocks')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-stocks">
-          <i class="fa-solid fa-chart-line text-brand-gold"></i><span>Capital Markets</span>
-        </button>
-        <button onclick="switchTab('tab-realestate')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-realestate">
-          <i class="fa-solid fa-building text-amber-400"></i><span>Real Estate Desk</span>
-        </button>
-        <button onclick="switchTab('tab-careers')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-careers">
-          <i class="fa-solid fa-briefcase text-blue-400"></i><span>CS Careers & Hiring</span>
-        </button>
-        <button onclick="switchTab('tab-downloads')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-downloads">
-          <i class="fa-solid fa-file-invoice-dollar text-emerald-400"></i><span>Tax Invoices & Vault</span>
-        </button>
-        <button onclick="switchTab('tab-intel')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-intel">
-          <i class="fa-solid fa-satellite-dish text-brand-gold"></i><span>VIP Feed & Publisher</span>
-        </button>
+        <button onclick="switchTab('tab-about')" class="tab-btn active px-3.5 py-2 rounded-t transition" data-target="tab-about"><i class="fa-solid fa-user-tie text-brand-gold"></i> About</button>
+        <button onclick="switchTab('tab-pricing')" class="tab-btn px-3.5 py-2 rounded-t transition" data-target="tab-pricing"><i class="fa-solid fa-tags text-brand-gold"></i> Advisory & Retainers</button>
+        <button onclick="switchTab('tab-stocks')" class="tab-btn px-3.5 py-2 rounded-t transition" data-target="tab-stocks"><i class="fa-solid fa-chart-line text-brand-gold"></i> Capital Markets</button>
+        <button onclick="switchTab('tab-realestate')" class="tab-btn px-3.5 py-2 rounded-t transition" data-target="tab-realestate"><i class="fa-solid fa-building text-amber-400"></i> Real Estate</button>
+        <button onclick="switchTab('tab-careers')" class="tab-btn px-3.5 py-2 rounded-t transition" data-target="tab-careers"><i class="fa-solid fa-briefcase text-blue-400"></i> CS Careers</button>
+        <button onclick="switchTab('tab-downloads')" class="tab-btn px-3.5 py-2 rounded-t transition" data-target="tab-downloads"><i class="fa-solid fa-file-invoice-dollar text-emerald-400"></i> Invoices & Vault</button>
+        <button onclick="switchTab('tab-intel')" class="tab-btn px-3.5 py-2 rounded-t transition" data-target="tab-intel"><i class="fa-solid fa-satellite-dish text-brand-gold"></i> VIP Feed</button>
       </div>
     </nav>
   </header>
 
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
 
-    <!-- TAB 1: ABOUT US & FOUNDER -->
+    <!-- ABOUT -->
     <section id="tab-about" class="tab-page active">
       <div class="max-w-5xl mx-auto space-y-8">
-        <div class="max-w-2xl mx-auto text-center">
-          <div class="rounded-2xl overflow-hidden border-2 border-brand-gold/60 shadow-2xl shadow-brand-gold/20 bg-brand-midnight p-3 md:p-4 mb-4">
-            <img src="logo.png" alt="711 OVERSEAS" class="w-full max-h-56 object-contain mx-auto" onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80'">
-          </div>
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Seven Eleven Overseas Management Consultants</span>
-          <p class="text-xs md:text-sm text-slate-400 max-w-xl mx-auto mt-1">Where institutional corporate governance, capital markets acumen, real estate development, and predictive data analytics converge.</p>
-        </div>
-
         <div class="bg-gradient-to-b from-brand-navy to-brand-midnight rounded-2xl p-6 md:p-8 gold-border-glow">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div class="lg:col-span-5 flex flex-col items-center text-center">
-              <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-2 border-brand-gold shadow-2xl shadow-brand-gold/20 bg-brand-midnight flex items-center justify-center group">
+              <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden border-2 border-brand-gold shadow-2xl bg-brand-midnight flex items-center justify-center group">
                 <img id="founder-portrait-img" src="profile.png" alt="Rahul Sharma" class="w-full h-full object-cover object-top" onerror="handleFounderImgError(this)">
                 <div id="admin-photo-upload-btn" class="hidden absolute top-2 right-2 bg-brand-midnight/90 border border-brand-gold p-2 rounded-full cursor-pointer hover:bg-brand-surface text-brand-gold text-xs shadow">
-                  <label for="founder-local-photo" class="cursor-pointer" title="Update Profile Photo from Phone"><i class="fa-solid fa-camera"></i></label>
+                  <label for="founder-local-photo" class="cursor-pointer"><i class="fa-solid fa-camera"></i></label>
                   <input type="file" id="founder-local-photo" class="hidden" accept="image/*" onchange="syncFounderPhotoLocally(event)">
                 </div>
                 <div class="absolute bottom-3 left-3 right-3 text-center">
-                  <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-brand-gold text-brand-midnight uppercase tracking-wider shadow">Principal Advisor & Founder</span>
+                  <span class="inline-block px-3 py-1 rounded-full text-[10px] font-bold bg-brand-gold text-brand-midnight uppercase shadow">Principal Advisor & Founder</span>
                 </div>
               </div>
-              <div class="mt-4 flex items-center justify-center space-x-2.5">
-                <h4 class="text-xl font-display font-bold text-slate-100">Rahul Sharma</h4>
-              </div>
-              <p class="text-xs text-brand-gold font-medium mt-0.5">Company Secretary · Real Estate Developer · Market Practitioner</p>
+              <div class="mt-4"><h4 class="text-xl font-display font-bold text-slate-100">Rahul Sharma</h4><p class="text-xs text-brand-gold mt-0.5">Company Secretary · Real Estate Developer</p></div>
             </div>
-            <div class="lg:col-span-7 space-y-3 text-xs md:text-sm text-slate-300 leading-relaxed">
-              <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Executive Leadership</span>
+            <div class="lg:col-span-7 space-y-3 text-xs md:text-sm text-slate-300">
+              <span class="text-[10px] uppercase font-bold text-brand-gold">Executive Leadership</span>
               <h3 class="text-xl font-display font-bold text-slate-100">Multi-Disciplinary Synergy</h3>
-              <p><strong>711 OVERSEAS</strong> solves the core friction points that growing companies face: statutory compliance vulnerability, capital allocation inefficiencies, and dispute exposure.</p>
+              <p><strong>711 OVERSEAS</strong> is an integrated corporate advisory and wealth architecture house solving core friction points: statutory compliance vulnerability, capital allocation inefficiencies, and dispute exposure.</p>
               <div class="grid grid-cols-2 gap-2 pt-2 text-xs">
                 <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><strong class="text-brand-gold block">CS Desk:</strong> MCA, ROC & Tribunals.</div>
                 <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><strong class="text-emerald-400 block">Capital Desk:</strong> 1.5% Max Risk Models.</div>
@@ -192,569 +133,283 @@
       </div>
     </section>
 
-    <!-- TAB 2: ADVISORY, FEE SCHEDULES & PACKAGES -->
+    <!-- ADVISORY & FEE SCHEDULE -->
     <section id="tab-pricing" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         <div class="text-center space-y-2">
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Statutory & Commercial Fee Schedule</span>
           <h2 class="text-3xl font-display font-extrabold text-slate-100">Transparent Professional Retainers</h2>
+          <p class="text-xs text-slate-400">18% GST tax invoices issued under <strong>GSTIN: 03AFAFS5209N1ZY</strong> for full Input Tax Credit eligibility.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow flex flex-col justify-between">
             <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-brand-surface text-brand-gold">VIP Capital Pass</span>
-                <span class="text-xs text-slate-400 font-mono">Monthly Billed</span>
-              </div>
-              <h3 class="font-display font-bold text-xl text-slate-100">Market & Regulatory Advisory</h3>
-              <div class="my-3">
-                <div class="text-3xl font-bold font-display text-brand-gold">₹ 1,999 <span class="text-xs text-slate-400 font-normal">/ month</span></div>
-              </div>
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-brand-surface text-brand-gold">VIP Capital Pass</span>
+              <h3 class="font-display font-bold text-xl text-slate-100 mt-2">Market & Regulatory Advisory</h3>
+              <div class="my-3"><div class="text-3xl font-bold font-display text-brand-gold">₹ 1,999 <span class="text-xs text-slate-400 font-normal">/ month</span></div></div>
+              <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Daily High-Probability Stock Breakout Setups.</li>
+                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Gated VIP Analytics Feed Access.</li>
+              </ul>
             </div>
             <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded-lg text-xs shadow">Subscribe Monthly (₹1,999)</button>
           </div>
-          <div class="bg-gradient-to-b from-brand-navy to-brand-midnight p-6 rounded-2xl border-2 border-brand-gold flex flex-col justify-between relative shadow-xl">
+          <div class="bg-gradient-to-b from-brand-navy to-brand-midnight p-6 rounded-2xl border-2 border-brand-gold shadow-xl">
             <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Annual Executive Pass</span>
-                <span class="text-xs text-emerald-400 font-mono font-bold">12 Months Unlocked</span>
-              </div>
-              <h3 class="font-display font-bold text-xl text-slate-100">Complete Institutional Access</h3>
-              <div class="my-3">
-                <div class="text-3xl font-bold font-display text-emerald-400">₹ 23,000 <span class="text-xs text-slate-400 font-normal">/ year</span></div>
-              </div>
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Annual Executive Pass</span>
+              <h3 class="font-display font-bold text-xl text-slate-100 mt-2">Complete Institutional Access</h3>
+              <div class="my-3"><div class="text-3xl font-bold font-display text-emerald-400">₹ 23,000 <span class="text-xs text-slate-400 font-normal">/ year</span></div></div>
             </div>
-            <button onclick="openUniversalPayment('VIP Advisory Subscription (Yearly)', 23000)" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs shadow">Enroll Annual Pass (₹23,000)</button>
+            <button onclick="openUniversalPayment('VIP Advisory Subscription (Yearly)', 23000)" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs shadow mt-6">Enroll Annual Pass (₹23,000)</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 3: CAPITAL MARKETS -->
-    <section id="tab-stocks" class="tab-page">
-      <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
-        <div>
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Quantitative Research & Structural Analysis</span>
-          <h2 class="text-2xl font-display font-extrabold text-slate-100">Live Global Scrip & Technical Setup Desk</h2>
-        </div>
-      </div>
-      <div class="bg-brand-navy p-5 rounded-2xl gold-border-glow mb-6">
-        <div class="flex flex-col sm:flex-row gap-3">
-          <div class="relative flex-1">
-            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-xs"></i>
-            <input type="text" id="scrip-query" placeholder="Enter Ticker (e.g. RELIANCE, NVDA)..." class="w-full bg-brand-surface border border-slate-700 rounded-lg pl-9 pr-3 py-2.5 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
-          </div>
-          <button onclick="executeLiveScripSearch()" class="bg-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs shadow">Analyze</button>
-        </div>
-      </div>
-      <div id="tv-chart-wrapper" class="bg-brand-navy rounded-2xl p-4 border border-slate-800 mb-6 hidden">
-        <div id="tv-chart-container" class="h-96 w-full rounded-lg overflow-hidden"></div>
-      </div>
-    </section>
-
-    <!-- TAB 4: REAL ESTATE DESK (WITH STRICT FILE UPLOAD AUTH) -->
+    <!-- REAL ESTATE DESK (SS- GATED) -->
     <section id="tab-realestate" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
+        <div class="flex justify-between items-center border-b border-brand-gold/20 pb-4">
           <div>
-            <span class="text-[10px] uppercase font-bold tracking-widest text-amber-400">Urban Assets, Land Structuring & JDAs</span>
             <h2 class="text-2xl font-display font-extrabold text-slate-100">Real Estate & Development Desk</h2>
-            <p class="text-xs text-slate-400">Listings strictly require secure legal document verification prior to portal staging.</p>
+            <p class="text-xs text-slate-400">Institutional listings, joint development agreements (JDAs), and commercial property acquisitions.</p>
           </div>
-          <button onclick="openRealEstateListingModal()" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1.5 shadow">
-            <i class="fa-solid fa-file-signature"></i>
-            <span>Submit Property for Listing</span>
+          <button onclick="requireReAuth(()=>dispatchInquiry('Submitting New Property Listing/JDA'))" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1.5 shadow">
+            <i class="fa-solid fa-plus"></i><span class="hidden md:inline">Submit Property</span>
           </button>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="re-listings-grid">
-          <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 p-4 space-y-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 p-4">
             <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Commercial SCO</span>
-            <h4 class="font-display font-bold text-slate-100 text-sm">Airport Road Commercial SCO Site</h4>
-            <p class="text-[11px] text-slate-400">Amritsar. Corporate headquarters, luxury retail, or hospitality buildout.</p>
+            <h4 class="font-display font-bold text-slate-100 text-sm mt-2">Airport Road Commercial SCO Site</h4>
+            <p class="text-[11px] text-slate-400 my-2">Amritsar. Corporate headquarters, luxury retail, or hospitality buildout.</p>
             <div class="flex justify-between items-center text-xs pt-2 border-t border-slate-800">
               <span class="text-brand-gold font-bold">₹ 4.50 Cr</span>
               <button onclick="requireReAuth(()=>dispatchInquiry('Commercial SCO Site Airport Road Amritsar'))" class="text-xs text-amber-400 hover:underline">Inquire Desk →</button>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 5: CS CAREERS & HIRING DESK -->
-    <section id="tab-careers" class="tab-page">
-      <div class="max-w-6xl mx-auto space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
-          <div>
-            <span class="text-[10px] uppercase font-bold tracking-widest text-blue-400">Corporate Governance Talent Network</span>
-            <h2 class="text-2xl font-display font-extrabold text-slate-100">Company Secretary (CS) Careers & Hiring</h2>
-          </div>
-          <div class="flex gap-2">
-            <button onclick="openJobSeekerModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1 shadow">
-              <i class="fa-solid fa-file-arrow-up"></i><span>Submit CS Resume</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="careers-job-grid">
-          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-3">
-            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">Qualified CS</span>
-            <h4 class="font-display font-bold text-slate-100 text-sm">Qualified Company Secretary (ACS)</h4>
-            <p class="text-xs text-slate-400">ACS with 1-3 years experience in MCA portal filings, NCLT representation.</p>
-            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
-              <span class="font-bold text-brand-gold">₹ 6.0 - 9.0 LPA</span>
-              <button onclick="applyJob('Qualified Company Secretary (ACS)')" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Apply</button>
+          <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 p-4">
+            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300">JDA Proposal</span>
+            <h4 class="font-display font-bold text-slate-100 text-sm mt-2">Residential Township Development</h4>
+            <p class="text-[11px] text-slate-400 my-2">Urban periphery Amritsar. Seeking established builders for 60:40 revenue sharing JDA.</p>
+            <div class="flex justify-between items-center text-xs pt-2 border-t border-slate-800">
+              <span class="text-brand-gold font-bold">Development JDA</span>
+              <button onclick="requireReAuth(()=>dispatchInquiry('Township JDA Proposal'))" class="text-xs text-blue-400 hover:underline">Inquire Desk →</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 6: TAX INVOICES & VAULT -->
+    <!-- CS CAREERS DESK (ICSI GATED) -->
+    <section id="tab-careers" class="tab-page">
+      <div class="max-w-6xl mx-auto space-y-6">
+        <div class="flex justify-between items-center border-b border-brand-gold/20 pb-4">
+          <div>
+            <h2 class="text-2xl font-display font-extrabold text-slate-100">CS Careers & Hiring</h2>
+            <p class="text-xs text-slate-400">Recruitment channel for Company Secretaries, legal trainees, and compliance executives.</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="requireCsAuth(()=>dispatchInquiry('Submitting CS / Legal Resume'))" class="bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs shadow"><i class="fa-solid fa-file-arrow-up"></i> <span class="hidden md:inline">Submit Resume</span></button>
+            <button onclick="requireCsAuth(()=>dispatchInquiry('Posting Corporate Vacancy Requirement'))" class="bg-brand-surface text-brand-goldLight font-bold px-4 py-2 rounded-lg text-xs shadow"><i class="fa-solid fa-briefcase"></i> <span class="hidden md:inline">Post Vacancy</span></button>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-3">
+            <div class="flex justify-between"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">Qualified CS</span></div>
+            <h4 class="font-display font-bold text-slate-100 text-sm">Qualified Company Secretary (ACS)</h4>
+            <p class="text-xs text-slate-400">ACS with 1-3 years experience in MCA portal filings, NCLT representation.</p>
+            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
+              <span class="font-bold text-brand-gold">₹ 6.0 - 9.0 LPA</span>
+              <button onclick="requireCsAuth(()=>applyJob('Qualified Company Secretary (ACS)'))" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Apply</button>
+            </div>
+          </div>
+          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-3">
+            <div class="flex justify-between"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-800">CS Trainee</span></div>
+            <h4 class="font-display font-bold text-slate-100 text-sm">CS Executive / Final Trainee (15/21 Mo)</h4>
+            <p class="text-xs text-slate-400">Practical secretarial training covering SPICe+ incorporations and ROC filings.</p>
+            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
+              <span class="font-bold text-emerald-400">ICSI Stipend</span>
+              <button onclick="requireCsAuth(()=>applyJob('CS Executive / Final Trainee'))" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVOICES & VAULT -->
     <section id="tab-downloads" class="tab-page">
       <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center space-y-1">
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Tax Invoices, Certificates & Material Vault</h2>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow space-y-4">
             <h3 class="font-display font-bold text-lg text-slate-100">Tax Invoice Generator</h3>
             <div class="space-y-2 text-xs">
               <input type="text" id="inv-gen-name" placeholder="Client / Company Name" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
-              <input type="text" id="inv-gen-service" placeholder="Service" value="VIP Advisory Subscription (Monthly)" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <input type="text" id="inv-gen-service" placeholder="Service" value="VIP Advisory Subscription" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
               <input type="text" id="inv-gen-utr" placeholder="12-digit UPI UTR" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none font-mono">
             </div>
-            <button onclick="previewTaxInvoice()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Generate & Print A4 Tax Invoice</button>
+            <button onclick="previewTaxInvoice()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Generate A4 Tax Invoice</button>
+          </div>
+          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+            <h3 class="font-display font-bold text-lg text-slate-100">Direct Material Vault</h3>
+            <p class="text-xs text-slate-400">Dispatch assessment notices or title deeds.</p>
+            <input type="file" class="w-full text-xs text-brand-goldLight border border-slate-700 p-2 rounded bg-brand-surface cursor-pointer">
+            <button onclick="window.open('https://wa.me/919914984371?text=Submitting%20Confidential%20Vault%20Material', '_blank')" class="w-full bg-brand-surface border border-brand-gold/40 text-brand-goldLight font-bold py-2.5 rounded text-xs shadow">Submit to Advisory Desk</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 7: VIP INTEL FEED & ADMIN PUBLISHER -->
+    <!-- VIP INTEL FEED & ADMIN PUBLISHER (FIXED PUBLISHER) -->
     <section id="tab-intel" class="tab-page">
       <div class="max-w-4xl mx-auto space-y-6">
-        <div id="intel-tier-pill" class="inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 items-center space-x-1.5">
-          <i class="fa-solid fa-lock"></i><span>Paid Subscription Required</span>
+        <div class="flex justify-between border-b border-brand-gold/20 pb-4">
+          <h2 class="text-2xl font-display font-extrabold text-slate-100">Executive Advisory Broadcasts</h2>
+          <div id="intel-tier-pill" class="px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center"><i class="fa-solid fa-lock mr-1.5"></i>Paid Subscription Required</div>
         </div>
+
         <div id="intel-feed-container" class="space-y-4"></div>
 
         <div class="pt-8 border-t border-slate-800">
           <div id="pub-pin-box" class="bg-brand-navy p-6 rounded-2xl gold-border-glow text-center">
             <h3 class="font-display font-bold text-slate-100 text-sm mb-4">Admin Security Authorization</h3>
-            <input type="password" id="admin-master-pin" placeholder="Enter PIN (7110)" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono text-slate-100 outline-none focus:border-brand-gold mb-4">
-            <button onclick="verifyPublisherPin()" class="bg-brand-gold text-brand-midnight font-bold px-6 py-2 rounded-lg text-xs shadow">Unlock Console</button>
+            <input type="password" id="admin-master-pin" placeholder="Enter PIN (7110)" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono outline-none focus:border-brand-gold mb-4">
+            <button onclick="verifyPublisherPin()" class="bg-brand-gold text-brand-midnight font-bold px-6 py-2 rounded-lg text-xs shadow">Unlock Publisher Console</button>
           </div>
+          
           <div id="pub-form-box" class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow hidden space-y-4">
-            <input type="text" id="post-scrip-ticker" placeholder="Ticker Symbol (e.g. RELIANCE, HDFCBANK)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
+            <h3 class="font-display font-bold text-brand-gold text-sm uppercase">Publish Live Feed Update</h3>
+            <input type="text" id="post-scrip-ticker" placeholder="Ticker Symbol (Optional)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
             <input type="text" id="post-headline" placeholder="Headline / Advisory Title" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-            <textarea id="post-body" rows="4" placeholder="Detailed Strategy or Setup..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold"></textarea>
-            <button onclick="commitPostAndBroadcast()" class="w-full bg-green-600 text-white font-bold py-2.5 rounded-lg text-xs shadow"><i class="fa-brands fa-whatsapp"></i> Publish to Feed & Broadcast</button>
+            <textarea id="post-body" rows="4" placeholder="Detailed Strategy, Setup, or Analysis..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold"></textarea>
+            <button onclick="commitPostAndBroadcast()" class="w-full bg-green-600 text-white font-bold py-2.5 rounded-lg text-xs shadow"><i class="fa-brands fa-whatsapp mr-1"></i> Publish to Feed & Broadcast to WhatsApp</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- AUTHENTICATION TAB (DYNAMIC KYC ENGINE) -->
+    <!-- CONTACT -->
+    <section id="tab-contact" class="tab-page">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4 text-xs text-slate-300">
+          <h2 class="text-xl font-display font-extrabold text-slate-100">Contact Advisory Desk</h2>
+          <div><i class="fa-brands fa-whatsapp text-green-400 mr-2"></i> <a href="https://wa.me/919914984371" class="text-green-400 font-bold">+91 99149 84371</a></div>
+          <div class="p-2.5 rounded bg-brand-surface border border-brand-gold/40">Statutory GSTIN: <strong class="text-slate-100 font-mono">03AFAFS5209N1ZY</strong> (Punjab - 03)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTHENTICATION -->
     <section id="tab-auth" class="tab-page">
-      <div class="max-w-lg mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
-        
-        <div class="flex border-b border-slate-800 mb-6">
-          <button id="auth-tab-login" onclick="toggleAuthFormMode('login')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight">Login</button>
-          <button id="auth-tab-signup" onclick="toggleAuthFormMode('signup')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200">Secure Sign-Up</button>
+      <div class="max-w-md mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
+        <div id="form-login" class="space-y-4">
+          <input type="text" id="login-input-id" placeholder="User ID (Master: 711-C-9396)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs outline-none focus:border-brand-gold">
+          <input type="password" id="login-input-pass" placeholder="Password (Master PIN: 7110)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs outline-none focus:border-brand-gold">
+          <button onclick="handleUserLogin()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded-lg text-xs shadow">Sign In</button>
         </div>
-
-        <!-- Standard Login -->
-        <div id="form-login-box" class="space-y-4">
-          <input type="text" id="login-input-id" placeholder="User ID / Member ID" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-          <input type="password" id="login-input-pass" placeholder="Password" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
-          <button onclick="handleUserLogin()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow">Sign In</button>
-        </div>
-
-        <!-- Strict KYC Sign Up Desk -->
-        <div id="form-signup-box" class="space-y-4 hidden">
-          <p class="text-[10px] text-slate-400 mb-2">All uploaded documents are encrypted and securely stored in the local vault for administrative verification only. They will never be published or shared.</p>
-          
-          <select id="kyc-account-type" onchange="renderKycFields()" class="w-full bg-brand-surface border border-brand-gold/50 rounded-lg p-2.5 text-xs text-brand-goldLight outline-none font-bold uppercase">
-            <option value="INDIVIDUAL">Individual Client Registration</option>
-            <option value="CORPORATE">Corporate Entity Registration</option>
-            <option value="CS_PROFESSIONAL">CS / Legal Professional</option>
-            <option value="REAL_ESTATE">Real Estate / Channel Partner</option>
-          </select>
-
-          <div class="grid grid-cols-2 gap-3">
-            <input type="text" id="kyc-name" placeholder="Full Legal Name" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none">
-            <input type="tel" id="kyc-phone" placeholder="Mobile / WhatsApp" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none">
-          </div>
-          <input type="email" id="kyc-email" placeholder="Verified Email Address" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none">
-
-          <!-- Dynamic Fields Container -->
-          <div id="kyc-dynamic-fields" class="space-y-3 pt-2 border-t border-slate-800">
-            <!-- Rendered by JS -->
-          </div>
-
-          <button onclick="submitStrictKycRegistration()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs transition shadow mt-2">
-            Submit Registration & Documents
-          </button>
-        </div>
-
-        <!-- Logged In View -->
         <div id="auth-logged-view" class="hidden text-center py-4">
           <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">User</h3>
           <p class="text-xs text-brand-gold font-mono" id="profile-id">ID: 711-C-9396</p>
-          <div class="mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 inline-block text-slate-400" id="profile-status">Status: ACTIVE</div>
           <button onclick="handleUserLogout()" class="mt-4 w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">Log Out</button>
         </div>
-
       </div>
     </section>
-
   </main>
 
-  <!-- SECTOR AUTH MODAL: REAL ESTATE (SS- ID REQUIRED) -->
+  <!-- RE AUTH MODAL (SS-) -->
   <div id="re-auth-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-brand-navy border border-amber-500/50 rounded-2xl max-w-sm w-full p-6 relative">
       <button onclick="closeReAuth()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="font-display font-bold text-lg text-slate-100 mb-1 text-center"><i class="fa-solid fa-building text-amber-500 mr-2"></i>Real Estate Desk Access</h3>
-      <p class="text-[11px] text-slate-400 text-center mb-4 leading-tight">Authorized Partners Only.<br>ID must begin with "SS-" (e.g. SS-1024).</p>
-      <input type="text" id="re-auth-id" placeholder="Partner ID (SS-XXXX)" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 uppercase outline-none focus:border-amber-500 mb-3 font-mono">
-      <input type="password" id="re-auth-pass" placeholder="Secure Password" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 outline-none focus:border-amber-500 mb-4">
+      <h3 class="font-display font-bold text-lg text-slate-100 mb-1 text-center"><i class="fa-solid fa-building text-amber-500 mr-2"></i>Real Estate Access</h3>
+      <p class="text-[11px] text-slate-400 text-center mb-4">Authorized Partners Only. ID must begin with "SS-".</p>
+      <input type="text" id="re-auth-id" placeholder="Partner ID (SS-XXXX)" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 uppercase outline-none mb-3 font-mono">
+      <input type="password" id="re-auth-pass" placeholder="Password" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 outline-none mb-4">
       <button onclick="verifyReAuth()" class="w-full bg-amber-600 text-white font-bold py-2.5 rounded text-xs shadow">Login to Real Estate Desk</button>
     </div>
   </div>
 
-  <!-- REAL ESTATE DOCUMENT UPLOAD LISTING MODAL -->
-  <div id="re-listing-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-brand-navy border border-amber-500/50 rounded-2xl max-w-md w-full p-6 relative">
-      <button onclick="closeRealEstateListingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="font-display font-bold text-lg text-slate-100 mb-1"><i class="fa-solid fa-file-signature text-amber-500 mr-2"></i>Submit Property Listing</h3>
-      <p class="text-[10px] text-slate-400 mb-4 leading-tight">All real estate staging requires the upload of legal title documents or JDA frameworks to the secure verification vault before public listing.</p>
-      
-      <div class="space-y-3 text-xs">
-        <input type="text" id="re-list-title" placeholder="Property Title (e.g. 500 Sq Yd SCO)" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
-        <input type="text" id="re-list-loc" placeholder="Location / City" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
-        <input type="text" id="re-list-price" placeholder="Asking Price / JDA Ratio" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
-        
-        <div class="p-3 bg-brand-midnight border border-amber-500/30 rounded-lg">
-          <label class="block text-amber-400 font-bold mb-1 uppercase text-[10px]">Upload Legal Title Document / Registry (Required)</label>
-          <input type="file" id="re-list-doc" class="w-full text-[10px] text-slate-400 file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-amber-500/20 file:text-amber-300 hover:file:bg-amber-500/30">
-        </div>
-      </div>
-      
-      <button onclick="submitRealEstateListing()" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2.5 rounded text-xs shadow mt-4">Securely Submit to Valuation Desk</button>
-    </div>
-  </div>
-
-  <!-- SECTOR AUTH MODAL: CS CAREERS (ICSI REG REQUIRED) -->
+  <!-- CS AUTH MODAL (ICSI) -->
   <div id="cs-auth-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-brand-navy border border-blue-500/50 rounded-2xl max-w-sm w-full p-6 relative">
       <button onclick="closeCsAuth()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       <h3 class="font-display font-bold text-lg text-slate-100 mb-1 text-center"><i class="fa-solid fa-briefcase text-blue-500 mr-2"></i>CS Careers Network</h3>
-      <p class="text-[11px] text-slate-400 text-center mb-4 leading-tight">Enter your ICSI Membership (A/F) or Student Registration Number.</p>
-      <input type="text" id="cs-auth-id" placeholder="Reg / Memb No. (e.g. A65432)" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 uppercase outline-none focus:border-blue-500 mb-3 font-mono">
-      <input type="password" id="cs-auth-pass" placeholder="Secure Password" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 outline-none focus:border-blue-500 mb-4">
+      <p class="text-[11px] text-slate-400 text-center mb-4">Enter ICSI Membership (A/F) or Registration No.</p>
+      <input type="text" id="cs-auth-id" placeholder="Reg / Memb No. (e.g. A65432)" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 uppercase outline-none mb-3 font-mono">
+      <input type="password" id="cs-auth-pass" placeholder="Password" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 outline-none mb-4">
       <button onclick="verifyCsAuth()" class="w-full bg-blue-600 text-white font-bold py-2.5 rounded text-xs shadow">Access Careers Desk</button>
     </div>
   </div>
 
-  <!-- PRINTABLE INVOICE MODAL -->
-  <div id="print-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white text-slate-900 rounded-2xl max-w-2xl w-full p-8 relative max-h-[95vh] overflow-y-auto shadow-2xl" id="printable-area">
-      <!-- Standard Invoice Format ... -->
-      <div class="flex justify-between items-start border-b pb-4 mb-4">
-        <div>
-          <h2 class="text-lg font-bold font-display text-slate-900 leading-tight">SEVEN ELEVEN OVERSEAS MANAGEMENT CONSULTANTS</h2>
-          <p class="text-xs text-slate-600">Corporate Advisory, Tax Structuring & Legal Governance · Amritsar, Punjab</p>
-          <p class="text-xs font-mono font-semibold text-slate-800 mt-1">GSTIN: 03AFAFS5209N1ZY · State Code: 03 (Punjab)</p>
-        </div>
-        <div class="text-right">
-          <span class="text-xs font-bold uppercase bg-slate-100 px-2 py-1 rounded" id="print-doc-type">TAX INVOICE</span>
-          <div class="text-xs font-mono mt-1" id="print-doc-no">INV-711-2026-001</div>
-        </div>
-      </div>
-      <div id="print-dynamic-body" class="space-y-4 text-xs"></div>
-      <div class="no-print mt-6 flex justify-end gap-3 pt-4 border-t">
-        <button onclick="window.print()" class="bg-emerald-600 text-white font-bold px-6 py-2 rounded text-xs">Print / Save as PDF</button>
-        <button onclick="closePrintModal()" class="bg-slate-200 text-slate-800 font-bold px-4 py-2 rounded text-xs">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- UNIVERSAL PAYMENT MODAL -->
+  <!-- UNIVERSAL PAYMENT MODAL (WITH PENDING UTR CHECKS) -->
   <div id="payment-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-6 relative max-h-[92vh] overflow-y-auto">
       <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-
       <div class="text-center mb-3">
         <h3 class="font-display font-bold text-lg text-slate-100" id="checkout-service-name">Service Name</h3>
-        <div class="text-2xl font-bold font-display text-brand-gold my-1" id="calc-net">₹ 1,999</div>
-        <div class="text-[10px] text-brand-goldLight font-mono">Tax Invoice Issued by 711 Overseas (GSTIN: 03AFAFS5209N1ZY)</div>
+        <div class="text-2xl font-bold font-display text-brand-gold my-1">₹ 1,999</div>
       </div>
-
-      <div class="bg-brand-midnight p-3 rounded-xl border border-brand-gold/40 mb-4 space-y-2">
-        <div class="flex justify-between items-center text-xs">
-          <span class="font-bold text-brand-goldLight">Apply Referral / Partner Code (8% Off):</span>
-        </div>
-        <div class="flex gap-2">
-          <input type="text" id="promo-code-input" placeholder="Enter Code (e.g. REF8)" class="flex-1 bg-brand-surface border border-slate-700 rounded p-1.5 text-xs text-slate-100 outline-none uppercase font-mono">
-          <button onclick="applyPromoCode()" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded text-xs">Apply</button>
-        </div>
-      </div>
-
       <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 text-center space-y-3 mb-4">
         <div class="w-44 mx-auto rounded-xl overflow-hidden bg-white p-2 flex items-center justify-center shadow-lg">
-          <img id="dynamic-upi-qr" src="" alt="Kotak 811 UPI QR" class="w-full h-auto object-contain">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=7837427391@kotakbank&pn=RAHUL%20SHARMA&am=1999&cu=INR" alt="Kotak 811 UPI QR" class="w-full h-auto object-contain">
         </div>
-        <div class="text-xs text-slate-300">
-          <div>Beneficiary: <strong>RAHUL SHARMA</strong></div>
-          <div class="font-mono text-brand-gold">7837427391@kotakbank</div>
+        <div class="text-xs text-slate-300">Beneficiary: <strong>RAHUL SHARMA</strong><br><span class="font-mono text-brand-gold">7837427391@kotakbank</span></div>
+      </div>
+
+      <div id="utr-submit-box" class="space-y-2 text-xs">
+        <label class="block text-slate-300 font-bold">Step 1: Enter 12-Digit Bank UTR / Reference</label>
+        <input type="text" id="pay-utr-input" placeholder="e.g. 4239XXXXXXXX" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-slate-100 outline-none font-mono">
+        <button onclick="submitUtrForVerification()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Submit UTR for Verification</button>
+      </div>
+
+      <div id="utr-pending-box" class="hidden space-y-3 pt-2 text-xs text-center border-t border-slate-800">
+        <div class="p-3 bg-amber-500/10 border border-amber-500/40 rounded-lg text-amber-300 font-bold">
+          <i class="fa-solid fa-clock mb-1"></i> UTR Submitted. Send Screenshot to WhatsApp to get VIP Key.
+        </div>
+        <button onclick="window.open('https://wa.me/919914984371?text=Here%20is%20my%20payment%20screenshot%20for%20VIP%20Access.', '_blank')" class="w-full bg-green-600 text-white font-bold py-2.5 rounded text-xs shadow"><i class="fa-brands fa-whatsapp"></i> Send Screenshot</button>
+        <div class="pt-2">
+          <label class="block text-slate-300 font-bold mb-1">Step 2: Enter 6-Digit VIP Key Sent by Admin</label>
+          <div class="flex gap-2">
+            <input type="text" id="modal-vip-key" placeholder="6-Digit Key" class="flex-1 bg-brand-surface border border-slate-700 rounded p-2 text-center font-mono font-bold text-brand-gold outline-none">
+            <button onclick="unlockWithModalKey()" class="bg-emerald-600 text-white font-bold px-4 py-2 rounded text-xs">Unlock</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    let activeCheckoutService = "VIP Advisory Subscription (Monthly)";
-    let activeCheckoutBasePrice = 1999;
-    let pendingActionCallback = null;
-
-    // --- KYC / SIGN UP LOGIC WITH DOCUMENT REQUIREMENTS ---
-    function toggleAuthFormMode(mode) {
-      if(mode === 'login') {
-        document.getElementById('form-login-box').classList.remove('hidden');
-        document.getElementById('form-signup-box').classList.add('hidden');
-        document.getElementById('auth-tab-login').classList.replace('border-transparent', 'border-brand-gold');
-        document.getElementById('auth-tab-login').classList.replace('text-slate-400', 'text-brand-goldLight');
-        document.getElementById('auth-tab-signup').classList.replace('border-brand-gold', 'border-transparent');
-        document.getElementById('auth-tab-signup').classList.replace('text-brand-goldLight', 'text-slate-400');
-      } else {
-        document.getElementById('form-login-box').classList.add('hidden');
-        document.getElementById('form-signup-box').classList.remove('hidden');
-        document.getElementById('auth-tab-signup').classList.replace('border-transparent', 'border-brand-gold');
-        document.getElementById('auth-tab-signup').classList.replace('text-slate-400', 'text-brand-goldLight');
-        document.getElementById('auth-tab-login').classList.replace('border-brand-gold', 'border-transparent');
-        document.getElementById('auth-tab-login').classList.replace('text-brand-goldLight', 'text-slate-400');
-        renderKycFields();
-      }
+    // 1. DYNAMIC FOUNDER PORTRAIT SYNC
+    function handleFounderImgError(img) {
+      const storedAvatar = localStorage.getItem('711_founder_avatar');
+      if (storedAvatar) img.src = storedAvatar;
+      else { img.src = 'logo.png'; img.classList.remove('object-cover'); img.classList.add('object-contain', 'p-4'); }
     }
-
-    function renderKycFields() {
-      const type = document.getElementById('kyc-account-type').value;
-      const container = document.getElementById('kyc-dynamic-fields');
-      let html = '';
-
-      const uploadBtnClass = "w-full text-[10px] text-slate-400 file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-brand-surface file:text-brand-goldLight hover:file:bg-brand-card cursor-pointer border border-slate-700 p-1.5 rounded";
-
-      if(type === 'INDIVIDUAL') {
-        html = `
-          <div><label class="block text-[10px] text-slate-400 mb-1">Valid Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadBtnClass}"></div>
-          <div><label class="block text-[10px] text-slate-400 mb-1">Valid Income Proof (ITR / Salary Slip)</label><input type="file" id="kyc-doc-2" class="${uploadBtnClass}"></div>
-        `;
-      } else if(type === 'CORPORATE') {
-        html = `
-          <div><input type="text" id="kyc-cin" placeholder="Corporate Identification Number (CIN)" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none uppercase font-mono"></div>
-          <div><label class="block text-[10px] text-slate-400 mb-1">Authorized Signatory Govt ID</label><input type="file" id="kyc-doc-1" class="${uploadBtnClass}"></div>
-        `;
-      } else if(type === 'CS_PROFESSIONAL') {
-        html = `
-          <div><label class="block text-[10px] text-slate-400 mb-1">ICSI Identity Card / Registration Proof</label><input type="file" id="kyc-doc-1" class="${uploadBtnClass}"></div>
-        `;
-      } else if(type === 'REAL_ESTATE') {
-        html = `
-          <div><label class="block text-[10px] text-slate-400 mb-1">Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadBtnClass}"></div>
-        `;
-      }
-      container.innerHTML = html;
-    }
-
-    function submitStrictKycRegistration() {
-      const name = document.getElementById('kyc-name').value.trim();
-      const phone = document.getElementById('kyc-phone').value.trim();
-      const email = document.getElementById('kyc-email').value.trim();
-      const type = document.getElementById('kyc-account-type').value;
-
-      if (!name || !phone || !email) return alert('Name, Mobile, and Email are strictly required.');
-
-      const doc1 = document.getElementById('kyc-doc-1');
-      const doc2 = document.getElementById('kyc-doc-2');
-
-      if (doc1 && !doc1.files.length) return alert('You must upload the required verification document to proceed.');
-      if (doc2 && !doc2.files.length) return alert('You must upload the required income proof to proceed.');
-      
-      let generatedId = '';
-      if (type === 'CS_PROFESSIONAL') generatedId = 'A' + Math.floor(10000 + Math.random() * 90000);
-      else if (type === 'REAL_ESTATE') generatedId = 'SS-' + Math.floor(1000 + Math.random() * 9000);
-      else generatedId = '711-R-' + Math.floor(1000 + Math.random() * 9000);
-
-      const user = {
-        id: generatedId,
-        name: name,
-        role: type,
-        status: 'PENDING_VERIFICATION',
-        docsStaged: true
+    function syncFounderPhotoLocally(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        localStorage.setItem('711_founder_avatar', e.target.result);
+        document.getElementById('founder-portrait-img').src = e.target.result;
+        alert('Founder portrait updated successfully on your portal!');
       };
-
-      localStorage.setItem('711_active_user', JSON.stringify(user));
-
-      alert(`Documents securely vaulted. Your pending ID is ${generatedId}. The administration desk will review your KYC documents. You currently have limited reader access until approved.`);
-      updateAuthUI();
+      reader.readAsDataURL(file);
     }
 
-    // --- ADMIN / STANDARD AUTH CONTROLLER ---
+    // 2. MASTER ADMIN & TAB SWITCHER
     function getUserRole() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
       if (!user) return 'READER';
       if (user.id === '711-C-9396' || user.id === '711-ADMIN') return 'ADMIN';
       return user.role || 'READER';
     }
-
-    function handleUserLogin() {
-      const id = document.getElementById('login-input-id').value.trim().toUpperCase();
-      const pass = document.getElementById('login-input-pass').value.trim();
-
-      if (id === '711-C-9396' || pass === '7110') {
-        const adminUser = { id: '711-C-9396', name: 'Rahul Sharma (Master Admin)', role: 'ADMIN', status: 'ACTIVE' };
-        localStorage.setItem('711_active_user', JSON.stringify(adminUser));
-        alert('Welcome Rahul Sharma! Master Admin privileges enabled.');
-        updateAuthUI();
-        return;
-      }
-      
-      // Allow them to log in with previously generated pending ID
-      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (user && user.id === id) {
-        updateAuthUI();
-      } else {
-        // Fallback temporary reader
-        loginSession({ id: id || '711-R-8431', name: 'Reader Member', role: 'READER', status: 'ACTIVE' });
-      }
-    }
-
-    function loginSession(user) { localStorage.setItem('711_active_user', JSON.stringify(user)); updateAuthUI(); }
-    function handleUserLogout() { localStorage.removeItem('711_active_user'); updateAuthUI(); renderIntelFeed(); }
-
-    function updateAuthUI() {
-      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      const headerBtn = document.getElementById('header-user-label');
-      
-      if (user) {
-        headerBtn.textContent = user.id === '711-C-9396' ? '711-C-9396 (ADMIN)' : user.id;
-        document.getElementById('profile-name').textContent = user.name;
-        document.getElementById('profile-id').textContent = `ID: ${user.id}`;
-        
-        const statusEl = document.getElementById('profile-status');
-        if(user.status === 'PENDING_VERIFICATION') {
-          statusEl.textContent = 'Status: KYC VERIFICATION PENDING';
-          statusEl.className = 'mt-3 text-[10px] px-3 py-1 rounded-full bg-amber-950 border border-amber-800 inline-block text-amber-400 font-bold';
-        } else {
-          statusEl.textContent = 'Status: ACTIVE';
-          statusEl.className = 'mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 inline-block text-slate-400';
-        }
-
-        document.getElementById('auth-logged-view').classList.remove('hidden');
-        document.getElementById('form-login-box').classList.add('hidden');
-        document.getElementById('form-signup-box').classList.add('hidden');
-        
-        // Hide top tabs
-        document.getElementById('auth-tab-login').parentElement.classList.add('hidden');
-      } else {
-        headerBtn.textContent = "Portal Login";
-        document.getElementById('auth-logged-view').classList.add('hidden');
-        document.getElementById('form-login-box').classList.remove('hidden');
-        document.getElementById('auth-tab-login').parentElement.classList.remove('hidden');
-      }
-    }
-
-    // --- REAL ESTATE & CS SECTOR GATES ---
-    function requireReAuth(callback) {
-      const activeUser = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if ((activeUser && activeUser.role === 'ADMIN') || (activeUser && activeUser.role === 'REAL_ESTATE' && activeUser.id.startsWith('SS-'))) {
-        callback();
-      } else {
-        pendingActionCallback = callback;
-        document.getElementById('re-auth-modal').classList.remove('hidden');
-      }
-    }
-
-    function verifyReAuth() {
-      const id = document.getElementById('re-auth-id').value.trim().toUpperCase();
-      const pass = document.getElementById('re-auth-pass').value.trim();
-      if (!id.startsWith('SS-')) return alert('Real Estate Partner IDs must strictly begin with "SS-". Sign up via the Portal Login desk to get verified.');
-      if (!pass) return alert('Enter your secure password.');
-      closeReAuth();
-      if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
-    }
-    function closeReAuth() { document.getElementById('re-auth-modal').classList.add('hidden'); }
-
-    // Replace prompt logic with REAL secure listing modal requiring file
-    function openRealEstateListingModal() {
-      requireReAuth(() => {
-        document.getElementById('re-listing-modal').classList.remove('hidden');
-      });
-    }
-    function closeRealEstateListingModal() { document.getElementById('re-listing-modal').classList.add('hidden'); }
-    
-    function submitRealEstateListing() {
-      const title = document.getElementById('re-list-title').value.trim();
-      const loc = document.getElementById('re-list-loc').value.trim();
-      const doc = document.getElementById('re-list-doc');
-
-      if(!title || !loc) return alert('Property Title and Location are required.');
-      if(!doc.files.length) return alert('STRICT REQUIREMENT: You must upload the legal title document or registry scan to the local vault to proceed with staging.');
-
-      alert(`Legal documents securely vaulted. Staging property: ${title}. Redirecting to desk.`);
-      closeRealEstateListingModal();
-      const msg = `*New Real Estate Property Staged*%0A%0A• Asset: ${encodeURIComponent(title)}%0A• Location: ${encodeURIComponent(loc)}%0A%0A(Note: Legal Title Documents have been uploaded to the encrypted local vault and are ready for administrative verification).`;
-      window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
-    }
-
-    // CS Gating
-    function requireCsAuth(callback) {
-      const activeUser = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if ((activeUser && activeUser.role === 'ADMIN') || (activeUser && activeUser.role === 'CS_PROFESSIONAL')) {
-        callback();
-      } else {
-        pendingActionCallback = callback;
-        document.getElementById('cs-auth-modal').classList.remove('hidden');
-      }
-    }
-
-    function verifyCsAuth() {
-      const id = document.getElementById('cs-auth-id').value.trim().toUpperCase();
-      const pass = document.getElementById('cs-auth-pass').value.trim();
-      if (!id.match(/^[AF0-9]/)) return alert('Access Restricted. Must be a valid ICSI Associate (A), Fellow (F), or Student numeric format. Sign up in the portal to be verified.');
-      if (!pass) return alert('Enter your secure password.');
-      closeCsAuth();
-      if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
-    }
-    function closeCsAuth() { document.getElementById('cs-auth-modal').classList.add('hidden'); }
-
-    function openJobSeekerModal() {
-      requireCsAuth(() => {
-        const msg = `*CS Job Application*%0A%0AAttaching curriculum vitae for advisory recruitment. My ICSI credentials have been verified in the vault.`;
-        window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
-      });
-    }
-
-    function openRecruiterModal() {
-      requireCsAuth(() => {
-        const msg = `*Corporate Recruitment Requirement*%0A%0APlease share shortlisted CS/Legal talent profiles.`;
-        window.open(`https://wa.me/919914984371?text=${msg}`, '_blank');
-      });
-    }
-
-    function applyJob(title) {
-      requireCsAuth(() => {
-        window.open(`https://wa.me/919914984371?text=Application%20for%20vacancy%3A%20${encodeURIComponent(title)}`, '_blank');
-      });
-    }
-
-    function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry%20regarding%20${encodeURIComponent(s)}`, '_blank'); }
-
-    // TABS, TV, AND PUBLISHER
     function switchTab(tabId) {
       document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      const target = document.getElementById(tabId);
-      if (target) target.classList.add('active');
-      const btn = document.querySelector(`.tab-btn[data-target="${tabId}"]`);
-      if (btn) btn.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+      document.querySelector(`.tab-btn[data-target="${tabId}"]`).classList.add('active');
 
       if (tabId === 'tab-intel' && getUserRole() === 'ADMIN') {
         document.getElementById('pub-pin-box').classList.add('hidden');
@@ -763,6 +418,39 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // 3. AUTHENTICATION & LOGIN
+    function handleUserLogin() {
+      const id = document.getElementById('login-input-id').value.trim();
+      const pass = document.getElementById('login-input-pass').value.trim();
+      if (id === '711-C-9396' || pass === '7110') {
+        localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma', role: 'ADMIN' }));
+        alert('Welcome Rahul Sharma! Master Admin Privileges Enabled.');
+      } else {
+        localStorage.setItem('711_active_user', JSON.stringify({ id: id || '711-R-8431', name: 'Client', role: 'READER' }));
+      }
+      updateAuthUI();
+      renderIntelFeed();
+    }
+    function handleUserLogout() { localStorage.removeItem('711_active_user'); updateAuthUI(); renderIntelFeed(); }
+    function updateAuthUI() {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      const adminBtn = document.getElementById('admin-photo-upload-btn');
+      if (user) {
+        document.getElementById('header-user-label').textContent = user.id === '711-C-9396' ? '711-C-9396 (ADMIN)' : user.id;
+        document.getElementById('profile-name').textContent = user.name;
+        document.getElementById('profile-id').textContent = `ID: ${user.id}`;
+        document.getElementById('auth-logged-view').classList.remove('hidden');
+        document.getElementById('form-login').classList.add('hidden');
+        if (user.role === 'ADMIN' && adminBtn) adminBtn.classList.remove('hidden');
+      } else {
+        document.getElementById('header-user-label').textContent = "Login";
+        document.getElementById('auth-logged-view').classList.add('hidden');
+        document.getElementById('form-login').classList.remove('hidden');
+        if (adminBtn) adminBtn.classList.add('hidden');
+      }
+    }
+
+    // 4. VIP FEED PUBLISHER (FIXED DOM RE-RENDER)
     function verifyPublisherPin() {
       if (document.getElementById('admin-master-pin').value.trim() === '7110') {
         document.getElementById('pub-pin-box').classList.add('hidden');
@@ -776,33 +464,125 @@
       const ticker = document.getElementById('post-scrip-ticker').value.trim().toUpperCase();
       if (!headline || !body) return alert('Enter headline and content.');
 
+      // 1. Save to local storage Feed Array
       let feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
       const dateStr = new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
       feeds.unshift({ title: ticker ? `${ticker} - ${headline}` : headline, content: body, date: dateStr });
       localStorage.setItem('711_vip_feed', JSON.stringify(feeds));
       
+      // 2. Re-render the Feed UI Immediately!
       renderIntelFeed();
+      alert('Successfully published to the Portal! Opening WhatsApp to broadcast...');
+      
+      // 3. Broadcast
       const msg = `📢 *711 OVERSEAS ADVISORY BROADCAST*%0A%0A*${headline}*%0A${body}%0A%0AGSTIN: 03AFAFS5209N1ZY%0APortal: https://cssharmarahul-wq.github.io/711-Overseas/`;
-      window.open(`https://wa.me/?text=${msg}`, '_blank');
+      window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+      
+      // Clear forms
+      document.getElementById('post-headline').value = '';
+      document.getElementById('post-body').value = '';
+      document.getElementById('post-scrip-ticker').value = '';
     }
 
     function renderIntelFeed() {
+      const role = getUserRole();
       const container = document.getElementById('intel-feed-container');
+      const pill = document.getElementById('intel-tier-pill');
       const feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
-      if (feeds.length === 0) {
-        container.innerHTML = `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 text-xs text-slate-300">No recent alerts.</div>`;
+
+      if (role === 'STANDARD' || role === 'ADMIN') {
+        pill.className = "px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center w-max";
+        pill.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5"></i>Standard / Admin Active';
+        
+        if (feeds.length === 0) {
+          container.innerHTML = `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 text-xs text-slate-300">No new alerts yet.</div>`;
+        } else {
+          container.innerHTML = feeds.map(f => `
+            <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 mb-3 shadow-lg">
+              <span class="text-[10px] text-brand-gold uppercase font-bold tracking-wider">${f.date}</span>
+              <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${f.title}</h4>
+              <p class="text-xs text-slate-300 mt-2 whitespace-pre-wrap">${f.content}</p>
+            </div>
+          `).join('');
+        }
       } else {
-        container.innerHTML = feeds.map(f => `
-          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 mb-3">
-            <span class="text-[10px] text-brand-gold uppercase font-bold tracking-wider">${f.date}</span>
-            <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${f.title}</h4>
-            <p class="text-xs text-slate-300 mt-2 whitespace-pre-wrap">${f.content}</p>
+        pill.className = "px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center w-max";
+        pill.innerHTML = '<i class="fa-solid fa-lock mr-1.5"></i>Paid Subscription Required';
+        container.innerHTML = `
+          <div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center">
+            <i class="fa-solid fa-user-lock text-brand-gold text-3xl mb-3"></i>
+            <h3 class="font-display font-bold text-lg text-slate-100">VIP Feed is Locked</h3>
+            <p class="text-xs text-slate-400 max-w-md mx-auto my-2">To view institutional setups, activate your ₹1,999/mo plan.</p>
+            <button onclick="openUniversalPayment('VIP Advisory', 1999)" class="mt-2 bg-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs">Unlock Standard (₹1,999/mo)</button>
           </div>
-        `).join('');
+        `;
       }
     }
 
-    // BOOT
+    // 5. SECTOR AUTHENTICATION GATES (REAL ESTATE "SS-" & CS "ICSI")
+    let pendingActionCallback = null;
+
+    function requireReAuth(callback) {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (user && (user.role === 'ADMIN' || (user.id && user.id.startsWith('SS-')))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('re-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyReAuth() {
+      const id = document.getElementById('re-auth-id').value.trim().toUpperCase();
+      if (!id.startsWith('SS-')) return alert('Real Estate Partner IDs must strictly begin with "SS-".');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'RE Partner', role: 'REAL_ESTATE' }));
+      closeReAuth(); updateAuthUI();
+      if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeReAuth() { document.getElementById('re-auth-modal').classList.add('hidden'); }
+
+    function requireCsAuth(callback) {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (user && (user.role === 'ADMIN' || (user.id && user.id.match(/^[AF0-9]/)))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('cs-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyCsAuth() {
+      const id = document.getElementById('cs-auth-id').value.trim().toUpperCase();
+      if (!id.match(/^[AF0-9]/)) return alert('Must be a valid ICSI Associate (A), Fellow (F), or Student numeric format.');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'CS Member', role: 'CS_PROFESSIONAL' }));
+      closeCsAuth(); updateAuthUI();
+      if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeCsAuth() { document.getElementById('cs-auth-modal').classList.add('hidden'); }
+
+    // 6. ACTION DISPATCHERS
+    function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry%20regarding%20${encodeURIComponent(s)}`, '_blank'); }
+    function applyJob(t) { window.open(`https://wa.me/919914984371?text=Application%20for%20vacancy%3A%20${encodeURIComponent(t)}`, '_blank'); }
+
+    // 7. PAYMENTS
+    function openUniversalPayment() {
+      document.getElementById('utr-submit-box').classList.remove('hidden');
+      document.getElementById('utr-pending-box').classList.add('hidden');
+      document.getElementById('payment-modal').classList.remove('hidden');
+    }
+    function closePaymentModal() { document.getElementById('payment-modal').classList.add('hidden'); }
+    function submitUtrForVerification() {
+      const utr = document.getElementById('pay-utr-input').value.trim();
+      if (!utr || utr.length < 8) return alert('Enter valid Bank UTR.');
+      document.getElementById('utr-submit-box').classList.add('hidden');
+      document.getElementById('utr-pending-box').classList.remove('hidden');
+    }
+    function unlockWithModalKey() {
+      const key = document.getElementById('modal-vip-key').value.trim();
+      if (key === '7110' || key === '843711') {
+        let user = JSON.parse(localStorage.getItem('711_active_user') || '{"id":"711-R-8431","name":"Client"}');
+        user.role = 'STANDARD';
+        localStorage.setItem('711_active_user', JSON.stringify(user));
+        alert('VIP Access unlocked!');
+        closePaymentModal();
+        updateAuthUI();
+        renderIntelFeed();
+      } else { alert('Invalid Activation Key.'); }
+    }
+
+    // Boot
+    const savedAvatar = localStorage.getItem('711_founder_avatar');
+    if (savedAvatar) document.getElementById('founder-portrait-img').src = savedAvatar;
     updateAuthUI();
     renderIntelFeed();
   </script>
