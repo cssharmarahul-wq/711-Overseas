@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- SheetJS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -112,6 +112,11 @@
       </div>
       
       <div class="flex items-center space-x-2">
+        <button onclick="toggleAiModal()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/50 text-brand-goldLight px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 shadow">
+          <i class="fa-solid fa-robot text-brand-gold animate-pulse"></i>
+          <span>AI Advisory</span>
+        </button>
+
         <button id="header-notif-btn" onclick="openNotifModal()" class="hidden relative text-brand-gold hover:text-white p-2 mx-1 transition">
           <i class="fa-solid fa-bell text-xl"></i>
           <span id="notif-badge" class="hidden absolute top-1 right-1 h-2.5 w-2.5 bg-red-500 rounded-full border border-brand-midnight animate-pulse"></span>
@@ -136,22 +141,22 @@
           <i class="fa-solid fa-tags text-brand-gold"></i><span>Advisory & Retainers</span>
         </button>
         <button onclick="switchTab('tab-compliance')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-compliance">
-          <i class="fa-solid fa-scale-balanced text-brand-gold"></i><span>Compliance Radar & Calendar</span>
+          <i class="fa-solid fa-scale-balanced text-brand-gold"></i><span>Compliance Radar</span>
         </button>
         <button onclick="switchTab('tab-stocks')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-stocks">
           <i class="fa-solid fa-chart-line text-brand-gold"></i><span>Capital Markets</span>
         </button>
         <button onclick="switchTab('tab-realestate')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-realestate">
-          <i class="fa-solid fa-building text-amber-400"></i><span>Real Estate Desk</span>
+          <i class="fa-solid fa-building text-amber-400"></i><span>Real Estate Desk (1%)</span>
         </button>
         <button onclick="switchTab('tab-careers')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-careers">
-          <i class="fa-solid fa-briefcase text-blue-400"></i><span>CS Careers & Hiring</span>
+          <i class="fa-solid fa-briefcase text-blue-400"></i><span>CS Careers</span>
         </button>
         <button onclick="switchTab('tab-downloads')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-downloads">
-          <i class="fa-solid fa-vault text-emerald-400"></i><span>Invoices & PC/Drive Vault</span>
+          <i class="fa-solid fa-vault text-emerald-400"></i><span>Invoices & Vault</span>
         </button>
         <button onclick="switchTab('tab-intel')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-intel">
-          <i class="fa-solid fa-satellite-dish text-brand-gold"></i><span>VIP Feed & Publisher</span>
+          <i class="fa-solid fa-satellite-dish text-brand-gold"></i><span>VIP Feed</span>
         </button>
       </div>
     </nav>
@@ -192,7 +197,7 @@
               <div class="grid grid-cols-2 gap-2 pt-2 text-xs">
                 <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><strong class="text-brand-gold block">CS Desk:</strong> MCA, ROC & Tribunals.</div>
                 <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><strong class="text-emerald-400 block">Capital Desk:</strong> 1.5% Max Risk Models.</div>
-                <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><strong class="text-amber-400 block">Real Estate:</strong> Urban Land & JDAs.</div>
+                <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><strong class="text-amber-400 block">Real Estate:</strong> 1% Commission + JDAs.</div>
                 <div class="bg-brand-surface p-2.5 rounded border border-slate-800"><strong class="text-brand-accent block">Analytics:</strong> MIS & BI Reporting.</div>
               </div>
             </div>
@@ -210,6 +215,18 @@
           <p class="text-xs text-slate-400 max-w-xl mx-auto">
             All services include 18% GST tax invoices issued under <strong>GSTIN: 03AFAFS5209N1ZY</strong> for full Input Tax Credit (ITC) eligibility.
           </p>
+        </div>
+
+        <!-- Real Estate Commission Feature Banner -->
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-brand-navy to-brand-midnight border border-amber-500/40 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-400">Real Estate Brokerage & Deal Facilitation</span>
+            <h3 class="text-lg font-display font-bold text-slate-100">1.00% Consideration Value Commission</h3>
+            <p class="text-xs text-slate-300 mt-0.5">Applicable on outright buy/sell, commercial SCOs, and residential parcel acquisitions. Stamp Duty, Sub-Registrar Registration, and Lawyer Conveyancing fees extra at actuals.</p>
+          </div>
+          <button onclick="openUniversalPayment('Real Estate Deal Advisory Advance', 25000)" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs transition shadow whitespace-nowrap">
+            Book Transaction Desk
+          </button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -369,7 +386,7 @@
       </div>
     </section>
 
-    <!-- TAB 3: STATUTORY COMPLIANCE RADAR (EXPANDED TO PAN & TAN) -->
+    <!-- TAB 3: STATUTORY COMPLIANCE RADAR -->
     <section id="tab-compliance" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         
@@ -424,7 +441,7 @@
                 <tbody>
                   <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
                     <td class="p-3 font-bold text-slate-100 w-24">7th</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-brand-gold">TDS / TCS:</strong> Deposit of Tax Deducted/Collected for the previous month.</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-brand-gold">TDS / TCS:</strong> Deposit of Tax Deducted/Collected for previous month.</td>
                   </tr>
                   <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
                     <td class="p-3 font-bold text-slate-100">11th</td>
@@ -444,13 +461,10 @@
                   </tr>
                   <tr class="hover:bg-brand-surface/30 transition">
                     <td class="p-3 font-bold text-slate-100">30th / 31st</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-amber-400">MCA / IT:</strong> Annual Return (AOC-4/MGT-7), DIR-3 KYC, Tax Audit Reports (Date varies by Act).</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-amber-400">MCA / IT:</strong> Annual Return (AOC-4/MGT-7), DIR-3 KYC, Tax Audit Reports.</td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-            <div class="bg-brand-surface/50 p-3 border-t border-slate-800 text-[10px] text-slate-500 text-center italic">
-              *Dates are subject to statutory extension via official CBDT/CBIC/MCA circulars.
             </div>
           </div>
 
@@ -490,56 +504,60 @@
       </div>
     </section>
 
-    <!-- TAB 5: REAL ESTATE DESK (SS- GATED WITH DOCUMENT UPLOAD) -->
+    <!-- TAB 5: REAL ESTATE DESK (1% COMMISSION & ON-SITE LISTING ENGINE) -->
     <section id="tab-realestate" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
           <div>
-            <h2 class="text-2xl font-display font-extrabold text-slate-100">Real Estate & Development Desk</h2>
-            <p class="text-xs text-slate-400">Listings strictly require secure legal document verification prior to portal staging.</p>
+            <div class="flex items-center space-x-2">
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Statutory Term</span>
+              <span class="text-xs font-mono text-brand-gold">1.00% Consideration Commission</span>
+            </div>
+            <h2 class="text-2xl font-display font-extrabold text-slate-100 mt-1">Real Estate & Development Desk</h2>
+            <p class="text-xs text-slate-400">Institutional listings, joint development agreements (JDAs), and commercial property acquisitions.</p>
           </div>
           <button onclick="openRealEstateListingModal()" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center space-x-1.5 shadow">
-            <i class="fa-solid fa-file-signature"></i>
-            <span>Submit Property for Listing</span>
+            <i class="fa-solid fa-plus"></i>
+            <span>Post New Property Listing</span>
           </button>
         </div>
 
+        <!-- Commercial Terms Card -->
+        <div class="p-4 rounded-xl bg-brand-surface border border-slate-800 text-xs text-slate-300 space-y-1.5">
+          <div class="font-bold text-slate-100 uppercase text-[11px] text-brand-gold">Transactional Fee Notice & Scope:</div>
+          <p>• <strong>Brokerage & Facilitation:</strong> Fixed 1.00% of Total Registered Consideration Value (+ 18% GST with Tax Invoice).</p>
+          <p>• <strong>Statutory Pass-Throughs:</strong> Stamp Duty and Sub-Registrar Office Registration fees are payable by the purchaser/parties directly at actuals.</p>
+          <p>• <strong>Legal & Conveyancing:</strong> Advocate drafting, 30-year revenue title search, and municipal endorsement fees extra at actuals.</p>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="re-listings-grid">
-          <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 p-4 space-y-2">
-            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Commercial SCO</span>
-            <h4 class="font-display font-bold text-slate-100 text-sm">Airport Road Commercial SCO Site</h4>
-            <p class="text-[11px] text-slate-400">Amritsar. Corporate headquarters, luxury retail, or hospitality buildout.</p>
-            <div class="flex justify-between items-center text-xs pt-2 border-t border-slate-800">
-              <span class="text-brand-gold font-bold">₹ 4.50 Cr</span>
-              <button onclick="requireReAuth(()=>dispatchInquiry('Commercial SCO Site Airport Road Amritsar'))" class="text-xs text-amber-400 hover:underline">Inquire Desk →</button>
-            </div>
-          </div>
+          <!-- Dynamic Listings Rendered Here -->
         </div>
       </div>
     </section>
 
-    <!-- TAB 6: CS CAREERS DESK (ICSI GATED) -->
+    <!-- TAB 6: CS CAREERS DESK (DYNAMIC VACANCY POSTING & APPLICATION) -->
     <section id="tab-careers" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
           <div>
             <h2 class="text-2xl font-display font-extrabold text-slate-100">CS Careers & Hiring</h2>
-            <p class="text-xs text-slate-400">Recruitment channel for Company Secretaries, legal trainees, and compliance executives.</p>
+            <p class="text-xs text-slate-400">Recruitment channel for Company Secretaries, legal trainees, and corporate compliance executives.</p>
           </div>
           <div class="flex gap-2">
-            <button onclick="openJobSeekerModal()" class="bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs shadow"><i class="fa-solid fa-file-arrow-up"></i> Submit Resume</button>
-            <button onclick="openRecruiterModal()" class="bg-brand-surface text-brand-goldLight font-bold px-4 py-2 rounded-lg text-xs shadow"><i class="fa-solid fa-briefcase"></i> Post Vacancy</button>
+            <button onclick="openJobSeekerModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-lg text-xs shadow flex items-center space-x-1">
+              <i class="fa-solid fa-file-arrow-up"></i>
+              <span>Submit CS Resume</span>
+            </button>
+            <button onclick="openRecruiterModal()" class="bg-brand-surface hover:bg-brand-card text-brand-goldLight font-bold px-4 py-2 rounded-lg text-xs shadow border border-brand-gold/40 flex items-center space-x-1">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Post Vacancy</span>
+            </button>
           </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 space-y-3">
-            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">Qualified CS</span>
-            <h4 class="font-display font-bold text-slate-100 text-sm">Qualified Company Secretary (ACS)</h4>
-            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
-              <span class="font-bold text-brand-gold">₹ 6.0 - 9.0 LPA</span>
-              <button onclick="applyJob('Qualified Company Secretary (ACS)')" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-xs">Apply</button>
-            </div>
-          </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="careers-job-grid">
+          <!-- Dynamic Job Opportunities Rendered Here -->
         </div>
       </div>
     </section>
@@ -564,7 +582,6 @@
             This management console is strictly restricted to your authorized device. All client KYC submissions, uploaded identification records, and staged listings are encrypted in your local browser memory. No third party or public visitor has access.
           </p>
 
-          <!-- Staged Vault User Records Counter & Actions -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
             <button onclick="exportVaultToPC()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center space-x-2 transition shadow">
               <i class="fa-solid fa-lock text-brand-gold text-base"></i>
@@ -577,7 +594,7 @@
             </button>
           </div>
 
-          <!-- Password-Protected Secure File Link Generator (For WhatsApp/Email Dispatch) -->
+          <!-- Password-Protected Secure File Link Generator -->
           <div class="p-4 rounded-xl bg-brand-surface border border-slate-700 space-y-3">
             <h4 class="font-display font-bold text-xs text-brand-gold uppercase flex items-center">
               <i class="fa-solid fa-share-nodes mr-1.5"></i> Generate Password-Protected File Transmission
@@ -599,14 +616,14 @@
 
           <!-- Vault Staged Users Inspector -->
           <div class="pt-2">
-            <h4 class="text-xs font-bold text-slate-200 mb-2 uppercase tracking-wider">Vault User KYC Submissions</h4>
+            <h4 class="text-xs font-bold text-slate-200 mb-2 uppercase tracking-wider">Vault Staged Client Registrations</h4>
             <div id="vault-users-table" class="space-y-2 max-h-48 overflow-y-auto no-scrollbar">
               <div class="text-[11px] text-slate-400 italic">No external KYC registrations submitted yet.</div>
             </div>
           </div>
         </div>
 
-        <!-- NON-ADMIN PUBLIC MESSAGE IF NOT LOGGED IN AS MASTER ADMIN -->
+        <!-- NON-ADMIN PUBLIC MESSAGE -->
         <div id="public-vault-notice" class="bg-brand-navy p-6 rounded-2xl border border-slate-800 text-center space-y-2">
           <i class="fa-solid fa-shield-halved text-brand-gold text-2xl mb-1"></i>
           <h3 class="font-display font-bold text-slate-100 text-base">Protected Evidentiary Vault</h3>
@@ -621,7 +638,7 @@
             <h3 class="font-display font-bold text-lg text-slate-100">Tax Invoice Generator</h3>
             <div class="space-y-2 text-xs">
               <input type="text" id="inv-gen-name" placeholder="Client / Company Name" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
-              <input type="text" id="inv-gen-service" placeholder="Service" value="VIP Advisory Subscription" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <input type="text" id="inv-gen-service" placeholder="Service" value="Real Estate Deal Facilitation Commission (1%)" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
               <input type="text" id="inv-gen-utr" placeholder="12-digit UPI UTR" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none font-mono">
             </div>
             <button onclick="previewTaxInvoice()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Generate A4 Tax Invoice</button>
@@ -752,25 +769,6 @@
     </div>
   </div>
 
-  <!-- REAL ESTATE LISTING MODAL -->
-  <div id="re-listing-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-brand-navy border border-amber-500/50 rounded-2xl max-w-md w-full p-6 relative">
-      <button onclick="closeRealEstateListingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="font-display font-bold text-lg text-slate-100 mb-1"><i class="fa-solid fa-file-signature text-amber-500 mr-2"></i>Submit Property Listing</h3>
-      <p class="text-[10px] text-slate-400 mb-4">Real estate staging strictly requires the upload of legal title documents or JDA frameworks to the secure verification vault.</p>
-      <div class="space-y-3 text-xs">
-        <input type="text" id="re-list-title" placeholder="Property Title (e.g. 500 Sq Yd SCO)" class="w-full bg-brand-surface border border-slate-700 rounded p-2 outline-none">
-        <input type="text" id="re-list-loc" placeholder="Location / City" class="w-full bg-brand-surface border border-slate-700 rounded p-2 outline-none">
-        <input type="text" id="re-list-price" placeholder="Asking Price / JDA Ratio" class="w-full bg-brand-surface border border-slate-700 rounded p-2 outline-none">
-        <div class="p-3 bg-brand-midnight border border-amber-500/30 rounded-lg">
-          <label class="block text-amber-400 font-bold mb-1 uppercase text-[10px]">Upload Legal Title Document (Required)</label>
-          <input type="file" id="re-list-doc" class="w-full text-[10px] text-slate-400 file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:bg-amber-500/20 file:text-amber-300">
-        </div>
-      </div>
-      <button onclick="submitRealEstateListing()" class="w-full bg-amber-600 text-white font-bold py-2.5 rounded text-xs shadow mt-4">Securely Submit to Valuation Desk</button>
-    </div>
-  </div>
-
   <!-- CS AUTH MODAL (ICSI) -->
   <div id="cs-auth-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-brand-navy border border-blue-500/50 rounded-2xl max-w-sm w-full p-6 relative">
@@ -869,7 +867,7 @@
       reader.readAsDataURL(file);
     }
 
-    // 2. EXPANDED COMPLIANCE RADAR ENGINE (PAN, TAN, CIN, GSTIN, IEC, BIS, DSC)
+    // 2. UNIVERSAL COMPLIANCE RADAR ENGINE (PAN, TAN, CIN, GSTIN, IEC, BIS, DSC)
     function executeComplianceRadar() {
       const type = document.getElementById('radar-id-type').value;
       const val = document.getElementById('radar-id-input').value.trim().toUpperCase();
@@ -1073,77 +1071,7 @@
       resBox.innerHTML = html;
     }
 
-    // 3. RESTRICTED MASTER ADMIN PC & GOOGLE DRIVE VAULT
-    function exportVaultToPC() {
-      if (getUserRole() !== 'ADMIN') return alert('Access Denied: Only Master Admin Rahul Sharma is authorized to download the encrypted vault.');
-      
-      const pass = prompt('Set a private encryption password for this backup file:');
-      if (!pass) return alert('Backup aborted: An encryption password is required.');
-
-      const activeUser = JSON.parse(localStorage.getItem('711_active_user') || '{}');
-      const feed = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
-      const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      const kycUsers = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
-      
-      const vaultPayload = {
-        meta: {
-          organization: "Seven Eleven Overseas Management Consultants",
-          gstin: "03AFAFS5209N1ZY",
-          backup_timestamp: new Date().toISOString(),
-          principal: "Rahul Sharma",
-          jurisdiction: "Punjab & Chandigarh, India",
-          security_hash: btoa(pass + "_711_ENCLAVE")
-        },
-        vault_data: {
-          active_session: activeUser,
-          registered_kyc_clients: kycUsers,
-          vip_intelligence_records: feed,
-          public_compliance_records: publicUpdates
-        }
-      };
-
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(vaultPayload, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `711_OVERSEAS_VAULT_BACKUP_${new Date().toISOString().slice(0,10)}.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-
-      alert("🔒 Encrypted Vault backup saved to your PC. Only you have the decryption key.");
-    }
-
-    function syncVaultToGoogleDrive() {
-      if (getUserRole() !== 'ADMIN') return alert('Access Denied: Only Master Admin Rahul Sharma is authorized.');
-      exportVaultToPC();
-      setTimeout(() => {
-        const confirmDrive = confirm("Backup downloaded to PC. Open your Google Drive now to store it in your encrypted cloud directory?");
-        if (confirmDrive) window.open("https://drive.google.com/drive/u/0/my-drive", "_blank");
-      }, 700);
-    }
-
-    function dispatchEncryptedFileWhatsApp() {
-      if (getUserRole() !== 'ADMIN') return alert('Admin access required.');
-      const doc = document.getElementById('share-doc-title').value.trim();
-      const phone = document.getElementById('share-client-phone').value.trim();
-      const driveLink = document.getElementById('share-drive-link').value.trim() || 'https://drive.google.com/';
-      const pass = document.getElementById('share-password').value.trim();
-
-      if (!doc || !phone || !pass) return alert('Document Name, Client WhatsApp, and Decryption Password are required.');
-
-      const msg = `🔒 *711 OVERSEAS PRIVILEGED ENCRYPTED TRANSMISSION*%0A%0A• Document: *${encodeURIComponent(doc)}*%0A• Secure Cloud Link: ${encodeURIComponent(driveLink)}%0A• Decryption Password: *${encodeURIComponent(pass)}*%0A%0A*Confidentiality Notice:* This file is password-protected and meant solely for the intended recipient. Do not disclose the access key to unauthorized parties.`;
-      window.open(`https://wa.me/91${phone}?text=${msg}`, '_blank');
-    }
-
-    function handleGeneralVaultUpload() {
-      const fileInput = document.getElementById('general-vault-file');
-      if (!fileInput.files.length) return alert('Please choose a document to vault.');
-      const file = fileInput.files[0];
-      alert(`Document "${file.name}" staged in local encrypted memory. Dispatching to advisory counsel.`);
-      window.open(`https://wa.me/919914984371?text=Submitting%20Confidential%20Vault%20Document%3A%20${encodeURIComponent(file.name)}`, '_blank');
-    }
-
-    // 4. KYC DYNAMIC ENGINE
+    // 7. KYC & AUTH CONTROLLERS
     function toggleAuthFormMode(mode) {
       if(mode === 'login') {
         document.getElementById('form-login-box').classList.remove('hidden');
@@ -1199,7 +1127,6 @@
 
       localStorage.setItem('711_active_user', JSON.stringify(newUser));
 
-      // Append to admin vault users table
       let vaultUsers = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
       vaultUsers.push(newUser);
       localStorage.setItem('711_vault_users', JSON.stringify(vaultUsers));
@@ -1208,7 +1135,6 @@
       updateAuthUI(); checkNotifications(); renderComplianceFeed();
     }
 
-    // 5. MASTER ADMIN & AUTH CONTROLLER
     function getUserRole() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
       if (!user) return 'READER';
@@ -1274,7 +1200,6 @@
         document.getElementById('auth-tab-login').parentElement.classList.add('hidden');
         headerNotifBtn.classList.remove('hidden'); 
 
-        // Strictly reveal PC/Google Drive Vault to Master Admin only
         if (user.role === 'ADMIN' || user.id === '711-C-9396') {
           adminEnclave.classList.remove('hidden');
           publicNotice.classList.add('hidden');
@@ -1312,104 +1237,92 @@
       }
     }
 
-    // 6. NOTIFICATIONS & COMPLIANCE FEED
+    // 8. GATED ACTIONS & ROUTING
+    let pendingActionCallback = null;
+    function requireReAuth(callback) {
+      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (u && (u.role === 'ADMIN' || u.id.startsWith('SS-'))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('re-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyReAuth() {
+      const id = document.getElementById('re-auth-id').value.trim().toUpperCase();
+      if (!id.startsWith('SS-')) return alert('Real Estate Partner IDs must begin with "SS-". Sign up in portal to receive one.');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'RE Partner', role: 'REAL_ESTATE', status:'ACTIVE' }));
+      closeReAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeReAuth() { document.getElementById('re-auth-modal').classList.add('hidden'); }
+
+    function requireCsAuth(callback) {
+      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (u && (u.role === 'ADMIN' || u.id.match(/^[AF0-9]/))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('cs-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyCsAuth() {
+      const id = document.getElementById('cs-auth-id').value.trim().toUpperCase();
+      if (!id.match(/^[AF0-9]/)) return alert('Must be a valid ICSI format. Sign up in portal to receive one.');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'CS Member', role: 'CS_PROFESSIONAL', status:'ACTIVE' }));
+      closeCsAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeCsAuth() { document.getElementById('cs-auth-modal').classList.add('hidden'); }
+    function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry:%20${encodeURIComponent(s)}`, '_blank'); }
+
+    // 9. PUBLISHER, NOTIFICATIONS & FEED
     function checkNotifications() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (!user) return; 
-
+      if (!user) return;
       const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
       const lastRead = parseInt(localStorage.getItem('711_last_notif_count') || '0');
-
-      if (publicUpdates.length > lastRead) {
-        document.getElementById('notif-badge').classList.remove('hidden');
-      } else {
-        document.getElementById('notif-badge').classList.add('hidden');
-      }
+      if (publicUpdates.length > lastRead) document.getElementById('notif-badge').classList.remove('hidden');
+      else document.getElementById('notif-badge').classList.add('hidden');
     }
-
     function openNotifModal() {
       const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
       localStorage.setItem('711_last_notif_count', publicUpdates.length.toString());
       document.getElementById('notif-badge').classList.add('hidden');
-
       const box = document.getElementById('notif-content-box');
-      if (publicUpdates.length === 0) {
-        box.innerHTML = `<div class="text-[11px] text-slate-400 text-center py-4">No recent alerts.</div>`;
-      } else {
-        box.innerHTML = publicUpdates.map(u => `
-          <div class="bg-brand-surface p-3 rounded border border-slate-700">
-            <div class="text-[9px] text-brand-gold font-bold mb-1">${u.date}</div>
-            <div class="text-xs text-slate-100 font-bold mb-1">${u.title}</div>
-            <div class="text-[10px] text-slate-300 leading-snug">${u.content}</div>
-          </div>
-        `).join('');
-      }
+      if (publicUpdates.length === 0) box.innerHTML = `<div class="text-[11px] text-slate-400 text-center py-4">No recent alerts.</div>`;
+      else box.innerHTML = publicUpdates.map(u => `<div class="bg-brand-surface p-3 rounded border border-slate-700"><div class="text-[9px] text-brand-gold font-bold mb-1">${u.date}</div><div class="text-xs text-slate-100 font-bold mb-1">${u.title}</div><div class="text-[10px] text-slate-300 leading-snug">${u.content}</div></div>`).join('');
       document.getElementById('notif-modal').classList.remove('hidden');
     }
-
     function closeNotifModal() { document.getElementById('notif-modal').classList.add('hidden'); }
 
     function renderComplianceFeed() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
       const container = document.getElementById('public-updates-container');
-      
-      if (!user) {
-        container.innerHTML = `<div class="text-center text-xs text-slate-500 my-4">Sign in to view registered member updates.</div>`;
-        return;
-      }
-
+      if (!user) { container.innerHTML = `<div class="text-center text-xs text-slate-500 my-4">Sign in to view registered member updates.</div>`; return; }
       const updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      if (updates.length === 0) {
-        container.innerHTML = `<div class="text-[11px] text-slate-400">No regulatory updates posted yet.</div>`;
-      } else {
-        container.innerHTML = updates.map(u => `
-          <div class="pb-3 border-b border-slate-800/50 last:border-0">
-            <span class="text-[9px] text-brand-gold uppercase font-bold tracking-wider">${u.date}</span>
-            <h4 class="font-display font-bold text-slate-200 text-xs mt-0.5">${u.title}</h4>
-            <p class="text-[11px] text-slate-400 mt-1">${u.content}</p>
-          </div>
-        `).join('');
-      }
+      if (updates.length === 0) container.innerHTML = `<div class="text-[11px] text-slate-400">No regulatory updates posted yet.</div>`;
+      else container.innerHTML = updates.map(u => `<div class="pb-3 border-b border-slate-800/50 last:border-0"><span class="text-[9px] text-brand-gold uppercase font-bold tracking-wider">${u.date}</span><h4 class="font-display font-bold text-slate-200 text-xs mt-0.5">${u.title}</h4><p class="text-[11px] text-slate-400 mt-1">${u.content}</p></div>`).join('');
     }
 
-    // 7. DUAL PUBLISHER (VIP vs PUBLIC)
     function verifyPublisherPin() {
       if (document.getElementById('admin-master-pin').value.trim() === '7110') {
         document.getElementById('pub-pin-box').classList.add('hidden');
         document.getElementById('pub-form-box').classList.remove('hidden');
-      } else { alert('Invalid master pin.'); }
+      } else alert('Invalid master pin.');
     }
-
     function commitPostAndBroadcast() {
       const target = document.getElementById('post-target').value;
       const headline = document.getElementById('post-headline').value;
       const body = document.getElementById('post-body').value;
       const ticker = document.getElementById('post-scrip-ticker').value.trim().toUpperCase();
-      
       if (!headline || !body) return alert('Enter headline and content.');
       
       const dateStr = new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
-
       if (target === 'VIP') {
         let feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
         feeds.unshift({ title: ticker ? `${ticker} - ${headline}` : headline, content: body, date: dateStr });
         localStorage.setItem('711_vip_feed', JSON.stringify(feeds));
         renderIntelFeed();
-        alert('Published to VIP Market Feed! Opening WhatsApp...');
       } else {
         let updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
         updates.unshift({ title: ticker ? `[${ticker}] ${headline}` : headline, content: body, date: dateStr });
         localStorage.setItem('711_public_updates', JSON.stringify(updates));
         checkNotifications();
         renderComplianceFeed();
-        alert('Published to Public Compliance Feed! All registered users will be notified.');
       }
-      
       window.open(`https://wa.me/?text=711%20OVERSEAS%20BROADCAST:%20${encodeURIComponent(headline)}`, '_blank');
-      
-      document.getElementById('post-headline').value = '';
-      document.getElementById('post-body').value = '';
-      document.getElementById('post-scrip-ticker').value = '';
+      document.getElementById('post-headline').value = ''; document.getElementById('post-body').value = '';
     }
 
     function renderIntelFeed() {
@@ -1429,55 +1342,13 @@
       }
     }
 
-    // 8. REAL ESTATE & CS GATES
-    let pendingActionCallback = null;
-    function requireReAuth(callback) {
-      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (u && (u.role === 'ADMIN' || u.id.startsWith('SS-'))) { callback(); } 
-      else { pendingActionCallback = callback; document.getElementById('re-auth-modal').classList.remove('hidden'); }
-    }
-    function verifyReAuth() {
-      const id = document.getElementById('re-auth-id').value.trim().toUpperCase();
-      if (!id.startsWith('SS-')) return alert('Real Estate Partner IDs must begin with "SS-". Sign up in portal to receive one.');
-      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'RE Partner', role: 'REAL_ESTATE', status:'ACTIVE' }));
-      closeReAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
-    }
-    function closeReAuth() { document.getElementById('re-auth-modal').classList.add('hidden'); }
-
-    function openRealEstateListingModal() { requireReAuth(() => document.getElementById('re-listing-modal').classList.remove('hidden')); }
-    function closeRealEstateListingModal() { document.getElementById('re-listing-modal').classList.add('hidden'); }
-    function submitRealEstateListing() {
-      if(!document.getElementById('re-list-title').value) return alert('Property Title required.');
-      if(!document.getElementById('re-list-doc').files.length) return alert('STRICT REQUIREMENT: Upload legal title document to secure vault.');
-      alert('Legal documents vaulted. Property staged for valuation.');
-      closeRealEstateListingModal();
-    }
-
-    function requireCsAuth(callback) {
-      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (u && (u.role === 'ADMIN' || u.id.match(/^[AF0-9]/))) { callback(); } 
-      else { pendingActionCallback = callback; document.getElementById('cs-auth-modal').classList.remove('hidden'); }
-    }
-    function verifyCsAuth() {
-      const id = document.getElementById('cs-auth-id').value.trim().toUpperCase();
-      if (!id.match(/^[AF0-9]/)) return alert('Must be a valid ICSI format. Sign up in portal to receive one.');
-      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'CS Member', role: 'CS_PROFESSIONAL', status:'ACTIVE' }));
-      closeCsAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
-    }
-    function closeCsAuth() { document.getElementById('cs-auth-modal').classList.add('hidden'); }
-    function openJobSeekerModal() { requireCsAuth(() => window.open(`https://wa.me/919914984371?text=Submitting%20CS%20Resume.`, '_blank')); }
-    function openRecruiterModal() { requireCsAuth(() => window.open(`https://wa.me/919914984371?text=Posting%20CS%20Vacancy.`, '_blank')); }
-    function applyJob(t) { requireCsAuth(() => window.open(`https://wa.me/919914984371?text=Applying%20for%20${encodeURIComponent(t)}`, '_blank')); }
-    function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry:%20${encodeURIComponent(s)}`, '_blank'); }
-
-    // 9. PAYMENTS & MERCHANT DESK
+    // 10. PAYMENTS CONTROLLER
     let activeCheckoutService = "VIP Advisory Subscription (Monthly)";
     let activeCheckoutBasePrice = 1999;
     
     function openUniversalPayment(serviceName, basePrice) {
       if(serviceName) activeCheckoutService = serviceName;
       if(basePrice) activeCheckoutBasePrice = basePrice;
-      
       document.getElementById('checkout-service-name').textContent = activeCheckoutService;
       document.getElementById('calc-net').textContent = `₹ ${activeCheckoutBasePrice.toLocaleString('en-IN')}`;
       
@@ -1485,7 +1356,6 @@
       
       const qrEl = document.getElementById('dynamic-upi-qr');
       const btnEl = document.getElementById('dynamic-upi-btn');
-      
       if(qrEl) qrEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
       if(btnEl) btnEl.href = upiUrl;
       
@@ -1503,42 +1373,35 @@
       modal.classList.add('hidden'); 
       modal.classList.remove('flex');
     }
-    
     function submitUtrForVerification() {
       const utr = document.getElementById('pay-utr-input').value.trim();
       if (!utr || utr.length < 8) return alert('Enter valid Bank UTR / Reference Number.');
       document.getElementById('utr-submit-box').classList.add('hidden');
       document.getElementById('utr-pending-box').classList.remove('hidden');
     }
-    
     function unlockWithModalKey() {
       const key = document.getElementById('modal-vip-key').value.trim();
       if (key === '7110' || key === '843711') {
         let user = JSON.parse(localStorage.getItem('711_active_user') || '{"id":"711-R-8431","name":"Client"}');
-        user.role = 'STANDARD'; 
-        localStorage.setItem('711_active_user', JSON.stringify(user));
-        alert('VIP Access unlocked!'); 
-        closePaymentModal(); 
-        updateAuthUI(); 
-        renderIntelFeed(); 
-        switchTab('tab-intel');
-      } else { alert('Invalid Activation Key.'); }
+        user.role = 'STANDARD'; localStorage.setItem('711_active_user', JSON.stringify(user));
+        alert('VIP Access unlocked!'); closePaymentModal(); updateAuthUI(); renderIntelFeed(); switchTab('tab-intel');
+      } else alert('Invalid Activation Key.');
     }
-    
+
     function executeLiveScripSearch() {
       const q = document.getElementById('scrip-query').value.trim().toUpperCase();
       if (!q) return;
       document.getElementById('tv-chart-wrapper').classList.remove('hidden');
       document.getElementById('tv-chart-container').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?symbol=${encodeURIComponent(q)}&interval=D&theme=dark" class="w-full h-full border-0"></iframe>`;
     }
-    
     function previewTaxInvoice() { document.getElementById('print-modal').classList.remove('hidden'); }
     function closePrintModal() { document.getElementById('print-modal').classList.add('hidden'); }
 
-    // Boot
+    // Initial Boot
     const savedAvatar = localStorage.getItem('711_founder_avatar');
     if (savedAvatar) document.getElementById('founder-portrait-img').src = savedAvatar;
     updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed();
+    renderRealEstateListings(); renderCsJobs();
   </script>
 </body>
 </html>
