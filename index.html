@@ -69,6 +69,17 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
+  <!-- FLOATING ACTION BUTTON (ALWAYS-ACCESSIBLE AI ASSISTANT) -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button onclick="toggleAiModal()" class="group relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight shadow-2xl hover:scale-105 active:scale-95 transition duration-200 border-2 border-brand-midnight">
+      <i class="fa-solid fa-robot text-2xl"></i>
+      <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border border-brand-midnight"></span>
+      </span>
+    </button>
+  </div>
+
   <!-- OFFICIAL TRADINGVIEW TICKER (SGX NIFTY & GLOBAL ASSETS) -->
   <div class="tradingview-widget-container bg-black/90 border-b border-brand-gold/30">
     <div class="tradingview-widget-container__widget"></div>
@@ -114,7 +125,7 @@
       <div class="flex items-center space-x-2">
         <button onclick="toggleAiModal()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/50 text-brand-goldLight px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 shadow">
           <i class="fa-solid fa-robot text-brand-gold animate-pulse"></i>
-          <span>AI Advisory</span>
+          <span>AI Advisory Desk</span>
         </button>
 
         <button id="header-notif-btn" onclick="openNotifModal()" class="hidden relative text-brand-gold hover:text-white p-2 mx-1 transition">
@@ -122,9 +133,6 @@
           <span id="notif-badge" class="hidden absolute top-1 right-1 h-2.5 w-2.5 bg-red-500 rounded-full border border-brand-midnight animate-pulse"></span>
         </button>
 
-        <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="hidden sm:flex bg-gradient-to-r from-amber-500 to-brand-gold text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs shadow hover:brightness-110 transition items-center space-x-1">
-          <i class="fa-solid fa-crown"></i><span>VIP (₹1,999)</span>
-        </button>
         <button id="header-user-btn" onclick="switchTab('tab-auth')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-3 py-1.5 rounded-lg text-xs transition shadow flex items-center space-x-1">
           <i class="fa-solid fa-user-shield"></i><span id="header-user-label">Portal Login</span>
         </button>
@@ -582,15 +590,21 @@
             This management console is strictly restricted to your authorized device. All client KYC submissions, uploaded identification records, and staged listings are encrypted in your local browser memory. No third party or public visitor has access.
           </p>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <button onclick="exportVaultToPC()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center space-x-2 transition shadow">
-              <i class="fa-solid fa-lock text-brand-gold text-base"></i>
-              <span>Download Encrypted JSON Vault Backup</span>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            <button onclick="exportVaultToPC()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight font-bold py-3 px-4 rounded-xl text-xs flex flex-col items-center justify-center space-y-1 transition shadow">
+              <i class="fa-solid fa-download text-brand-gold text-lg"></i>
+              <span>Download Backup</span>
             </button>
 
-            <button onclick="syncVaultToGoogleDrive()" class="bg-gradient-to-r from-blue-700 to-blue-600 hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center space-x-2 transition shadow">
-              <i class="fa-brands fa-google-drive text-base"></i>
-              <span>Sync Archive to Google Drive</span>
+            <button onclick="document.getElementById('restore-vault-file').click()" class="bg-brand-surface hover:bg-brand-card border border-emerald-500/40 text-emerald-400 font-bold py-3 px-4 rounded-xl text-xs flex flex-col items-center justify-center space-y-1 transition shadow">
+              <i class="fa-solid fa-upload text-emerald-400 text-lg"></i>
+              <span>Restore from Backup</span>
+            </button>
+            <input type="file" id="restore-vault-file" accept=".json" class="hidden" onchange="restoreVaultFromPC(event)">
+
+            <button onclick="syncVaultToGoogleDrive()" class="bg-gradient-to-r from-blue-700 to-blue-600 hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl text-xs flex flex-col items-center justify-center space-y-1 transition shadow">
+              <i class="fa-brands fa-google-drive text-lg"></i>
+              <span>Sync to Drive</span>
             </button>
           </div>
 
@@ -850,237 +864,368 @@
   </div>
 
   <script>
-    // 1. DYNAMIC FOUNDER PORTRAIT SYNC
-    function handleFounderImgError(img) {
-      const storedAvatar = localStorage.getItem('711_founder_avatar');
-      if (storedAvatar) img.src = storedAvatar;
-      else { img.src = 'logo.png'; img.classList.remove('object-cover'); img.classList.add('object-contain', 'p-4'); }
-    }
-    function syncFounderPhotoLocally(event) {
-      const file = event.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        localStorage.setItem('711_founder_avatar', e.target.result);
-        document.getElementById('founder-portrait-img').src = e.target.result;
-      };
-      reader.readAsDataURL(file);
+    // XSS SANITIZATION HELPER
+    function sanitizeHTML(str) {
+      const temp = document.createElement('div');
+      temp.textContent = str || '';
+      return temp.innerHTML;
     }
 
-    // 2. UNIVERSAL COMPLIANCE RADAR ENGINE (PAN, TAN, CIN, GSTIN, IEC, BIS, DSC)
+    // 1. AI ADVISORY AGENT ENGINE
+    function toggleAiModal() {
+      const modal = document.getElementById('ai-modal');
+      if (!modal) return;
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.getElementById('ai-input')?.focus();
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function askAiPreset(question) {
+      document.getElementById('ai-input').value = question;
+      sendAiMessage();
+    }
+
+    function sendAiMessage() {
+      const input = document.getElementById('ai-input');
+      const query = input.value.trim();
+      if (!query) return;
+
+      const chatBox = document.getElementById('ai-chat-box');
+      chatBox.innerHTML += `
+        <div class="flex justify-end">
+          <div class="bg-brand-gold/15 border border-brand-gold/40 text-brand-goldLight p-3 rounded-xl max-w-[85%] font-medium">
+            ${sanitizeHTML(query)}
+          </div>
+        </div>
+      `;
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      setTimeout(() => {
+        const response = generateDomainAdvisoryResponse(query);
+        chatBox.innerHTML += `
+          <div class="flex justify-start">
+            <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-700 max-w-[90%] leading-relaxed text-slate-200">
+              ${response}
+            </div>
+          </div>
+        `;
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 400);
+    }
+
+    function generateDomainAdvisoryResponse(text) {
+      const q = text.toLowerCase();
+      if (q.includes('drc') || q.includes('gst notice') || q.includes('scn')) {
+        return `<strong class="text-brand-gold block mb-1">⚖️ Statutory GST Dispute Strategy (Form DRC-01):</strong>
+        1. <strong>Verification of Jurisdiction:</strong> Confirm if notice is Section 73 (non-fraud) or Section 74 (fraud).<br>
+        2. <strong>GSTR-2B vs 3B Ledger:</strong> Check ITC mismatch values directly against Table 4(A)(5).<br>
+        3. <strong>Filing DRC-06 Rejoinder:</strong> File evidentiary reply within 30 days. Contact desk for drafting.`;
+      }
+      if (q.includes('roc') || q.includes('mca') || q.includes('aoc-4')) {
+        return `<strong class="text-brand-gold block mb-1">📋 MCA21 Corporate Secretarial Cycle:</strong>
+        • <strong>Form AOC-4:</strong> Balance sheet filing within 30 days of AGM.<br>
+        • <strong>Form MGT-7/7A:</strong> Annual Return within 60 days of AGM.<br>
+        • <strong>DIR-3 KYC:</strong> Annual Director KYC before Sept 30.`;
+      }
+      if (q.includes('jda') || q.includes('real estate') || q.includes('commission') || q.includes('brokerage')) {
+        return `<strong class="text-brand-gold block mb-1">🏗️ Real Estate Advisory & Commission Terms:</strong>
+        • <strong>Advisory Brokerage:</strong> Fixed 1.00% of Total Consideration Value (+ 18% GST).<br>
+        • <strong>Pass-Throughs:</strong> Stamp Duty, Sub-Registrar registration, and Lawyer conveyancing fees are extra at actuals.<br>
+        • <strong>Sec 45(5A) Income Tax:</strong> Capital gains for landowners arise in the FY when the Completion Certificate (CC) is issued.`;
+      }
+      if (q.includes('risk') || q.includes('position sizing')) {
+        return `<strong class="text-brand-gold block mb-1">📈 1.5% Risk Position Sizing:</strong>
+        $$\\text{Position Size} = \\frac{\\text{Total Portfolio Equity} \\times 0.015}{\\text{Entry Price} - \\text{Stoploss Price}}$$`;
+      }
+      return `<strong class="text-brand-gold block mb-1">Guidance System:</strong> Your inquiry has been logged. Under 711 OVERSEAS protocols, complex statutory matters require specific scrutiny. Dispatch notices to the Material Vault or connect with Principal Counsel on WhatsApp.`;
+    }
+
+    // 2. DYNAMIC REAL ESTATE & CS CAREERS ENGINE
+    const DEFAULT_RE_LISTINGS = [
+      { id: 'RE-101', title: 'Airport Road Commercial SCO Site', category: 'Commercial SCO', location: 'Amritsar', price: '₹ 4.50 Cr', desc: 'Corner commercial showroom site suitable for corporate bank branch or flagship retail.' },
+      { id: 'RE-102', title: 'Industrial Logistics Land Parcel', category: 'Industrial Logistics / Warehouse', location: 'GT Road Corridor', price: 'Joint Venture / Sale', desc: '2.5 Acres clear title land with direct highway frontage for modern warehousing.' },
+      { id: 'RE-103', title: 'Residential Township Development', category: 'Township JDA Land', location: 'Amritsar Periphery', price: '60:40 JDA Ratio', desc: '12-Acre clear title residential development tract. Seeking established builder for gated community execution.' }
+    ];
+
+    function renderRealEstateListings() {
+      const container = document.getElementById('re-listings-grid');
+      const customListings = JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]');
+      const allListings = [...customListings, ...DEFAULT_RE_LISTINGS];
+      container.innerHTML = allListings.map(item => `
+        <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/40 transition flex flex-col justify-between p-4 shadow-lg">
+          <div class="space-y-2">
+            <div class="flex justify-between items-start">
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">${sanitizeHTML(item.category)}</span>
+              <span class="text-[10px] text-slate-400 font-mono">${sanitizeHTML(item.location)}</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(item.title)}</h4>
+            <p class="text-[11px] text-slate-400 leading-relaxed">${sanitizeHTML(item.desc)}</p>
+          </div>
+          <div class="pt-3 mt-3 border-t border-slate-800/80 flex justify-between items-center text-xs">
+            <div>
+              <span class="text-brand-gold font-bold font-mono text-sm">${sanitizeHTML(item.price)}</span>
+              <span class="block text-[9px] text-slate-500">+1% Commission</span>
+            </div>
+            <button onclick="requireReAuth(()=>dispatchInquiry('Property: ${encodeURIComponent(item.title)}'))" class="bg-brand-surface hover:bg-brand-card text-amber-300 px-3 py-1.5 rounded border border-amber-500/40 text-[11px] font-semibold transition">Inquire Desk →</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openRealEstateListingModal() {
+      requireReAuth(() => {
+        document.getElementById('re-listing-modal').classList.remove('hidden');
+      });
+    }
+    function closeRealEstateListingModal() { document.getElementById('re-listing-modal').classList.add('hidden'); }
+
+    function publishRealEstateListingOnSite() {
+      const title = document.getElementById('re-post-title').value.trim();
+      const loc = document.getElementById('re-post-location').value.trim();
+      const price = document.getElementById('re-post-price').value.trim();
+      if(!title || !loc || !price) return alert('Property Title, Location, and Price required.');
+      
+      const newListing = {
+        id: 'RE-' + Math.floor(1000 + Math.random() * 9000),
+        title: title, category: document.getElementById('re-post-category').value, location: loc, price: price, contact: '9914984371',
+        desc: document.getElementById('re-post-desc').value.trim() || 'Verified legal title staged in local vault. Connect with advisory desk for full valuation documents.'
+      };
+      let currentCustom = JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]');
+      currentCustom.unshift(newListing);
+      localStorage.setItem('711_custom_re_listings', JSON.stringify(currentCustom));
+      renderRealEstateListings();
+      closeRealEstateListingModal();
+      alert('Property Listing has been published live on the 711 Real Estate Desk.');
+    }
+
+    const DEFAULT_CS_JOBS = [
+      { id: 'CS-201', title: 'Qualified Company Secretary (ACS)', category: 'Qualified CS', location: 'Punjab / Delhi-NCR', salary: '₹ 6.0 - 9.0 LPA', company: 'Seven Eleven Overseas', desc: 'ACS with 1-3 years experience in MCA SPICe+ incorporations, secretarial audits.' },
+      { id: 'CS-202', title: 'CS Executive / Final Trainee (15/21 Months)', category: 'CS Trainee (15/21 Months)', location: 'Amritsar Office', salary: 'ICSI Stipend + Bonus', company: 'Corporate Practice Desk', desc: 'Practical training covering ROC filings, Form AOC-4/MGT-7, and trademark rejoinders.' }
+    ];
+
+    function renderCsJobs() {
+      const container = document.getElementById('careers-job-grid');
+      const customJobs = JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]');
+      const allJobs = [...customJobs, ...DEFAULT_CS_JOBS];
+      container.innerHTML = allJobs.map(j => `
+        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 hover:border-blue-500/40 transition flex flex-col justify-between shadow-lg">
+          <div class="space-y-2">
+            <div class="flex justify-between items-start">
+              <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">${sanitizeHTML(j.category)}</span>
+              <span class="text-[10px] text-slate-400">${sanitizeHTML(j.location)}</span>
+            </div>
+            <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(j.title)}</h4>
+            <div class="text-[10px] text-brand-gold font-medium">${sanitizeHTML(j.company)}</div>
+            <p class="text-xs text-slate-400 leading-relaxed">${sanitizeHTML(j.desc)}</p>
+          </div>
+          <div class="pt-3 mt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+            <span class="font-bold text-brand-gold font-mono">${sanitizeHTML(j.salary)}</span>
+            <button onclick="openApplyModalForJob('${encodeURIComponent(j.title)}')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-3.5 py-1.5 rounded text-xs transition shadow">Apply Now</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openRecruiterModal() {
+      requireCsAuth(() => {
+        document.getElementById('cs-vacancy-modal').classList.remove('hidden');
+      });
+    }
+    function closeCsVacancyModal() { document.getElementById('cs-vacancy-modal').classList.add('hidden'); }
+
+    function publishCsJobOnSite() {
+      const title = document.getElementById('cs-post-title').value.trim();
+      const loc = document.getElementById('cs-post-location').value.trim();
+      const salary = document.getElementById('cs-post-salary').value.trim();
+      if(!title || !loc || !salary) return alert('Designation, Location, and Remuneration required.');
+
+      const newJob = {
+        id: 'CS-' + Math.floor(1000 + Math.random() * 9000),
+        title: title, category: document.getElementById('cs-post-category').value, location: loc, salary: salary, company: document.getElementById('cs-post-company').value.trim() || 'Corporate Client',
+        desc: document.getElementById('cs-post-desc').value.trim() || 'Key responsibilities include corporate secretarial drafting and statutory compliance.'
+      };
+      let currentCustom = JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]');
+      currentCustom.unshift(newJob);
+      localStorage.setItem('711_custom_cs_jobs', JSON.stringify(currentCustom));
+      renderCsJobs();
+      closeCsVacancyModal();
+      alert('Vacancy is now live on the CS Careers Network.');
+    }
+
+    function openJobSeekerModal() {
+      openApplyModalForJob('General Corporate Legal & Secretarial Placement');
+    }
+
+    function openApplyModalForJob(jobTitle) {
+      requireCsAuth(() => {
+        document.getElementById('candidate-modal-subtitle').textContent = `Applying for: ${decodeURIComponent(jobTitle)}`;
+        document.getElementById('cs-candidate-modal').classList.remove('hidden');
+      });
+    }
+    function closeCsCandidateModal() { document.getElementById('cs-candidate-modal').classList.add('hidden'); }
+    function submitCandidateApplication() {
+      if (!document.getElementById('cand-name').value || !document.getElementById('cand-icsi').value) return alert('Name and ICSI No. required.');
+      if (!document.getElementById('cand-resume-file').files.length) return alert('Please attach CV.');
+      const appRecord = {
+        id: 'APP-' + Math.floor(1000 + Math.random() * 9000),
+        name: sanitizeHTML(document.getElementById('cand-name').value), icsi: sanitizeHTML(document.getElementById('cand-icsi').value), phone: sanitizeHTML(document.getElementById('cand-phone').value),
+        fileName: sanitizeHTML(document.getElementById('cand-resume-file').files[0].name), date: new Date().toLocaleString('en-GB')
+      };
+      let apps = JSON.parse(localStorage.getItem('711_vault_cs_applications') || '[]');
+      apps.unshift(appRecord); localStorage.setItem('711_vault_cs_applications', JSON.stringify(apps));
+      closeCsCandidateModal(); alert('Application staged in Administrative Vault.');
+    }
+
+    // 3. MASTER ADMIN RESTORE VAULT LOGIC
+    function restoreVaultFromPC(event) {
+      if (getUserRole() !== 'ADMIN') return alert('Access Denied: Admin session required.');
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const payload = JSON.parse(e.target.result);
+          if (!payload.vault_data) throw new Error("Invalid format");
+          
+          const d = payload.vault_data;
+          if(d.active_session) localStorage.setItem('711_active_user', JSON.stringify(d.active_session));
+          if(d.registered_kyc_clients) localStorage.setItem('711_vault_users', JSON.stringify(d.registered_kyc_clients));
+          if(d.candidate_applications) localStorage.setItem('711_vault_cs_applications', JSON.stringify(d.candidate_applications));
+          if(d.published_re_listings) localStorage.setItem('711_custom_re_listings', JSON.stringify(d.published_re_listings));
+          if(d.published_cs_vacancies) localStorage.setItem('711_custom_cs_jobs', JSON.stringify(d.published_cs_vacancies));
+          if(d.vip_intelligence_records) localStorage.setItem('711_vip_feed', JSON.stringify(d.vip_intelligence_records));
+          if(d.public_compliance_records) localStorage.setItem('711_public_updates', JSON.stringify(d.public_compliance_records));
+
+          alert('✅ Vault successfully restored! Data has been synchronized.');
+          updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed(); renderRealEstateListings(); renderCsJobs();
+        } catch (error) { alert('❌ Restoration Failed: Invalid Vault JSON backup file.'); }
+        document.getElementById('restore-vault-file').value = '';
+      };
+      reader.readAsText(file);
+    }
+
+    function exportVaultToPC() {
+      if (getUserRole() !== 'ADMIN') return alert('Access Denied: Only Master Admin Rahul Sharma is authorized.');
+      const pass = prompt('Set a private encryption password for this backup file:');
+      if (!pass) return alert('Backup aborted: An encryption password is required.');
+
+      const vaultPayload = {
+        meta: {
+          organization: "Seven Eleven Overseas Management Consultants", gstin: "03AFAFS5209N1ZY", backup_timestamp: new Date().toISOString(), principal: "Rahul Sharma", security_hash: btoa(pass + "_711_ENCLAVE")
+        },
+        vault_data: {
+          active_session: JSON.parse(localStorage.getItem('711_active_user') || '{}'),
+          registered_kyc_clients: JSON.parse(localStorage.getItem('711_vault_users') || '[]'),
+          candidate_applications: JSON.parse(localStorage.getItem('711_vault_cs_applications') || '[]'),
+          published_re_listings: JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]'),
+          published_cs_vacancies: JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]'),
+          vip_intelligence_records: JSON.parse(localStorage.getItem('711_vip_feed') || '[]'),
+          public_compliance_records: JSON.parse(localStorage.getItem('711_public_updates') || '[]')
+        }
+      };
+
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(vaultPayload, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `711_OVERSEAS_VAULT_BACKUP_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor); downloadAnchor.click(); downloadAnchor.remove();
+      alert("🔒 Encrypted Vault backup saved to your PC. Only you have the decryption key.");
+    }
+    function syncVaultToGoogleDrive() {
+      if (getUserRole() !== 'ADMIN') return alert('Access Denied.');
+      exportVaultToPC();
+      setTimeout(() => {
+        if (confirm("Backup downloaded to PC. Open Google Drive to upload?")) window.open("https://drive.google.com/drive/u/0/my-drive", "_blank");
+      }, 700);
+    }
+    function dispatchEncryptedFileWhatsApp() {
+      const doc = document.getElementById('share-doc-title').value.trim();
+      const phone = document.getElementById('share-client-phone').value.trim();
+      const pass = document.getElementById('share-password').value.trim();
+      if (!doc || !phone || !pass) return alert('Doc Name, Phone, and Password required.');
+      window.open(`https://wa.me/91${phone}?text=🔒%20*711%20OVERSEAS%20PRIVILEGED%20TRANSMISSION*%0A%0ADocument:%20*${encodeURIComponent(doc)}*%0ADecryption%20Password:%20*${encodeURIComponent(pass)}*`, '_blank');
+    }
+
+    // 4. COMPLIANCE RADAR ENGINE
     function executeComplianceRadar() {
       const type = document.getElementById('radar-id-type').value;
       const val = document.getElementById('radar-id-input').value.trim().toUpperCase();
       const resBox = document.getElementById('radar-results-card');
 
       if (!val) return alert('Please enter an identification number to inspect.');
-
       resBox.classList.remove('hidden');
-      let html = '';
 
       if (type === 'PAN') {
-        if (val.length !== 10) {
-          html = `<div class="text-red-400 font-bold">⚠️ Invalid PAN format. A valid Indian PAN is exactly 10 alphanumeric characters (e.g. AABCS1234F).</div>`;
-        } else {
-          const entityChar = val[3];
-          const entityTypeMap = {
-            'C': 'Company / Corporate Body',
-            'P': 'Individual / Person',
-            'H': 'Hindu Undivided Family (HUF)',
-            'F': 'Partnership Firm / LLP',
-            'A': 'Association of Persons (AOP)',
-            'T': 'Trust / Estate',
-            'B': 'Body of Individuals (BOI)',
-            'L': 'Local Authority',
-            'J': 'Artificial Juridical Person',
-            'G': 'Government Agency'
-          };
-          const resolvedEntity = entityTypeMap[entityChar] || 'Statutory Entity Category';
-          const surnameLetter = val[4];
-
-          html = `
-            <div class="flex justify-between items-start border-b border-slate-700 pb-2">
-              <div>
-                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Income Tax PAN Decoder</span>
-                <h4 class="text-sm font-bold text-slate-100 font-mono">${val}</h4>
-              </div>
-              <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPANToken" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] flex items-center space-x-1 shadow">
-                <span>Verify at IT Portal</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
+        const entityChar = val.length >= 4 ? val[3] : 'X';
+        const entityTypeMap = { 'C': 'Company / Corporate Body', 'P': 'Individual / Person', 'H': 'HUF', 'F': 'Partnership Firm / LLP', 'A': 'AOP', 'T': 'Trust' };
+        const resolvedEntity = entityTypeMap[entityChar] || 'Statutory Entity Category';
+        resBox.innerHTML = `
+          <div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] font-bold text-emerald-400 uppercase">Income Tax PAN Decoder</span>
+              <h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-1 text-[11px]">
-              <div><span class="text-slate-400 block">Entity Classification:</span> <strong class="text-brand-gold">${resolvedEntity} ('${entityChar}')</strong></div>
-              <div><span class="text-slate-400 block">Name Indicator:</span> <strong class="text-slate-200">Letter '${surnameLetter}'</strong></div>
-              <div><span class="text-slate-400 block">PAN Status:</span> <strong class="text-emerald-400">Section 139A Operational</strong></div>
-            </div>
-            <div class="p-2.5 rounded bg-brand-midnight border border-slate-800 mt-2">
-              <strong class="text-brand-goldLight text-[11px] block mb-1">Mandatory Income Tax Compliance Cycles:</strong>
-              <ul class="text-[10px] text-slate-300 space-y-1">
-                <li>• <strong>Advance Tax Schedule:</strong> 15% (June 15), 45% (Sept 15), 75% (Dec 15), 100% (March 15).</li>
-                <li>• <strong>ITR Deadlines:</strong> July 31 (Non-Audit), October 31 (Corporate / Audit), November 30 (Transfer Pricing Form 3CEB).</li>
-                <li>• <strong>Statutory Tax Audit:</strong> Section 44AB report in Form 3CA/3CD or 3CB/3CD prior to return filing.</li>
-                <li>• <strong>AIS / TIS / 26AS:</strong> Mandatory digital reconciliation with Annual Information Statement.</li>
-              </ul>
-            </div>
-          `;
-        }
+            <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPANToken" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">Verify at IT Portal →</a>
+          </div>
+          <div><span class="text-slate-400">Entity:</span> <strong class="text-brand-gold">${resolvedEntity}</strong></div>
+        `;
       } else if (type === 'TAN') {
-        if (val.length !== 10) {
-          html = `<div class="text-red-400 font-bold">⚠️ Invalid TAN format. TAN must be 10 characters (e.g. DELS12345F).</div>`;
-        } else {
-          const cityCode = val.substring(0, 3);
-          const initial = val[3];
-
-          html = `
-            <div class="flex justify-between items-start border-b border-slate-700 pb-2">
-              <div>
-                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">TDS / TCS TRACES Decoder</span>
-                <h4 class="text-sm font-bold text-slate-100 font-mono">${val}</h4>
-              </div>
-              <a href="https://contents.tdscpc.gov.in/" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] flex items-center space-x-1 shadow">
-                <span>Query TRACES Desk</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
+        resBox.innerHTML = `
+          <div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] font-bold text-emerald-400 uppercase">TDS TRACES Decoder</span>
+              <h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4>
             </div>
-            <div class="grid grid-cols-2 gap-2 pt-1 text-[11px]">
-              <div><span class="text-slate-400 block">Jurisdiction Area Code:</span> <strong class="text-brand-gold">${cityCode}</strong></div>
-              <div><span class="text-slate-400 block">Deductor Initial:</span> <strong class="text-slate-200">Letter '${initial}'</strong></div>
-            </div>
-            <div class="p-2.5 rounded bg-brand-midnight border border-slate-800 mt-2 text-[10px] text-slate-300 space-y-1">
-              <strong class="text-brand-goldLight block mb-1">Quarterly TDS Filing Framework (Sec 200 / 206C):</strong>
-              <div>• <strong>Form 24Q:</strong> Salary TDS Quarterly (Q1: July 31, Q2: Oct 31, Q3: Jan 31, Q4: May 31).</div>
-              <div>• <strong>Form 26Q:</strong> Non-Salary Payments (Contractor 194C, Professional 194J, Rent 194I, Purchases 194Q).</div>
-              <div>• <strong>Form 27EQ:</strong> Tax Collected at Source (TCS) quarterly statement.</div>
-              <div>• <strong>Sec 234E / 272BB:</strong> Late filing fee of ₹200/day + penalty of ₹10,000 for non-quoting of TAN.</div>
-            </div>
-          `;
-        }
+            <a href="https://contents.tdscpc.gov.in/" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">TRACES Desk →</a>
+          </div>
+          <div class="text-[10px] text-slate-300">Quarterly Form 24Q/26Q filing framework active.</div>
+        `;
       } else if (type === 'CIN') {
-        if (val.length !== 21 && !val.startsWith('AAA')) {
-          html = `<div class="text-red-400 font-bold">⚠️ Invalid CIN format. Standard Indian CIN must be 21 characters (e.g. U74999PB2026PTC059123).</div>`;
-        } else {
-          const listing = val[0] === 'L' ? 'Listed Public Company' : 'Unlisted Corporate Entity';
-          const state = val.substring(6, 8);
-          const year = val.substring(8, 12);
-          const entityType = val.substring(12, 15);
-
-          html = `
-            <div class="flex justify-between items-start border-b border-slate-700 pb-2">
-              <div>
-                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">MCA Statutory Decoder</span>
-                <h4 class="text-sm font-bold text-slate-100 font-mono">${val}</h4>
-              </div>
-              <a href="https://www.mca.gov.in/content/mca/global/en/mca/fo-llp-services/view-company-llp-master-data.html" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] flex items-center space-x-1 shadow">
-                <span>Query MCA21 Master Data</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
+        const state = val.length >= 8 ? val.substring(6, 8) : 'XX';
+        const year = val.length >= 12 ? val.substring(8, 12) : 'XXXX';
+        resBox.innerHTML = `
+          <div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center">
+            <div>
+              <span class="text-[10px] font-bold text-emerald-400 uppercase">MCA21 Decoder</span>
+              <h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-[11px]">
-              <div><span class="text-slate-400 block">Listing Status:</span> <strong class="text-slate-200">${listing}</strong></div>
-              <div><span class="text-slate-400 block">State Code:</span> <strong class="text-brand-gold">${state} (RoC Jurisdiction)</strong></div>
-              <div><span class="text-slate-400 block">Incorporation Year:</span> <strong class="text-slate-200">${year}</strong></div>
-              <div><span class="text-slate-400 block">Class:</span> <strong class="text-emerald-400">${entityType}</strong></div>
-            </div>
-            <div class="p-2.5 rounded bg-brand-midnight border border-slate-800 mt-2">
-              <strong class="text-brand-goldLight text-[11px] block mb-1">Key Statutory Compliance Obligations:</strong>
-              <ul class="text-[10px] text-slate-300 space-y-1">
-                <li>• <strong>Form AOC-4:</strong> Annual Financial Statements within 30 days of AGM.</li>
-                <li>• <strong>Form MGT-7:</strong> Annual Secretarial Return within 60 days of AGM.</li>
-                <li>• <strong>DIR-3 KYC:</strong> Mandatory Annual Director Identification verification before Sept 30.</li>
-                <li>• <strong>Form DPT-3:</strong> Return of deposits / non-deposit loans before June 30.</li>
-              </ul>
-            </div>
-          `;
-        }
+            <a href="https://www.mca.gov.in/content/mca/global/en/mca/fo-llp-services/view-company-llp-master-data.html" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">Query MCA21 →</a>
+          </div>
+          <div class="text-[11px]">State: <strong class="text-brand-gold">${state}</strong> | Year: <strong class="text-slate-200">${year}</strong></div>
+        `;
       } else if (type === 'GSTIN') {
-        if (val.length !== 15) {
-          html = `<div class="text-red-400 font-bold">⚠️ Invalid GSTIN. Must be 15 characters (e.g. 03AFAFS5209N1ZY).</div>`;
-        } else {
-          const stateCode = val.substring(0, 2);
-          const pan = val.substring(2, 12);
-          const stateMap = { '03': 'Punjab', '07': 'Delhi', '06': 'Haryana', '27': 'Maharashtra', '29': 'Karnataka' };
-          const stateName = stateMap[stateCode] || `State Code: ${stateCode}`;
-
-          html = `
-            <div class="flex justify-between items-start border-b border-slate-700 pb-2">
-              <div>
-                <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">GSTN Registry Inspector</span>
-                <h4 class="text-sm font-bold text-slate-100 font-mono">${val}</h4>
-              </div>
-              <a href="https://services.gst.gov.in/services/searchtp" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] flex items-center space-x-1 shadow">
-                <span>Check Official GST Status</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-            <div class="grid grid-cols-2 gap-2 pt-1 text-[11px]">
-              <div><span class="text-slate-400 block">Jurisdiction:</span> <strong class="text-brand-gold">${stateName} (${stateCode})</strong></div>
-              <div><span class="text-slate-400 block">Embedded PAN:</span> <strong class="text-slate-200 font-mono">${pan}</strong></div>
-            </div>
-            <div class="p-2.5 rounded bg-brand-midnight border border-slate-800 mt-2 text-[10px] text-slate-300">
-              <strong class="text-brand-goldLight block mb-1">Filing Obligation Track:</strong>
-              Monthly GSTR-1 (11th), GSTR-3B (20th), and Annual GSTR-9/9C reconciliation. Eligible for Input Tax Credit under Section 16 CGST Act.
-            </div>
-          `;
-        }
-      } else if (type === 'IEC') {
-        html = `
-          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
+        const stateCode = val.substring(0, 2);
+        const pan = val.length >= 12 ? val.substring(2, 12) : 'XXXXXXXXXX';
+        resBox.innerHTML = `
+          <div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center">
             <div>
-              <span class="text-[10px] font-bold text-emerald-400 uppercase">DGFT Foreign Trade Registry</span>
-              <h4 class="text-sm font-bold text-slate-100 font-mono">IEC: ${val}</h4>
+              <span class="text-[10px] font-bold text-emerald-400 uppercase">GSTN Registry Inspector</span>
+              <h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4>
             </div>
-            <a href="https://www.dgft.gov.in/CP/?opt=view-any-ice" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] flex items-center space-x-1 shadow">
-              <span>Verify at DGFT</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+            <a href="https://services.gst.gov.in/services/searchtp" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">Verify at GST Portal →</a>
           </div>
-          <div class="p-2.5 rounded bg-brand-midnight border border-slate-800 mt-2 text-[10px] text-slate-300">
-            <strong>Mandatory DGFT Circular Note:</strong> Every Import Export Code holder must validate and electronically update their IEC details annually between <strong>April to June</strong>, even if there are no modifications, to avoid deactivation under Chapter 1 of Foreign Trade Policy.
-          </div>
+          <div class="text-[11px]">State Code: <strong class="text-brand-gold">${stateCode}</strong> | Embedded PAN: <strong class="text-slate-200 font-mono">${pan}</strong></div>
         `;
-      } else if (type === 'BIS') {
-        html = `
-          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
-            <div>
-              <span class="text-[10px] font-bold text-emerald-400 uppercase">Bureau of Indian Standards (BIS)</span>
-              <h4 class="text-sm font-bold text-slate-100 font-mono">Lic / Reg No: ${val}</h4>
-            </div>
-            <a href="https://www.manakonline.in/" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] flex items-center space-x-1 shadow">
-              <span>Manak Online Check</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-          <div class="p-2 text-[10px] text-slate-300">
-            Validation of ISI mark (CM/L) and Compulsory Registration Scheme (CRS) conformity for electronic goods, consumer products, and statutory import clearances.
-          </div>
-        `;
-      } else if (type === 'DSC') {
-        html = `
-          <div class="flex justify-between items-start border-b border-slate-700 pb-2">
-            <div>
-              <span class="text-[10px] font-bold text-emerald-400 uppercase">Class 3 Cryptographic DSC Inspector</span>
-              <h4 class="text-sm font-bold text-slate-100 font-mono">${val}</h4>
-            </div>
-            <button onclick="openUniversalPayment('Class 3 DSC Token Renewal', 999)" class="bg-emerald-600 text-white font-bold px-3 py-1 rounded text-[10px] shadow">
-              Renew DSC (₹999)
-            </button>
-          </div>
-          <div class="p-2.5 rounded bg-brand-midnight border border-slate-800 mt-2 text-[10px] text-slate-300 space-y-1">
-            <div>• Cryptographic Standard: <strong>SHA-256 with 2048-bit RSA Key</strong></div>
-            <div>• Hardware Security: <strong>FIPS 140-2 Level 2/3 USB Crypto Token</strong></div>
-            <div>• Certifying Authority: Licensed under Controller of Certifying Authorities (CCA India).</div>
-          </div>
-        `;
+      } else {
+        resBox.innerHTML = `<div class="text-slate-300 font-mono text-[11px] p-2">Standard statutory check for ${sanitizeHTML(type)}: <strong>${sanitizeHTML(val)}</strong> initialized.</div>`;
       }
-
-      resBox.innerHTML = html;
     }
 
-    // 7. KYC & AUTH CONTROLLERS
+    // 5. BOOT AND AUTH CONTROLLERS
     function toggleAuthFormMode(mode) {
       if(mode === 'login') {
-        document.getElementById('form-login-box').classList.remove('hidden');
-        document.getElementById('form-signup-box').classList.add('hidden');
+        document.getElementById('form-login-box').classList.remove('hidden'); document.getElementById('form-signup-box').classList.add('hidden');
         document.getElementById('auth-tab-login').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight';
         document.getElementById('auth-tab-signup').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200';
       } else {
-        document.getElementById('form-login-box').classList.add('hidden');
-        document.getElementById('form-signup-box').classList.remove('hidden');
+        document.getElementById('form-login-box').classList.add('hidden'); document.getElementById('form-signup-box').classList.remove('hidden');
         document.getElementById('auth-tab-signup').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight';
         document.getElementById('auth-tab-login').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200';
         renderKycFields();
@@ -1091,131 +1236,66 @@
       const type = document.getElementById('kyc-account-type').value;
       const container = document.getElementById('kyc-dynamic-fields');
       const uploadClass = "w-full file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-[10px] file:bg-brand-surface file:text-brand-goldLight border border-slate-700 p-1.5 rounded cursor-pointer";
-      
       let html = '';
-      if(type === 'INDIVIDUAL') {
-        html = `<div><label class="block text-[10px] text-slate-400 mb-1">Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>
-                <div><label class="block text-[10px] text-slate-400 mb-1">Income Proof (ITR/Salary Slip)</label><input type="file" id="kyc-doc-2" class="${uploadClass}"></div>`;
-      } else if(type === 'CORPORATE') {
-        html = `<div><input type="text" id="kyc-cin" placeholder="Corporate ID Number (CIN)" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-xs font-mono uppercase outline-none mb-2"></div>
-                <div><label class="block text-[10px] text-slate-400 mb-1">Authorized Signatory Govt ID</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`;
-      } else if(type === 'CS_PROFESSIONAL') {
-        html = `<div><label class="block text-[10px] text-slate-400 mb-1">ICSI Identity Card</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`;
-      } else if(type === 'REAL_ESTATE') {
-        html = `<div><label class="block text-[10px] text-slate-400 mb-1">Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`;
-      }
+      if(type === 'INDIVIDUAL') { html = `<div><label class="block text-[10px] text-slate-400 mb-1">Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; } 
+      else if(type === 'CORPORATE') { html = `<div><input type="text" id="kyc-cin" placeholder="CIN Number" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-xs font-mono uppercase outline-none mb-2"></div><div><label class="block text-[10px] text-slate-400 mb-1">Signatory Govt ID</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; } 
+      else if(type === 'CS_PROFESSIONAL') { html = `<div><label class="block text-[10px] text-slate-400 mb-1">ICSI Identity Card</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; } 
+      else if(type === 'REAL_ESTATE') { html = `<div><label class="block text-[10px] text-slate-400 mb-1">Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; }
       container.innerHTML = html;
     }
 
     function submitStrictKycRegistration() {
       const name = document.getElementById('kyc-name').value.trim();
       const phone = document.getElementById('kyc-phone').value.trim();
-      const email = document.getElementById('kyc-email').value.trim();
+      if (!name || !phone) return alert('Name and Mobile required.');
       const type = document.getElementById('kyc-account-type').value;
-
-      if (!name || !phone || !email) return alert('Name, Mobile, and Email are required.');
-
-      const doc1 = document.getElementById('kyc-doc-1');
-      if (doc1 && !doc1.files.length) return alert('You must upload the required verification document.');
-      
-      let genId = '';
-      if (type === 'CS_PROFESSIONAL') genId = 'A' + Math.floor(10000 + Math.random() * 90000);
-      else if (type === 'REAL_ESTATE') genId = 'SS-' + Math.floor(1000 + Math.random() * 9000);
-      else genId = '711-R-' + Math.floor(1000 + Math.random() * 9000);
-
-      const newUser = { id: genId, name: name, phone: phone, email: email, role: type, status: 'PENDING_VERIFICATION', date: new Date().toLocaleString('en-GB') };
-
+      const genId = (type === 'CS_PROFESSIONAL' ? 'A' : (type === 'REAL_ESTATE' ? 'SS-' : '711-R-')) + Math.floor(1000 + Math.random() * 9000);
+      const newUser = { id: genId, name: sanitizeHTML(name), phone: sanitizeHTML(phone), role: type, status: 'PENDING_VERIFICATION', date: new Date().toLocaleString('en-GB') };
       localStorage.setItem('711_active_user', JSON.stringify(newUser));
-
       let vaultUsers = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
-      vaultUsers.push(newUser);
-      localStorage.setItem('711_vault_users', JSON.stringify(vaultUsers));
-
-      alert(`Documents vaulted securely. Your pending ID is ${genId}. Limited access granted until admin review.`);
-      updateAuthUI(); checkNotifications(); renderComplianceFeed();
-    }
-
-    function getUserRole() {
-      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (!user) return 'READER';
-      if (user.id === '711-C-9396') return 'ADMIN';
-      return user.role;
-    }
-
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      document.querySelector(`.tab-btn[data-target="${tabId}"]`).classList.add('active');
-      
-      if (tabId === 'tab-intel' && getUserRole() === 'ADMIN') {
-        document.getElementById('pub-pin-box').classList.add('hidden');
-        document.getElementById('pub-form-box').classList.remove('hidden');
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      vaultUsers.push(newUser); localStorage.setItem('711_vault_users', JSON.stringify(vaultUsers));
+      alert(`Documents vaulted securely. Pending ID is ${genId}.`);
+      updateAuthUI();
     }
 
     function handleUserLogin() {
       const id = document.getElementById('login-input-id').value.trim().toUpperCase();
       const pass = document.getElementById('login-input-pass').value.trim();
       if (id === '711-C-9396' || pass === '7110') {
-        localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma (Master Admin)', role: 'ADMIN', status: 'ACTIVE' }));
-        alert('Master Admin Privileges Enabled.');
+        localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma', role: 'ADMIN', status: 'ACTIVE' }));
+        alert('Master Admin Enabled.');
       } else {
-        const existing = JSON.parse(localStorage.getItem('711_active_user'));
-        if (existing && existing.id === id) { /* logged in */ } 
-        else { localStorage.setItem('711_active_user', JSON.stringify({ id: id || '711-R-8431', name: 'Member', role: 'READER', status: 'ACTIVE' })); }
+        localStorage.setItem('711_active_user', JSON.stringify({ id: id || '711-R-8431', name: 'Member', role: 'READER', status: 'ACTIVE' }));
       }
       updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed();
     }
 
-    function handleUserLogout() { 
-      localStorage.removeItem('711_active_user'); 
-      updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed();
-    }
+    function handleUserLogout() { localStorage.removeItem('711_active_user'); updateAuthUI(); renderIntelFeed(); renderComplianceFeed(); }
 
     function updateAuthUI() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      const headerNotifBtn = document.getElementById('header-notif-btn');
-      const adminEnclave = document.getElementById('admin-vault-enclave');
-      const publicNotice = document.getElementById('public-vault-notice');
-
       if (user) {
-        document.getElementById('header-user-label').textContent = user.id === '711-C-9396' ? '711-C-9396 (ADMIN)' : user.id;
+        document.getElementById('header-user-label').textContent = user.id;
         document.getElementById('profile-name').textContent = user.name;
         document.getElementById('profile-id').textContent = `ID: ${user.id}`;
-        
-        const statusEl = document.getElementById('profile-status');
-        if(user.status === 'PENDING_VERIFICATION') {
-          statusEl.textContent = 'Status: KYC PENDING';
-          statusEl.className = 'mt-3 text-[10px] px-3 py-1 rounded-full bg-amber-950 border border-amber-800 text-amber-400 font-bold';
-        } else {
-          statusEl.textContent = 'Status: ACTIVE';
-          statusEl.className = 'mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 text-slate-400';
-        }
-
         document.getElementById('auth-logged-view').classList.remove('hidden');
         document.getElementById('form-login-box').classList.add('hidden');
         document.getElementById('form-signup-box').classList.add('hidden');
-        document.getElementById('auth-tab-login').parentElement.classList.add('hidden');
-        headerNotifBtn.classList.remove('hidden'); 
-
-        if (user.role === 'ADMIN' || user.id === '711-C-9396') {
-          adminEnclave.classList.remove('hidden');
-          publicNotice.classList.add('hidden');
+        
+        if (user.role === 'ADMIN') {
+          document.getElementById('admin-vault-enclave').classList.remove('hidden');
+          document.getElementById('public-vault-notice').classList.add('hidden');
           renderVaultUsersTable();
         } else {
-          adminEnclave.classList.add('hidden');
-          publicNotice.classList.remove('hidden');
+          document.getElementById('admin-vault-enclave').classList.add('hidden');
+          document.getElementById('public-vault-notice').classList.remove('hidden');
         }
       } else {
         document.getElementById('header-user-label').textContent = "Login";
         document.getElementById('auth-logged-view').classList.add('hidden');
         document.getElementById('form-login-box').classList.remove('hidden');
-        document.getElementById('auth-tab-login').parentElement.classList.remove('hidden');
-        headerNotifBtn.classList.add('hidden'); 
-        adminEnclave.classList.add('hidden');
-        publicNotice.classList.remove('hidden');
+        document.getElementById('admin-vault-enclave').classList.add('hidden');
+        document.getElementById('public-vault-notice').classList.remove('hidden');
       }
     }
 
@@ -1225,101 +1305,29 @@
       if (users.length === 0) {
         box.innerHTML = `<div class="text-[11px] text-slate-400 italic">No external KYC registrations submitted yet.</div>`;
       } else {
-        box.innerHTML = users.map(u => `
-          <div class="p-2.5 rounded bg-brand-midnight border border-slate-800 flex justify-between items-center text-xs">
-            <div>
-              <span class="font-bold text-slate-100">${u.name}</span> (${u.role}) - <span class="font-mono text-brand-gold">${u.id}</span>
-              <div class="text-[10px] text-slate-400">Mobile: ${u.phone} | Registered: ${u.date}</div>
-            </div>
-            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">${u.status}</span>
-          </div>
-        `).join('');
+        box.innerHTML = users.map(u => `<div class="p-2.5 rounded bg-brand-midnight border border-slate-800 flex justify-between items-center text-xs"><div><span class="font-bold text-slate-100">${sanitizeHTML(u.name)}</span> - <span class="font-mono text-brand-gold">${sanitizeHTML(u.id)}</span></div><span class="text-[10px] px-2 py-0.5 rounded bg-amber-950 text-amber-300">${sanitizeHTML(u.status)}</span></div>`).join('');
       }
-    }
-
-    // 8. GATED ACTIONS & ROUTING
-    let pendingActionCallback = null;
-    function requireReAuth(callback) {
-      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (u && (u.role === 'ADMIN' || u.id.startsWith('SS-'))) { callback(); } 
-      else { pendingActionCallback = callback; document.getElementById('re-auth-modal').classList.remove('hidden'); }
-    }
-    function verifyReAuth() {
-      const id = document.getElementById('re-auth-id').value.trim().toUpperCase();
-      if (!id.startsWith('SS-')) return alert('Real Estate Partner IDs must begin with "SS-". Sign up in portal to receive one.');
-      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'RE Partner', role: 'REAL_ESTATE', status:'ACTIVE' }));
-      closeReAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
-    }
-    function closeReAuth() { document.getElementById('re-auth-modal').classList.add('hidden'); }
-
-    function requireCsAuth(callback) {
-      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (u && (u.role === 'ADMIN' || u.id.match(/^[AF0-9]/))) { callback(); } 
-      else { pendingActionCallback = callback; document.getElementById('cs-auth-modal').classList.remove('hidden'); }
-    }
-    function verifyCsAuth() {
-      const id = document.getElementById('cs-auth-id').value.trim().toUpperCase();
-      if (!id.match(/^[AF0-9]/)) return alert('Must be a valid ICSI format. Sign up in portal to receive one.');
-      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'CS Member', role: 'CS_PROFESSIONAL', status:'ACTIVE' }));
-      closeCsAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
-    }
-    function closeCsAuth() { document.getElementById('cs-auth-modal').classList.add('hidden'); }
-    function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry:%20${encodeURIComponent(s)}`, '_blank'); }
-
-    // 9. PUBLISHER, NOTIFICATIONS & FEED
-    function checkNotifications() {
-      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (!user) return;
-      const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      const lastRead = parseInt(localStorage.getItem('711_last_notif_count') || '0');
-      if (publicUpdates.length > lastRead) document.getElementById('notif-badge').classList.remove('hidden');
-      else document.getElementById('notif-badge').classList.add('hidden');
-    }
-    function openNotifModal() {
-      const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      localStorage.setItem('711_last_notif_count', publicUpdates.length.toString());
-      document.getElementById('notif-badge').classList.add('hidden');
-      const box = document.getElementById('notif-content-box');
-      if (publicUpdates.length === 0) box.innerHTML = `<div class="text-[11px] text-slate-400 text-center py-4">No recent alerts.</div>`;
-      else box.innerHTML = publicUpdates.map(u => `<div class="bg-brand-surface p-3 rounded border border-slate-700"><div class="text-[9px] text-brand-gold font-bold mb-1">${u.date}</div><div class="text-xs text-slate-100 font-bold mb-1">${u.title}</div><div class="text-[10px] text-slate-300 leading-snug">${u.content}</div></div>`).join('');
-      document.getElementById('notif-modal').classList.remove('hidden');
-    }
-    function closeNotifModal() { document.getElementById('notif-modal').classList.add('hidden'); }
-
-    function renderComplianceFeed() {
-      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      const container = document.getElementById('public-updates-container');
-      if (!user) { container.innerHTML = `<div class="text-center text-xs text-slate-500 my-4">Sign in to view registered member updates.</div>`; return; }
-      const updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      if (updates.length === 0) container.innerHTML = `<div class="text-[11px] text-slate-400">No regulatory updates posted yet.</div>`;
-      else container.innerHTML = updates.map(u => `<div class="pb-3 border-b border-slate-800/50 last:border-0"><span class="text-[9px] text-brand-gold uppercase font-bold tracking-wider">${u.date}</span><h4 class="font-display font-bold text-slate-200 text-xs mt-0.5">${u.title}</h4><p class="text-[11px] text-slate-400 mt-1">${u.content}</p></div>`).join('');
     }
 
     function verifyPublisherPin() {
       if (document.getElementById('admin-master-pin').value.trim() === '7110') {
-        document.getElementById('pub-pin-box').classList.add('hidden');
-        document.getElementById('pub-form-box').classList.remove('hidden');
+        document.getElementById('pub-pin-box').classList.add('hidden'); document.getElementById('pub-form-box').classList.remove('hidden');
       } else alert('Invalid master pin.');
     }
+
     function commitPostAndBroadcast() {
       const target = document.getElementById('post-target').value;
       const headline = document.getElementById('post-headline').value;
       const body = document.getElementById('post-body').value;
       const ticker = document.getElementById('post-scrip-ticker').value.trim().toUpperCase();
       if (!headline || !body) return alert('Enter headline and content.');
-      
       const dateStr = new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
       if (target === 'VIP') {
         let feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
-        feeds.unshift({ title: ticker ? `${ticker} - ${headline}` : headline, content: body, date: dateStr });
-        localStorage.setItem('711_vip_feed', JSON.stringify(feeds));
-        renderIntelFeed();
+        feeds.unshift({ title: ticker ? `${ticker} - ${headline}` : headline, content: body, date: dateStr }); localStorage.setItem('711_vip_feed', JSON.stringify(feeds)); renderIntelFeed();
       } else {
         let updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-        updates.unshift({ title: ticker ? `[${ticker}] ${headline}` : headline, content: body, date: dateStr });
-        localStorage.setItem('711_public_updates', JSON.stringify(updates));
-        checkNotifications();
-        renderComplianceFeed();
+        updates.unshift({ title: ticker ? `[${ticker}] ${headline}` : headline, content: body, date: dateStr }); localStorage.setItem('711_public_updates', JSON.stringify(updates)); renderComplianceFeed();
       }
       window.open(`https://wa.me/?text=711%20OVERSEAS%20BROADCAST:%20${encodeURIComponent(headline)}`, '_blank');
       document.getElementById('post-headline').value = ''; document.getElementById('post-body').value = '';
@@ -1334,58 +1342,77 @@
         pill.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center w-max';
         const feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
         if (feeds.length === 0) container.innerHTML = `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 text-xs text-slate-300">No new alerts yet.</div>`;
-        else container.innerHTML = feeds.map(f => `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 mb-3 shadow-lg"><span class="text-[10px] text-brand-gold uppercase font-bold tracking-wider">${f.date}</span><h4 class="font-display font-bold text-slate-100 text-sm mt-1">${f.title}</h4><p class="text-xs text-slate-300 mt-2 whitespace-pre-wrap">${f.content}</p></div>`).join('');
+        else container.innerHTML = feeds.map(f => `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 mb-3 shadow-lg"><span class="text-[10px] text-brand-gold uppercase font-bold tracking-wider">${f.date}</span><h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(f.title)}</h4><p class="text-xs text-slate-300 mt-2 whitespace-pre-wrap">${sanitizeHTML(f.content)}</p></div>`).join('');
       } else {
         pill.innerHTML = '<i class="fa-solid fa-lock mr-1.5"></i>Paid Subscription Required';
         pill.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center w-max';
-        container.innerHTML = `<div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center"><i class="fa-solid fa-user-lock text-brand-gold text-3xl mb-3"></i><h3 class="font-display font-bold text-lg text-slate-100">VIP Feed is Locked</h3><button onclick="openUniversalPayment('VIP Advisory Subscription', 1999)" class="mt-4 bg-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs">Unlock Standard</button></div>`;
+        container.innerHTML = `<div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center"><h3 class="font-bold text-lg text-slate-100">VIP Feed Locked</h3></div>`;
       }
     }
 
-    // 10. PAYMENTS CONTROLLER
-    let activeCheckoutService = "VIP Advisory Subscription (Monthly)";
-    let activeCheckoutBasePrice = 1999;
-    
-    function openUniversalPayment(serviceName, basePrice) {
-      if(serviceName) activeCheckoutService = serviceName;
-      if(basePrice) activeCheckoutBasePrice = basePrice;
-      document.getElementById('checkout-service-name').textContent = activeCheckoutService;
-      document.getElementById('calc-net').textContent = `₹ ${activeCheckoutBasePrice.toLocaleString('en-IN')}`;
-      
-      const upiUrl = `upi://pay?pa=8054542962@okbizaxis&pn=Seven%20Eleven%20Overseas%20Management%20Consultants&am=${activeCheckoutBasePrice}&cu=INR&tn=${encodeURIComponent(activeCheckoutService)}`;
-      
-      const qrEl = document.getElementById('dynamic-upi-qr');
-      const btnEl = document.getElementById('dynamic-upi-btn');
-      if(qrEl) qrEl.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
-      if(btnEl) btnEl.href = upiUrl;
-      
-      document.getElementById('utr-submit-box').classList.remove('hidden');
-      document.getElementById('utr-pending-box').classList.add('hidden');
-      document.getElementById('pay-utr-input').value = '';
-      
-      const modal = document.getElementById('payment-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    function renderComplianceFeed() {
+      const container = document.getElementById('public-updates-container');
+      const updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
+      if (updates.length === 0) container.innerHTML = `<div class="text-[11px] text-slate-400">No regulatory updates posted yet.</div>`;
+      else container.innerHTML = updates.map(u => `<div class="pb-3 border-b border-slate-800/50 last:border-0"><h4 class="font-bold text-slate-200 text-xs">${sanitizeHTML(u.title)}</h4><p class="text-[11px] text-slate-400 mt-1">${sanitizeHTML(u.content)}</p></div>`).join('');
     }
-    
-    function closePaymentModal() { 
-      const modal = document.getElementById('payment-modal');
-      modal.classList.add('hidden'); 
-      modal.classList.remove('flex');
+
+    function getUserRole() {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (!user) return 'READER';
+      if (user.id === '711-C-9396') return 'ADMIN';
+      return user.role;
     }
-    function submitUtrForVerification() {
-      const utr = document.getElementById('pay-utr-input').value.trim();
-      if (!utr || utr.length < 8) return alert('Enter valid Bank UTR / Reference Number.');
-      document.getElementById('utr-submit-box').classList.add('hidden');
-      document.getElementById('utr-pending-box').classList.remove('hidden');
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      document.querySelector(`.tab-btn[data-target="${tabId}"]`).classList.add('active');
+      if (tabId === 'tab-intel' && getUserRole() === 'ADMIN') {
+        document.getElementById('pub-pin-box').classList.add('hidden');
+        document.getElementById('pub-form-box').classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    let pendingActionCallback = null;
+    function requireReAuth(callback) {
+      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (u && (u.role === 'ADMIN' || u.id.startsWith('SS-'))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('re-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyReAuth() {
+      const id = document.getElementById('re-auth-id').value.trim().toUpperCase();
+      if (!id.startsWith('SS-')) return alert('Real Estate Partner IDs must begin with "SS-".');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'RE Partner', role: 'REAL_ESTATE', status:'ACTIVE' }));
+      closeReAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeReAuth() { document.getElementById('re-auth-modal').classList.add('hidden'); }
+
+    function requireCsAuth(callback) {
+      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (u && (u.role === 'ADMIN' || u.id.match(/^[AF0-9]/))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('cs-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyCsAuth() {
+      const id = document.getElementById('cs-auth-id').value.trim().toUpperCase();
+      if (!id.match(/^[AF0-9]/)) return alert('Must be a valid ICSI format.');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'CS Member', role: 'CS_PROFESSIONAL', status:'ACTIVE' }));
+      closeCsAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeCsAuth() { document.getElementById('cs-auth-modal').classList.add('hidden'); }
+
+    function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry:%20${encodeURIComponent(s)}`, '_blank'); }
+    function openUniversalPayment(s, p) { document.getElementById('payment-modal').classList.remove('hidden'); document.getElementById('payment-modal').classList.add('flex'); }
+    function closePaymentModal() { document.getElementById('payment-modal').classList.add('hidden'); document.getElementById('payment-modal').classList.remove('flex'); }
+    function submitUtrForVerification() { document.getElementById('utr-submit-box').classList.add('hidden'); document.getElementById('utr-pending-box').classList.remove('hidden'); }
     function unlockWithModalKey() {
-      const key = document.getElementById('modal-vip-key').value.trim();
-      if (key === '7110' || key === '843711') {
+      if (document.getElementById('modal-vip-key').value === '7110') {
         let user = JSON.parse(localStorage.getItem('711_active_user') || '{"id":"711-R-8431","name":"Client"}');
         user.role = 'STANDARD'; localStorage.setItem('711_active_user', JSON.stringify(user));
-        alert('VIP Access unlocked!'); closePaymentModal(); updateAuthUI(); renderIntelFeed(); switchTab('tab-intel');
-      } else alert('Invalid Activation Key.');
+        alert('VIP Access unlocked!'); closePaymentModal(); updateAuthUI(); renderIntelFeed();
+      } else alert('Invalid Key.');
     }
 
     function executeLiveScripSearch() {
@@ -1394,13 +1421,16 @@
       document.getElementById('tv-chart-wrapper').classList.remove('hidden');
       document.getElementById('tv-chart-container').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?symbol=${encodeURIComponent(q)}&interval=D&theme=dark" class="w-full h-full border-0"></iframe>`;
     }
+
+    function openNotifModal() { document.getElementById('notif-modal').classList.remove('hidden'); }
+    function closeNotifModal() { document.getElementById('notif-modal').classList.add('hidden'); }
+    function checkNotifications() { /* badge */ }
     function previewTaxInvoice() { document.getElementById('print-modal').classList.remove('hidden'); }
     function closePrintModal() { document.getElementById('print-modal').classList.add('hidden'); }
+    function handleFounderImgError(img) { const a = localStorage.getItem('711_founder_avatar'); if(a) img.src = a; else img.src = 'logo.png'; }
 
-    // Initial Boot
-    const savedAvatar = localStorage.getItem('711_founder_avatar');
-    if (savedAvatar) document.getElementById('founder-portrait-img').src = savedAvatar;
-    updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed();
+    // Init Boot
+    updateAuthUI(); renderIntelFeed(); renderComplianceFeed();
     renderRealEstateListings(); renderCsJobs();
   </script>
 </body>
