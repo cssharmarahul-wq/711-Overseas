@@ -71,20 +71,6 @@
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-    /* Custom Ticker Animation */
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-marquee {
-      display: flex;
-      width: max-content;
-      animation: marquee 35s linear infinite;
-    }
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
-
     /* Clean A4 Statutory Tax Invoice & Certificate Print Styles */
     @media print {
       body * { visibility: hidden; }
@@ -104,11 +90,27 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- CUSTOM YFINANCE REAL-TIME TICKER TAPE -->
-  <div class="bg-black/95 border-b border-brand-gold/40 overflow-hidden relative z-50 text-[11px] font-mono py-2 select-none shadow-md shadow-brand-gold/10">
-    <div class="animate-marquee whitespace-nowrap flex items-center" id="custom-ticker-track">
-      <span class="mx-6 text-brand-goldLight animate-pulse">Initializing Live Market Feed (Yahoo Finance)...</span>
-    </div>
+  <!-- OFFICIAL TRADINGVIEW REAL-TIME TICKER TAPE -->
+  <div class="tradingview-widget-container bg-black/90 border-b border-brand-gold/30">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        { "description": "SENSEX", "proName": "BSE:SENSEX" },
+        { "description": "NIFTY 50", "proName": "NSE:NIFTY" },
+        { "description": "BANK NIFTY", "proName": "NSE:BANKNIFTY" },
+        { "description": "GIFT NIFTY", "proName": "NSE:NIFTY1!" },
+        { "description": "GOLD (XAU/USD)", "proName": "OANDA:XAUUSD" },
+        { "description": "NASDAQ 100", "proName": "NASDAQ:NDX" },
+        { "description": "USD/INR", "proName": "FX_IDC:USDINR" }
+      ],
+      "showSymbolLogo": true,
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "colorTheme": "dark",
+      "locale": "en"
+    }
+    </script>
   </div>
 
   <!-- BRAND HEADER WITH OFFICIAL LOGO & STATUTORY GST BADGE -->
@@ -454,13 +456,13 @@
       </div>
     </section>
 
-    <!-- TAB 3: CAPITAL MARKETS (LIVE YFINANCE TICKER & SETUPS) -->
+    <!-- TAB 3: CAPITAL MARKETS (EDUCATIONAL & TECHNICAL RESEARCH DESK) -->
     <section id="tab-stocks" class="tab-page">
       <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
         <div>
           <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Quantitative Research & Structural Analysis</span>
           <h2 class="text-2xl font-display font-extrabold text-slate-100">Live Global Scrip & Technical Setup Desk</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Real-time Technical charting with proprietary 1.5% risk containment models.</p>
+          <p class="text-xs text-slate-400 mt-0.5">Real-time TradingView technical execution with proprietary 1.5% risk containment models.</p>
         </div>
         <div class="flex items-center space-x-2">
           <span class="text-xs text-slate-400">Access Tier:</span>
@@ -479,23 +481,9 @@
             <span>Analyze Live Scrip</span>
           </button>
         </div>
-
-        <div class="flex flex-wrap gap-2 mt-3 items-center text-[11px] text-slate-400">
-          <span>Trending Scrips:</span>
-          <button onclick="quickScrip('RELIANCE')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">RELIANCE (NSE)</button>
-          <button onclick="quickScrip('HDFCBANK')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">HDFCBANK (NSE)</button>
-          <button onclick="quickScrip('TATASTEEL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">TATASTEEL (NSE)</button>
-          <button onclick="quickScrip('CDSL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">CDSL (BSE)</button>
-          <button onclick="quickScrip('NVDA')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">NVDA (NASDAQ)</button>
-          <button onclick="quickScrip('AAPL')" class="bg-brand-surface hover:text-brand-gold px-2 py-0.5 rounded border border-slate-700">AAPL (NASDAQ)</button>
-        </div>
       </div>
 
       <div id="tv-chart-wrapper" class="bg-brand-navy rounded-2xl p-4 border border-slate-800 mb-6 hidden">
-        <h4 class="font-display font-bold text-slate-100 text-sm mb-3 flex items-center justify-between">
-          <span>Live Real-Time Market Feed</span>
-          <span class="text-[10px] text-emerald-400 font-mono">● LIVE EXCHANGE STREAM</span>
-        </h4>
         <div id="tv-chart-container" class="h-96 w-full rounded-lg overflow-hidden"></div>
       </div>
 
@@ -940,54 +928,6 @@
     let activeCheckoutBasePrice = 1999;
     let shareCount = parseInt(localStorage.getItem('711_share_count') || '0');
 
-    // 0. CUSTOM YFINANCE TICKER ENGINE
-    async function initLiveTicker() {
-      const TICKER_SYMBOLS = [
-        { id: '^NSEI', name: 'NIFTY 50' },
-        { id: '^NSEBANK', name: 'BANK NIFTY' },
-        { id: '^IXIC', name: 'NASDAQ' },
-        { id: 'XAUUSD=X', name: 'GOLD (XAU/USD)' },
-        { id: '^BSESN', name: 'SENSEX' },
-        { id: 'CL=F', name: 'CRUDE OIL' },
-        { id: 'INR=X', name: 'USD/INR' }
-      ];
-      const track = document.getElementById('custom-ticker-track');
-      try {
-        const symbols = TICKER_SYMBOLS.map(t => t.id).join(',');
-        const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${symbols}`;
-        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-        
-        const response = await fetch(proxyUrl);
-        const data = await response.json();
-        
-        if (data && data.quoteResponse && data.quoteResponse.result) {
-          const results = data.quoteResponse.result;
-          let html = '';
-          TICKER_SYMBOLS.forEach(t => {
-            const quote = results.find(x => x.symbol === t.id);
-            if (!quote) return;
-            const price = quote.regularMarketPrice ? quote.regularMarketPrice.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : 'N/A';
-            const change = quote.regularMarketChange ? quote.regularMarketChange.toFixed(2) : '0.00';
-            const changePct = quote.regularMarketChangePercent ? quote.regularMarketChangePercent.toFixed(2) : '0.00';
-            const isUp = quote.regularMarketChange >= 0;
-            const color = isUp ? 'text-emerald-400' : 'text-red-400';
-            const icon = isUp ? '▲' : '▼';
-            const sign = isUp ? '+' : '';
-            html += `
-              <span class="inline-flex items-center space-x-2 mx-6 border-r border-slate-700/50 pr-6">
-                <strong class="text-brand-gold tracking-wider">${t.name}</strong> 
-                <span class="text-slate-100 font-bold">${price}</span> 
-                <span class="${color} font-bold text-[10px] bg-slate-800/80 px-1.5 py-0.5 rounded shadow-sm">${icon} ${sign}${change} (${sign}${changePct}%)</span>
-              </span>
-            `;
-          });
-          track.innerHTML = html + html;
-        }
-      } catch (error) {
-        console.error('YFinance Ticker Error:', error);
-      }
-    }
-
     // 1. DYNAMIC FOUNDER PORTRAIT FALLBACK & LOCAL SYNC
     function handleFounderImgError(img) {
       const storedAvatar = localStorage.getItem('711_founder_avatar');
@@ -1306,8 +1246,6 @@
       document.getElementById('founder-portrait-img').src = savedAvatar;
     }
     updateAuthUI();
-    document.addEventListener("DOMContentLoaded", initLiveTicker);
-    setInterval(initLiveTicker, 60000);
   </script>
 </body>
 </html>
