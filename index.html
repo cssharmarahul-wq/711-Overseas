@@ -99,9 +99,9 @@
         { "description": "SENSEX", "proName": "BSE:SENSEX" },
         { "description": "NIFTY 50", "proName": "NSE:NIFTY" },
         { "description": "BANK NIFTY", "proName": "NSE:BANKNIFTY" },
-        { "description": "GIFT NIFTY", "proName": "NSE:NIFTY1!" },
-        { "description": "GOLD (XAU/USD)", "proName": "OANDA:XAUUSD" },
+        { "description": "CNX NIFTY FUTURES", "proName": "NSE:NIFTY1!" },
         { "description": "NASDAQ 100", "proName": "NASDAQ:NDX" },
+        { "description": "GOLD (XAU/USD)", "proName": "OANDA:XAUUSD" },
         { "description": "USD/INR", "proName": "FX_IDC:USDINR" }
       ],
       "showSymbolLogo": true,
@@ -149,7 +149,7 @@
       </div>
     </div>
 
-    <!-- STREAMLINED 6-PILLAR NAVIGATION BAR -->
+    <!-- STREAMLINED NAVIGATION BAR -->
     <nav class="bg-brand-navy border-t border-brand-gold/20 overflow-x-auto no-scrollbar">
       <div class="max-w-7xl mx-auto flex items-center whitespace-nowrap text-xs font-medium px-2 py-1 space-x-1">
         <button onclick="switchTab('tab-about')" class="tab-btn active px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-about">
@@ -256,7 +256,6 @@
           </div>
         </div>
 
-        <!-- Founder Profile Card with profile.png -->
         <div class="bg-gradient-to-b from-brand-navy to-brand-midnight rounded-2xl p-6 md:p-8 gold-border-glow">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
@@ -369,7 +368,6 @@
           </div>
         </div>
 
-        <!-- DSC & Corporate Accountancy Matrix -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
             <div class="flex items-center space-x-2 text-brand-gold">
@@ -675,7 +673,6 @@
           </div>
         </div>
 
-        <!-- Material Vault Card -->
         <div class="bg-brand-navy p-6 md:p-8 rounded-2xl border border-slate-800 space-y-4">
           <div class="flex items-center space-x-3 text-brand-gold">
             <i class="fa-solid fa-cloud-arrow-up text-2xl"></i>
@@ -722,7 +719,6 @@
 
         <div id="intel-feed-container" class="space-y-4"></div>
 
-        <!-- Master Admin Publisher Console (Auto-unlocked for 711-C-9396) -->
         <div class="pt-8 border-t border-slate-800">
           <div class="mb-4">
             <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Authorized Administration</span>
@@ -846,7 +842,6 @@
         <div class="text-[10px] text-brand-goldLight font-mono">Tax Invoice Issued by 711 Overseas (GSTIN: 03AFAFS5209N1ZY)</div>
       </div>
 
-      <!-- Viral Share & Installed App Bonus -->
       <div class="bg-brand-midnight p-3.5 rounded-xl border border-brand-gold/40 mb-4 space-y-2">
         <div class="flex items-center justify-between text-xs">
           <span class="font-bold text-brand-goldLight flex items-center">
@@ -861,7 +856,6 @@
         </button>
       </div>
 
-      <!-- Billing Address Intake -->
       <div class="bg-brand-surface p-3 rounded-xl border border-slate-800 mb-4 space-y-2 text-xs">
         <div class="font-bold text-slate-200 uppercase text-[10px]">Client Invoicing Details</div>
         <div class="grid grid-cols-2 gap-2">
@@ -872,7 +866,6 @@
         <input type="text" id="bill-gstin" placeholder="GSTIN (Optional, for business ITC)" class="w-full bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none uppercase font-mono">
       </div>
 
-      <!-- Kotak 811 QR Code -->
       <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 text-center space-y-3 mb-4">
         <div class="w-44 mx-auto rounded-xl overflow-hidden bg-white p-2 flex items-center justify-center shadow-lg">
           <img id="dynamic-upi-qr" src="" alt="Kotak 811 UPI QR" class="w-full h-auto object-contain">
@@ -1051,7 +1044,7 @@
       document.getElementById('print-modal').classList.add('hidden');
     }
 
-    // 4. REAL ESTATE & CAREER DISPATCHERS (DIRECT WHATSAPP LEADS)
+    // 4. REAL ESTATE & CAREER DISPATCHERS
     function openRealEstateModal() {
       const type = prompt("Enter Asset Type (e.g. Commercial SCO, Industrial Land, JDA):");
       const loc = prompt("Enter City / Location (e.g. Airport Road, Amritsar):");
@@ -1174,7 +1167,7 @@
       window.open(`https://wa.me/919914984371?text=Inquiry%20regarding%20${encodeURIComponent(s)}`, '_blank');
     }
 
-    // 7. AUTHENTICATION & SESSION ELEVATION (711-C-9396 MASTER ADMIN)
+    // 7. AUTHENTICATION & SESSION ELEVATION
     function handleUserLogin() {
       const id = document.getElementById('login-input-id').value.trim();
       const pass = document.getElementById('login-input-pass').value.trim();
