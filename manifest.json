@@ -1,10 +1,14 @@
 {
   "name": "711 Overseas",
   "short_name": "711 Overseas",
+  "description": "Seven Eleven Overseas Management Consultants - Build Your Wealth.",
+  "id": "/711-Overseas/",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#050B14",
   "theme_color": "#050B14",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "logo.png",
