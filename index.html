@@ -113,7 +113,7 @@
       </div>
       
       <div class="flex items-center space-x-2">
-        <!-- NOTIFICATION BELL (Only visible to logged in users) -->
+        <!-- NOTIFICATION BELL -->
         <button id="header-notif-btn" onclick="openNotifModal()" class="hidden relative text-brand-gold hover:text-white p-2 mx-1 transition">
           <i class="fa-solid fa-bell text-xl"></i>
           <span id="notif-badge" class="hidden absolute top-1 right-1 h-2.5 w-2.5 bg-red-500 rounded-full border border-brand-midnight animate-pulse"></span>
@@ -203,7 +203,7 @@
       </div>
     </section>
 
-    <!-- NEW TAB: COMPLIANCE CALENDAR & REGULAR UPDATES -->
+    <!-- COMPLIANCE CALENDAR & REGULAR UPDATES -->
     <section id="tab-compliance" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         <div class="flex justify-between items-end border-b border-brand-gold/20 pb-4">
@@ -215,8 +215,6 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          
-          <!-- Compliance Calendar Module -->
           <div class="bg-brand-navy rounded-2xl gold-border-glow overflow-hidden flex flex-col">
             <div class="bg-brand-surface p-4 border-b border-slate-800 flex justify-between items-center">
               <h3 class="font-display font-bold text-lg text-brand-gold flex items-center"><i class="fa-regular fa-calendar-check mr-2"></i> Monthly Tax Calendar</h3>
@@ -257,24 +255,20 @@
             </div>
           </div>
 
-          <!-- Public Regulatory Updates Feed -->
           <div class="bg-brand-navy rounded-2xl border border-slate-800 flex flex-col max-h-[450px]">
             <div class="bg-brand-surface p-4 border-b border-slate-800">
               <h3 class="font-display font-bold text-lg text-slate-100 flex items-center"><i class="fa-solid fa-bullhorn text-brand-gold mr-2"></i> Regulatory Updates</h3>
               <p class="text-[10px] text-slate-400 mt-0.5">Public notifications & compliance circulars for registered users.</p>
             </div>
-            
-            <!-- This container populates via JavaScript -->
             <div id="public-updates-container" class="p-4 overflow-y-auto space-y-3 flex-grow no-scrollbar">
               <div class="text-center text-xs text-slate-500 my-4">Sign in to view registered member updates.</div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- TAB 2: ADVISORY, FEE SCHEDULES & PACKAGES -->
+    <!-- ADVISORY & FEE SCHEDULE -->
     <section id="tab-pricing" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         <div class="text-center space-y-2">
@@ -334,7 +328,7 @@
       </div>
     </section>
 
-    <!-- REAL ESTATE DESK -->
+    <!-- REAL ESTATE DESK (SS- GATED WITH DOCUMENT UPLOAD) -->
     <section id="tab-realestate" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -362,7 +356,7 @@
       </div>
     </section>
 
-    <!-- CS CAREERS DESK -->
+    <!-- CS CAREERS DESK (ICSI GATED) -->
     <section id="tab-careers" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -411,7 +405,7 @@
       </div>
     </section>
 
-    <!-- VIP INTEL FEED & ADMIN PUBLISHER (WITH DUAL ROUTING) -->
+    <!-- VIP INTEL FEED & ADMIN PUBLISHER -->
     <section id="tab-intel" class="tab-page">
       <div class="max-w-4xl mx-auto space-y-6">
         <div class="flex justify-between border-b border-brand-gold/20 pb-4">
@@ -431,7 +425,6 @@
           <div id="pub-form-box" class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow hidden space-y-4">
             <h3 class="font-display font-bold text-brand-gold text-sm uppercase">Publish Live Alert</h3>
             
-            <!-- Dual Routing: VIP Market vs Public Notification -->
             <select id="post-target" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none font-bold">
               <option value="VIP">🔐 Post to VIP Market Feed (Paid Only)</option>
               <option value="PUBLIC">🔔 Post to Public Compliance Desk (All Registered Users)</option>
@@ -509,12 +502,8 @@
     <div class="bg-brand-navy border border-brand-gold/50 rounded-2xl max-w-sm w-full p-5 relative shadow-2xl">
       <button onclick="closeNotifModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       <h3 class="font-display font-bold text-lg text-slate-100 mb-4 border-b border-slate-800 pb-2"><i class="fa-solid fa-bell text-brand-gold mr-2"></i> Recent Alerts</h3>
-      <div id="notif-content-box" class="space-y-3 max-h-[60vh] overflow-y-auto no-scrollbar">
-        <!-- JS Injected Notifications -->
-      </div>
-      <button onclick="window.open('https://wa.me/919914984371?text=Please%20add%20me%20to%20the%20711%20WhatsApp%20Broadcast%20List.', '_blank')" class="w-full mt-4 bg-green-600 text-white font-bold py-2 rounded text-[11px] shadow">
-        <i class="fa-brands fa-whatsapp mr-1"></i> Join WhatsApp Push Broadcast
-      </button>
+      <div id="notif-content-box" class="space-y-3 max-h-[60vh] overflow-y-auto no-scrollbar"></div>
+      <button onclick="window.open('https://wa.me/919914984371?text=Please%20add%20me%20to%20the%20711%20WhatsApp%20Broadcast%20List.', '_blank')" class="w-full mt-4 bg-green-600 text-white font-bold py-2 rounded text-[11px] shadow"><i class="fa-brands fa-whatsapp mr-1"></i> Join WhatsApp Push Broadcast</button>
     </div>
   </div>
 
@@ -583,7 +572,7 @@
     </div>
   </div>
 
-  <!-- UNIVERSAL PAYMENT MODAL -->
+  <!-- UNIVERSAL PAYMENT MODAL (OFFICIAL GOOGLE PAY MERCHANT) -->
   <div id="payment-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
     <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-6 relative max-h-[92vh] overflow-y-auto">
       <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -591,16 +580,27 @@
         <h3 class="font-display font-bold text-lg text-slate-100" id="checkout-service-name">Service Name</h3>
         <div class="text-2xl font-bold font-display text-brand-gold my-1" id="calc-net">₹ 1,999</div>
       </div>
+      
+      <!-- Google Pay Merchant Integration -->
       <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 text-center space-y-3 mb-4">
-        <div class="w-44 mx-auto rounded-xl overflow-hidden bg-white p-2 flex items-center justify-center shadow-lg">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=7837427391@kotakbank&pn=RAHUL%20SHARMA&am=1999&cu=INR" alt="Kotak 811 UPI QR" class="w-full h-auto object-contain">
+        <div class="flex items-center justify-center space-x-2 mb-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay" class="h-4">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Official Merchant Account</span>
         </div>
-        <div class="text-xs text-slate-300">Beneficiary: <strong>RAHUL SHARMA</strong><br><span class="font-mono text-brand-gold">7837427391@kotakbank</span></div>
+        <div class="w-44 mx-auto rounded-xl overflow-hidden bg-white p-2 flex items-center justify-center shadow-lg">
+          <img id="dynamic-upi-qr" src="" alt="Google Pay UPI QR" class="w-full h-auto object-contain">
+        </div>
+        <div class="text-[11px] text-slate-300">
+          <div>Beneficiary: <strong>Seven Eleven Overseas Management Consultants</strong></div>
+          <div class="font-mono text-brand-gold mt-0.5">8054542962@okbizaxis</div>
+        </div>
       </div>
+
       <div id="utr-submit-box" class="space-y-2 text-xs">
         <input type="text" id="pay-utr-input" placeholder="Enter 12-Digit Bank UTR" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-slate-100 outline-none font-mono">
         <button onclick="submitUtrForVerification()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Submit UTR for Verification</button>
       </div>
+
       <div id="utr-pending-box" class="hidden space-y-3 pt-2 text-xs text-center border-t border-slate-800">
         <div class="p-3 bg-amber-500/10 border border-amber-500/40 rounded-lg text-amber-300 font-bold">
           <i class="fa-solid fa-clock mb-1"></i> UTR Submitted. Send Screenshot to WhatsApp.
@@ -751,20 +751,20 @@
         document.getElementById('form-login-box').classList.add('hidden');
         document.getElementById('form-signup-box').classList.add('hidden');
         document.getElementById('auth-tab-login').parentElement.classList.add('hidden');
-        headerNotifBtn.classList.remove('hidden'); // Show Bell
+        headerNotifBtn.classList.remove('hidden'); 
       } else {
         document.getElementById('header-user-label').textContent = "Login";
         document.getElementById('auth-logged-view').classList.add('hidden');
         document.getElementById('form-login-box').classList.remove('hidden');
         document.getElementById('auth-tab-login').parentElement.classList.remove('hidden');
-        headerNotifBtn.classList.add('hidden'); // Hide Bell
+        headerNotifBtn.classList.add('hidden'); 
       }
     }
 
     // 4. NOTIFICATION ENGINE & COMPLIANCE FEED
     function checkNotifications() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (!user) return; // Not logged in
+      if (!user) return; 
 
       const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
       const lastRead = parseInt(localStorage.getItem('711_last_notif_count') || '0');
@@ -854,7 +854,6 @@
         alert('Published to Public Compliance Feed! All registered users will be notified.');
       }
       
-      // Broadcast via WhatsApp regardless
       window.open(`https://wa.me/?text=711%20OVERSEAS%20BROADCAST:%20${encodeURIComponent(headline)}`, '_blank');
       
       document.getElementById('post-headline').value = '';
@@ -920,15 +919,34 @@
     function applyJob(t) { requireCsAuth(() => window.open(`https://wa.me/919914984371?text=Applying%20for%20${encodeURIComponent(t)}`, '_blank')); }
     function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry:%20${encodeURIComponent(s)}`, '_blank'); }
 
-    // 7. PAYMENTS & MISC
-    function openUniversalPayment() { document.getElementById('payment-modal').classList.remove('hidden'); }
+    // 7. PAYMENTS & MERCHANT DESK
+    let activeCheckoutService = "VIP Advisory Subscription (Monthly)";
+    let activeCheckoutBasePrice = 1999;
+    
+    function openUniversalPayment(serviceName, basePrice) {
+      if(serviceName) activeCheckoutService = serviceName;
+      if(basePrice) activeCheckoutBasePrice = basePrice;
+      document.getElementById('checkout-service-name').textContent = activeCheckoutService;
+      document.getElementById('calc-net').textContent = `₹ ${activeCheckoutBasePrice.toLocaleString('en-IN')}`;
+      
+      const upiUrl = `upi://pay?pa=8054542962@okbizaxis&pn=Seven%20Eleven%20Overseas%20Management%20Consultants&am=${activeCheckoutBasePrice}&cu=INR&tn=${encodeURIComponent(activeCheckoutService)}`;
+      document.getElementById('dynamic-upi-qr').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+      document.getElementById('dynamic-upi-btn').href = upiUrl;
+      
+      document.getElementById('utr-submit-box').classList.remove('hidden');
+      document.getElementById('utr-pending-box').classList.add('hidden');
+      document.getElementById('payment-modal').classList.remove('hidden');
+    }
+    
     function closePaymentModal() { document.getElementById('payment-modal').classList.add('hidden'); }
+    
     function submitUtrForVerification() {
       const utr = document.getElementById('pay-utr-input').value.trim();
       if (!utr || utr.length < 8) return alert('Enter valid Bank UTR.');
       document.getElementById('utr-submit-box').classList.add('hidden');
       document.getElementById('utr-pending-box').classList.remove('hidden');
     }
+    
     function unlockWithModalKey() {
       const key = document.getElementById('modal-vip-key').value.trim();
       if (key === '7110' || key === '843711') {
@@ -937,12 +955,14 @@
         alert('VIP Access unlocked!'); closePaymentModal(); updateAuthUI(); renderIntelFeed(); switchTab('tab-intel');
       } else { alert('Invalid Activation Key.'); }
     }
+    
     function executeLiveScripSearch() {
       const q = document.getElementById('scrip-query').value.trim().toUpperCase();
       if (!q) return;
       document.getElementById('tv-chart-wrapper').classList.remove('hidden');
       document.getElementById('tv-chart-container').innerHTML = `<iframe src="https://s.tradingview.com/widgetembed/?symbol=${encodeURIComponent(q)}&interval=D&theme=dark" class="w-full h-full border-0"></iframe>`;
     }
+    
     function previewTaxInvoice() { document.getElementById('print-modal').classList.remove('hidden'); }
     function closePrintModal() { document.getElementById('print-modal').classList.add('hidden'); }
 
