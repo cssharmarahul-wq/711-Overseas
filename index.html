@@ -69,7 +69,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
-  <!-- OFFICIAL TRADINGVIEW TICKER (CUSTOM SGX LABEL & GLOBAL INDICES) -->
+  <!-- OFFICIAL TRADINGVIEW TICKER (SGX NIFTY & GLOBAL ASSETS) -->
   <div class="tradingview-widget-container bg-black/90 border-b border-brand-gold/30">
     <div class="tradingview-widget-container__widget"></div>
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
@@ -112,7 +112,6 @@
       </div>
       
       <div class="flex items-center space-x-2">
-        <!-- NOTIFICATION BELL -->
         <button id="header-notif-btn" onclick="openNotifModal()" class="hidden relative text-brand-gold hover:text-white p-2 mx-1 transition">
           <i class="fa-solid fa-bell text-xl"></i>
           <span id="notif-badge" class="hidden absolute top-1 right-1 h-2.5 w-2.5 bg-red-500 rounded-full border border-brand-midnight animate-pulse"></span>
@@ -202,7 +201,177 @@
       </div>
     </section>
 
-    <!-- COMPLIANCE CALENDAR & REGULAR UPDATES -->
+    <!-- TAB 2: ADVISORY, ACCOUNTANCY & FULL FEE SCHEDULE -->
+    <section id="tab-pricing" class="tab-page">
+      <div class="max-w-6xl mx-auto space-y-8">
+        <div class="text-center space-y-2">
+          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Statutory & Commercial Fee Schedule</span>
+          <h2 class="text-3xl font-display font-extrabold text-slate-100">Transparent Professional Retainers</h2>
+          <p class="text-xs text-slate-400 max-w-xl mx-auto">
+            All services include 18% GST tax invoices issued under <strong>GSTIN: 03AFAFS5209N1ZY</strong> for full Input Tax Credit (ITC) eligibility.
+          </p>
+        </div>
+
+        <!-- VIP Advisory Plans -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-brand-surface text-brand-gold">VIP Capital Pass</span>
+                <span class="text-xs text-slate-400 font-mono">Monthly Billed</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-100">Market & Regulatory Advisory</h3>
+              <div class="my-3">
+                <div class="text-3xl font-bold font-display text-brand-gold">₹ 1,999 <span class="text-xs text-slate-400 font-normal">/ month</span></div>
+                <div class="text-[11px] text-slate-400 font-mono mt-0.5">(₹1,694 Base + 18% GST ₹305 · ITC Eligible)</div>
+              </div>
+              <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Daily High-Probability Stock Breakout Setups & Risk Matrices.</li>
+                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Gated VIP Analytics Feed Access.</li>
+                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Real-Time MCA, CBDT, & GST Notification Bulletins.</li>
+              </ul>
+            </div>
+            <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold py-2.5 rounded-lg text-xs transition shadow">
+              Subscribe Monthly (₹1,999)
+            </button>
+          </div>
+
+          <div class="bg-gradient-to-b from-brand-navy to-brand-midnight p-6 rounded-2xl border-2 border-brand-gold flex flex-col justify-between relative shadow-xl">
+            <div class="absolute -top-3 right-4 bg-brand-gold text-brand-midnight text-[9px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow">
+              Save ₹988 / Annual Pass
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Annual Executive Pass</span>
+                <span class="text-xs text-emerald-400 font-mono font-bold">12 Months Unlocked</span>
+              </div>
+              <h3 class="font-display font-bold text-xl text-slate-100">Complete Institutional Access</h3>
+              <div class="my-3">
+                <div class="text-3xl font-bold font-display text-emerald-400">₹ 23,000 <span class="text-xs text-slate-400 font-normal">/ year</span></div>
+                <div class="text-[11px] text-slate-400 font-mono mt-0.5">(₹19,491 Base + 18% GST ₹3,509 · ITC Eligible)</div>
+              </div>
+              <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> 365 Days Uncapped Access to All Research Reports & Alerts.</li>
+                <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Priority Direct WhatsApp Legal Notice Assessment.</li>
+                <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> 1 Token Class 3 DSC Included with Verification Support.</li>
+              </ul>
+            </div>
+            <button onclick="openUniversalPayment('VIP Advisory Subscription (Yearly)', 23000)" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 hover:brightness-110 text-white font-bold py-2.5 rounded-lg text-xs transition shadow">
+              Enroll Annual Pass (₹23,000)
+            </button>
+          </div>
+        </div>
+
+        <!-- RESTORED: ACCOUNTANCY & BOOKKEEPING SERVICES -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center space-x-2 text-brand-gold">
+              <i class="fa-solid fa-calculator text-xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Accountancy & Bookkeeping</h3>
+            </div>
+            <p class="text-xs text-slate-400">Standard monthly retainer schedule based on transaction volume, reconciliation, and GST compliance:</p>
+            
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800">
+                <span class="text-slate-300">Up to 100 Vouchers (Micro / Freelancer):</span>
+                <strong class="text-brand-gold">₹ 3,000 / mo</strong>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800">
+                <span class="text-slate-300">100 – 300 Vouchers (Growing SME / LLP):</span>
+                <strong class="text-brand-gold">₹ 6,500 / mo</strong>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800">
+                <span class="text-slate-300">300 – 600 Vouchers (Corporate Mid-Tier):</span>
+                <strong class="text-brand-gold">₹ 10,500 / mo</strong>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800">
+                <span class="text-slate-300">600+ Vouchers (High Volume / Multi-Branch):</span>
+                <strong class="text-brand-gold">₹ 15,000+ / mo</strong>
+              </div>
+            </div>
+            <button onclick="openUniversalPayment('Accounting Retainer Advance', 3000)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight border border-brand-gold/40 py-2.5 rounded text-xs font-semibold">
+              Onboard Accounting Retainer (Starting ₹3,000)
+            </button>
+          </div>
+
+          <!-- RESTORED: CLASS 3 DIGITAL SIGNATURES -->
+          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center space-x-2 text-brand-gold">
+              <i class="fa-solid fa-key text-xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Class 3 Digital Signatures (DSC)</h3>
+            </div>
+            <p class="text-xs text-slate-400">Fast-track paperless cryptographic verification for MCA, Income Tax, GST, ICEGATE, and e-Tendering:</p>
+            
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-700 text-center">
+                <span class="text-[10px] text-slate-400 uppercase">Certificate Only</span>
+                <div class="text-xl font-bold font-display text-brand-gold my-1">₹ 999</div>
+                <button onclick="openUniversalPayment('Class 3 DSC (Certificate Only)', 999)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight text-[11px] font-semibold py-1.5 rounded border border-brand-gold/40 mt-1">
+                  Order ₹999
+                </button>
+              </div>
+
+              <div class="bg-brand-surface p-3.5 rounded-xl border border-brand-gold/40 text-center">
+                <span class="text-[10px] text-slate-400 uppercase">With USB FIPS Token</span>
+                <div class="text-xl font-bold font-display text-emerald-400 my-1">₹ 1,450</div>
+                <button onclick="openUniversalPayment('Class 3 DSC (With USB Token)', 1450)" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight text-[11px] font-bold py-1.5 rounded shadow mt-1">
+                  Order ₹1,450
+                </button>
+              </div>
+            </div>
+            <div class="text-[10px] text-slate-500 italic text-center">Includes video verification assistance and statutory compliance approval.</div>
+          </div>
+        </div>
+
+        <!-- RESTORED: CORPORATE REGISTRATION & STATUTORY GRID -->
+        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="font-display font-bold text-xl text-slate-100">Corporate Incorporations & Statutory Retainers</h3>
+            <span class="text-xs text-brand-gold font-mono">ALL-INCLUSIVE PACKAGES</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Incorporation</span>
+                <h4 class="font-bold text-slate-200 mt-1">Pvt Ltd Company Registration</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 6,999 – ₹ 11,999</div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">SPICe+, Name approval, 2 DIN, 2 DSC, MOA/AOA drafting, Certificate of Incorporation, PAN & TAN.</p>
+              </div>
+              <button onclick="openUniversalPayment('Pvt Ltd Company Incorporation', 6999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">
+                Start Incorporation (₹6,999)
+              </button>
+            </div>
+
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Partnerships</span>
+                <h4 class="font-bold text-slate-200 mt-1">LLP Incorporation & Deed</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,999 – ₹ 8,999</div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">FiLLiP filing, Run-LLP name reservation, customized partnership deed drafting, and Form 3 statutory filing.</p>
+              </div>
+              <button onclick="openUniversalPayment('LLP Incorporation & Deed', 4999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">
+                Start LLP Filing (₹4,999)
+              </button>
+            </div>
+
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Intellectual Property</span>
+                <h4 class="font-bold text-slate-200 mt-1">Trademark (IPR) Registration</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,500 <span class="text-[10px] text-slate-400 font-normal">+ Govt Fees</span></div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">Comprehensive trademark class search, TM application filing, user affidavit drafting, and examination notice defense.</p>
+              </div>
+              <button onclick="openUniversalPayment('Trademark Registration Advance', 4500)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">
+                Protect Brand (₹4,500)
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: COMPLIANCE CALENDAR & REGULAR UPDATES -->
     <section id="tab-compliance" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         <div class="flex justify-between items-end border-b border-brand-gold/20 pb-4">
@@ -267,45 +436,7 @@
       </div>
     </section>
 
-    <!-- ADVISORY & FEE SCHEDULE -->
-    <section id="tab-pricing" class="tab-page">
-      <div class="max-w-6xl mx-auto space-y-8">
-        <div class="text-center space-y-2">
-          <span class="text-[10px] uppercase font-bold tracking-widest text-brand-gold">Statutory & Commercial Fee Schedule</span>
-          <h2 class="text-3xl font-display font-extrabold text-slate-100">Transparent Professional Retainers</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-brand-surface text-brand-gold">VIP Capital Pass</span>
-                <span class="text-xs text-slate-400 font-mono">Monthly Billed</span>
-              </div>
-              <h3 class="font-display font-bold text-xl text-slate-100 mt-2">Market & Regulatory Advisory</h3>
-              <div class="my-3"><div class="text-3xl font-bold font-display text-brand-gold">₹ 1,999 <span class="text-xs text-slate-400 font-normal">/ month</span></div></div>
-              <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Daily High-Probability Stock Breakout Setups.</li>
-                <li><i class="fa-solid fa-check text-brand-gold mr-1.5"></i> Gated VIP Analytics Feed Access.</li>
-              </ul>
-            </div>
-            <button onclick="openUniversalPayment('VIP Advisory Subscription (Monthly)', 1999)" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded-lg text-xs shadow">Subscribe Monthly (₹1,999)</button>
-          </div>
-          <div class="bg-gradient-to-b from-brand-navy to-brand-midnight p-6 rounded-2xl border-2 border-brand-gold shadow-xl">
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300">Annual Executive Pass</span>
-                <span class="text-xs text-emerald-400 font-mono font-bold">12 Months Unlocked</span>
-              </div>
-              <h3 class="font-display font-bold text-xl text-slate-100 mt-2">Complete Institutional Access</h3>
-              <div class="my-3"><div class="text-3xl font-bold font-display text-emerald-400">₹ 23,000 <span class="text-xs text-slate-400 font-normal">/ year</span></div></div>
-            </div>
-            <button onclick="openUniversalPayment('VIP Advisory Subscription (Yearly)', 23000)" class="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs shadow mt-6">Enroll Annual Pass (₹23,000)</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CAPITAL MARKETS -->
+    <!-- TAB 4: CAPITAL MARKETS -->
     <section id="tab-stocks" class="tab-page">
       <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
         <div>
@@ -327,7 +458,7 @@
       </div>
     </section>
 
-    <!-- REAL ESTATE DESK (SS- GATED WITH DOCUMENT UPLOAD) -->
+    <!-- TAB 5: REAL ESTATE DESK -->
     <section id="tab-realestate" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -355,7 +486,7 @@
       </div>
     </section>
 
-    <!-- CS CAREERS DESK (ICSI GATED) -->
+    <!-- TAB 6: CS CAREERS DESK -->
     <section id="tab-careers" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -381,7 +512,7 @@
       </div>
     </section>
 
-    <!-- INVOICES & VAULT -->
+    <!-- TAB 7: INVOICES & VAULT -->
     <section id="tab-downloads" class="tab-page">
       <div class="max-w-5xl mx-auto space-y-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -404,7 +535,7 @@
       </div>
     </section>
 
-    <!-- VIP INTEL FEED & ADMIN PUBLISHER -->
+    <!-- TAB 8: VIP INTEL FEED & ADMIN PUBLISHER -->
     <section id="tab-intel" class="tab-page">
       <div class="max-w-4xl mx-auto space-y-6">
         <div class="flex justify-between border-b border-brand-gold/20 pb-4">
@@ -571,15 +702,17 @@
     </div>
   </div>
 
-  <!-- UNIVERSAL PAYMENT MODAL -->
-  <div id="payment-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <!-- RESTORED UNIVERSAL PAYMENT MODAL (GOOGLE PAY MERCHANT ACCOUNT) -->
+  <div id="payment-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-6 relative max-h-[92vh] overflow-y-auto">
       <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
       <div class="text-center mb-3">
         <h3 class="font-display font-bold text-lg text-slate-100" id="checkout-service-name">Service Name</h3>
         <div class="text-2xl font-bold font-display text-brand-gold my-1" id="calc-net">₹ 1,999</div>
+        <div class="text-[10px] text-brand-goldLight font-mono">Tax Invoice Issued by 711 Overseas (GSTIN: 03AFAFS5209N1ZY)</div>
       </div>
       
+      <!-- Google Pay Merchant Integration -->
       <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 text-center space-y-3 mb-4">
         <div class="flex items-center justify-center space-x-2 mb-2">
           <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay" class="h-4">
@@ -598,15 +731,16 @@
       </div>
 
       <div id="utr-submit-box" class="space-y-2 text-xs">
-        <input type="text" id="pay-utr-input" placeholder="Enter 12-Digit Bank UTR" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-slate-100 outline-none font-mono">
+        <label class="block text-slate-300 font-bold">Enter 12-Digit Bank UTR / Payment Reference</label>
+        <input type="text" id="pay-utr-input" placeholder="e.g. 4239XXXXXXXX" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-slate-100 outline-none font-mono">
         <button onclick="submitUtrForVerification()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Submit UTR for Verification</button>
       </div>
 
       <div id="utr-pending-box" class="hidden space-y-3 pt-2 text-xs text-center border-t border-slate-800">
         <div class="p-3 bg-amber-500/10 border border-amber-500/40 rounded-lg text-amber-300 font-bold">
-          <i class="fa-solid fa-clock mb-1"></i> UTR Submitted. Send Screenshot to WhatsApp.
+          <i class="fa-solid fa-clock mb-1"></i> UTR Submitted. Send Screenshot to WhatsApp to get VIP Key.
         </div>
-        <button onclick="window.open('https://wa.me/919914984371?text=Here%20is%20my%20payment%20screenshot%20for%20VIP%20Access.', '_blank')" class="w-full bg-green-600 text-white font-bold py-2.5 rounded text-xs shadow"><i class="fa-brands fa-whatsapp"></i> Send Screenshot</button>
+        <button onclick="window.open('https://wa.me/919914984371?text=Here%20is%20my%20payment%20screenshot%20for%20verification.', '_blank')" class="w-full bg-green-600 text-white font-bold py-2.5 rounded text-xs shadow"><i class="fa-brands fa-whatsapp"></i> Send Screenshot</button>
         <div class="pt-2 flex gap-2">
           <input type="text" id="modal-vip-key" placeholder="6-Digit Admin Key" class="flex-1 bg-brand-surface border border-slate-700 rounded p-2 text-center font-mono font-bold text-brand-gold outline-none">
           <button onclick="unlockWithModalKey()" class="bg-emerald-600 text-white font-bold px-4 py-2 rounded text-xs">Unlock</button>
@@ -875,7 +1009,7 @@
       } else {
         pill.innerHTML = '<i class="fa-solid fa-lock mr-1.5"></i>Paid Subscription Required';
         pill.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center w-max';
-        container.innerHTML = `<div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center"><i class="fa-solid fa-user-lock text-brand-gold text-3xl mb-3"></i><h3 class="font-display font-bold text-lg text-slate-100">VIP Feed is Locked</h3><button onclick="openUniversalPayment('VIP Advisory', 1999)" class="mt-4 bg-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs">Unlock Standard</button></div>`;
+        container.innerHTML = `<div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center"><i class="fa-solid fa-user-lock text-brand-gold text-3xl mb-3"></i><h3 class="font-display font-bold text-lg text-slate-100">VIP Feed is Locked</h3><button onclick="openUniversalPayment('VIP Advisory Subscription', 1999)" class="mt-4 bg-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs">Unlock Standard</button></div>`;
       }
     }
 
@@ -920,13 +1054,14 @@
     function applyJob(t) { requireCsAuth(() => window.open(`https://wa.me/919914984371?text=Applying%20for%20${encodeURIComponent(t)}`, '_blank')); }
     function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry:%20${encodeURIComponent(s)}`, '_blank'); }
 
-    // 7. PAYMENTS & MERCHANT DESK
+    // 7. RESTORED UNIVERSAL CHECKOUT CONTROLLER (GOOGLE PAY MERCHANT)
     let activeCheckoutService = "VIP Advisory Subscription (Monthly)";
     let activeCheckoutBasePrice = 1999;
     
     function openUniversalPayment(serviceName, basePrice) {
       if(serviceName) activeCheckoutService = serviceName;
       if(basePrice) activeCheckoutBasePrice = basePrice;
+      
       document.getElementById('checkout-service-name').textContent = activeCheckoutService;
       document.getElementById('calc-net').textContent = `₹ ${activeCheckoutBasePrice.toLocaleString('en-IN')}`;
       
@@ -955,7 +1090,7 @@
     
     function submitUtrForVerification() {
       const utr = document.getElementById('pay-utr-input').value.trim();
-      if (!utr || utr.length < 8) return alert('Enter valid Bank UTR.');
+      if (!utr || utr.length < 8) return alert('Enter valid Bank UTR / Reference Number.');
       document.getElementById('utr-submit-box').classList.add('hidden');
       document.getElementById('utr-pending-box').classList.remove('hidden');
     }
@@ -964,8 +1099,13 @@
       const key = document.getElementById('modal-vip-key').value.trim();
       if (key === '7110' || key === '843711') {
         let user = JSON.parse(localStorage.getItem('711_active_user') || '{"id":"711-R-8431","name":"Client"}');
-        user.role = 'STANDARD'; localStorage.setItem('711_active_user', JSON.stringify(user));
-        alert('VIP Access unlocked!'); closePaymentModal(); updateAuthUI(); renderIntelFeed(); switchTab('tab-intel');
+        user.role = 'STANDARD'; 
+        localStorage.setItem('711_active_user', JSON.stringify(user));
+        alert('VIP Access unlocked!'); 
+        closePaymentModal(); 
+        updateAuthUI(); 
+        renderIntelFeed(); 
+        switchTab('tab-intel');
       } else { alert('Invalid Activation Key.'); }
     }
     
