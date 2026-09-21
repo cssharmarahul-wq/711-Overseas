@@ -122,11 +122,6 @@
       </div>
       
       <div class="flex items-center space-x-2">
-        <button onclick="openAiAssistant()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/50 text-brand-goldLight px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 shadow">
-          <i class="fa-solid fa-robot text-brand-gold animate-pulse"></i>
-          <span>AI Advisory Desk</span>
-        </button>
-
         <button id="header-notif-btn" onclick="openNotifModal()" class="hidden relative text-brand-gold hover:text-white p-2 mx-1 transition">
           <i class="fa-solid fa-bell text-xl"></i>
           <span id="notif-badge" class="hidden absolute top-1 right-1 h-2.5 w-2.5 bg-red-500 rounded-full border border-brand-midnight animate-pulse"></span>
@@ -242,7 +237,7 @@
       </div>
     </section>
 
-    <!-- TAB 2: ADVISORY & PRICING -->
+    <!-- TAB 2: ADVISORY, ACCOUNTANCY & FULL FEE SCHEDULE -->
     <section id="tab-pricing" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         <div class="text-center space-y-2">
@@ -251,17 +246,6 @@
           <p class="text-xs text-slate-400 max-w-xl mx-auto">
             All services include 18% GST tax invoices issued under <strong>GSTIN: 03AFAFS5209N1ZY</strong> for full Input Tax Credit (ITC) eligibility.
           </p>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-brand-navy to-brand-midnight border border-amber-500/40 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
-          <div>
-            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-400">Real Estate Brokerage & Deal Facilitation</span>
-            <h3 class="text-lg font-display font-bold text-slate-100">1.00% Consideration Value Commission</h3>
-            <p class="text-xs text-slate-300 mt-0.5">Applicable on outright buy/sell, commercial SCOs, and residential parcel acquisitions. Stamp Duty, Sub-Registrar Registration, and Lawyer Conveyancing fees extra at actuals.</p>
-          </div>
-          <button onclick="openUniversalPayment('Real Estate Deal Advisory Advance', 25000)" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs transition shadow whitespace-nowrap">
-            Book Transaction Desk
-          </button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -310,12 +294,90 @@
             </button>
           </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center space-x-2 text-brand-gold">
+              <i class="fa-solid fa-calculator text-xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Accountancy & Bookkeeping</h3>
+            </div>
+            <p class="text-xs text-slate-400">Standard monthly retainer schedule based on transaction volume, reconciliation, and GST compliance:</p>
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">Up to 100 Vouchers (Micro / Freelancer):</span><strong class="text-brand-gold">₹ 3,000 / mo</strong></div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">100 – 300 Vouchers (Growing SME / LLP):</span><strong class="text-brand-gold">₹ 6,500 / mo</strong></div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">300 – 600 Vouchers (Corporate Mid-Tier):</span><strong class="text-brand-gold">₹ 10,500 / mo</strong></div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">600+ Vouchers (High Volume / Multi-Branch):</span><strong class="text-brand-gold">₹ 15,000+ / mo</strong></div>
+            </div>
+            <button onclick="openUniversalPayment('Accounting Retainer Advance', 3000)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight border border-brand-gold/40 py-2.5 rounded text-xs font-semibold">Onboard Accounting Retainer</button>
+          </div>
+
+          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center space-x-2 text-brand-gold">
+              <i class="fa-solid fa-key text-xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Class 3 Digital Signatures (DSC)</h3>
+            </div>
+            <p class="text-xs text-slate-400">Fast-track paperless cryptographic verification for MCA, Income Tax, GST, ICEGATE, and e-Tendering:</p>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-700 text-center">
+                <span class="text-[10px] text-slate-400 uppercase">Certificate Only</span>
+                <div class="text-xl font-bold font-display text-brand-gold my-1">₹ 999</div>
+                <button onclick="openUniversalPayment('Class 3 DSC (Certificate Only)', 999)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight text-[11px] font-semibold py-1.5 rounded border border-brand-gold/40 mt-1">Order ₹999</button>
+              </div>
+              <div class="bg-brand-surface p-3.5 rounded-xl border border-brand-gold/40 text-center">
+                <span class="text-[10px] text-slate-400 uppercase">With USB FIPS Token</span>
+                <div class="text-xl font-bold font-display text-emerald-400 my-1">₹ 1,450</div>
+                <button onclick="openUniversalPayment('Class 3 DSC (With USB Token)', 1450)" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight text-[11px] font-bold py-1.5 rounded shadow mt-1">Order ₹1,450</button>
+              </div>
+            </div>
+            <div class="text-[10px] text-slate-500 italic text-center">Includes video verification assistance and statutory compliance approval.</div>
+          </div>
+        </div>
+
+        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="font-display font-bold text-xl text-slate-100">Corporate Incorporations & Statutory Retainers</h3>
+            <span class="text-xs text-brand-gold font-mono">ALL-INCLUSIVE PACKAGES</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Incorporation</span>
+                <h4 class="font-bold text-slate-200 mt-1">Pvt Ltd Company Registration</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 6,999 – ₹ 11,999</div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">SPICe+, Name approval, 2 DIN, 2 DSC, MOA/AOA drafting, Certificate of Incorporation, PAN & TAN.</p>
+              </div>
+              <button onclick="openUniversalPayment('Pvt Ltd Company Incorporation', 6999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Start Incorporation (₹6,999)</button>
+            </div>
+
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Partnerships</span>
+                <h4 class="font-bold text-slate-200 mt-1">LLP Incorporation & Deed</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,999 – ₹ 8,999</div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">FiLLiP filing, Run-LLP name reservation, customized partnership deed drafting, and Form 3 statutory filing.</p>
+              </div>
+              <button onclick="openUniversalPayment('LLP Incorporation & Deed', 4999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Start LLP Filing (₹4,999)</button>
+            </div>
+
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Intellectual Property</span>
+                <h4 class="font-bold text-slate-200 mt-1">Trademark (IPR) Registration</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,500 <span class="text-[10px] text-slate-400 font-normal">+ Govt Fees</span></div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">Comprehensive trademark class search, TM application filing, user affidavit drafting, and examination notice defense.</p>
+              </div>
+              <button onclick="openUniversalPayment('Trademark Registration Advance', 4500)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Protect Brand (₹4,500)</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- TAB 3: STATUTORY COMPLIANCE RADAR -->
     <section id="tab-compliance" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
+        
         <div class="bg-gradient-to-b from-brand-navy to-brand-midnight p-6 md:p-8 rounded-2xl gold-border-glow space-y-5">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
             <div>
@@ -350,12 +412,62 @@
               </button>
             </div>
           </div>
+
           <div id="radar-results-card" class="hidden p-4 rounded-xl bg-brand-surface border border-brand-gold/40 space-y-3 text-xs"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-brand-navy rounded-2xl gold-border-glow overflow-hidden flex flex-col">
+            <div class="bg-brand-surface p-4 border-b border-slate-800 flex justify-between items-center">
+              <h3 class="font-display font-bold text-lg text-brand-gold flex items-center"><i class="fa-regular fa-calendar-check mr-2"></i> Monthly Statutory Tax Calendar</h3>
+              <span class="text-[10px] font-mono text-slate-400">STANDARD DEADLINES</span>
+            </div>
+            <div class="p-0 flex-grow">
+              <table class="w-full text-left text-xs text-slate-300 border-collapse">
+                <tbody>
+                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
+                    <td class="p-3 font-bold text-slate-100 w-24">7th</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-brand-gold">TDS / TCS:</strong> Deposit of Tax Deducted/Collected for previous month.</td>
+                  </tr>
+                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
+                    <td class="p-3 font-bold text-slate-100">11th</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-emerald-400">GST:</strong> GSTR-1 (Outward Supplies) for previous month.</td>
+                  </tr>
+                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
+                    <td class="p-3 font-bold text-slate-100">13th</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-emerald-400">GST:</strong> GSTR-6 (Input Service Distributor return).</td>
+                  </tr>
+                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
+                    <td class="p-3 font-bold text-slate-100">15th</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-blue-400">PF/ESIC:</strong> Provident Fund and ESIC monthly contributions deposit.</td>
+                  </tr>
+                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
+                    <td class="p-3 font-bold text-slate-100">20th</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-emerald-400">GST:</strong> GSTR-3B (Summary Return & Tax Payment).</td>
+                  </tr>
+                  <tr class="hover:bg-brand-surface/30 transition">
+                    <td class="p-3 font-bold text-slate-100">30th / 31st</td>
+                    <td class="p-3 border-l border-slate-800/50"><strong class="text-amber-400">MCA / IT:</strong> Annual Return (AOC-4/MGT-7), DIR-3 KYC, Tax Audit Reports.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-brand-navy rounded-2xl border border-slate-800 flex flex-col max-h-[450px]">
+            <div class="bg-brand-surface p-4 border-b border-slate-800">
+              <h3 class="font-display font-bold text-lg text-slate-100 flex items-center"><i class="fa-solid fa-bullhorn text-brand-gold mr-2"></i> Regulatory Updates</h3>
+              <p class="text-[10px] text-slate-400 mt-0.5">Public notifications & compliance circulars for registered users.</p>
+            </div>
+            <div id="public-updates-container" class="p-4 overflow-y-auto space-y-3 flex-grow no-scrollbar">
+              <div class="text-center text-xs text-slate-500 my-4">Sign in to view registered member updates.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 4: CAPITAL MARKETS -->
+    <!-- TAB 4: CAPITAL MARKETS (LIVE TERMINAL & DOSSIER) -->
     <section id="tab-stocks" class="tab-page">
       <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
         <div>
@@ -392,7 +504,7 @@
       <div id="quant-dossier-hub" class="space-y-6"></div>
     </section>
 
-    <!-- TAB 5: REAL ESTATE DESK -->
+    <!-- TAB 5: REAL ESTATE DESK (DYNAMIC ON-PAGE LISTINGS & 1% COMMISSION) -->
     <section id="tab-realestate" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -453,7 +565,7 @@
           <div class="flex flex-col sm:flex-row justify-between sm:items-center border-b border-slate-800 pb-3 gap-2">
             <div>
               <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400 flex items-center">
-                <i class="fa-solid fa-user-shield mr-1.5"></i> Restricted Administrator Vault Enclave (Rahul Sharma Only)
+                <i class="fa-solid fa-user-shield mr-1.5"></i> Restricted Administrator Vault Enclave
               </span>
               <h3 class="font-display font-bold text-lg text-slate-100">Client Approvals, KYC Verification & Cloud Vault</h3>
             </div>
@@ -482,7 +594,22 @@
             </button>
           </div>
 
-          <!-- Vault Staged Client Registrations Inspector with Full Document & Approval Actions -->
+          <div class="p-4 rounded-xl bg-brand-surface border border-slate-700 space-y-3">
+            <h4 class="font-display font-bold text-xs text-brand-gold uppercase flex items-center">
+              <i class="fa-solid fa-share-nodes mr-1.5"></i> Generate Password-Protected File Transmission
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <input type="text" id="share-doc-title" placeholder="Document Name (e.g. Due Diligence Report, Title Registry)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <input type="tel" id="share-client-phone" placeholder="Client WhatsApp Number (10 digits)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <input type="text" id="share-drive-link" placeholder="Google Drive Shared URL (Optional)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
+              <input type="text" id="share-password" placeholder="Set Decryption Password (e.g. 711@Secured)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 font-mono font-bold text-emerald-400 outline-none">
+            </div>
+            <button onclick="dispatchEncryptedFileWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 rounded text-xs flex items-center justify-center space-x-2 transition shadow">
+              <i class="fa-brands fa-whatsapp text-base"></i><span>Dispatch Password-Protected Link via WhatsApp</span>
+            </button>
+          </div>
+
+          <!-- Vault Staged Client Registrations Inspector -->
           <div class="pt-4 border-t border-slate-800">
             <div class="flex justify-between items-center mb-3">
               <h4 class="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center">
@@ -514,7 +641,7 @@
       </div>
     </section>
 
-    <!-- TAB 8: VIP INTEL FEED -->
+    <!-- TAB 8: VIP INTEL FEED & ADMIN PUBLISHER WITH DUAL ROUTING & FILE UPLOADS -->
     <section id="tab-intel" class="tab-page">
       <div class="max-w-4xl mx-auto space-y-6">
         <div class="flex justify-between border-b border-brand-gold/20 pb-4">
@@ -524,29 +651,30 @@
 
         <div id="intel-feed-container" class="space-y-4"></div>
 
+        <!-- STRICTLY ADMIN PUBLISHER ENCLAVE (PIN LOCK REMOVED FOR SIMPLICITY) -->
         <div id="admin-publisher-enclave" class="hidden pt-8 border-t border-slate-800">
-          <div id="pub-pin-box" class="bg-brand-navy p-6 rounded-2xl gold-border-glow text-center">
-            <h3 class="font-display font-bold text-slate-100 text-sm mb-4">Admin Security Authorization</h3>
-            <input type="password" id="admin-master-pin" placeholder="Enter Master PIN" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono outline-none focus:border-brand-gold mb-4">
-            <button onclick="verifyPublisherPin()" class="bg-brand-gold text-brand-midnight font-bold px-6 py-2 rounded-lg text-xs shadow">Unlock Publisher Console</button>
-          </div>
           
-          <div id="pub-form-box" class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow hidden space-y-4">
-            <h3 class="font-display font-bold text-brand-gold text-sm uppercase">Publish Live Alert & Files</h3>
+          <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
+            <h3 class="font-display font-bold text-brand-gold text-sm uppercase flex items-center">
+              <i class="fa-solid fa-paper-plane mr-2"></i> Publish Live Alert & Files
+            </h3>
+            
             <select id="post-target" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none font-bold">
               <option value="VIP">🔐 Post to VIP Market Feed (Paid Only)</option>
               <option value="PUBLIC">🔔 Post to Public Compliance Desk (All Registered Users)</option>
             </select>
-            <input type="text" id="post-scrip-ticker" placeholder="Ticker Symbol or Act (e.g. RELIANCE, GST, MCA)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
+
+            <input type="text" id="post-scrip-ticker" placeholder="Ticker Symbol or Act (e.g. RELIANCE, GST, MCA)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
             <input type="text" id="post-headline" placeholder="Headline / Advisory Title" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
             <textarea id="post-body" rows="4" placeholder="Detailed Strategy, Setup, or Notification Content..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold"></textarea>
             
+            <!-- SECURE FILE UPLOAD INJECTION -->
             <div class="p-3 bg-brand-midnight border border-brand-gold/30 rounded-lg">
               <label class="block text-brand-gold font-bold mb-1 uppercase text-[10px]">Attach Document/Chart (Optional, Max 2MB)</label>
               <input type="file" id="post-file" class="w-full text-[10px] text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:bg-brand-gold/20 file:text-brand-gold cursor-pointer">
             </div>
             
-            <button onclick="commitPostAndBroadcast()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 rounded-lg text-xs shadow transition"><i class="fa-solid fa-paper-plane mr-1"></i> Publish & Route Post</button>
+            <button onclick="commitPostAndBroadcast()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 rounded-lg text-xs shadow transition"><i class="fa-solid fa-bullhorn mr-1"></i> Publish & Route Post</button>
           </div>
         </div>
       </div>
@@ -556,27 +684,6 @@
     <section id="tab-auth" class="tab-page">
       <div class="max-w-lg mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow space-y-6">
         
-        <div class="bg-gradient-to-r from-emerald-950/90 via-brand-navy to-brand-midnight border border-emerald-500/40 rounded-2xl p-5 shadow-xl space-y-2">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Reward Program</span>
-            <i class="fa-solid fa-gift text-brand-gold text-lg animate-bounce"></i>
-          </div>
-          <h3 class="font-display font-bold text-slate-100 text-sm">₹5 to ₹50 Instant Cash Reward</h3>
-          <p class="text-[11px] text-slate-300 leading-relaxed">
-            Link your UPI ID below. Share your personalized referral link with clients, directors, or CS professionals. Once their registration is approved by the advisory desk, reward notifications are generated and paid directly to your bank account within 30 days.
-          </p>
-
-          <div id="user-ref-share-box" class="pt-2 hidden">
-            <label class="block text-[10px] font-bold text-brand-gold uppercase mb-1">Your Personal Referral Link</label>
-            <div class="flex gap-2">
-              <input type="text" id="user-ref-link" readonly class="w-full bg-brand-surface border border-slate-700 rounded px-2.5 py-1.5 text-xs text-emerald-400 font-mono select-all">
-              <button onclick="copyReferralLink()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded text-xs whitespace-nowrap shadow">
-                <i class="fa-solid fa-copy mr-1"></i> Copy
-              </button>
-            </div>
-          </div>
-        </div>
-
         <div class="flex border-b border-slate-800 mb-2">
           <button id="auth-tab-login" onclick="toggleAuthFormMode('login')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight">Login</button>
           <button id="auth-tab-signup" onclick="toggleAuthFormMode('signup')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200">Secure Sign-Up</button>
@@ -584,7 +691,7 @@
 
         <div id="form-login-box" class="space-y-4">
           <input type="text" id="login-input-id" placeholder="User ID / Member ID" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs outline-none focus:border-brand-gold">
-          <input type="password" id="login-input-pass" placeholder="Password" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs outline-none focus:border-brand-gold">
+          <input type="password" id="login-input-pass" placeholder="Password (Use 7110 for Admin)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs outline-none focus:border-brand-gold">
           <button onclick="handleUserLogin()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded-lg text-xs shadow">Sign In</button>
         </div>
 
@@ -612,55 +719,41 @@
           </button>
         </div>
 
+        <!-- Logged In View -->
         <div id="auth-logged-view" class="hidden text-center py-4">
-          <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">Rahul Sharma</h3>
+          <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">User</h3>
           <p class="text-xs text-brand-gold font-mono" id="profile-id">ID: 711-C-9396</p>
-          <div class="mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 inline-block text-emerald-400 font-bold" id="profile-status">Status: ACTIVE</div>
-          <button onclick="handleUserLogout()" class="mt-4 w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">Log Out</button>
+          <div class="mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 inline-block text-slate-400" id="profile-status">Status: ACTIVE</div>
+          
+          <!-- WARNING MESSAGE FOR ADMIN LOGINS -->
+          <div id="admin-helper-text" class="mt-5 p-3 rounded-lg border border-amber-500/40 bg-amber-950/30 text-amber-300 text-[10px] text-left leading-relaxed hidden">
+            ⚠️ <strong>Standard Client Session Active.</strong> You are currently logged in as a normal client to test the portal. Normal clients are locked out of the Admin Publisher and KYC Approval Vaults.<br><br>
+            To access your administrative tools, log out below and sign in using your Master Admin ID: <strong>711-C-9396</strong> and password <strong>7110</strong>.
+          </div>
+
+          <!-- Personal Referral Link -->
+          <div id="user-ref-share-box" class="mt-5 text-left border-t border-slate-800 pt-4 hidden">
+            <label class="block text-[10px] font-bold text-brand-gold uppercase mb-1">Your Personal Referral Link</label>
+            <div class="flex gap-2">
+              <input type="text" id="user-ref-link" readonly class="w-full bg-brand-surface border border-slate-700 rounded px-2.5 py-1.5 text-xs text-emerald-400 font-mono select-all">
+              <button onclick="copyReferralLink()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded text-xs whitespace-nowrap shadow"><i class="fa-solid fa-copy mr-1"></i> Copy</button>
+            </div>
+            <p class="text-[9px] text-slate-500 mt-1">Share this link to earn ₹5–₹50 per verified registration directly to your UPI.</p>
+          </div>
+
+          <button onclick="handleUserLogout()" class="mt-6 w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">Log Out of Current Session</button>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- RESTORED INTERACTIVE AI ADVISORY ASSISTANT MODAL -->
-  <div id="ai-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
-    <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-xl w-full p-5 relative flex flex-col h-[560px] shadow-2xl">
-      <div class="flex justify-between items-center pb-3 border-b border-slate-800">
-        <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 rounded-lg bg-brand-surface border border-brand-gold/50 flex items-center justify-center text-brand-gold">
-            <i class="fa-solid fa-robot text-base"></i>
-          </div>
-          <div>
-            <h4 class="font-display font-bold text-slate-100 text-sm">711 Advisory AI Agent</h4>
-            <div class="flex items-center space-x-1.5 text-[10px] text-emerald-400 font-mono">
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-              <span>Online · Statutory & Market Intelligence</span>
-            </div>
-          </div>
-        </div>
-        <button onclick="closeAiAssistant()" class="text-slate-400 hover:text-white p-1 text-lg"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-
-      <div class="py-2.5 border-b border-slate-800/80 flex items-center space-x-1.5 overflow-x-auto no-scrollbar text-[10px]">
-        <button onclick="askAiPreset('What are the key MCA RoC annual filing deadlines and forms?')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">📋 RoC Annual Deadlines</button>
-        <button onclick="askAiPreset('How should I reply to a GST DRC-01 show cause notice?')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">⚖️ GST DRC-01 Rejoinder</button>
-        <button onclick="askAiPreset('Explain 1% real estate commission structure and statutory pass-throughs.')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">🏗️ 1% Brokerage Terms</button>
-        <button onclick="askAiPreset('How do I calculate position sizing with 1.5% max capital risk?')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">📈 1.5% Risk Sizing</button>
-      </div>
-
-      <div class="flex-grow overflow-y-auto py-3 space-y-3 text-xs text-slate-200 no-scrollbar" id="ai-chat-box">
-        <div class="bg-brand-surface/80 p-3.5 rounded-xl border border-slate-800 leading-relaxed text-slate-300">
-          <strong class="text-brand-gold block mb-1">Greetings from 711 OVERSEAS AI Desk.</strong>
-          I am your institutional advisory copilot. Ask me anything regarding MCA RoC compliance, GST dispute rejoinders, 1% real estate deal facilitation, or capital markets position sizing models.
-        </div>
-      </div>
-
-      <div class="pt-2.5 flex gap-2 border-t border-slate-800">
-        <input type="text" id="ai-input" placeholder="Type your compliance or strategy query..." class="flex-1 bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold" onkeyup="if(event.key==='Enter') sendAiMessage()">
-        <button onclick="sendAiMessage()" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-4 py-2.5 rounded-lg text-xs transition shadow flex items-center space-x-1">
-          <span>Send</span> <i class="fa-solid fa-paper-plane"></i>
-        </button>
-      </div>
+  <!-- NOTIFICATION MODAL -->
+  <div id="notif-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-start justify-end p-4 pt-16">
+    <div class="bg-brand-navy border border-brand-gold/50 rounded-2xl max-w-sm w-full p-5 relative shadow-2xl">
+      <button onclick="closeNotifModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="font-display font-bold text-lg text-slate-100 mb-4 border-b border-slate-800 pb-2"><i class="fa-solid fa-bell text-brand-gold mr-2"></i> Recent Alerts</h3>
+      <div id="notif-content-box" class="space-y-3 max-h-[60vh] overflow-y-auto no-scrollbar"></div>
+      <button onclick="window.open('https://wa.me/919914984371?text=Please%20add%20me%20to%20the%20711%20WhatsApp%20Broadcast%20List.', '_blank')" class="w-full mt-4 bg-green-600 text-white font-bold py-2 rounded text-[11px] shadow"><i class="fa-brands fa-whatsapp mr-1"></i> Join WhatsApp Push Broadcast</button>
     </div>
   </div>
 
@@ -672,31 +765,20 @@
       return temp.innerHTML;
     }
 
-    // AI ADVISORY DESK CONTROLLER
+    // 1. AI ADVISORY DESK CONTROLLER
     function openAiAssistant() {
       const modal = document.getElementById('ai-modal');
-      if (modal) {
-        modal.style.display = 'flex';
-        setTimeout(() => document.getElementById('ai-input')?.focus(), 150);
-      }
+      if (modal) { modal.style.display = 'flex'; setTimeout(() => document.getElementById('ai-input')?.focus(), 150); }
     }
-    function closeAiAssistant() {
-      const modal = document.getElementById('ai-modal');
-      if (modal) modal.style.display = 'none';
-    }
-    function askAiPreset(question) {
-      document.getElementById('ai-input').value = question;
-      sendAiMessage();
-    }
+    function closeAiAssistant() { document.getElementById('ai-modal').style.display = 'none'; }
+    function askAiPreset(question) { document.getElementById('ai-input').value = question; sendAiMessage(); }
     function sendAiMessage() {
       const input = document.getElementById('ai-input');
       const query = input.value.trim();
       if (!query) return;
       const chatBox = document.getElementById('ai-chat-box');
       chatBox.innerHTML += `<div class="flex justify-end"><div class="bg-brand-gold/15 border border-brand-gold/40 text-brand-goldLight p-3 rounded-xl max-w-[85%] font-medium">${sanitizeHTML(query)}</div></div>`;
-      input.value = '';
-      chatBox.scrollTop = chatBox.scrollHeight;
-
+      input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
       setTimeout(() => {
         const response = generateDomainAdvisoryResponse(query);
         chatBox.innerHTML += `<div class="flex justify-start"><div class="bg-brand-surface p-3.5 rounded-xl border border-slate-700 max-w-[90%] leading-relaxed text-slate-200">${response}</div></div>`;
@@ -705,24 +787,17 @@
     }
     function generateDomainAdvisoryResponse(text) {
       const q = text.toLowerCase();
-      if (q.includes('drc') || q.includes('gst notice') || q.includes('scn')) {
-        return `<strong class="text-brand-gold block mb-1">⚖️ Statutory GST Dispute Strategy (Form DRC-01):</strong>1. Confirm Section 73 (non-fraud) vs 74 (fraud).<br>2. Reconcile GSTR-2B vs 3B Table 4(A)(5).<br>3. File DRC-06 response within 30 days.`;
-      }
-      if (q.includes('roc') || q.includes('mca') || q.includes('aoc-4')) {
-        return `<strong class="text-brand-gold block mb-1">📋 MCA21 Corporate Secretarial Cycle:</strong>• Form AOC-4: 30 days from AGM.<br>• Form MGT-7: 60 days from AGM.<br>• DIR-3 KYC: Due September 30.`;
-      }
-      if (q.includes('jda') || q.includes('real estate') || q.includes('commission')) {
-        return `<strong class="text-brand-gold block mb-1">🏗️ Real Estate & Brokerage:</strong>• Fixed 1.00% Consideration Commission.<br>• Stamp duty & registration charges at actuals.<br>• Sec 45(5A) tax arises upon Completion Certificate.`;
-      }
-      if (q.includes('risk') || q.includes('position sizing')) {
-        return `<strong class="text-brand-gold block mb-1">📈 1.5% Risk Position Sizing:</strong> $$\\text{Position Size} = \\frac{\\text{Total Portfolio Equity} \\times 0.015}{\\text{Entry Price} - \\text{Stoploss Price}}$$`;
-      }
+      if (q.includes('drc') || q.includes('gst notice') || q.includes('scn')) return `<strong class="text-brand-gold block mb-1">⚖️ Statutory GST Dispute Strategy (Form DRC-01):</strong>1. Confirm Section 73 (non-fraud) vs 74 (fraud).<br>2. Reconcile GSTR-2B vs 3B Table 4(A)(5).<br>3. File DRC-06 response within 30 days.`;
+      if (q.includes('roc') || q.includes('mca') || q.includes('aoc-4')) return `<strong class="text-brand-gold block mb-1">📋 MCA21 Corporate Secretarial Cycle:</strong>• Form AOC-4: 30 days from AGM.<br>• Form MGT-7: 60 days from AGM.<br>• DIR-3 KYC: Due September 30.`;
+      if (q.includes('jda') || q.includes('real estate') || q.includes('commission')) return `<strong class="text-brand-gold block mb-1">🏗️ Real Estate & Brokerage:</strong>• Fixed 1.00% Consideration Commission.<br>• Stamp duty & registration charges at actuals.<br>• Sec 45(5A) tax arises upon Completion Certificate.`;
+      if (q.includes('risk') || q.includes('position sizing')) return `<strong class="text-brand-gold block mb-1">📈 1.5% Risk Position Sizing:</strong> $$\\text{Position Size} = \\frac{\\text{Total Portfolio Equity} \\times 0.015}{\\text{Entry Price} - \\text{Stoploss Price}}$$`;
       return `<strong class="text-brand-gold block mb-1">711 Advisory Desk Guidance:</strong> Your inquiry has been noted. Connect directly with Principal Counsel Rahul Sharma on WhatsApp for case-specific execution.`;
     }
 
-    // CAPITAL MARKETS TERMINAL
+    // 2. CAPITAL MARKETS TERMINAL
     function executeLiveScripSearch() {
       const qInput = document.getElementById('scrip-query');
+      if (!qInput) return;
       let ticker = qInput.value.trim().toUpperCase();
       if (!ticker) ticker = "WOCKPHARMA";
       const tvSymbol = (ticker === "NIFTY" || ticker === "BANKNIFTY" || ticker.startsWith("NSE:") || ticker.startsWith("BSE:")) ? ticker : `NSE:${ticker}`;
@@ -735,6 +810,7 @@
     }
     function renderQuantitativeDossier(ticker) {
       const hub = document.getElementById('quant-dossier-hub');
+      if(!hub) return;
       const isW = ticker.includes("WOCK");
       hub.innerHTML = `
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -766,179 +842,104 @@
       `;
     }
 
-    // REAL ESTATE & CS CARDS
-    const DEFAULT_RE_LISTINGS = [
-      { id: 'RE-101', title: 'Airport Road Commercial SCO Site', category: 'Commercial SCO', location: 'Amritsar', price: '₹ 4.50 Cr', desc: 'Corner commercial showroom site suitable for corporate bank branch or flagship retail.' }
-    ];
-    function renderRealEstateListings() {
-      const container = document.getElementById('re-listings-grid');
-      const customListings = JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]');
-      const allListings = [...customListings, ...DEFAULT_RE_LISTINGS];
-      container.innerHTML = allListings.map(item => `
-        <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/40 transition flex flex-col justify-between p-4 shadow-lg">
-          <div class="space-y-2">
-            <div class="flex justify-between items-start"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">${sanitizeHTML(item.category)}</span><span class="text-[10px] text-slate-400 font-mono">${sanitizeHTML(item.location)}</span></div>
-            <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(item.title)}</h4>
-            <p class="text-[11px] text-slate-400 leading-relaxed">${sanitizeHTML(item.desc)}</p>
-          </div>
-          <div class="pt-3 mt-3 border-t border-slate-800/80 flex justify-between items-center text-xs">
-            <div><span class="text-brand-gold font-bold font-mono text-sm">${sanitizeHTML(item.price)}</span><span class="block text-[9px] text-slate-500">+1% Commission</span></div>
-            <button onclick="dispatchInquiry('Property: ${encodeURIComponent(item.title)}')" class="bg-brand-surface hover:bg-brand-card text-amber-300 px-3 py-1.5 rounded border border-amber-500/40 text-[11px] font-semibold transition">Inquire Desk →</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    const DEFAULT_CS_JOBS = [
-      { id: 'CS-201', title: 'Qualified Company Secretary (ACS)', category: 'Qualified CS', location: 'Punjab / Delhi-NCR', salary: '₹ 6.0 - 9.0 LPA', company: 'Seven Eleven Overseas', desc: 'ACS with 1-3 years experience in MCA SPICe+ incorporations, secretarial audits.' }
-    ];
-    function renderCsJobs() {
-      const container = document.getElementById('careers-job-grid');
-      const customJobs = JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]');
-      const allJobs = [...customJobs, ...DEFAULT_CS_JOBS];
-      container.innerHTML = allJobs.map(j => `
-        <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 hover:border-blue-500/40 transition flex flex-col justify-between shadow-lg">
-          <div class="space-y-2">
-            <div class="flex justify-between items-start"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">${sanitizeHTML(j.category)}</span><span class="text-[10px] text-slate-400">${sanitizeHTML(j.location)}</span></div>
-            <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(j.title)}</h4>
-            <div class="text-[10px] text-brand-gold font-medium">${sanitizeHTML(j.company)}</div>
-            <p class="text-xs text-slate-400 leading-relaxed">${sanitizeHTML(j.desc)}</p>
-          </div>
-          <div class="pt-3 mt-3 border-t border-slate-800 flex justify-between items-center text-xs">
-            <span class="font-bold text-brand-gold font-mono">${sanitizeHTML(j.salary)}</span>
-            <button onclick="openApplyModalForJob('${encodeURIComponent(j.title)}')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-3.5 py-1.5 rounded text-xs transition shadow">Apply Now</button>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // MASTER ADMIN CLIENT APPROVAL & DOCUMENT VIEWER ENGINE
-    function renderVaultUsersTable() {
-      const box = document.getElementById('vault-users-table');
-      const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+    // 3. MASTER ADMIN FILE PUBLISHER & FEED
+    function commitPostAndBroadcast() {
+      if (getUserRole() !== 'ADMIN') return alert('Access Denied: Only Master Admin can publish.');
       
-      if (users.length === 0) {
-        box.innerHTML = `<div class="text-xs text-slate-400 italic p-3 bg-brand-surface rounded-lg">No client registrations recorded in local vault yet.</div>`;
-        return;
+      const target = document.getElementById('post-target').value;
+      const headline = document.getElementById('post-headline').value.trim();
+      const body = document.getElementById('post-body').value.trim();
+      const ticker = document.getElementById('post-scrip-ticker').value.trim().toUpperCase();
+      const fileInput = document.getElementById('post-file');
+      
+      if (!headline || !body) return alert('Enter headline and content.');
+      const dateStr = new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
+
+      const finalizePost = (base64Data, fName) => {
+        if (target === 'VIP') {
+          let feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
+          feeds.unshift({ title: ticker ? `${ticker} - ${headline}` : headline, content: body, date: dateStr, fileData: base64Data, fileName: fName });
+          localStorage.setItem('711_vip_feed', JSON.stringify(feeds));
+          renderIntelFeed();
+        } else {
+          let updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
+          updates.unshift({ title: ticker ? `[${ticker}] ${headline}` : headline, content: body, date: dateStr, fileData: base64Data, fileName: fName });
+          localStorage.setItem('711_public_updates', JSON.stringify(updates));
+          checkNotifications();
+          renderComplianceFeed();
+        }
+        window.open(`https://wa.me/?text=711%20OVERSEAS%20BROADCAST:%20${encodeURIComponent(headline)}`, '_blank');
+        document.getElementById('post-headline').value = ''; document.getElementById('post-body').value = ''; document.getElementById('post-scrip-ticker').value = '';
+        if(fileInput) fileInput.value = '';
+      };
+
+      if (fileInput && fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        if (file.size > 2 * 1024 * 1024) return alert('File size exceeds 2MB limit for local storage.');
+        const reader = new FileReader();
+        reader.onload = function(e) { finalizePost(e.target.result, file.name); };
+        reader.readAsDataURL(file);
+      } else {
+        finalizePost(null, null);
       }
+    }
 
-      box.innerHTML = users.map((u) => {
-        const isPending = u.status === 'PENDING_VERIFICATION';
-        const badgeClass = isPending ? 'bg-amber-950 text-amber-300 border-amber-800' : (u.status === 'ACTIVE' ? 'bg-emerald-950 text-emerald-400 border-emerald-800' : 'bg-red-950 text-red-400 border-red-800');
-        
-        let docButtons = '';
-        if (u.doc1 && u.doc1.data) {
-          docButtons += `<a href="${u.doc1.data}" download="${sanitizeHTML(u.doc1.name)}" class="px-2.5 py-1 bg-brand-surface border border-slate-700 hover:border-brand-gold text-slate-200 rounded text-[10px] font-bold inline-flex items-center space-x-1"><i class="fa-solid fa-file-arrow-down text-brand-gold"></i><span>${sanitizeHTML(u.doc1.name)}</span></a>`;
-        }
-        if (u.doc2 && u.doc2.data) {
-          docButtons += `<a href="${u.doc2.data}" download="${sanitizeHTML(u.doc2.name)}" class="px-2.5 py-1 bg-brand-surface border border-slate-700 hover:border-brand-gold text-slate-200 rounded text-[10px] font-bold inline-flex items-center space-x-1"><i class="fa-solid fa-file-arrow-down text-brand-gold"></i><span>${sanitizeHTML(u.doc2.name)}</span></a>`;
-        }
-        if (!docButtons) {
-          docButtons = `<span class="text-[10px] text-slate-500 italic">No files attached</span>`;
-        }
+    function renderIntelFeed() {
+      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      const container = document.getElementById('intel-feed-container');
+      const pill = document.getElementById('intel-tier-pill');
+      if (!container || !pill) return;
 
-        return `
-          <div class="p-4 rounded-xl bg-brand-midnight border border-slate-800 space-y-3 shadow">
-            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
-              <div>
-                <span class="font-bold text-sm text-slate-100">${sanitizeHTML(u.name)}</span>
-                <span class="text-xs text-slate-400">(${sanitizeHTML(u.role)})</span>
-                <span class="font-mono text-brand-gold text-xs ml-2">${sanitizeHTML(u.id)}</span>
-              </div>
-              <span class="text-[10px] px-2.5 py-0.5 rounded-full border font-bold ${badgeClass} w-max">${sanitizeHTML(u.status)}</span>
-            </div>
+      if (u && (u.role === 'STANDARD' || u.role === 'ADMIN')) {
+        pill.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5"></i>Standard / Admin Active';
+        pill.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center w-max';
+        const feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
+        if (feeds.length === 0) container.innerHTML = `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 text-xs text-slate-300">No new alerts yet.</div>`;
+        else container.innerHTML = feeds.map(f => {
+          const attachmentHtml = f.fileData ? `<div class="mt-4"><a href="${f.fileData}" download="${sanitizeHTML(f.fileName)}" class="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-brand-midnight border border-brand-gold/40 rounded text-brand-goldLight text-[10px] font-bold shadow hover:bg-brand-surface transition"><i class="fa-solid fa-paperclip text-sm"></i><span>Download ${sanitizeHTML(f.fileName)}</span></a></div>` : '';
+          return `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 mb-3 shadow-lg"><span class="text-[10px] text-brand-gold uppercase font-bold tracking-wider">${sanitizeHTML(f.date)}</span><h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(f.title)}</h4><p class="text-xs text-slate-300 mt-2 whitespace-pre-wrap">${sanitizeHTML(f.content)}</p>${attachmentHtml}</div>`;
+        }).join('');
+      } else {
+        pill.innerHTML = '<i class="fa-solid fa-lock mr-1.5"></i>Paid Subscription Required';
+        pill.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center w-max';
+        container.innerHTML = `<div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center"><i class="fa-solid fa-user-lock text-brand-gold text-3xl mb-3"></i><h3 class="font-display font-bold text-lg text-slate-100">VIP Feed is Locked</h3><button onclick="openUniversalPayment('VIP Advisory Subscription', 1999)" class="mt-4 bg-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs">Unlock Standard</button></div>`;
+      }
+    }
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-300">
-              <div><span class="text-slate-500">Phone:</span> <strong class="text-slate-200">${sanitizeHTML(u.phone)}</strong></div>
-              <div><span class="text-slate-500">Email:</span> <strong class="text-slate-200">${sanitizeHTML(u.email || 'N/A')}</strong></div>
-              <div><span class="text-slate-500">Reward UPI:</span> <strong class="text-emerald-400 font-mono">${sanitizeHTML(u.upi || 'None')}</strong></div>
-            </div>
-
-            <div class="pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
-              <div class="flex flex-wrap gap-2 items-center">
-                <span class="text-[10px] uppercase font-bold text-slate-400">KYC Proofs:</span>
-                ${docButtons}
-              </div>
-
-              <div class="flex items-center space-x-2">
-                ${isPending ? `
-                  <button onclick="approveVaultUser('${u.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded text-xs shadow flex items-center space-x-1">
-                    <i class="fa-solid fa-check"></i>
-                    <span>Approve & Notify</span>
-                  </button>
-                  <button onclick="rejectVaultUser('${u.id}')" class="bg-red-900/60 hover:bg-red-800 text-red-300 font-bold px-3 py-1.5 rounded text-xs border border-red-800">
-                    Reject
-                  </button>
-                ` : `
-                  <button onclick="notifyUserAgain('${u.id}')" class="bg-brand-surface hover:bg-brand-card text-brand-gold border border-brand-gold/40 font-bold px-3 py-1.5 rounded text-xs flex items-center space-x-1">
-                    <i class="fa-brands fa-whatsapp text-green-400"></i>
-                    <span>Send WhatsApp Payout Update</span>
-                  </button>
-                `}
-                <button onclick="deleteVaultUser('${u.id}')" class="text-slate-500 hover:text-red-400 p-1.5 text-xs" title="Delete User">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
+    function renderComplianceFeed() {
+      const container = document.getElementById('public-updates-container');
+      if(!container) return;
+      const updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
+      if (updates.length === 0) container.innerHTML = `<div class="text-[11px] text-slate-400">No regulatory updates posted yet.</div>`;
+      else container.innerHTML = updates.map(u => {
+        const attachmentHtml = u.fileData ? `<div class="mt-2"><a href="${u.fileData}" download="${sanitizeHTML(u.fileName)}" class="inline-flex items-center space-x-1.5 px-2 py-1 bg-brand-midnight border border-brand-gold/40 rounded text-brand-goldLight text-[9px] font-bold shadow"><i class="fa-solid fa-download"></i><span>Download Attachment</span></a></div>` : '';
+        return `<div class="pb-3 border-b border-slate-800/50 last:border-0"><span class="text-[9px] text-brand-gold uppercase font-bold tracking-wider">${sanitizeHTML(u.date)}</span><h4 class="font-display font-bold text-slate-200 text-xs mt-0.5">${sanitizeHTML(u.title)}</h4><p class="text-[11px] text-slate-400 mt-1 whitespace-pre-wrap">${sanitizeHTML(u.content)}</p>${attachmentHtml}</div>`;
       }).join('');
     }
 
-    function approveVaultUser(userId) {
-      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
-      const user = users.find(u => u.id === userId);
+    function openNotifModal() {
+      const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
+      localStorage.setItem('711_last_notif_count', publicUpdates.length.toString());
+      document.getElementById('notif-badge').classList.add('hidden');
+      const box = document.getElementById('notif-content-box');
+      if (publicUpdates.length === 0) box.innerHTML = `<div class="text-[11px] text-slate-400 text-center py-4">No recent alerts.</div>`;
+      else box.innerHTML = publicUpdates.map(u => {
+        const attachmentHtml = u.fileData ? `<div class="mt-2"><a href="${u.fileData}" download="${sanitizeHTML(u.fileName)}" class="inline-flex items-center space-x-1 text-[10px] text-emerald-400 font-bold"><i class="fa-solid fa-paperclip"></i><span>Download Attachment</span></a></div>` : '';
+        return `<div class="bg-brand-surface p-3 rounded border border-slate-700"><div class="text-[9px] text-brand-gold font-bold mb-1">${sanitizeHTML(u.date)}</div><div class="text-xs text-slate-100 font-bold mb-1">${sanitizeHTML(u.title)}</div><div class="text-[10px] text-slate-300 leading-snug whitespace-pre-wrap">${sanitizeHTML(u.content)}</div>${attachmentHtml}</div>`;
+      }).join('');
+      document.getElementById('notif-modal').classList.remove('hidden');
+    }
+    function closeNotifModal() { document.getElementById('notif-modal').classList.add('hidden'); }
+    function checkNotifications() {
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
       if (!user) return;
-
-      user.status = 'ACTIVE';
-      localStorage.setItem('711_vault_users', JSON.stringify(users));
-
-      let active = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (active && active.id === userId) {
-        active.status = 'ACTIVE';
-        localStorage.setItem('711_active_user', JSON.stringify(active));
-      }
-
-      renderVaultUsersTable();
-      updateAuthUI();
-
-      const rewardMsg = user.upi ? `Your reward of ₹10–₹50 has been recorded for your UPI: ${user.upi} and will be disbursed within 30 days.` : '';
-      const waMsg = `Congratulations ${encodeURIComponent(user.name)}! Your 711 OVERSEAS Portal ID (${encodeURIComponent(user.id)}) has been APPROVED. ${encodeURIComponent(rewardMsg)} Access your dashboard at: https://cssharmarahul-wq.github.io/711-Overseas/`;
-      
-      const sendWa = confirm(`User ${user.id} has been Approved and Activated!\n\nWould you like to open WhatsApp now to notify them of their active ID and reward payout?`);
-      if (sendWa) {
-        window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
-      }
+      const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
+      const lastRead = parseInt(localStorage.getItem('711_last_notif_count') || '0');
+      if (publicUpdates.length > lastRead) document.getElementById('notif-badge').classList.remove('hidden');
+      else document.getElementById('notif-badge').classList.add('hidden');
     }
 
-    function rejectVaultUser(userId) {
-      if(!confirm(`Are you sure you want to reject verification for ${userId}?`)) return;
-      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
-      const user = users.find(u => u.id === userId);
-      if (user) {
-        user.status = 'REJECTED';
-        localStorage.setItem('711_vault_users', JSON.stringify(users));
-        renderVaultUsersTable();
-      }
-    }
-
-    function deleteVaultUser(userId) {
-      if(!confirm(`Permanently remove ${userId} from vault?`)) return;
-      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
-      users = users.filter(u => u.id !== userId);
-      localStorage.setItem('711_vault_users', JSON.stringify(users));
-      renderVaultUsersTable();
-    }
-
-    function notifyUserAgain(userId) {
-      const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
-      const user = users.find(u => u.id === userId);
-      if (!user) return;
-      const waMsg = `Hello ${encodeURIComponent(user.name)}, your 711 OVERSEAS Portal ID is ${encodeURIComponent(user.id)} (Status: ACTIVE). Referral reward registered for UPI: ${encodeURIComponent(user.upi || 'N/A')}. Processing window: 30 days.`;
-      window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
-    }
-
-    // KYC FORM WITH BASE64 FILE CONVERTER
+    // 4. KYC FORM & BASE64 DOCUMENT CONVERTER
     function toggleAuthFormMode(mode) {
       if(mode === 'login') {
         document.getElementById('form-login-box').classList.remove('hidden'); 
@@ -1007,16 +1008,16 @@
         date: new Date().toLocaleString('en-GB') 
       };
 
+      // Store current user session
       localStorage.setItem('711_active_user', JSON.stringify(newUser));
 
+      // Add to Master Admin Vault
       let vaultUsers = JSON.parse(localStorage.getItem('711_vault_users') || '[]'); 
       vaultUsers.unshift(newUser); 
       localStorage.setItem('711_vault_users', JSON.stringify(vaultUsers));
 
       alert(`✅ Registration successful!\n\nYour pending Portal ID is ${genId}.\nDocuments are safely vaulted. Upon administrator verification, your account will be activated and your reward notification issued to ${upi || 'your phone'}.`);
-      
       updateAuthUI();
-      renderVaultUsersTable();
     }
 
     function copyReferralLink() {
@@ -1026,10 +1027,137 @@
       alert('Referral link copied to clipboard! Share it with clients or professionals to earn rewards.');
     }
 
-    // AUTH & MASTER ADMIN
+    // 5. MASTER ADMIN APPROVALS & VAULT DESK
+    function renderVaultUsersTable() {
+      const box = document.getElementById('vault-users-table');
+      if (!box) return;
+
+      const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      if (users.length === 0) {
+        box.innerHTML = `<div class="text-xs text-slate-400 italic p-3 bg-brand-surface rounded-lg">No client registrations recorded in local vault yet.</div>`;
+        return;
+      }
+
+      box.innerHTML = users.map((u) => {
+        const isPending = u.status === 'PENDING_VERIFICATION';
+        const badgeClass = isPending ? 'bg-amber-950 text-amber-300 border-amber-800' : (u.status === 'ACTIVE' ? 'bg-emerald-950 text-emerald-400 border-emerald-800' : 'bg-red-950 text-red-400 border-red-800');
+        
+        let docButtons = '';
+        if (u.doc1 && u.doc1.data) {
+          docButtons += `<a href="${u.doc1.data}" download="${sanitizeHTML(u.doc1.name)}" class="px-2.5 py-1 bg-brand-surface border border-slate-700 hover:border-brand-gold text-slate-200 rounded text-[10px] font-bold inline-flex items-center space-x-1"><i class="fa-solid fa-file-arrow-down text-brand-gold"></i><span>${sanitizeHTML(u.doc1.name)}</span></a>`;
+        }
+        if (!docButtons) {
+          docButtons = `<span class="text-[10px] text-slate-500 italic">No files attached</span>`;
+        }
+
+        return `
+          <div class="p-4 rounded-xl bg-brand-midnight border border-slate-800 space-y-3 shadow">
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+              <div>
+                <span class="font-bold text-sm text-slate-100">${sanitizeHTML(u.name)}</span>
+                <span class="text-xs text-slate-400">(${sanitizeHTML(u.role)})</span>
+                <span class="font-mono text-brand-gold text-xs ml-2">${sanitizeHTML(u.id)}</span>
+              </div>
+              <span class="text-[10px] px-2.5 py-0.5 rounded-full border font-bold ${badgeClass} w-max">${sanitizeHTML(u.status)}</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-300">
+              <div><span class="text-slate-500">Phone:</span> <strong class="text-slate-200">${sanitizeHTML(u.phone)}</strong></div>
+              <div><span class="text-slate-500">Email:</span> <strong class="text-slate-200">${sanitizeHTML(u.email || 'N/A')}</strong></div>
+              <div><span class="text-slate-500">Reward UPI:</span> <strong class="text-emerald-400 font-mono">${sanitizeHTML(u.upi || 'None')}</strong></div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+              <div class="flex flex-wrap gap-2 items-center">
+                <span class="text-[10px] uppercase font-bold text-slate-400">KYC Proofs:</span>
+                ${docButtons}
+              </div>
+
+              <div class="flex items-center space-x-2">
+                ${isPending ? `
+                  <button onclick="approveVaultUser('${u.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded text-xs shadow flex items-center space-x-1">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Approve & Notify</span>
+                  </button>
+                  <button onclick="rejectVaultUser('${u.id}')" class="bg-red-900/60 hover:bg-red-800 text-red-300 font-bold px-3 py-1.5 rounded text-xs border border-red-800">
+                    Reject
+                  </button>
+                ` : `
+                  <button onclick="notifyUserAgain('${u.id}')" class="bg-brand-surface hover:bg-brand-card text-brand-gold border border-brand-gold/40 font-bold px-3 py-1.5 rounded text-xs flex items-center space-x-1">
+                    <i class="fa-brands fa-whatsapp text-green-400"></i>
+                    <span>Send Payout Update</span>
+                  </button>
+                `}
+                <button onclick="deleteVaultUser('${u.id}')" class="text-slate-500 hover:text-red-400 p-1.5 text-xs" title="Delete User">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function approveVaultUser(userId) {
+      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      const user = users.find(u => u.id === userId);
+      if (!user) return;
+
+      user.status = 'ACTIVE';
+      localStorage.setItem('711_vault_users', JSON.stringify(users));
+
+      // Also update active session if current browser was logged into this profile
+      let active = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (active && active.id === userId) {
+        active.status = 'ACTIVE';
+        localStorage.setItem('711_active_user', JSON.stringify(active));
+      }
+
+      renderVaultUsersTable();
+      updateAuthUI();
+
+      const rewardMsg = user.upi ? `Your reward of ₹10–₹50 has been recorded for your UPI: ${user.upi} and will be disbursed within 30 days.` : '';
+      const waMsg = `Congratulations ${encodeURIComponent(user.name)}! Your 711 OVERSEAS Portal ID (${encodeURIComponent(user.id)}) has been APPROVED. ${encodeURIComponent(rewardMsg)} Access your dashboard at: https://cssharmarahul-wq.github.io/711-Overseas/`;
+      
+      const sendWa = confirm(`User ${user.id} has been Approved and Activated!\n\nWould you like to open WhatsApp now to notify them of their active ID and reward payout?`);
+      if (sendWa) {
+        window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
+      }
+    }
+
+    function rejectVaultUser(userId) {
+      if(!confirm(`Are you sure you want to reject verification for ${userId}?`)) return;
+      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      const user = users.find(u => u.id === userId);
+      if (user) {
+        user.status = 'REJECTED';
+        localStorage.setItem('711_vault_users', JSON.stringify(users));
+        renderVaultUsersTable();
+      }
+    }
+
+    function deleteVaultUser(userId) {
+      if(!confirm(`Permanently remove ${userId} from vault?`)) return;
+      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      users = users.filter(u => u.id !== userId);
+      localStorage.setItem('711_vault_users', JSON.stringify(users));
+      renderVaultUsersTable();
+    }
+
+    function notifyUserAgain(userId) {
+      const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      const user = users.find(u => u.id === userId);
+      if (!user) return;
+      const waMsg = `Hello ${encodeURIComponent(user.name)}, your 711 OVERSEAS Portal ID is ${encodeURIComponent(user.id)} (Status: ACTIVE). Referral reward registered for UPI: ${encodeURIComponent(user.upi || 'N/A')}. Processing window: 30 days.`;
+      window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
+    }
+
+    // 6. MAIN AUTHENTICATION & LOGIN LOGIC
     function handleUserLogin() {
       const id = document.getElementById('login-input-id').value.trim().toUpperCase(); 
       const pass = document.getElementById('login-input-pass').value.trim();
+      
+      // Master Admin Bypass
       if (id === '711-C-9396' || pass === '7110') {
         localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma', role: 'ADMIN', status: 'ACTIVE' })); 
         alert('Master Admin Privileges Enabled.');
@@ -1055,6 +1183,7 @@
       const pubEnclave = document.getElementById('admin-publisher-enclave');
       const shareBox = document.getElementById('user-ref-share-box');
       const refInput = document.getElementById('user-ref-link');
+      const helperText = document.getElementById('admin-helper-text');
 
       if (user) {
         document.getElementById('header-user-label').textContent = user.id;
@@ -1065,23 +1194,37 @@
         document.getElementById('form-signup-box').classList.add('hidden'); 
         document.getElementById('auth-tab-login').parentElement.classList.add('hidden'); 
         document.getElementById('header-notif-btn').classList.remove('hidden'); 
+        
+        const statusEl = document.getElementById('profile-status');
+        if(user.status === 'PENDING_VERIFICATION') {
+          statusEl.textContent = 'Status: KYC PENDING';
+          statusEl.className = 'mt-3 text-[10px] px-3 py-1 rounded-full bg-amber-950 border border-amber-800 text-amber-400 font-bold';
+        } else {
+          statusEl.textContent = 'Status: ACTIVE';
+          statusEl.className = 'mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 text-slate-400 font-bold';
+        }
 
         if (shareBox && refInput) {
           shareBox.classList.remove('hidden');
           refInput.value = `https://cssharmarahul-wq.github.io/711-Overseas/?ref=${user.id}`;
         }
 
+        // IS ADMIN?
         if (user.role === 'ADMIN' || user.id === '711-C-9396') {
           document.getElementById('admin-vault-enclave').classList.remove('hidden'); 
           document.getElementById('public-vault-notice').classList.add('hidden'); 
           if(pubEnclave) pubEnclave.classList.remove('hidden');
+          if(helperText) helperText.classList.add('hidden');
           renderVaultUsersTable();
         } else {
+          // IS STANDARD CLIENT
           document.getElementById('admin-vault-enclave').classList.add('hidden'); 
           document.getElementById('public-vault-notice').classList.remove('hidden');
           if(pubEnclave) pubEnclave.classList.add('hidden');
+          if(helperText) helperText.classList.remove('hidden'); // Show warning to logout
         }
       } else {
+        // LOGGED OUT
         document.getElementById('header-user-label').textContent = "Login";
         document.getElementById('auth-logged-view').classList.add('hidden'); 
         document.getElementById('form-login-box').classList.remove('hidden'); 
@@ -1091,6 +1234,7 @@
         document.getElementById('public-vault-notice').classList.remove('hidden');
         if(pubEnclave) pubEnclave.classList.add('hidden');
         if(shareBox) shareBox.classList.add('hidden');
+        if(helperText) helperText.classList.add('hidden');
       }
     }
 
@@ -1112,7 +1256,7 @@
       if (tabId === 'tab-stocks') executeLiveScripSearch();
     }
 
-    // BACKUP & RESTORE
+    // 7. BACKUP & RESTORE
     function exportVaultToPC() {
       if (getUserRole() !== 'ADMIN') return alert('Access Denied.');
       const pass = prompt('Set a private encryption password for this backup file:');
@@ -1123,7 +1267,8 @@
           registered_kyc_clients: JSON.parse(localStorage.getItem('711_vault_users') || '[]'),
           re_listings: JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]'),
           cs_jobs: JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]'),
-          vip_intelligence_records: JSON.parse(localStorage.getItem('711_vip_feed') || '[]')
+          vip_intelligence_records: JSON.parse(localStorage.getItem('711_vip_feed') || '[]'),
+          public_compliance_records: JSON.parse(localStorage.getItem('711_public_updates') || '[]')
         }
       };
       const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(vaultPayload, null, 2));
@@ -1146,17 +1291,61 @@
             if(d.re_listings) localStorage.setItem('711_custom_re_listings', JSON.stringify(d.re_listings));
             if(d.cs_jobs) localStorage.setItem('711_custom_cs_jobs', JSON.stringify(d.cs_jobs));
             if(d.vip_intelligence_records) localStorage.setItem('711_vip_feed', JSON.stringify(d.vip_intelligence_records));
+            if(d.public_compliance_records) localStorage.setItem('711_public_updates', JSON.stringify(d.public_compliance_records));
             alert('✅ Vault successfully restored!');
-            renderVaultUsersTable();
-            renderRealEstateListings();
-            renderCsJobs();
+            renderVaultUsersTable(); renderRealEstateListings(); renderCsJobs(); renderIntelFeed(); renderComplianceFeed();
           }
         } catch(err) { alert('❌ Invalid backup JSON.'); }
       };
       reader.readAsText(file);
     }
+    
+    function syncVaultToGoogleDrive() {
+      if (getUserRole() !== 'ADMIN') return alert('Access Denied.');
+      exportVaultToPC();
+      setTimeout(() => { if (confirm("Backup downloaded to PC. Open Google Drive now?")) window.open("https://drive.google.com/drive/u/0/my-drive", "_blank"); }, 700);
+    }
+    function dispatchEncryptedFileWhatsApp() {
+      const doc = document.getElementById('share-doc-title').value.trim(); const phone = document.getElementById('share-client-phone').value.trim(); const pass = document.getElementById('share-password').value.trim();
+      if (!doc || !phone || !pass) return alert('Document Name, Client WhatsApp, and Decryption Password are required.');
+      window.open(`https://wa.me/91${phone}?text=🔒%20*711%20OVERSEAS%20PRIVILEGED%20ENCRYPTED%20TRANSMISSION*%0A%0A•%20Document:%20*${encodeURIComponent(doc)}*%0A•%20Decryption%20Password:%20*${encodeURIComponent(pass)}*`, '_blank');
+    }
+    function handleGeneralVaultUpload() {
+      const fileInput = document.getElementById('general-vault-file'); if (!fileInput.files.length) return alert('Please choose a document to vault.');
+      alert(`Document "${fileInput.files[0].name}" staged in local encrypted memory. Dispatching to advisory counsel.`);
+      window.open(`https://wa.me/919914984371?text=Submitting%20Confidential%20Vault%20Document%3A%20${encodeURIComponent(fileInput.files[0].name)}`, '_blank');
+    }
 
-    // PAYMENT
+    // 8. PAYMENT & GATED ACCESS
+    let pendingActionCallback = null;
+    function requireReAuth(callback) {
+      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (u && (u.role === 'ADMIN' || u.id.startsWith('SS-'))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('re-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyReAuth() {
+      const id = document.getElementById('re-auth-id').value.trim().toUpperCase();
+      if (!id.startsWith('SS-')) return alert('Real Estate Partner IDs must begin with "SS-".');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'RE Partner', role: 'REAL_ESTATE', status:'ACTIVE' }));
+      closeReAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeReAuth() { document.getElementById('re-auth-modal').classList.add('hidden'); }
+
+    function requireCsAuth(callback) {
+      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (u && (u.role === 'ADMIN' || u.id.match(/^[AF0-9]/))) { callback(); } 
+      else { pendingActionCallback = callback; document.getElementById('cs-auth-modal').classList.remove('hidden'); }
+    }
+    function verifyCsAuth() {
+      const id = document.getElementById('cs-auth-id').value.trim().toUpperCase();
+      if (!id.match(/^[AF0-9]/)) return alert('Must be a valid ICSI format.');
+      localStorage.setItem('711_active_user', JSON.stringify({ id: id, name: 'CS Member', role: 'CS_PROFESSIONAL', status:'ACTIVE' }));
+      closeCsAuth(); updateAuthUI(); if (pendingActionCallback) { pendingActionCallback(); pendingActionCallback = null; }
+    }
+    function closeCsAuth() { document.getElementById('cs-auth-modal').classList.add('hidden'); }
+
+    function dispatchInquiry(s) { window.open(`https://wa.me/919914984371?text=Inquiry:%20${encodeURIComponent(s)}`, '_blank'); }
+
     function openUniversalPayment(serviceName, basePrice) {
       const sName = serviceName || "VIP Advisory Subscription (Monthly)"; 
       const bPrice = basePrice || 1999;
@@ -1185,11 +1374,11 @@
         alert('VIP Access unlocked!'); closePaymentModal();
       } else alert('Invalid Key.');
     }
+    function previewTaxInvoice() { document.getElementById('print-modal').classList.remove('hidden'); }
+    function closePrintModal() { document.getElementById('print-modal').classList.add('hidden'); }
 
     // INITIAL BOOT
     window.addEventListener('DOMContentLoaded', () => {
-      // Keep master admin session active
-      localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma', role: 'ADMIN', status: 'ACTIVE' }));
       updateAuthUI();
       renderVaultUsersTable();
       renderRealEstateListings();
