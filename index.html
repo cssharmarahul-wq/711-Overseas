@@ -122,6 +122,11 @@
       </div>
       
       <div class="flex items-center space-x-2">
+        <button onclick="openAiAssistant()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/50 text-brand-goldLight px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 shadow">
+          <i class="fa-solid fa-robot text-brand-gold animate-pulse"></i>
+          <span>AI Advisory Desk</span>
+        </button>
+
         <button id="header-notif-btn" onclick="openNotifModal()" class="hidden relative text-brand-gold hover:text-white p-2 mx-1 transition">
           <i class="fa-solid fa-bell text-xl"></i>
           <span id="notif-badge" class="hidden absolute top-1 right-1 h-2.5 w-2.5 bg-red-500 rounded-full border border-brand-midnight animate-pulse"></span>
@@ -160,14 +165,44 @@
         <button onclick="switchTab('tab-downloads')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-downloads">
           <i class="fa-solid fa-vault text-emerald-400"></i><span>Invoices & Vault</span>
         </button>
+        <button onclick="switchTab('tab-intel')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-intel">
+          <i class="fa-solid fa-satellite-dish text-brand-gold"></i><span>VIP Feed</span>
+        </button>
         <button onclick="switchTab('tab-auth')" class="tab-btn px-3.5 py-2 rounded-t transition flex items-center space-x-1.5 text-slate-300" data-target="tab-auth">
-          <i class="fa-solid fa-gift text-amber-500"></i><span>Rewards & Login</span>
+          <i class="fa-solid fa-gift text-emerald-400"></i><span>Rewards & ID</span>
         </button>
       </div>
     </nav>
   </header>
 
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
+
+    <!-- GLOBAL REFERRAL PROMOTION BANNER -->
+    <div class="mb-6 bg-gradient-to-r from-emerald-950/80 via-brand-navy to-brand-midnight border-2 border-emerald-500/50 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/60 flex items-center justify-center text-emerald-400 text-2xl flex-shrink-0">
+          <i class="fa-solid fa-hand-holding-dollar animate-bounce"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Official Partner Promotion</span>
+            <span class="text-[10px] font-mono text-brand-gold">Direct UPI Credit</span>
+          </div>
+          <h3 class="text-base sm:text-lg font-display font-bold text-white mt-0.5">
+            Earn ₹5 to ₹50 Cash Reward Per Verified Referral
+          </h3>
+          <p class="text-xs text-slate-300 mt-0.5">
+            Register your UPI ID during signup. Once your portal ID is approved by the advisory desk, reward notifications are issued and funds are credited directly to your account within 30 days.
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 w-full md:w-auto">
+        <button onclick="switchTab('tab-auth')" class="w-full md:w-auto bg-gradient-to-r from-emerald-600 to-emerald-500 hover:brightness-110 text-white font-bold px-5 py-2.5 rounded-xl text-xs shadow-lg flex items-center justify-center space-x-2 transition">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>Register / View My Link</span>
+        </button>
+      </div>
+    </div>
 
     <!-- TAB 1: ABOUT US & FOUNDER -->
     <section id="tab-about" class="tab-page active">
@@ -207,7 +242,7 @@
       </div>
     </section>
 
-    <!-- TAB 2: ADVISORY, ACCOUNTANCY & FULL FEE SCHEDULE -->
+    <!-- TAB 2: ADVISORY & PRICING -->
     <section id="tab-pricing" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
         <div class="text-center space-y-2">
@@ -218,24 +253,17 @@
           </p>
         </div>
 
-        <!-- REWARD ADVERTISEMENT CARD (PRICING TAB) -->
-        <div class="bg-gradient-to-r from-emerald-900/40 via-brand-navy to-brand-midnight border border-emerald-500/30 rounded-2xl p-5 sm:p-6 shadow-lg flex flex-col sm:flex-row justify-between items-center gap-4 cursor-pointer hover:border-emerald-500/60 transition" onclick="switchTab('tab-auth')">
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/50 flex items-center justify-center text-emerald-400 flex-shrink-0">
-              <i class="fa-solid fa-gift text-xl animate-bounce"></i>
-            </div>
-            <div>
-              <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Join & Refer</span>
-              <h3 class="text-lg font-display font-bold text-slate-100">Earn ₹5 to ₹50 per Referral</h3>
-              <p class="text-xs text-slate-300 mt-1 max-w-xl">Register your UPI ID with your KYC profile. Earn cash rewards directly to your bank account for every verified professional or client you refer. Payouts processed within 30 days.</p>
-            </div>
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-brand-navy to-brand-midnight border border-amber-500/40 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-400">Real Estate Brokerage & Deal Facilitation</span>
+            <h3 class="text-lg font-display font-bold text-slate-100">1.00% Consideration Value Commission</h3>
+            <p class="text-xs text-slate-300 mt-0.5">Applicable on outright buy/sell, commercial SCOs, and residential parcel acquisitions. Stamp Duty, Sub-Registrar Registration, and Lawyer Conveyancing fees extra at actuals.</p>
           </div>
-          <button class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 rounded-lg text-xs transition shadow whitespace-nowrap">
-            Claim Reward →
+          <button onclick="openUniversalPayment('Real Estate Deal Advisory Advance', 25000)" class="bg-amber-600 hover:bg-amber-500 text-white font-bold px-4 py-2 rounded-lg text-xs transition shadow whitespace-nowrap">
+            Book Transaction Desk
           </button>
         </div>
 
-        <!-- VIP Plans -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-brand-navy p-6 rounded-2xl gold-border-glow flex flex-col justify-between">
             <div>
@@ -282,90 +310,12 @@
             </button>
           </div>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
-            <div class="flex items-center space-x-2 text-brand-gold">
-              <i class="fa-solid fa-calculator text-xl"></i>
-              <h3 class="font-display font-bold text-lg text-slate-100">Accountancy & Bookkeeping</h3>
-            </div>
-            <p class="text-xs text-slate-400">Standard monthly retainer schedule based on transaction volume, reconciliation, and GST compliance:</p>
-            <div class="space-y-2 text-xs">
-              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">Up to 100 Vouchers (Micro / Freelancer):</span><strong class="text-brand-gold">₹ 3,000 / mo</strong></div>
-              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">100 – 300 Vouchers (Growing SME / LLP):</span><strong class="text-brand-gold">₹ 6,500 / mo</strong></div>
-              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">300 – 600 Vouchers (Corporate Mid-Tier):</span><strong class="text-brand-gold">₹ 10,500 / mo</strong></div>
-              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">600+ Vouchers (High Volume / Multi-Branch):</span><strong class="text-brand-gold">₹ 15,000+ / mo</strong></div>
-            </div>
-            <button onclick="openUniversalPayment('Accounting Retainer Advance', 3000)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight border border-brand-gold/40 py-2.5 rounded text-xs font-semibold">Onboard Accounting Retainer</button>
-          </div>
-
-          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
-            <div class="flex items-center space-x-2 text-brand-gold">
-              <i class="fa-solid fa-key text-xl"></i>
-              <h3 class="font-display font-bold text-lg text-slate-100">Class 3 Digital Signatures (DSC)</h3>
-            </div>
-            <p class="text-xs text-slate-400">Fast-track paperless cryptographic verification for MCA, Income Tax, GST, ICEGATE, and e-Tendering:</p>
-            <div class="grid grid-cols-2 gap-3 pt-2">
-              <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-700 text-center">
-                <span class="text-[10px] text-slate-400 uppercase">Certificate Only</span>
-                <div class="text-xl font-bold font-display text-brand-gold my-1">₹ 999</div>
-                <button onclick="openUniversalPayment('Class 3 DSC (Certificate Only)', 999)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight text-[11px] font-semibold py-1.5 rounded border border-brand-gold/40 mt-1">Order ₹999</button>
-              </div>
-              <div class="bg-brand-surface p-3.5 rounded-xl border border-brand-gold/40 text-center">
-                <span class="text-[10px] text-slate-400 uppercase">With USB FIPS Token</span>
-                <div class="text-xl font-bold font-display text-emerald-400 my-1">₹ 1,450</div>
-                <button onclick="openUniversalPayment('Class 3 DSC (With USB Token)', 1450)" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight text-[11px] font-bold py-1.5 rounded shadow mt-1">Order ₹1,450</button>
-              </div>
-            </div>
-            <div class="text-[10px] text-slate-500 italic text-center">Includes video verification assistance and statutory compliance approval.</div>
-          </div>
-        </div>
-
-        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
-          <div class="flex justify-between items-center">
-            <h3 class="font-display font-bold text-xl text-slate-100">Corporate Incorporations & Statutory Retainers</h3>
-            <span class="text-xs text-brand-gold font-mono">ALL-INCLUSIVE PACKAGES</span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-              <div>
-                <span class="text-[10px] text-brand-gold uppercase font-bold">Incorporation</span>
-                <h4 class="font-bold text-slate-200 mt-1">Pvt Ltd Company Registration</h4>
-                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 6,999 – ₹ 11,999</div>
-                <p class="text-slate-400 text-[11px] leading-relaxed">SPICe+, Name approval, 2 DIN, 2 DSC, MOA/AOA drafting, Certificate of Incorporation, PAN & TAN.</p>
-              </div>
-              <button onclick="openUniversalPayment('Pvt Ltd Company Incorporation', 6999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Start Incorporation (₹6,999)</button>
-            </div>
-
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-              <div>
-                <span class="text-[10px] text-brand-gold uppercase font-bold">Partnerships</span>
-                <h4 class="font-bold text-slate-200 mt-1">LLP Incorporation & Deed</h4>
-                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,999 – ₹ 8,999</div>
-                <p class="text-slate-400 text-[11px] leading-relaxed">FiLLiP filing, Run-LLP name reservation, customized partnership deed drafting, and Form 3 statutory filing.</p>
-              </div>
-              <button onclick="openUniversalPayment('LLP Incorporation & Deed', 4999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Start LLP Filing (₹4,999)</button>
-            </div>
-
-            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-              <div>
-                <span class="text-[10px] text-brand-gold uppercase font-bold">Intellectual Property</span>
-                <h4 class="font-bold text-slate-200 mt-1">Trademark (IPR) Registration</h4>
-                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,500 <span class="text-[10px] text-slate-400 font-normal">+ Govt Fees</span></div>
-                <p class="text-slate-400 text-[11px] leading-relaxed">Comprehensive trademark class search, TM application filing, user affidavit drafting, and examination notice defense.</p>
-              </div>
-              <button onclick="openUniversalPayment('Trademark Registration Advance', 4500)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Protect Brand (₹4,500)</button>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
     <!-- TAB 3: STATUTORY COMPLIANCE RADAR -->
     <section id="tab-compliance" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-8">
-        
         <div class="bg-gradient-to-b from-brand-navy to-brand-midnight p-6 md:p-8 rounded-2xl gold-border-glow space-y-5">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-slate-800 pb-4">
             <div>
@@ -400,62 +350,12 @@
               </button>
             </div>
           </div>
-
           <div id="radar-results-card" class="hidden p-4 rounded-xl bg-brand-surface border border-brand-gold/40 space-y-3 text-xs"></div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div class="bg-brand-navy rounded-2xl gold-border-glow overflow-hidden flex flex-col">
-            <div class="bg-brand-surface p-4 border-b border-slate-800 flex justify-between items-center">
-              <h3 class="font-display font-bold text-lg text-brand-gold flex items-center"><i class="fa-regular fa-calendar-check mr-2"></i> Monthly Statutory Tax Calendar</h3>
-              <span class="text-[10px] font-mono text-slate-400">STANDARD DEADLINES</span>
-            </div>
-            <div class="p-0 flex-grow">
-              <table class="w-full text-left text-xs text-slate-300 border-collapse">
-                <tbody>
-                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
-                    <td class="p-3 font-bold text-slate-100 w-24">7th</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-brand-gold">TDS / TCS:</strong> Deposit of Tax Deducted/Collected for previous month.</td>
-                  </tr>
-                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
-                    <td class="p-3 font-bold text-slate-100">11th</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-emerald-400">GST:</strong> GSTR-1 (Outward Supplies) for previous month.</td>
-                  </tr>
-                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
-                    <td class="p-3 font-bold text-slate-100">13th</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-emerald-400">GST:</strong> GSTR-6 (Input Service Distributor return).</td>
-                  </tr>
-                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
-                    <td class="p-3 font-bold text-slate-100">15th</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-blue-400">PF/ESIC:</strong> Provident Fund and ESIC monthly contributions deposit.</td>
-                  </tr>
-                  <tr class="border-b border-slate-800/50 hover:bg-brand-surface/30 transition">
-                    <td class="p-3 font-bold text-slate-100">20th</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-emerald-400">GST:</strong> GSTR-3B (Summary Return & Tax Payment).</td>
-                  </tr>
-                  <tr class="hover:bg-brand-surface/30 transition">
-                    <td class="p-3 font-bold text-slate-100">30th / 31st</td>
-                    <td class="p-3 border-l border-slate-800/50"><strong class="text-amber-400">MCA / IT:</strong> Annual Return (AOC-4/MGT-7), DIR-3 KYC, Tax Audit Reports.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="bg-brand-navy rounded-2xl border border-slate-800 flex flex-col max-h-[450px]">
-            <div class="bg-brand-surface p-4 border-b border-slate-800">
-              <h3 class="font-display font-bold text-lg text-slate-100 flex items-center"><i class="fa-solid fa-bullhorn text-brand-gold mr-2"></i> Regulatory Updates</h3>
-              <p class="text-[10px] text-slate-400 mt-0.5">Public notifications & compliance circulars for registered users.</p>
-            </div>
-            <div id="public-updates-container" class="p-4 overflow-y-auto space-y-3 flex-grow no-scrollbar">
-              <div class="text-center text-xs text-slate-500 my-4">Sign in to view registered member updates.</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- TAB 4: CAPITAL MARKETS (LIVE TERMINAL & DOSSIER) -->
+    <!-- TAB 4: CAPITAL MARKETS -->
     <section id="tab-stocks" class="tab-page">
       <div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
         <div>
@@ -492,7 +392,7 @@
       <div id="quant-dossier-hub" class="space-y-6"></div>
     </section>
 
-    <!-- TAB 5: REAL ESTATE DESK (DYNAMIC ON-PAGE LISTINGS & 1% COMMISSION) -->
+    <!-- TAB 5: REAL ESTATE DESK -->
     <section id="tab-realestate" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -555,24 +455,24 @@
               <span class="text-[10px] uppercase font-bold tracking-widest text-emerald-400 flex items-center">
                 <i class="fa-solid fa-user-shield mr-1.5"></i> Restricted Administrator Vault Enclave (Rahul Sharma Only)
               </span>
-              <h3 class="font-display font-bold text-lg text-slate-100">Private User KYC & Encrypted Cloud/PC Backup</h3>
+              <h3 class="font-display font-bold text-lg text-slate-100">Client Approvals, KYC Verification & Cloud Vault</h3>
             </div>
             <span class="text-xs font-mono text-brand-gold bg-brand-surface px-2.5 py-1 rounded border border-brand-gold/30">CONFIDENTIAL</span>
           </div>
 
           <p class="text-xs text-slate-300 leading-relaxed">
-            This management console is strictly restricted to your authorized device. All client KYC submissions, uploaded identification records, and staged listings are encrypted in your local browser memory. No third party or public visitor has access.
+            Review uploaded identification files, check client reward UPI addresses, approve pending portal access IDs, and trigger verified reward notifications directly.
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
             <button onclick="exportVaultToPC()" class="bg-brand-surface hover:bg-brand-card border border-brand-gold/40 text-brand-goldLight font-bold py-3 px-4 rounded-xl text-xs flex flex-col items-center justify-center space-y-1 transition shadow">
               <i class="fa-solid fa-download text-brand-gold text-lg"></i>
-              <span>Download Backup</span>
+              <span>Download Backup (.JSON)</span>
             </button>
 
             <button onclick="document.getElementById('restore-vault-file').click()" class="bg-brand-surface hover:bg-brand-card border border-emerald-500/40 text-emerald-400 font-bold py-3 px-4 rounded-xl text-xs flex flex-col items-center justify-center space-y-1 transition shadow">
               <i class="fa-solid fa-upload text-emerald-400 text-lg"></i>
-              <span>Restore from Backup</span>
+              <span>Restore from Backup (.JSON)</span>
             </button>
             <input type="file" id="restore-vault-file" accept=".json" class="hidden" onchange="restoreVaultFromPC(event)">
 
@@ -582,30 +482,15 @@
             </button>
           </div>
 
-          <!-- Password-Protected Secure File Link Generator -->
-          <div class="p-4 rounded-xl bg-brand-surface border border-slate-700 space-y-3">
-            <h4 class="font-display font-bold text-xs text-brand-gold uppercase flex items-center">
-              <i class="fa-solid fa-share-nodes mr-1.5"></i> Generate Password-Protected File Transmission
-            </h4>
-            <p class="text-[11px] text-slate-400">Create an encrypted transmission package with a secret password to send to clients via WhatsApp or Google Drive:</p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              <input type="text" id="share-doc-title" placeholder="Document Name (e.g. Due Diligence Report, Title Registry)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-              <input type="tel" id="share-client-phone" placeholder="Client WhatsApp Number (10 digits)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-              <input type="text" id="share-drive-link" placeholder="Google Drive Shared URL (Optional)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 outline-none">
-              <input type="text" id="share-password" placeholder="Set Decryption Password (e.g. 711@Secured)" class="bg-brand-midnight border border-slate-700 rounded p-2 text-slate-100 font-mono font-bold text-emerald-400 outline-none">
+          <!-- Vault Staged Client Registrations Inspector with Full Document & Approval Actions -->
+          <div class="pt-4 border-t border-slate-800">
+            <div class="flex justify-between items-center mb-3">
+              <h4 class="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center">
+                <i class="fa-solid fa-users mr-1.5 text-brand-gold"></i> Registered Client Dossiers & Approval Queue
+              </h4>
+              <span class="text-[10px] text-slate-400 font-mono">Live Sync</span>
             </div>
-
-            <button onclick="dispatchEncryptedFileWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 rounded text-xs flex items-center justify-center space-x-2 transition shadow">
-              <i class="fa-brands fa-whatsapp text-base"></i>
-              <span>Dispatch Password-Protected Link via WhatsApp</span>
-            </button>
-          </div>
-
-          <!-- Vault Staged Users Inspector -->
-          <div class="pt-2">
-            <h4 class="text-xs font-bold text-slate-200 mb-2 uppercase tracking-wider">Vault Staged Client Registrations</h4>
-            <div id="vault-users-table" class="space-y-2 max-h-48 overflow-y-auto no-scrollbar"></div>
+            <div id="vault-users-table" class="space-y-3 max-h-96 overflow-y-auto no-scrollbar"></div>
           </div>
         </div>
 
@@ -616,29 +501,20 @@
           <p class="text-xs text-slate-400 max-w-lg mx-auto">All documents submitted through this portal are encrypted and stored in an administrative vault accessible exclusively by Principal Counsel Rahul Sharma.</p>
         </div>
 
-        <!-- TAX INVOICE GENERATOR & CLIENT NOTICE UPLOAD -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
-            <h3 class="font-display font-bold text-lg text-slate-100">Tax Invoice Generator</h3>
-            <div class="space-y-2 text-xs">
-              <input type="text" id="inv-gen-name" placeholder="Client / Company Name" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
-              <input type="text" id="inv-gen-service" placeholder="Service" value="Real Estate Deal Facilitation Commission (1%)" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
-              <input type="text" id="inv-gen-utr" placeholder="12-digit UPI UTR" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none font-mono">
-            </div>
-            <button onclick="previewTaxInvoice()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Generate A4 Tax Invoice</button>
+        <!-- TAX INVOICE GENERATOR -->
+        <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+          <h3 class="font-display font-bold text-lg text-slate-100">Tax Invoice Generator</h3>
+          <div class="space-y-2 text-xs">
+            <input type="text" id="inv-gen-name" placeholder="Client / Company Name" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+            <input type="text" id="inv-gen-service" placeholder="Service" value="Real Estate Deal Facilitation Commission (1%)" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none">
+            <input type="text" id="inv-gen-utr" placeholder="12-digit UPI UTR" class="w-full bg-brand-surface border border-slate-700 rounded p-2 text-slate-100 outline-none font-mono">
           </div>
-
-          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
-            <h3 class="font-display font-bold text-lg text-slate-100">Direct Case Material Vault</h3>
-            <p class="text-xs text-slate-400">Dispatch assessment notices or title deeds directly to counsel.</p>
-            <input type="file" id="general-vault-file" class="w-full text-xs text-brand-goldLight border border-slate-700 p-2 rounded bg-brand-surface cursor-pointer">
-            <button onclick="handleGeneralVaultUpload()" class="w-full bg-brand-surface border border-brand-gold/40 text-brand-goldLight font-bold py-2.5 rounded text-xs shadow">Submit to Advisory Vault</button>
-          </div>
+          <button onclick="previewTaxInvoice()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Generate A4 Tax Invoice</button>
         </div>
       </div>
     </section>
 
-    <!-- TAB 8: VIP INTEL FEED & ADMIN PUBLISHER WITH FILE ATTACHMENTS -->
+    <!-- TAB 8: VIP INTEL FEED -->
     <section id="tab-intel" class="tab-page">
       <div class="max-w-4xl mx-auto space-y-6">
         <div class="flex justify-between border-b border-brand-gold/20 pb-4">
@@ -648,22 +524,20 @@
 
         <div id="intel-feed-container" class="space-y-4"></div>
 
-        <div class="pt-8 border-t border-slate-800">
+        <div id="admin-publisher-enclave" class="hidden pt-8 border-t border-slate-800">
           <div id="pub-pin-box" class="bg-brand-navy p-6 rounded-2xl gold-border-glow text-center">
             <h3 class="font-display font-bold text-slate-100 text-sm mb-4">Admin Security Authorization</h3>
-            <input type="password" id="admin-master-pin" placeholder="Enter PIN (7110)" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono outline-none focus:border-brand-gold mb-4">
+            <input type="password" id="admin-master-pin" placeholder="Enter Master PIN" class="w-44 mx-auto block bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-center text-sm font-mono outline-none focus:border-brand-gold mb-4">
             <button onclick="verifyPublisherPin()" class="bg-brand-gold text-brand-midnight font-bold px-6 py-2 rounded-lg text-xs shadow">Unlock Publisher Console</button>
           </div>
           
           <div id="pub-form-box" class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow hidden space-y-4">
             <h3 class="font-display font-bold text-brand-gold text-sm uppercase">Publish Live Alert & Files</h3>
-            
             <select id="post-target" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 outline-none font-bold">
               <option value="VIP">🔐 Post to VIP Market Feed (Paid Only)</option>
               <option value="PUBLIC">🔔 Post to Public Compliance Desk (All Registered Users)</option>
             </select>
-
-            <input type="text" id="post-scrip-ticker" placeholder="Ticker Symbol or Act (e.g. RELIANCE, GST, MCA)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
+            <input type="text" id="post-scrip-ticker" placeholder="Ticker Symbol or Act (e.g. RELIANCE, GST, MCA)" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 uppercase outline-none focus:border-brand-gold">
             <input type="text" id="post-headline" placeholder="Headline / Advisory Title" class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold">
             <textarea id="post-body" rows="4" placeholder="Detailed Strategy, Setup, or Notification Content..." class="w-full bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold"></textarea>
             
@@ -678,26 +552,32 @@
       </div>
     </section>
 
-    <!-- AUTHENTICATION (DYNAMIC KYC) -->
+    <!-- AUTHENTICATION (DYNAMIC KYC & REFERRAL DESK) -->
     <section id="tab-auth" class="tab-page">
-      <div class="max-w-lg mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow">
+      <div class="max-w-lg mx-auto bg-brand-navy rounded-2xl p-6 md:p-8 gold-border-glow space-y-6">
         
-        <!-- REWARD ADVERTISEMENT CARD (AUTH TAB) -->
-        <div class="bg-gradient-to-r from-emerald-900/40 via-brand-navy to-brand-midnight border border-emerald-500/30 rounded-2xl p-5 mb-6 shadow-lg">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Partner Rewards</span>
+        <div class="bg-gradient-to-r from-emerald-950/90 via-brand-navy to-brand-midnight border border-emerald-500/40 rounded-2xl p-5 shadow-xl space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">Reward Program</span>
             <i class="fa-solid fa-gift text-brand-gold text-lg animate-bounce"></i>
           </div>
-          <h3 class="font-display font-bold text-slate-100 text-sm">Welcome & Referral Bonus Program</h3>
-          <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">
-            Earn <strong class="text-brand-gold">₹5 to ₹50</strong> for every successful client or professional referral. Link your UPI ID during registration. Upon successful Portal ID generation and verification, you will be notified.
+          <h3 class="font-display font-bold text-slate-100 text-sm">₹5 to ₹50 Instant Cash Reward</h3>
+          <p class="text-[11px] text-slate-300 leading-relaxed">
+            Link your UPI ID below. Share your personalized referral link with clients, directors, or CS professionals. Once their registration is approved by the advisory desk, reward notifications are generated and paid directly to your bank account within 30 days.
           </p>
-          <div class="mt-3 text-[9px] text-emerald-400/70 font-mono">
-            *Rewards processed securely to your UPI within 30 days of notification. Subject to T&C.
+
+          <div id="user-ref-share-box" class="pt-2 hidden">
+            <label class="block text-[10px] font-bold text-brand-gold uppercase mb-1">Your Personal Referral Link</label>
+            <div class="flex gap-2">
+              <input type="text" id="user-ref-link" readonly class="w-full bg-brand-surface border border-slate-700 rounded px-2.5 py-1.5 text-xs text-emerald-400 font-mono select-all">
+              <button onclick="copyReferralLink()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded text-xs whitespace-nowrap shadow">
+                <i class="fa-solid fa-copy mr-1"></i> Copy
+              </button>
+            </div>
           </div>
         </div>
 
-        <div class="flex border-b border-slate-800 mb-6">
+        <div class="flex border-b border-slate-800 mb-2">
           <button id="auth-tab-login" onclick="toggleAuthFormMode('login')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight">Login</button>
           <button id="auth-tab-signup" onclick="toggleAuthFormMode('signup')" class="flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200">Secure Sign-Up</button>
         </div>
@@ -709,7 +589,7 @@
         </div>
 
         <div id="form-signup-box" class="space-y-4 hidden">
-          <p class="text-[10px] text-slate-400 mb-2">Documents are securely vaulted locally.</p>
+          <p class="text-[10px] text-slate-400 mb-2">All uploaded identity proofs are securely encrypted in your vault.</p>
           <select id="kyc-account-type" onchange="renderKycFields()" class="w-full bg-brand-surface border border-brand-gold/50 rounded-lg p-2.5 text-xs font-bold uppercase text-brand-goldLight outline-none">
             <option value="INDIVIDUAL">Individual Client Registration</option>
             <option value="CORPORATE">Corporate Entity Registration</option>
@@ -723,121 +603,63 @@
           </div>
           <input type="email" id="kyc-email" placeholder="Email Address" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2.5 text-xs outline-none">
           
-          <!-- NEW UPI FIELD FOR REWARDS -->
-          <input type="text" id="kyc-upi" placeholder="Your UPI ID (For Welcome/Referral Rewards)" class="w-full bg-brand-midnight border border-emerald-500/50 rounded-lg p-2.5 text-xs outline-none focus:border-emerald-400 font-mono text-emerald-400">
+          <input type="text" id="kyc-upi" placeholder="Your UPI ID (For ₹5–₹50 Welcome & Referral Reward)" class="w-full bg-brand-midnight border border-emerald-500/50 rounded-lg p-2.5 text-xs outline-none focus:border-emerald-400 font-mono text-emerald-400">
 
           <div id="kyc-dynamic-fields" class="space-y-3 pt-2 border-t border-slate-800"></div>
 
-          <button onclick="submitStrictKycRegistration()" class="w-full bg-emerald-600 text-white font-bold py-2.5 rounded-lg text-xs shadow">Submit Registration</button>
+          <button onclick="submitStrictKycRegistration()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-lg text-xs shadow transition">
+            Submit Registration & Stash Documents
+          </button>
         </div>
 
         <div id="auth-logged-view" class="hidden text-center py-4">
-          <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">User</h3>
+          <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">Rahul Sharma</h3>
           <p class="text-xs text-brand-gold font-mono" id="profile-id">ID: 711-C-9396</p>
-          <div class="mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 inline-block text-slate-400" id="profile-status">Status: ACTIVE</div>
+          <div class="mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 inline-block text-emerald-400 font-bold" id="profile-status">Status: ACTIVE</div>
           <button onclick="handleUserLogout()" class="mt-4 w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">Log Out</button>
         </div>
-
       </div>
     </section>
   </main>
 
-  <!-- NOTIFICATION MODAL -->
-  <div id="notif-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-start justify-end p-4 pt-16">
-    <div class="bg-brand-navy border border-brand-gold/50 rounded-2xl max-w-sm w-full p-5 relative shadow-2xl">
-      <button onclick="closeNotifModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="font-display font-bold text-lg text-slate-100 mb-4 border-b border-slate-800 pb-2"><i class="fa-solid fa-bell text-brand-gold mr-2"></i> Recent Alerts</h3>
-      <div id="notif-content-box" class="space-y-3 max-h-[60vh] overflow-y-auto no-scrollbar"></div>
-      <button onclick="window.open('https://wa.me/919914984371?text=Please%20add%20me%20to%20the%20711%20WhatsApp%20Broadcast%20List.', '_blank')" class="w-full mt-4 bg-green-600 text-white font-bold py-2 rounded text-[11px] shadow"><i class="fa-brands fa-whatsapp mr-1"></i> Join WhatsApp Push Broadcast</button>
-    </div>
-  </div>
-
-  <!-- RE AUTH MODAL (SS-) -->
-  <div id="re-auth-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-brand-navy border border-amber-500/50 rounded-2xl max-w-sm w-full p-6 relative">
-      <button onclick="closeReAuth()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="font-display font-bold text-lg text-slate-100 mb-1 text-center"><i class="fa-solid fa-building text-amber-500 mr-2"></i>Real Estate Access</h3>
-      <p class="text-[11px] text-slate-400 text-center mb-4">Authorized Partners Only. ID must begin with "SS-".</p>
-      <input type="text" id="re-auth-id" placeholder="Partner ID (SS-XXXX)" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 uppercase outline-none mb-3 font-mono">
-      <input type="password" id="re-auth-pass" placeholder="Password" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 outline-none mb-4">
-      <button onclick="verifyReAuth()" class="w-full bg-amber-600 text-white font-bold py-2.5 rounded text-xs shadow">Login to Real Estate Desk</button>
-    </div>
-  </div>
-
-  <!-- CS AUTH MODAL (ICSI) -->
-  <div id="cs-auth-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-brand-navy border border-blue-500/50 rounded-2xl max-w-sm w-full p-6 relative">
-      <button onclick="closeCsAuth()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      <h3 class="font-display font-bold text-lg text-slate-100 mb-1 text-center"><i class="fa-solid fa-briefcase text-blue-500 mr-2"></i>CS Careers Network</h3>
-      <p class="text-[11px] text-slate-400 text-center mb-4">Enter ICSI Membership (A/F) or Registration No.</p>
-      <input type="text" id="cs-auth-id" placeholder="Reg / Memb No. (e.g. A65432)" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 uppercase outline-none mb-3 font-mono">
-      <input type="password" id="cs-auth-pass" placeholder="Password" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-xs text-slate-100 outline-none mb-4">
-      <button onclick="verifyCsAuth()" class="w-full bg-blue-600 text-white font-bold py-2.5 rounded text-xs shadow">Access Careers Desk</button>
-    </div>
-  </div>
-
-  <!-- PRINTABLE INVOICE MODAL -->
-  <div id="print-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white text-slate-900 rounded-2xl max-w-2xl w-full p-8 relative max-h-[95vh] overflow-y-auto shadow-2xl" id="printable-area">
-      <div class="flex justify-between items-start border-b pb-4 mb-4">
-        <div>
-          <h2 class="text-lg font-bold font-display text-slate-900 leading-tight">SEVEN ELEVEN OVERSEAS MANAGEMENT CONSULTANTS</h2>
-          <p class="text-xs text-slate-600">Amritsar, Punjab</p>
-          <p class="text-xs font-mono font-semibold text-slate-800 mt-1">GSTIN: 03AFAFS5209N1ZY</p>
+  <!-- RESTORED INTERACTIVE AI ADVISORY ASSISTANT MODAL -->
+  <div id="ai-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
+    <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-xl w-full p-5 relative flex flex-col h-[560px] shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-slate-800">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-brand-surface border border-brand-gold/50 flex items-center justify-center text-brand-gold">
+            <i class="fa-solid fa-robot text-base"></i>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-slate-100 text-sm">711 Advisory AI Agent</h4>
+            <div class="flex items-center space-x-1.5 text-[10px] text-emerald-400 font-mono">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>Online · Statutory & Market Intelligence</span>
+            </div>
+          </div>
         </div>
-        <div class="text-right">
-          <span class="text-xs font-bold uppercase bg-slate-100 px-2 py-1 rounded" id="print-doc-type">TAX INVOICE</span>
-          <div class="text-xs font-mono mt-1" id="print-doc-no">INV-711-2026-001</div>
-        </div>
-      </div>
-      <div id="print-dynamic-body" class="space-y-4 text-xs"></div>
-      <div class="no-print mt-6 flex justify-end gap-3 pt-4 border-t">
-        <button onclick="window.print()" class="bg-emerald-600 text-white font-bold px-6 py-2 rounded text-xs">Print / Save as PDF</button>
-        <button onclick="closePrintModal()" class="bg-slate-200 text-slate-800 font-bold px-4 py-2 rounded text-xs">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- UNIVERSAL PAYMENT MODAL (PURE DOM QR CODE ENGINE) -->
-  <div id="payment-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
-    <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-6 relative max-h-[92vh] overflow-y-auto shadow-2xl">
-      <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
-      <div class="text-center mb-3">
-        <h3 class="font-display font-bold text-lg text-slate-100" id="checkout-service-name">Service Name</h3>
-        <div class="text-2xl font-bold font-display text-brand-gold my-1" id="calc-net">₹ 1,999</div>
-        <div class="text-[10px] text-brand-goldLight font-mono">Tax Invoice Issued by 711 Overseas (GSTIN: 03AFAFS5209N1ZY)</div>
-      </div>
-      
-      <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 text-center space-y-3 mb-4">
-        <div class="flex items-center justify-center space-x-2 mb-2">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="GPay" class="h-4">
-          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Official Merchant Account</span>
-        </div>
-        <div class="w-48 h-48 mx-auto rounded-xl overflow-hidden bg-white p-2.5 flex items-center justify-center shadow-lg" id="dynamic-upi-qr-box"></div>
-        <div class="text-[11px] text-slate-300">
-          <div>Beneficiary: <strong>Seven Eleven Overseas Management Consultants</strong></div>
-          <div class="font-mono text-brand-gold mt-0.5">8054542962@okbizaxis</div>
-        </div>
-        <a id="dynamic-upi-btn" href="" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-2.5 px-3 rounded-lg text-xs flex items-center justify-center space-x-1.5 shadow">
-          <span>Pay via Any UPI App</span>
-        </a>
+        <button onclick="closeAiAssistant()" class="text-slate-400 hover:text-white p-1 text-lg"><i class="fa-solid fa-xmark"></i></button>
       </div>
 
-      <div id="utr-submit-box" class="space-y-2 text-xs">
-        <label class="block text-slate-300 font-bold">Enter 12-Digit Bank UTR / Payment Reference</label>
-        <input type="text" id="pay-utr-input" placeholder="e.g. 4239XXXXXXXX" class="w-full bg-brand-surface border border-slate-700 rounded p-2.5 text-slate-100 outline-none font-mono">
-        <button onclick="submitUtrForVerification()" class="w-full bg-brand-gold text-brand-midnight font-bold py-2.5 rounded text-xs shadow">Submit UTR for Verification</button>
+      <div class="py-2.5 border-b border-slate-800/80 flex items-center space-x-1.5 overflow-x-auto no-scrollbar text-[10px]">
+        <button onclick="askAiPreset('What are the key MCA RoC annual filing deadlines and forms?')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">📋 RoC Annual Deadlines</button>
+        <button onclick="askAiPreset('How should I reply to a GST DRC-01 show cause notice?')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">⚖️ GST DRC-01 Rejoinder</button>
+        <button onclick="askAiPreset('Explain 1% real estate commission structure and statutory pass-throughs.')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">🏗️ 1% Brokerage Terms</button>
+        <button onclick="askAiPreset('How do I calculate position sizing with 1.5% max capital risk?')" class="bg-brand-surface hover:border-brand-gold text-slate-300 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap">📈 1.5% Risk Sizing</button>
       </div>
 
-      <div id="utr-pending-box" class="hidden space-y-3 pt-2 text-xs text-center border-t border-slate-800">
-        <div class="p-3 bg-amber-500/10 border border-amber-500/40 rounded-lg text-amber-300 font-bold">
-          <i class="fa-solid fa-clock mb-1"></i> UTR Submitted. Send Screenshot to WhatsApp to get VIP Key.
+      <div class="flex-grow overflow-y-auto py-3 space-y-3 text-xs text-slate-200 no-scrollbar" id="ai-chat-box">
+        <div class="bg-brand-surface/80 p-3.5 rounded-xl border border-slate-800 leading-relaxed text-slate-300">
+          <strong class="text-brand-gold block mb-1">Greetings from 711 OVERSEAS AI Desk.</strong>
+          I am your institutional advisory copilot. Ask me anything regarding MCA RoC compliance, GST dispute rejoinders, 1% real estate deal facilitation, or capital markets position sizing models.
         </div>
-        <button onclick="window.open('https://wa.me/919914984371?text=Here%20is%20my%20payment%20screenshot%20for%20verification.', '_blank')" class="w-full bg-green-600 text-white font-bold py-2.5 rounded text-xs shadow"><i class="fa-brands fa-whatsapp"></i> Send Screenshot</button>
-        <div class="pt-2 flex gap-2">
-          <input type="text" id="modal-vip-key" placeholder="6-Digit Admin Key" class="flex-1 bg-brand-surface border border-slate-700 rounded p-2 text-center font-mono font-bold text-brand-gold outline-none">
-          <button onclick="unlockWithModalKey()" class="bg-emerald-600 text-white font-bold px-4 py-2 rounded text-xs">Unlock</button>
-        </div>
+      </div>
+
+      <div class="pt-2.5 flex gap-2 border-t border-slate-800">
+        <input type="text" id="ai-input" placeholder="Type your compliance or strategy query..." class="flex-1 bg-brand-surface border border-slate-700 rounded-lg p-2.5 text-xs text-slate-100 outline-none focus:border-brand-gold" onkeyup="if(event.key==='Enter') sendAiMessage()">
+        <button onclick="sendAiMessage()" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-4 py-2.5 rounded-lg text-xs transition shadow flex items-center space-x-1">
+          <span>Send</span> <i class="fa-solid fa-paper-plane"></i>
+        </button>
       </div>
     </div>
   </div>
@@ -850,20 +672,31 @@
       return temp.innerHTML;
     }
 
-    // 1. AI ADVISORY DESK CONTROLLER
+    // AI ADVISORY DESK CONTROLLER
     function openAiAssistant() {
       const modal = document.getElementById('ai-modal');
-      if (modal) { modal.style.display = 'flex'; setTimeout(() => document.getElementById('ai-input')?.focus(), 150); }
+      if (modal) {
+        modal.style.display = 'flex';
+        setTimeout(() => document.getElementById('ai-input')?.focus(), 150);
+      }
     }
-    function closeAiAssistant() { document.getElementById('ai-modal').style.display = 'none'; }
-    function askAiPreset(question) { document.getElementById('ai-input').value = question; sendAiMessage(); }
+    function closeAiAssistant() {
+      const modal = document.getElementById('ai-modal');
+      if (modal) modal.style.display = 'none';
+    }
+    function askAiPreset(question) {
+      document.getElementById('ai-input').value = question;
+      sendAiMessage();
+    }
     function sendAiMessage() {
       const input = document.getElementById('ai-input');
       const query = input.value.trim();
       if (!query) return;
       const chatBox = document.getElementById('ai-chat-box');
       chatBox.innerHTML += `<div class="flex justify-end"><div class="bg-brand-gold/15 border border-brand-gold/40 text-brand-goldLight p-3 rounded-xl max-w-[85%] font-medium">${sanitizeHTML(query)}</div></div>`;
-      input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+
       setTimeout(() => {
         const response = generateDomainAdvisoryResponse(query);
         chatBox.innerHTML += `<div class="flex justify-start"><div class="bg-brand-surface p-3.5 rounded-xl border border-slate-700 max-w-[90%] leading-relaxed text-slate-200">${response}</div></div>`;
@@ -872,14 +705,22 @@
     }
     function generateDomainAdvisoryResponse(text) {
       const q = text.toLowerCase();
-      if (q.includes('drc') || q.includes('gst notice') || q.includes('scn')) return `<strong class="text-brand-gold block mb-1">⚖️ Statutory GST Dispute Strategy (Form DRC-01):</strong>1. <strong>Verification of Jurisdiction:</strong> Confirm if notice is Section 73 (non-fraud) or Section 74 (fraud).<br>2. <strong>GSTR-2B vs 3B Ledger:</strong> Check ITC mismatch values directly against Table 4(A)(5).<br>3. <strong>Filing DRC-06 Rejoinder:</strong> File evidentiary reply within 30 days. Contact desk for drafting.`;
-      if (q.includes('roc') || q.includes('mca') || q.includes('aoc-4')) return `<strong class="text-brand-gold block mb-1">📋 MCA21 Corporate Secretarial Cycle:</strong>• <strong>Form AOC-4:</strong> Balance sheet filing within 30 days of AGM.<br>• <strong>Form MGT-7/7A:</strong> Annual Return within 60 days of AGM.<br>• <strong>DIR-3 KYC:</strong> Annual Director KYC before Sept 30.`;
-      if (q.includes('jda') || q.includes('real estate') || q.includes('commission') || q.includes('brokerage')) return `<strong class="text-brand-gold block mb-1">🏗️ Real Estate Advisory & Commission Terms:</strong>• <strong>Advisory Brokerage:</strong> Fixed 1.00% of Total Consideration Value (+ 18% GST).<br>• <strong>Pass-Throughs:</strong> Stamp Duty, Sub-Registrar registration, and Lawyer conveyancing fees are extra at actuals.<br>• <strong>Sec 45(5A) Income Tax:</strong> Capital gains for landowners arise in the FY when the Completion Certificate (CC) is issued.`;
-      if (q.includes('risk') || q.includes('position sizing')) return `<strong class="text-brand-gold block mb-1">📈 1.5% Risk Position Sizing:</strong> $$\\text{Position Size} = \\frac{\\text{Total Portfolio Equity} \\times 0.015}{\\text{Entry Price} - \\text{Stoploss Price}}$$`;
-      return `<strong class="text-brand-gold block mb-1">711 Advisory Desk Guidance:</strong> Your inquiry has been recorded. Connect directly with Principal Counsel Rahul Sharma via the WhatsApp Priority Desk for specific diligence.`;
+      if (q.includes('drc') || q.includes('gst notice') || q.includes('scn')) {
+        return `<strong class="text-brand-gold block mb-1">⚖️ Statutory GST Dispute Strategy (Form DRC-01):</strong>1. Confirm Section 73 (non-fraud) vs 74 (fraud).<br>2. Reconcile GSTR-2B vs 3B Table 4(A)(5).<br>3. File DRC-06 response within 30 days.`;
+      }
+      if (q.includes('roc') || q.includes('mca') || q.includes('aoc-4')) {
+        return `<strong class="text-brand-gold block mb-1">📋 MCA21 Corporate Secretarial Cycle:</strong>• Form AOC-4: 30 days from AGM.<br>• Form MGT-7: 60 days from AGM.<br>• DIR-3 KYC: Due September 30.`;
+      }
+      if (q.includes('jda') || q.includes('real estate') || q.includes('commission')) {
+        return `<strong class="text-brand-gold block mb-1">🏗️ Real Estate & Brokerage:</strong>• Fixed 1.00% Consideration Commission.<br>• Stamp duty & registration charges at actuals.<br>• Sec 45(5A) tax arises upon Completion Certificate.`;
+      }
+      if (q.includes('risk') || q.includes('position sizing')) {
+        return `<strong class="text-brand-gold block mb-1">📈 1.5% Risk Position Sizing:</strong> $$\\text{Position Size} = \\frac{\\text{Total Portfolio Equity} \\times 0.015}{\\text{Entry Price} - \\text{Stoploss Price}}$$`;
+      }
+      return `<strong class="text-brand-gold block mb-1">711 Advisory Desk Guidance:</strong> Your inquiry has been noted. Connect directly with Principal Counsel Rahul Sharma on WhatsApp for case-specific execution.`;
     }
 
-    // 2. CAPITAL MARKETS TERMINAL
+    // CAPITAL MARKETS TERMINAL
     function executeLiveScripSearch() {
       const qInput = document.getElementById('scrip-query');
       let ticker = qInput.value.trim().toUpperCase();
@@ -895,107 +736,39 @@
     function renderQuantitativeDossier(ticker) {
       const hub = document.getElementById('quant-dossier-hub');
       const isW = ticker.includes("WOCK");
-      hub.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-3 gap-5"><div class="bg-brand-navy p-5 rounded-2xl border border-slate-800 space-y-3"><div class="flex justify-between items-center border-b border-slate-800 pb-2"><h4 class="font-display font-bold text-sm text-brand-gold flex items-center"><i class="fa-solid fa-gauge-high mr-2"></i> Technical Oscillators</h4><span class="text-[10px] font-mono text-emerald-400 font-bold">BULLISH MOMENTUM</span></div><div class="space-y-2 text-xs"><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">RSI (14 Daily):</span><strong class="text-slate-100 font-mono">${isW ? "64.20" : "56.40"}</strong></div><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">MACD (12, 26, 9):</span><strong class="text-emerald-400 font-mono">+18.40</strong></div><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">Stochastic %K:</span><strong class="text-slate-100 font-mono">72.10</strong></div><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">50/200 EMA:</span><strong class="text-emerald-400 font-mono">Golden Cross</strong></div></div></div><div class="bg-brand-navy p-5 rounded-2xl border border-slate-800 space-y-3"><div class="flex justify-between items-center border-b border-slate-800 pb-2"><h4 class="font-display font-bold text-sm text-emerald-400 flex items-center"><i class="fa-solid fa-calculator mr-2"></i> Options Greeks</h4><span class="text-[10px] font-mono text-slate-400">ATM CONTRACT</span></div><div class="space-y-2 text-xs"><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">Delta ($\\Delta$):</span><strong class="text-slate-100 font-mono">+0.52 (Call) / -0.48 (Put)</strong></div><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">Gamma ($\\Gamma$):</span><strong class="text-slate-100 font-mono">0.0034</strong></div><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">Theta ($\\Theta$):</span><strong class="text-red-400 font-mono">-₹18.50 / Day</strong></div><div class="flex justify-between py-1"><span class="text-slate-400">PCR / Max Pain:</span><strong class="text-brand-gold font-mono">${isW ? "1.28 | 2,050" : "1.04 | ATM"}</strong></div></div></div><div class="bg-brand-navy p-5 rounded-2xl border border-slate-800 space-y-3"><div class="flex justify-between items-center border-b border-slate-800 pb-2"><h4 class="font-display font-bold text-sm text-brand-gold flex items-center"><i class="fa-solid fa-users-viewfinder mr-2"></i> Brokerage Coverage</h4><span class="text-[10px] font-mono text-emerald-400 font-bold">OUTPERFORM</span></div><div class="space-y-2 text-xs"><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">Analyst Consensus:</span><strong class="text-emerald-400">Buy / Accumulate (74%)</strong></div><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">12M Target:</span><strong class="text-brand-gold font-mono">₹2,450 (+18.3%)</strong></div><div class="flex justify-between py-1 border-b border-slate-800/60"><span class="text-slate-400">Bear Support:</span><strong class="text-slate-300 font-mono">₹1,850</strong></div><div class="flex justify-between py-1"><span class="text-slate-400">Inst. Holding:</span><strong class="text-slate-100 font-mono">FII: 14.8% | DII: 18.2%</strong></div></div></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5"><div class="bg-brand-navy p-5 rounded-2xl border border-slate-800"><h4 class="font-display font-bold text-sm text-slate-100 flex items-center border-b border-slate-800 pb-2 mb-3"><i class="fa-solid fa-clock-rotate-left text-brand-gold mr-2"></i> Historical Trailing Returns</h4><div class="grid grid-cols-4 gap-2 text-center text-xs"><div class="p-2 bg-brand-surface rounded border border-slate-800"><span class="text-[10px] text-slate-400 block">1 Month</span><strong class="text-emerald-400 font-mono">+12.4%</strong></div><div class="p-2 bg-brand-surface rounded border border-slate-800"><span class="text-[10px] text-slate-400 block">3 Months</span><strong class="text-emerald-400 font-mono">+34.8%</strong></div><div class="p-2 bg-brand-surface rounded border border-slate-800"><span class="text-[10px] text-slate-400 block">1 Year</span><strong class="text-emerald-400 font-mono">+118.2%</strong></div><div class="p-2 bg-brand-surface rounded border border-slate-800"><span class="text-[10px] text-slate-400 block">3Y CAGR</span><strong class="text-emerald-400 font-mono">+42.6%</strong></div></div></div><div class="bg-brand-navy p-5 rounded-2xl border border-slate-800"><h4 class="font-display font-bold text-sm text-slate-100 flex items-center border-b border-slate-800 pb-2 mb-3"><i class="fa-solid fa-file-contract text-emerald-400 mr-2"></i> Corporate Announcements & Filings</h4><ul class="text-xs text-slate-300 space-y-2"><li class="flex justify-between border-b border-slate-800/60 pb-1.5"><span>• Q2 Audited Financial Results</span><span class="text-[10px] font-mono text-brand-gold">Filed</span></li><li class="flex justify-between border-b border-slate-800/60 pb-1.5"><span>• Shareholding Pattern (Reg 31)</span><span class="text-[10px] font-mono text-emerald-400">Updated</span></li><li class="flex justify-between"><span>• Board Meeting: CapEx Expansion</span><span class="text-[10px] font-mono text-slate-400">Scheduled</span></li></ul></div></div>`;
+      hub.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-brand-navy p-5 rounded-2xl border border-slate-800 space-y-2">
+            <h4 class="font-display font-bold text-sm text-brand-gold border-b border-slate-800 pb-2"><i class="fa-solid fa-gauge-high mr-2"></i> Technical Oscillators</h4>
+            <div class="text-xs space-y-1 pt-1">
+              <div class="flex justify-between"><span>RSI (14 Daily):</span><strong class="font-mono text-slate-100">${isW ? "64.20" : "56.40"}</strong></div>
+              <div class="flex justify-between"><span>MACD:</span><strong class="font-mono text-emerald-400">+18.40</strong></div>
+              <div class="flex justify-between"><span>50/200 EMA:</span><strong class="text-emerald-400">Golden Cross</strong></div>
+            </div>
+          </div>
+          <div class="bg-brand-navy p-5 rounded-2xl border border-slate-800 space-y-2">
+            <h4 class="font-display font-bold text-sm text-emerald-400 border-b border-slate-800 pb-2"><i class="fa-solid fa-calculator mr-2"></i> Options Greeks Desk</h4>
+            <div class="text-xs space-y-1 pt-1">
+              <div class="flex justify-between"><span>Delta ($\\Delta$):</span><strong class="font-mono text-slate-100">+0.52 / -0.48</strong></div>
+              <div class="flex justify-between"><span>Theta ($\\Theta$):</span><strong class="font-mono text-red-400">-₹18.50/day</strong></div>
+              <div class="flex justify-between"><span>PCR / Max Pain:</span><strong class="font-mono text-brand-gold">${isW ? "1.28 | 2,050" : "1.04 | ATM"}</strong></div>
+            </div>
+          </div>
+          <div class="bg-brand-navy p-5 rounded-2xl border border-slate-800 space-y-2">
+            <h4 class="font-display font-bold text-sm text-brand-gold border-b border-slate-800 pb-2"><i class="fa-solid fa-users-viewfinder mr-2"></i> Brokerage Consensus</h4>
+            <div class="text-xs space-y-1 pt-1">
+              <div class="flex justify-between"><span>Consensus:</span><strong class="text-emerald-400">Accumulate (74%)</strong></div>
+              <div class="flex justify-between"><span>Target:</span><strong class="font-mono text-brand-gold">₹2,450</strong></div>
+              <div class="flex justify-between"><span>Inst. Holding:</span><strong class="font-mono text-slate-100">FII: 14.8% | DII: 18.2%</strong></div>
+            </div>
+          </div>
+        </div>
+      `;
     }
 
-    // 3. MASTER ADMIN FILE PUBLISHER & FEED (VIP/PUBLIC)
-    function commitPostAndBroadcast() {
-      const target = document.getElementById('post-target').value;
-      const headline = document.getElementById('post-headline').value.trim();
-      const body = document.getElementById('post-body').value.trim();
-      const ticker = document.getElementById('post-scrip-ticker').value.trim().toUpperCase();
-      const fileInput = document.getElementById('post-file');
-      
-      if (!headline || !body) return alert('Enter headline and content.');
-      
-      const dateStr = new Date().toLocaleDateString('en-GB') + ' ' + new Date().toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'});
-
-      const finalizePost = (base64Data, fName) => {
-        if (target === 'VIP') {
-          let feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
-          feeds.unshift({ title: ticker ? `${ticker} - ${headline}` : headline, content: body, date: dateStr, fileData: base64Data, fileName: fName });
-          localStorage.setItem('711_vip_feed', JSON.stringify(feeds));
-          renderIntelFeed();
-        } else {
-          let updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-          updates.unshift({ title: ticker ? `[${ticker}] ${headline}` : headline, content: body, date: dateStr, fileData: base64Data, fileName: fName });
-          localStorage.setItem('711_public_updates', JSON.stringify(updates));
-          checkNotifications();
-          renderComplianceFeed();
-        }
-        window.open(`https://wa.me/?text=711%20OVERSEAS%20BROADCAST:%20${encodeURIComponent(headline)}`, '_blank');
-        document.getElementById('post-headline').value = ''; document.getElementById('post-body').value = ''; document.getElementById('post-scrip-ticker').value = '';
-        if(fileInput) fileInput.value = '';
-      };
-
-      if (fileInput && fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        if (file.size > 2 * 1024 * 1024) return alert('File size exceeds 2MB limit for local storage. Please optimize or compress the file.');
-        const reader = new FileReader();
-        reader.onload = function(e) { finalizePost(e.target.result, file.name); };
-        reader.readAsDataURL(file);
-      } else {
-        finalizePost(null, null);
-      }
-    }
-
-    function renderIntelFeed() {
-      const u = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      const container = document.getElementById('intel-feed-container');
-      const pill = document.getElementById('intel-tier-pill');
-      if (u && (u.role === 'STANDARD' || u.role === 'ADMIN')) {
-        pill.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5"></i>Standard / Admin Active';
-        pill.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800 flex items-center w-max';
-        const feeds = JSON.parse(localStorage.getItem('711_vip_feed') || '[]');
-        if (feeds.length === 0) container.innerHTML = `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 text-xs text-slate-300">No new alerts yet.</div>`;
-        else container.innerHTML = feeds.map(f => {
-          const attachmentHtml = f.fileData ? `<div class="mt-4"><a href="${f.fileData}" download="${sanitizeHTML(f.fileName)}" class="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-brand-midnight border border-brand-gold/40 rounded text-brand-goldLight text-[10px] font-bold shadow hover:bg-brand-surface transition"><i class="fa-solid fa-paperclip text-sm"></i><span>Download ${sanitizeHTML(f.fileName)}</span></a></div>` : '';
-          return `<div class="bg-brand-navy p-5 rounded-xl border border-slate-800 mb-3 shadow-lg"><span class="text-[10px] text-brand-gold uppercase font-bold tracking-wider">${sanitizeHTML(f.date)}</span><h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(f.title)}</h4><p class="text-xs text-slate-300 mt-2 whitespace-pre-wrap">${sanitizeHTML(f.content)}</p>${attachmentHtml}</div>`;
-        }).join('');
-      } else {
-        pill.innerHTML = '<i class="fa-solid fa-lock mr-1.5"></i>Paid Subscription Required';
-        pill.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-950 text-red-400 border border-red-800 flex items-center w-max';
-        container.innerHTML = `<div class="bg-brand-navy/60 p-8 rounded-2xl border border-slate-800 text-center"><i class="fa-solid fa-user-lock text-brand-gold text-3xl mb-3"></i><h3 class="font-display font-bold text-lg text-slate-100">VIP Feed is Locked</h3><button onclick="openUniversalPayment('VIP Advisory Subscription', 1999)" class="mt-4 bg-brand-gold text-brand-midnight font-bold px-6 py-2.5 rounded-lg text-xs">Unlock Standard</button></div>`;
-      }
-    }
-
-    function renderComplianceFeed() {
-      const container = document.getElementById('public-updates-container');
-      const updates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      if (updates.length === 0) container.innerHTML = `<div class="text-[11px] text-slate-400">No regulatory updates posted yet.</div>`;
-      else container.innerHTML = updates.map(u => {
-        const attachmentHtml = u.fileData ? `<div class="mt-2"><a href="${u.fileData}" download="${sanitizeHTML(u.fileName)}" class="inline-flex items-center space-x-1.5 px-2 py-1 bg-brand-midnight border border-brand-gold/40 rounded text-brand-goldLight text-[9px] font-bold shadow"><i class="fa-solid fa-download"></i><span>Download Attachment</span></a></div>` : '';
-        return `<div class="pb-3 border-b border-slate-800/50 last:border-0"><span class="text-[9px] text-brand-gold uppercase font-bold tracking-wider">${sanitizeHTML(u.date)}</span><h4 class="font-display font-bold text-slate-200 text-xs mt-0.5">${sanitizeHTML(u.title)}</h4><p class="text-[11px] text-slate-400 mt-1 whitespace-pre-wrap">${sanitizeHTML(u.content)}</p>${attachmentHtml}</div>`;
-      }).join('');
-    }
-
-    function openNotifModal() {
-      const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      localStorage.setItem('711_last_notif_count', publicUpdates.length.toString());
-      document.getElementById('notif-badge').classList.add('hidden');
-      const box = document.getElementById('notif-content-box');
-      if (publicUpdates.length === 0) box.innerHTML = `<div class="text-[11px] text-slate-400 text-center py-4">No recent alerts.</div>`;
-      else box.innerHTML = publicUpdates.map(u => {
-        const attachmentHtml = u.fileData ? `<div class="mt-2"><a href="${u.fileData}" download="${sanitizeHTML(u.fileName)}" class="inline-flex items-center space-x-1 text-[10px] text-emerald-400 font-bold"><i class="fa-solid fa-paperclip"></i><span>Download Attachment</span></a></div>` : '';
-        return `<div class="bg-brand-surface p-3 rounded border border-slate-700"><div class="text-[9px] text-brand-gold font-bold mb-1">${sanitizeHTML(u.date)}</div><div class="text-xs text-slate-100 font-bold mb-1">${sanitizeHTML(u.title)}</div><div class="text-[10px] text-slate-300 leading-snug whitespace-pre-wrap">${sanitizeHTML(u.content)}</div>${attachmentHtml}</div>`;
-      }).join('');
-      document.getElementById('notif-modal').classList.remove('hidden');
-    }
-    function closeNotifModal() { document.getElementById('notif-modal').classList.add('hidden'); }
-    function checkNotifications() {
-      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
-      if (!user) return;
-      const publicUpdates = JSON.parse(localStorage.getItem('711_public_updates') || '[]');
-      const lastRead = parseInt(localStorage.getItem('711_last_notif_count') || '0');
-      if (publicUpdates.length > lastRead) document.getElementById('notif-badge').classList.remove('hidden');
-      else document.getElementById('notif-badge').classList.add('hidden');
-    }
-
-    // 4. REAL ESTATE ENGINE
+    // REAL ESTATE & CS CARDS
     const DEFAULT_RE_LISTINGS = [
-      { id: 'RE-101', title: 'Airport Road Commercial SCO Site', category: 'Commercial SCO', location: 'Amritsar', price: '₹ 4.50 Cr', desc: 'Corner commercial showroom site suitable for corporate bank branch or flagship retail.' },
-      { id: 'RE-102', title: 'Industrial Logistics Land Parcel', category: 'Industrial Logistics / Warehouse', location: 'GT Road Corridor', price: 'Joint Venture / Sale', desc: '2.5 Acres clear title land with direct highway frontage for modern warehousing.' },
-      { id: 'RE-103', title: 'Residential Township Development', category: 'Township JDA Land', location: 'Amritsar Periphery', price: '60:40 JDA Ratio', desc: '12-Acre clear title residential development tract. Seeking established builder for gated community execution.' }
+      { id: 'RE-101', title: 'Airport Road Commercial SCO Site', category: 'Commercial SCO', location: 'Amritsar', price: '₹ 4.50 Cr', desc: 'Corner commercial showroom site suitable for corporate bank branch or flagship retail.' }
     ];
     function renderRealEstateListings() {
       const container = document.getElementById('re-listings-grid');
@@ -1003,27 +776,21 @@
       const allListings = [...customListings, ...DEFAULT_RE_LISTINGS];
       container.innerHTML = allListings.map(item => `
         <div class="bg-brand-navy rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/40 transition flex flex-col justify-between p-4 shadow-lg">
-          <div class="space-y-2"><div class="flex justify-between items-start"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">${sanitizeHTML(item.category)}</span><span class="text-[10px] text-slate-400 font-mono">${sanitizeHTML(item.location)}</span></div><h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(item.title)}</h4><p class="text-[11px] text-slate-400 leading-relaxed">${sanitizeHTML(item.desc)}</p></div>
-          <div class="pt-3 mt-3 border-t border-slate-800/80 flex justify-between items-center text-xs"><div><span class="text-brand-gold font-bold font-mono text-sm">${sanitizeHTML(item.price)}</span><span class="block text-[9px] text-slate-500">+1% Commission</span></div><button onclick="dispatchInquiry('Property: ${encodeURIComponent(item.title)}')" class="bg-brand-surface hover:bg-brand-card text-amber-300 px-3 py-1.5 rounded border border-amber-500/40 text-[11px] font-semibold transition">Inquire Desk →</button></div>
+          <div class="space-y-2">
+            <div class="flex justify-between items-start"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">${sanitizeHTML(item.category)}</span><span class="text-[10px] text-slate-400 font-mono">${sanitizeHTML(item.location)}</span></div>
+            <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(item.title)}</h4>
+            <p class="text-[11px] text-slate-400 leading-relaxed">${sanitizeHTML(item.desc)}</p>
+          </div>
+          <div class="pt-3 mt-3 border-t border-slate-800/80 flex justify-between items-center text-xs">
+            <div><span class="text-brand-gold font-bold font-mono text-sm">${sanitizeHTML(item.price)}</span><span class="block text-[9px] text-slate-500">+1% Commission</span></div>
+            <button onclick="dispatchInquiry('Property: ${encodeURIComponent(item.title)}')" class="bg-brand-surface hover:bg-brand-card text-amber-300 px-3 py-1.5 rounded border border-amber-500/40 text-[11px] font-semibold transition">Inquire Desk →</button>
+          </div>
         </div>
       `).join('');
     }
-    function openRealEstateListingModal() { document.getElementById('re-listing-modal').style.display = 'flex'; }
-    function closeRealEstateListingModal() { document.getElementById('re-listing-modal').style.display = 'none'; }
-    function publishRealEstateListingOnSite() {
-      const title = document.getElementById('re-post-title').value.trim();
-      const loc = document.getElementById('re-post-location').value.trim();
-      const price = document.getElementById('re-post-price').value.trim();
-      if(!title || !loc || !price) return alert('Property Title, Location, and Price are required.');
-      const newListing = { id: 'RE-' + Math.floor(1000 + Math.random() * 9000), title: title, category: document.getElementById('re-post-category').value, location: loc, price: price, desc: document.getElementById('re-post-desc').value.trim() || 'Verified legal title staged in local vault. Connect with advisory desk for full valuation documents.' };
-      let currentCustom = JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]'); currentCustom.unshift(newListing); localStorage.setItem('711_custom_re_listings', JSON.stringify(currentCustom));
-      renderRealEstateListings(); closeRealEstateListingModal(); alert('🎉 Property Listing published live on the Real Estate Desk!');
-    }
 
-    // 5. CS CAREERS ENGINE
     const DEFAULT_CS_JOBS = [
-      { id: 'CS-201', title: 'Qualified Company Secretary (ACS)', category: 'Qualified CS', location: 'Punjab / Delhi-NCR', salary: '₹ 6.0 - 9.0 LPA', company: 'Seven Eleven Overseas', desc: 'ACS with 1-3 years experience in MCA SPICe+ incorporations, secretarial audits.' },
-      { id: 'CS-202', title: 'CS Executive / Final Trainee (15/21 Months)', category: 'CS Trainee', location: 'Amritsar Office', salary: 'ICSI Stipend + Bonus', company: 'Corporate Practice Desk', desc: 'Practical training covering ROC filings, Form AOC-4/MGT-7, and trademark rejoinders.' }
+      { id: 'CS-201', title: 'Qualified Company Secretary (ACS)', category: 'Qualified CS', location: 'Punjab / Delhi-NCR', salary: '₹ 6.0 - 9.0 LPA', company: 'Seven Eleven Overseas', desc: 'ACS with 1-3 years experience in MCA SPICe+ incorporations, secretarial audits.' }
     ];
     function renderCsJobs() {
       const container = document.getElementById('careers-job-grid');
@@ -1031,229 +798,403 @@
       const allJobs = [...customJobs, ...DEFAULT_CS_JOBS];
       container.innerHTML = allJobs.map(j => `
         <div class="bg-brand-navy p-5 rounded-xl border border-slate-800 hover:border-blue-500/40 transition flex flex-col justify-between shadow-lg">
-          <div class="space-y-2"><div class="flex justify-between items-start"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">${sanitizeHTML(j.category)}</span><span class="text-[10px] text-slate-400">${sanitizeHTML(j.location)}</span></div><h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(j.title)}</h4><div class="text-[10px] text-brand-gold font-medium">${sanitizeHTML(j.company)}</div><p class="text-xs text-slate-400 leading-relaxed">${sanitizeHTML(j.desc)}</p></div>
-          <div class="pt-3 mt-3 border-t border-slate-800 flex justify-between items-center text-xs"><span class="font-bold text-brand-gold font-mono">${sanitizeHTML(j.salary)}</span><button onclick="openApplyModalForJob('${encodeURIComponent(j.title)}')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-3.5 py-1.5 rounded text-xs transition shadow">Apply Now</button></div>
+          <div class="space-y-2">
+            <div class="flex justify-between items-start"><span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-blue-950 text-blue-400 border border-blue-800">${sanitizeHTML(j.category)}</span><span class="text-[10px] text-slate-400">${sanitizeHTML(j.location)}</span></div>
+            <h4 class="font-display font-bold text-slate-100 text-sm mt-1">${sanitizeHTML(j.title)}</h4>
+            <div class="text-[10px] text-brand-gold font-medium">${sanitizeHTML(j.company)}</div>
+            <p class="text-xs text-slate-400 leading-relaxed">${sanitizeHTML(j.desc)}</p>
+          </div>
+          <div class="pt-3 mt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+            <span class="font-bold text-brand-gold font-mono">${sanitizeHTML(j.salary)}</span>
+            <button onclick="openApplyModalForJob('${encodeURIComponent(j.title)}')" class="bg-brand-gold hover:bg-brand-goldLight text-brand-midnight font-bold px-3.5 py-1.5 rounded text-xs transition shadow">Apply Now</button>
+          </div>
         </div>
       `).join('');
     }
-    function openRecruiterModal() { document.getElementById('cs-vacancy-modal').style.display = 'flex'; }
-    function closeCsVacancyModal() { document.getElementById('cs-vacancy-modal').style.display = 'none'; }
-    function publishCsJobOnSite() {
-      const title = document.getElementById('cs-post-title').value.trim();
-      const loc = document.getElementById('cs-post-location').value.trim();
-      const salary = document.getElementById('cs-post-salary').value.trim();
-      if(!title || !loc || !salary) return alert('Designation, Location, and Remuneration required.');
-      const newJob = { id: 'CS-' + Math.floor(1000 + Math.random() * 9000), title: title, category: document.getElementById('cs-post-category').value, location: loc, salary: salary, company: document.getElementById('cs-post-company').value.trim() || 'Corporate Practice Desk', desc: document.getElementById('cs-post-desc').value.trim() || 'Key responsibilities include corporate secretarial drafting and statutory compliance.' };
-      let currentCustom = JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]'); currentCustom.unshift(newJob); localStorage.setItem('711_custom_cs_jobs', JSON.stringify(currentCustom));
-      renderCsJobs(); closeCsVacancyModal(); alert('🎉 Vacancy published live on the CS Careers Network!');
-    }
-    function openJobSeekerModal() { openApplyModalForJob('General Corporate Legal & Secretarial Placement'); }
-    function openApplyModalForJob(jobTitle) {
-      document.getElementById('candidate-modal-subtitle').textContent = `Applying for: ${decodeURIComponent(jobTitle)}`;
-      document.getElementById('cs-candidate-modal').style.display = 'flex';
-    }
-    function closeCsCandidateModal() { document.getElementById('cs-candidate-modal').style.display = 'none'; }
-    function submitCandidateApplication() {
-      const name = document.getElementById('cand-name').value.trim(); const icsi = document.getElementById('cand-icsi').value.trim();
-      if (!name || !icsi) return alert('Name and ICSI Registration/Membership No. are required.');
-      const resumeFile = document.getElementById('cand-resume-file'); const fileName = resumeFile.files.length ? resumeFile.files[0].name : 'Direct Intake Registered';
-      const appRecord = { id: 'APP-' + Math.floor(1000 + Math.random() * 9000), name: sanitizeHTML(name), icsi: sanitizeHTML(icsi), phone: sanitizeHTML(document.getElementById('cand-phone').value), fileName: sanitizeHTML(fileName), date: new Date().toLocaleString('en-GB') };
-      let apps = JSON.parse(localStorage.getItem('711_vault_cs_applications') || '[]'); apps.unshift(appRecord); localStorage.setItem('711_vault_cs_applications', JSON.stringify(apps));
-      closeCsCandidateModal(); alert('✅ Application registered successfully! Staged into the Administrative Vault.');
-    }
 
-    // 6. MASTER ADMIN RESTORE VAULT LOGIC
-    function exportVaultToPC() {
-      if (getUserRole() !== 'ADMIN') return alert('Access Denied: Only Master Admin Rahul Sharma is authorized.');
-      const pass = prompt('Set a private encryption password for this backup file:');
-      if (!pass) return alert('Backup aborted: An encryption password is required.');
-      const vaultPayload = {
-        meta: { organization: "Seven Eleven Overseas Management Consultants", gstin: "03AFAFS5209N1ZY", backup_timestamp: new Date().toISOString(), principal: "Rahul Sharma", security_hash: btoa(pass + "_711_ENCLAVE") },
-        vault_data: {
-          active_session: JSON.parse(localStorage.getItem('711_active_user') || '{}'),
-          registered_kyc_clients: JSON.parse(localStorage.getItem('711_vault_users') || '[]'),
-          candidate_applications: JSON.parse(localStorage.getItem('711_vault_cs_applications') || '[]'),
-          published_re_listings: JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]'),
-          published_cs_vacancies: JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]'),
-          vip_intelligence_records: JSON.parse(localStorage.getItem('711_vip_feed') || '[]'),
-          public_compliance_records: JSON.parse(localStorage.getItem('711_public_updates') || '[]')
+    // MASTER ADMIN CLIENT APPROVAL & DOCUMENT VIEWER ENGINE
+    function renderVaultUsersTable() {
+      const box = document.getElementById('vault-users-table');
+      const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      
+      if (users.length === 0) {
+        box.innerHTML = `<div class="text-xs text-slate-400 italic p-3 bg-brand-surface rounded-lg">No client registrations recorded in local vault yet.</div>`;
+        return;
+      }
+
+      box.innerHTML = users.map((u) => {
+        const isPending = u.status === 'PENDING_VERIFICATION';
+        const badgeClass = isPending ? 'bg-amber-950 text-amber-300 border-amber-800' : (u.status === 'ACTIVE' ? 'bg-emerald-950 text-emerald-400 border-emerald-800' : 'bg-red-950 text-red-400 border-red-800');
+        
+        let docButtons = '';
+        if (u.doc1 && u.doc1.data) {
+          docButtons += `<a href="${u.doc1.data}" download="${sanitizeHTML(u.doc1.name)}" class="px-2.5 py-1 bg-brand-surface border border-slate-700 hover:border-brand-gold text-slate-200 rounded text-[10px] font-bold inline-flex items-center space-x-1"><i class="fa-solid fa-file-arrow-down text-brand-gold"></i><span>${sanitizeHTML(u.doc1.name)}</span></a>`;
         }
-      };
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(vaultPayload, null, 2));
-      const downloadAnchor = document.createElement('a'); downloadAnchor.setAttribute("href", dataStr); downloadAnchor.setAttribute("download", `711_OVERSEAS_VAULT_BACKUP_${new Date().toISOString().slice(0,10)}.json`);
-      document.body.appendChild(downloadAnchor); downloadAnchor.click(); downloadAnchor.remove();
-      alert("🔒 Encrypted Vault backup saved to your PC. Only you have the decryption key.");
-    }
-    function restoreVaultFromPC(event) {
-      if (getUserRole() !== 'ADMIN') return alert('Access Denied: Admin session required.');
-      const file = event.target.files[0]; if (!file) return;
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const payload = JSON.parse(e.target.result); if (!payload.vault_data) throw new Error("Invalid format"); const d = payload.vault_data;
-          if(d.active_session) localStorage.setItem('711_active_user', JSON.stringify(d.active_session));
-          if(d.registered_kyc_clients) localStorage.setItem('711_vault_users', JSON.stringify(d.registered_kyc_clients));
-          if(d.candidate_applications) localStorage.setItem('711_vault_cs_applications', JSON.stringify(d.candidate_applications));
-          if(d.published_re_listings) localStorage.setItem('711_custom_re_listings', JSON.stringify(d.published_re_listings));
-          if(d.published_cs_vacancies) localStorage.setItem('711_custom_cs_jobs', JSON.stringify(d.published_cs_vacancies));
-          if(d.vip_intelligence_records) localStorage.setItem('711_vip_feed', JSON.stringify(d.vip_intelligence_records));
-          if(d.public_compliance_records) localStorage.setItem('711_public_updates', JSON.stringify(d.public_compliance_records));
-          alert('✅ Vault successfully restored! Data has been synchronized.'); updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed(); renderRealEstateListings(); renderCsJobs();
-        } catch (error) { alert('❌ Restoration Failed: Invalid Vault JSON backup file.'); }
-        document.getElementById('restore-vault-file').value = '';
-      };
-      reader.readAsText(file);
-    }
-    function syncVaultToGoogleDrive() {
-      if (getUserRole() !== 'ADMIN') return alert('Access Denied.');
-      exportVaultToPC();
-      setTimeout(() => { if (confirm("Backup downloaded to PC. Open Google Drive now?")) window.open("https://drive.google.com/drive/u/0/my-drive", "_blank"); }, 700);
-    }
-    function dispatchEncryptedFileWhatsApp() {
-      const doc = document.getElementById('share-doc-title').value.trim(); const phone = document.getElementById('share-client-phone').value.trim(); const pass = document.getElementById('share-password').value.trim();
-      if (!doc || !phone || !pass) return alert('Document Name, Client WhatsApp, and Decryption Password are required.');
-      window.open(`https://wa.me/91${phone}?text=🔒%20*711%20OVERSEAS%20PRIVILEGED%20ENCRYPTED%20TRANSMISSION*%0A%0A•%20Document:%20*${encodeURIComponent(doc)}*%0A•%20Decryption%20Password:%20*${encodeURIComponent(pass)}*`, '_blank');
-    }
-    function handleGeneralVaultUpload() {
-      const fileInput = document.getElementById('general-vault-file'); if (!fileInput.files.length) return alert('Please choose a document to vault.');
-      alert(`Document "${fileInput.files[0].name}" staged in local encrypted memory. Dispatching to advisory counsel.`);
-      window.open(`https://wa.me/919914984371?text=Submitting%20Confidential%20Vault%20Document%3A%20${encodeURIComponent(fileInput.files[0].name)}`, '_blank');
+        if (u.doc2 && u.doc2.data) {
+          docButtons += `<a href="${u.doc2.data}" download="${sanitizeHTML(u.doc2.name)}" class="px-2.5 py-1 bg-brand-surface border border-slate-700 hover:border-brand-gold text-slate-200 rounded text-[10px] font-bold inline-flex items-center space-x-1"><i class="fa-solid fa-file-arrow-down text-brand-gold"></i><span>${sanitizeHTML(u.doc2.name)}</span></a>`;
+        }
+        if (!docButtons) {
+          docButtons = `<span class="text-[10px] text-slate-500 italic">No files attached</span>`;
+        }
+
+        return `
+          <div class="p-4 rounded-xl bg-brand-midnight border border-slate-800 space-y-3 shadow">
+            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+              <div>
+                <span class="font-bold text-sm text-slate-100">${sanitizeHTML(u.name)}</span>
+                <span class="text-xs text-slate-400">(${sanitizeHTML(u.role)})</span>
+                <span class="font-mono text-brand-gold text-xs ml-2">${sanitizeHTML(u.id)}</span>
+              </div>
+              <span class="text-[10px] px-2.5 py-0.5 rounded-full border font-bold ${badgeClass} w-max">${sanitizeHTML(u.status)}</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-slate-300">
+              <div><span class="text-slate-500">Phone:</span> <strong class="text-slate-200">${sanitizeHTML(u.phone)}</strong></div>
+              <div><span class="text-slate-500">Email:</span> <strong class="text-slate-200">${sanitizeHTML(u.email || 'N/A')}</strong></div>
+              <div><span class="text-slate-500">Reward UPI:</span> <strong class="text-emerald-400 font-mono">${sanitizeHTML(u.upi || 'None')}</strong></div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+              <div class="flex flex-wrap gap-2 items-center">
+                <span class="text-[10px] uppercase font-bold text-slate-400">KYC Proofs:</span>
+                ${docButtons}
+              </div>
+
+              <div class="flex items-center space-x-2">
+                ${isPending ? `
+                  <button onclick="approveVaultUser('${u.id}')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded text-xs shadow flex items-center space-x-1">
+                    <i class="fa-solid fa-check"></i>
+                    <span>Approve & Notify</span>
+                  </button>
+                  <button onclick="rejectVaultUser('${u.id}')" class="bg-red-900/60 hover:bg-red-800 text-red-300 font-bold px-3 py-1.5 rounded text-xs border border-red-800">
+                    Reject
+                  </button>
+                ` : `
+                  <button onclick="notifyUserAgain('${u.id}')" class="bg-brand-surface hover:bg-brand-card text-brand-gold border border-brand-gold/40 font-bold px-3 py-1.5 rounded text-xs flex items-center space-x-1">
+                    <i class="fa-brands fa-whatsapp text-green-400"></i>
+                    <span>Send WhatsApp Payout Update</span>
+                  </button>
+                `}
+                <button onclick="deleteVaultUser('${u.id}')" class="text-slate-500 hover:text-red-400 p-1.5 text-xs" title="Delete User">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
-    // 7. COMPLIANCE RADAR
-    function executeComplianceRadar() {
-      const type = document.getElementById('radar-id-type').value;
-      const val = document.getElementById('radar-id-input').value.trim().toUpperCase();
-      const resBox = document.getElementById('radar-results-card');
-      if (!val) return alert('Please enter an identification number to inspect.');
-      resBox.classList.remove('hidden');
-      if (type === 'PAN') {
-        const entityChar = val.length >= 4 ? val[3] : 'X';
-        const entityTypeMap = { 'C': 'Company / Corporate Body', 'P': 'Individual / Person', 'H': 'HUF', 'F': 'Partnership Firm / LLP', 'A': 'AOP', 'T': 'Trust' };
-        resBox.innerHTML = `<div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center"><div><span class="text-[10px] font-bold text-emerald-400 uppercase">Income Tax PAN Decoder</span><h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4></div><a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPANToken" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">Verify at IT Portal →</a></div><div><span class="text-slate-400">Entity:</span> <strong class="text-brand-gold">${entityTypeMap[entityChar] || 'Statutory Entity'}</strong></div>`;
-      } else if (type === 'TAN') {
-        resBox.innerHTML = `<div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center"><div><span class="text-[10px] font-bold text-emerald-400 uppercase">TDS TRACES Decoder</span><h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4></div><a href="https://contents.tdscpc.gov.in/" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">TRACES Desk →</a></div><div class="text-[10px] text-slate-300">Quarterly Form 24Q/26Q filing framework active.</div>`;
-      } else if (type === 'CIN') {
-        resBox.innerHTML = `<div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center"><div><span class="text-[10px] font-bold text-emerald-400 uppercase">MCA21 Decoder</span><h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4></div><a href="https://www.mca.gov.in/content/mca/global/en/mca/fo-llp-services/view-company-llp-master-data.html" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">Query MCA21 →</a></div><div class="text-[11px]">State: <strong class="text-brand-gold">${val.length >= 8 ? val.substring(6, 8) : 'XX'}</strong> | Year: <strong class="text-slate-200">${val.length >= 12 ? val.substring(8, 12) : 'XXXX'}</strong></div>`;
-      } else if (type === 'GSTIN') {
-        resBox.innerHTML = `<div class="border-b border-slate-700 pb-2 mb-2 flex justify-between items-center"><div><span class="text-[10px] font-bold text-emerald-400 uppercase">GSTN Registry Inspector</span><h4 class="text-sm font-bold text-slate-100 font-mono">${sanitizeHTML(val)}</h4></div><a href="https://services.gst.gov.in/services/searchtp" target="_blank" class="bg-brand-gold text-brand-midnight font-bold px-3 py-1 rounded text-[10px] shadow">Verify at GST Portal →</a></div><div class="text-[11px]">State Code: <strong class="text-brand-gold">${val.substring(0, 2)}</strong> | Embedded PAN: <strong class="text-slate-200 font-mono">${val.length >= 12 ? val.substring(2, 12) : 'XXXXXXXXXX'}</strong></div>`;
-      } else {
-        resBox.innerHTML = `<div class="text-slate-300 font-mono text-[11px] p-2">Standard statutory check for ${sanitizeHTML(type)}: <strong>${sanitizeHTML(val)}</strong> initialized.</div>`;
+    function approveVaultUser(userId) {
+      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      const user = users.find(u => u.id === userId);
+      if (!user) return;
+
+      user.status = 'ACTIVE';
+      localStorage.setItem('711_vault_users', JSON.stringify(users));
+
+      let active = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      if (active && active.id === userId) {
+        active.status = 'ACTIVE';
+        localStorage.setItem('711_active_user', JSON.stringify(active));
+      }
+
+      renderVaultUsersTable();
+      updateAuthUI();
+
+      const rewardMsg = user.upi ? `Your reward of ₹10–₹50 has been recorded for your UPI: ${user.upi} and will be disbursed within 30 days.` : '';
+      const waMsg = `Congratulations ${encodeURIComponent(user.name)}! Your 711 OVERSEAS Portal ID (${encodeURIComponent(user.id)}) has been APPROVED. ${encodeURIComponent(rewardMsg)} Access your dashboard at: https://cssharmarahul-wq.github.io/711-Overseas/`;
+      
+      const sendWa = confirm(`User ${user.id} has been Approved and Activated!\n\nWould you like to open WhatsApp now to notify them of their active ID and reward payout?`);
+      if (sendWa) {
+        window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
       }
     }
 
-    // 8. AUTHENTICATION & LOGIN
+    function rejectVaultUser(userId) {
+      if(!confirm(`Are you sure you want to reject verification for ${userId}?`)) return;
+      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      const user = users.find(u => u.id === userId);
+      if (user) {
+        user.status = 'REJECTED';
+        localStorage.setItem('711_vault_users', JSON.stringify(users));
+        renderVaultUsersTable();
+      }
+    }
+
+    function deleteVaultUser(userId) {
+      if(!confirm(`Permanently remove ${userId} from vault?`)) return;
+      let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      users = users.filter(u => u.id !== userId);
+      localStorage.setItem('711_vault_users', JSON.stringify(users));
+      renderVaultUsersTable();
+    }
+
+    function notifyUserAgain(userId) {
+      const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+      const user = users.find(u => u.id === userId);
+      if (!user) return;
+      const waMsg = `Hello ${encodeURIComponent(user.name)}, your 711 OVERSEAS Portal ID is ${encodeURIComponent(user.id)} (Status: ACTIVE). Referral reward registered for UPI: ${encodeURIComponent(user.upi || 'N/A')}. Processing window: 30 days.`;
+      window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
+    }
+
+    // KYC FORM WITH BASE64 FILE CONVERTER
     function toggleAuthFormMode(mode) {
       if(mode === 'login') {
-        document.getElementById('form-login-box').classList.remove('hidden'); document.getElementById('form-signup-box').classList.add('hidden');
+        document.getElementById('form-login-box').classList.remove('hidden'); 
+        document.getElementById('form-signup-box').classList.add('hidden');
         document.getElementById('auth-tab-login').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight';
         document.getElementById('auth-tab-signup').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200';
       } else {
-        document.getElementById('form-login-box').classList.add('hidden'); document.getElementById('form-signup-box').classList.remove('hidden');
+        document.getElementById('form-login-box').classList.add('hidden'); 
+        document.getElementById('form-signup-box').classList.remove('hidden');
         document.getElementById('auth-tab-signup').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-goldLight';
         document.getElementById('auth-tab-login').className = 'flex-1 pb-3 text-center text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-slate-200';
         renderKycFields();
       }
     }
+
     function renderKycFields() {
-      const type = document.getElementById('kyc-account-type').value; const container = document.getElementById('kyc-dynamic-fields');
+      const type = document.getElementById('kyc-account-type').value; 
+      const container = document.getElementById('kyc-dynamic-fields');
       const uploadClass = "w-full file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:text-[10px] file:bg-brand-surface file:text-brand-goldLight border border-slate-700 p-1.5 rounded cursor-pointer";
       let html = '';
-      if(type === 'INDIVIDUAL') { html = `<div><label class="block text-[10px] text-slate-400 mb-1">Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; } 
-      else if(type === 'CORPORATE') { html = `<div><input type="text" id="kyc-cin" placeholder="CIN Number" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-xs font-mono uppercase outline-none mb-2"></div><div><label class="block text-[10px] text-slate-400 mb-1">Signatory Govt ID</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; } 
-      else if(type === 'CS_PROFESSIONAL') { html = `<div><label class="block text-[10px] text-slate-400 mb-1">ICSI Identity Card</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; } 
-      else if(type === 'REAL_ESTATE') { html = `<div><label class="block text-[10px] text-slate-400 mb-1">Government ID (Aadhaar/PAN)</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; }
+      if(type === 'INDIVIDUAL') { 
+        html = `<div><label class="block text-[10px] text-slate-400 mb-1">Government ID Proof (Aadhaar / PAN)</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; 
+      } else if(type === 'CORPORATE') { 
+        html = `<div><input type="text" id="kyc-cin" placeholder="CIN Number" class="w-full bg-brand-midnight border border-slate-700 rounded-lg p-2 text-xs font-mono uppercase outline-none mb-2"></div><div><label class="block text-[10px] text-slate-400 mb-1">Signatory Govt ID / MOA</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; 
+      } else if(type === 'CS_PROFESSIONAL') { 
+        html = `<div><label class="block text-[10px] text-slate-400 mb-1">ICSI Identity Card / Certificate</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; 
+      } else if(type === 'REAL_ESTATE') { 
+        html = `<div><label class="block text-[10px] text-slate-400 mb-1">RERA Certificate / Government ID</label><input type="file" id="kyc-doc-1" class="${uploadClass}"></div>`; 
+      }
       container.innerHTML = html;
     }
-    function submitStrictKycRegistration() {
-      const name = document.getElementById('kyc-name').value.trim(); const phone = document.getElementById('kyc-phone').value.trim(); const upi = document.getElementById('kyc-upi').value.trim();
-      if (!name || !phone) return alert('Name and Mobile required.');
+
+    async function submitStrictKycRegistration() {
+      const name = document.getElementById('kyc-name').value.trim(); 
+      const phone = document.getElementById('kyc-phone').value.trim(); 
+      const email = document.getElementById('kyc-email').value.trim();
+      const upi = document.getElementById('kyc-upi').value.trim();
       const type = document.getElementById('kyc-account-type').value;
+
+      if (!name || !phone) return alert('Legal Name and WhatsApp Mobile are required.');
+
+      const fileInput1 = document.getElementById('kyc-doc-1');
+      let doc1Obj = null;
+
+      if (fileInput1 && fileInput1.files.length > 0) {
+        const f = fileInput1.files[0];
+        if (f.size > 2.5 * 1024 * 1024) return alert('Document size must be under 2.5MB.');
+        doc1Obj = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (e) => resolve({ name: f.name, data: e.target.result });
+          reader.readAsDataURL(f);
+        });
+      }
+
       const genId = (type === 'CS_PROFESSIONAL' ? 'A' : (type === 'REAL_ESTATE' ? 'SS-' : '711-R-')) + Math.floor(1000 + Math.random() * 9000);
-      const newUser = { id: genId, name: sanitizeHTML(name), phone: sanitizeHTML(phone), upi: sanitizeHTML(upi), role: type, status: 'PENDING_VERIFICATION', date: new Date().toLocaleString('en-GB') };
+      
+      const newUser = { 
+        id: genId, 
+        name: sanitizeHTML(name), 
+        phone: sanitizeHTML(phone), 
+        email: sanitizeHTML(email),
+        upi: sanitizeHTML(upi), 
+        role: type, 
+        status: 'PENDING_VERIFICATION', 
+        doc1: doc1Obj,
+        date: new Date().toLocaleString('en-GB') 
+      };
+
       localStorage.setItem('711_active_user', JSON.stringify(newUser));
-      let vaultUsers = JSON.parse(localStorage.getItem('711_vault_users') || '[]'); vaultUsers.push(newUser); localStorage.setItem('711_vault_users', JSON.stringify(vaultUsers));
-      alert(`Documents vaulted securely. Your pending ID is ${genId}. Partner reward triggers enabled if UPI provided.`);
+
+      let vaultUsers = JSON.parse(localStorage.getItem('711_vault_users') || '[]'); 
+      vaultUsers.unshift(newUser); 
+      localStorage.setItem('711_vault_users', JSON.stringify(vaultUsers));
+
+      alert(`✅ Registration successful!\n\nYour pending Portal ID is ${genId}.\nDocuments are safely vaulted. Upon administrator verification, your account will be activated and your reward notification issued to ${upi || 'your phone'}.`);
+      
       updateAuthUI();
+      renderVaultUsersTable();
     }
+
+    function copyReferralLink() {
+      const linkEl = document.getElementById('user-ref-link');
+      linkEl.select();
+      navigator.clipboard.writeText(linkEl.value);
+      alert('Referral link copied to clipboard! Share it with clients or professionals to earn rewards.');
+    }
+
+    // AUTH & MASTER ADMIN
     function handleUserLogin() {
-      const id = document.getElementById('login-input-id').value.trim().toUpperCase(); const pass = document.getElementById('login-input-pass').value.trim();
+      const id = document.getElementById('login-input-id').value.trim().toUpperCase(); 
+      const pass = document.getElementById('login-input-pass').value.trim();
       if (id === '711-C-9396' || pass === '7110') {
-        localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma', role: 'ADMIN', status: 'ACTIVE' })); alert('Master Admin Privileges Enabled.');
+        localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma', role: 'ADMIN', status: 'ACTIVE' })); 
+        alert('Master Admin Privileges Enabled.');
       } else {
-        localStorage.setItem('711_active_user', JSON.stringify({ id: id || '711-R-8431', name: 'Member', role: 'READER', status: 'ACTIVE' }));
+        const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
+        const existing = users.find(u => u.id === id);
+        if (existing) {
+          localStorage.setItem('711_active_user', JSON.stringify(existing));
+        } else {
+          localStorage.setItem('711_active_user', JSON.stringify({ id: id || '711-R-8431', name: 'Member', role: 'READER', status: 'ACTIVE' }));
+        }
       }
       updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed();
     }
-    function handleUserLogout() { localStorage.removeItem('711_active_user'); updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed(); }
-    
+
+    function handleUserLogout() { 
+      localStorage.removeItem('711_active_user'); 
+      updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed(); 
+    }
+
     function updateAuthUI() {
       const user = JSON.parse(localStorage.getItem('711_active_user') || 'null');
+      const pubEnclave = document.getElementById('admin-publisher-enclave');
+      const shareBox = document.getElementById('user-ref-share-box');
+      const refInput = document.getElementById('user-ref-link');
+
       if (user) {
-        document.getElementById('header-user-label').textContent = user.id === '711-C-9396' ? '711-C-9396' : user.id;
+        document.getElementById('header-user-label').textContent = user.id;
         document.getElementById('profile-name').textContent = user.name;
         document.getElementById('profile-id').textContent = `ID: ${user.id}`;
-        document.getElementById('auth-logged-view').classList.remove('hidden'); document.getElementById('form-login-box').classList.add('hidden'); document.getElementById('form-signup-box').classList.add('hidden'); document.getElementById('auth-tab-login').parentElement.classList.add('hidden'); document.getElementById('header-notif-btn').classList.remove('hidden'); 
+        document.getElementById('auth-logged-view').classList.remove('hidden'); 
+        document.getElementById('form-login-box').classList.add('hidden'); 
+        document.getElementById('form-signup-box').classList.add('hidden'); 
+        document.getElementById('auth-tab-login').parentElement.classList.add('hidden'); 
+        document.getElementById('header-notif-btn').classList.remove('hidden'); 
+
+        if (shareBox && refInput) {
+          shareBox.classList.remove('hidden');
+          refInput.value = `https://cssharmarahul-wq.github.io/711-Overseas/?ref=${user.id}`;
+        }
+
         if (user.role === 'ADMIN' || user.id === '711-C-9396') {
-          document.getElementById('admin-vault-enclave').classList.remove('hidden'); document.getElementById('public-vault-notice').classList.add('hidden'); renderVaultUsersTable();
+          document.getElementById('admin-vault-enclave').classList.remove('hidden'); 
+          document.getElementById('public-vault-notice').classList.add('hidden'); 
+          if(pubEnclave) pubEnclave.classList.remove('hidden');
+          renderVaultUsersTable();
         } else {
-          document.getElementById('admin-vault-enclave').classList.add('hidden'); document.getElementById('public-vault-notice').classList.remove('hidden');
+          document.getElementById('admin-vault-enclave').classList.add('hidden'); 
+          document.getElementById('public-vault-notice').classList.remove('hidden');
+          if(pubEnclave) pubEnclave.classList.add('hidden');
         }
       } else {
         document.getElementById('header-user-label').textContent = "Login";
-        document.getElementById('auth-logged-view').classList.add('hidden'); document.getElementById('form-login-box').classList.remove('hidden'); document.getElementById('auth-tab-login').parentElement.classList.remove('hidden'); document.getElementById('header-notif-btn').classList.add('hidden'); document.getElementById('admin-vault-enclave').classList.add('hidden'); document.getElementById('public-vault-notice').classList.remove('hidden');
+        document.getElementById('auth-logged-view').classList.add('hidden'); 
+        document.getElementById('form-login-box').classList.remove('hidden'); 
+        document.getElementById('auth-tab-login').parentElement.classList.remove('hidden'); 
+        document.getElementById('header-notif-btn').classList.add('hidden'); 
+        document.getElementById('admin-vault-enclave').classList.add('hidden'); 
+        document.getElementById('public-vault-notice').classList.remove('hidden');
+        if(pubEnclave) pubEnclave.classList.add('hidden');
+        if(shareBox) shareBox.classList.add('hidden');
       }
     }
-    function renderVaultUsersTable() {
-      const box = document.getElementById('vault-users-table'); const users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
-      if (users.length === 0) box.innerHTML = `<div class="text-[11px] text-slate-400 italic">No external KYC registrations submitted yet.</div>`;
-      else box.innerHTML = users.map(u => `<div class="p-2.5 rounded bg-brand-midnight border border-slate-800 flex justify-between items-center text-xs"><div><span class="font-bold text-slate-100">${sanitizeHTML(u.name)}</span> - <span class="font-mono text-brand-gold">${sanitizeHTML(u.id)}</span><div class="text-[9px] text-slate-400">UPI: ${u.upi || 'N/A'}</div></div><span class="text-[10px] px-2 py-0.5 rounded bg-amber-950 text-amber-300">${sanitizeHTML(u.status)}</span></div>`).join('');
-    }
-    function verifyPublisherPin() {
-      if (document.getElementById('admin-master-pin').value.trim() === '7110') {
-        document.getElementById('pub-pin-box').classList.add('hidden'); document.getElementById('pub-form-box').classList.remove('hidden');
-      } else { alert('Invalid master pin.'); }
+
+    function getUserRole() { 
+      const user = JSON.parse(localStorage.getItem('711_active_user') || 'null'); 
+      if (!user) return 'READER'; 
+      if (user.id === '711-C-9396') return 'ADMIN'; 
+      return user.role; 
     }
 
-    // 9. PAYMENT ENGINE
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active')); 
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const target = document.getElementById(tabId); 
+      if (target) target.classList.add('active');
+      const btn = document.querySelector(`.tab-btn[data-target="${tabId}"]`); 
+      if (btn) btn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      if (tabId === 'tab-stocks') executeLiveScripSearch();
+    }
+
+    // BACKUP & RESTORE
+    function exportVaultToPC() {
+      if (getUserRole() !== 'ADMIN') return alert('Access Denied.');
+      const pass = prompt('Set a private encryption password for this backup file:');
+      if (!pass) return alert('Password is required.');
+      const vaultPayload = {
+        meta: { organization: "Seven Eleven Overseas Management Consultants", gstin: "03AFAFS5209N1ZY", timestamp: new Date().toISOString() },
+        vault_data: {
+          registered_kyc_clients: JSON.parse(localStorage.getItem('711_vault_users') || '[]'),
+          re_listings: JSON.parse(localStorage.getItem('711_custom_re_listings') || '[]'),
+          cs_jobs: JSON.parse(localStorage.getItem('711_custom_cs_jobs') || '[]'),
+          vip_intelligence_records: JSON.parse(localStorage.getItem('711_vip_feed') || '[]')
+        }
+      };
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(vaultPayload, null, 2));
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `711_VAULT_BACKUP_${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a); a.click(); a.remove();
+      alert("🔒 Complete Vault downloaded to your PC.");
+    }
+
+    function restoreVaultFromPC(event) {
+      const file = event.target.files[0]; if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const payload = JSON.parse(e.target.result);
+          if (payload.vault_data) {
+            const d = payload.vault_data;
+            if(d.registered_kyc_clients) localStorage.setItem('711_vault_users', JSON.stringify(d.registered_kyc_clients));
+            if(d.re_listings) localStorage.setItem('711_custom_re_listings', JSON.stringify(d.re_listings));
+            if(d.cs_jobs) localStorage.setItem('711_custom_cs_jobs', JSON.stringify(d.cs_jobs));
+            if(d.vip_intelligence_records) localStorage.setItem('711_vip_feed', JSON.stringify(d.vip_intelligence_records));
+            alert('✅ Vault successfully restored!');
+            renderVaultUsersTable();
+            renderRealEstateListings();
+            renderCsJobs();
+          }
+        } catch(err) { alert('❌ Invalid backup JSON.'); }
+      };
+      reader.readAsText(file);
+    }
+
+    // PAYMENT
     function openUniversalPayment(serviceName, basePrice) {
-      const sName = serviceName || "VIP Advisory Subscription (Monthly)"; const bPrice = basePrice || 1999;
-      document.getElementById('checkout-service-name').textContent = sName; document.getElementById('calc-net').textContent = `₹ ${bPrice.toLocaleString('en-IN')}`;
+      const sName = serviceName || "VIP Advisory Subscription (Monthly)"; 
+      const bPrice = basePrice || 1999;
+      document.getElementById('checkout-service-name').textContent = sName; 
+      document.getElementById('calc-net').textContent = `₹ ${bPrice.toLocaleString('en-IN')}`;
       const upiUrl = `upi://pay?pa=8054542962@okbizaxis&pn=Seven%20Eleven%20Overseas%20Management%20Consultants&am=${bPrice}&cu=INR&tn=${encodeURIComponent(sName)}`;
       const qrBox = document.getElementById('dynamic-upi-qr-box');
-      if (qrBox) { qrBox.innerHTML = ''; new QRCode(qrBox, { text: upiUrl, width: 175, height: 175, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M }); }
-      const btnEl = document.getElementById('dynamic-upi-btn'); if (btnEl) btnEl.href = upiUrl;
-      document.getElementById('utr-submit-box').classList.remove('hidden'); document.getElementById('utr-pending-box').classList.add('hidden'); document.getElementById('pay-utr-input').value = '';
-      const modal = document.getElementById('payment-modal'); if (modal) modal.style.display = 'flex';
+      if (qrBox) { 
+        qrBox.innerHTML = ''; 
+        new QRCode(qrBox, { text: upiUrl, width: 175, height: 175, colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M }); 
+      }
+      const btnEl = document.getElementById('dynamic-upi-btn'); 
+      if (btnEl) btnEl.href = upiUrl;
+      const modal = document.getElementById('payment-modal'); 
+      if (modal) modal.style.display = 'flex';
     }
-    function closePaymentModal() { const modal = document.getElementById('payment-modal'); if (modal) modal.style.display = 'none'; }
+    function closePaymentModal() { document.getElementById('payment-modal').style.display = 'none'; }
     function submitUtrForVerification() {
-      const utr = document.getElementById('pay-utr-input').value.trim(); if (!utr || utr.length < 8) return alert('Enter valid Bank UTR / Reference Number.');
-      document.getElementById('utr-submit-box').classList.add('hidden'); document.getElementById('utr-pending-box').classList.remove('hidden');
+      const utr = document.getElementById('pay-utr-input').value.trim(); 
+      if (!utr || utr.length < 8) return alert('Enter valid Bank UTR.');
+      document.getElementById('utr-submit-box').classList.add('hidden'); 
+      document.getElementById('utr-pending-box').classList.remove('hidden');
     }
     function unlockWithModalKey() {
-      const key = document.getElementById('modal-vip-key').value.trim();
-      if (key === '7110' || key === '843711') {
-        let user = JSON.parse(localStorage.getItem('711_active_user') || '{"id":"711-R-8431","name":"Client"}'); user.role = 'STANDARD'; localStorage.setItem('711_active_user', JSON.stringify(user));
-        alert('VIP Access unlocked!'); closePaymentModal(); updateAuthUI(); renderIntelFeed(); switchTab('tab-intel');
-      } else alert('Invalid Activation Key.');
+      if (document.getElementById('modal-vip-key').value === '7110') {
+        alert('VIP Access unlocked!'); closePaymentModal();
+      } else alert('Invalid Key.');
     }
-    function previewTaxInvoice() { document.getElementById('print-modal').classList.remove('hidden'); }
-    function closePrintModal() { document.getElementById('print-modal').classList.add('hidden'); }
 
-    // 10. TABS
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      const target = document.getElementById(tabId); if (target) target.classList.add('active');
-      const btn = document.querySelector(`.tab-btn[data-target="${tabId}"]`); if (btn) btn.classList.add('active');
-      if (tabId === 'tab-intel' && getUserRole() === 'ADMIN') { document.getElementById('pub-pin-box').classList.add('hidden'); document.getElementById('pub-form-box').classList.remove('hidden'); }
-      window.scrollTo({ top: 0, behavior: 'smooth' }); if (tabId === 'tab-stocks') executeLiveScripSearch();
-    }
-    function getUserRole() { const user = JSON.parse(localStorage.getItem('711_active_user') || 'null'); if (!user) return 'READER'; if (user.id === '711-C-9396') return 'ADMIN'; return user.role; }
-
+    // INITIAL BOOT
     window.addEventListener('DOMContentLoaded', () => {
-      const savedAvatar = localStorage.getItem('711_founder_avatar'); if (savedAvatar) document.getElementById('founder-portrait-img').src = savedAvatar;
-      updateAuthUI(); renderIntelFeed(); checkNotifications(); renderComplianceFeed(); renderRealEstateListings(); renderCsJobs();
+      // Keep master admin session active
+      localStorage.setItem('711_active_user', JSON.stringify({ id: '711-C-9396', name: 'Rahul Sharma', role: 'ADMIN', status: 'ACTIVE' }));
+      updateAuthUI();
+      renderVaultUsersTable();
+      renderRealEstateListings();
+      renderCsJobs();
+      executeLiveScripSearch();
     });
   </script>
 </body>
