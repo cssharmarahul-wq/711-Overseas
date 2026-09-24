@@ -309,6 +309,83 @@
             </button>
           </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center space-x-2 text-brand-gold">
+              <i class="fa-solid fa-calculator text-xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Accountancy & Bookkeeping</h3>
+            </div>
+            <p class="text-xs text-slate-400">Standard monthly retainer schedule based on transaction volume, reconciliation, and GST compliance:</p>
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">Up to 100 Vouchers (Micro / Freelancer):</span><strong class="text-brand-gold">₹ 3,000 / mo</strong></div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">100 – 300 Vouchers (Growing SME / LLP):</span><strong class="text-brand-gold">₹ 6,500 / mo</strong></div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">300 – 600 Vouchers (Corporate Mid-Tier):</span><strong class="text-brand-gold">₹ 10,500 / mo</strong></div>
+              <div class="flex items-center justify-between p-2 rounded bg-brand-surface border border-slate-800"><span class="text-slate-300">600+ Vouchers (High Volume / Multi-Branch):</span><strong class="text-brand-gold">₹ 15,000+ / mo</strong></div>
+            </div>
+            <button onclick="openUniversalPayment('Accounting Retainer Advance', 3000)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight border border-brand-gold/40 py-2.5 rounded text-xs font-semibold">Onboard Accounting Retainer</button>
+          </div>
+
+          <div class="bg-brand-navy p-6 rounded-2xl border border-slate-800 space-y-4">
+            <div class="flex items-center space-x-2 text-brand-gold">
+              <i class="fa-solid fa-key text-xl"></i>
+              <h3 class="font-display font-bold text-lg text-slate-100">Class 3 Digital Signatures (DSC)</h3>
+            </div>
+            <p class="text-xs text-slate-400">Fast-track paperless cryptographic verification for MCA, Income Tax, GST, ICEGATE, and e-Tendering:</p>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="bg-brand-surface p-3.5 rounded-xl border border-slate-700 text-center">
+                <span class="text-[10px] text-slate-400 uppercase">Certificate Only</span>
+                <div class="text-xl font-bold font-display text-brand-gold my-1">₹ 999</div>
+                <button onclick="openUniversalPayment('Class 3 DSC (Certificate Only)', 999)" class="w-full bg-brand-surface hover:bg-brand-card text-brand-goldLight text-[11px] font-semibold py-1.5 rounded border border-brand-gold/40 mt-1">Order ₹999</button>
+              </div>
+              <div class="bg-brand-surface p-3.5 rounded-xl border border-brand-gold/40 text-center">
+                <span class="text-[10px] text-slate-400 uppercase">With USB FIPS Token</span>
+                <div class="text-xl font-bold font-display text-emerald-400 my-1">₹ 1,450</div>
+                <button onclick="openUniversalPayment('Class 3 DSC (With USB Token)', 1450)" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-midnight text-[11px] font-bold py-1.5 rounded shadow mt-1">Order ₹1,450</button>
+              </div>
+            </div>
+            <div class="text-[10px] text-slate-500 italic text-center">Includes video verification assistance and statutory compliance approval.</div>
+          </div>
+        </div>
+
+        <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
+          <div class="flex justify-between items-center">
+            <h3 class="font-display font-bold text-xl text-slate-100">Corporate Incorporations & Statutory Retainers</h3>
+            <span class="text-xs text-brand-gold font-mono">ALL-INCLUSIVE PACKAGES</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Incorporation</span>
+                <h4 class="font-bold text-slate-200 mt-1">Pvt Ltd Company Registration</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 6,999 – ₹ 11,999</div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">SPICe+, Name approval, 2 DIN, 2 DSC, MOA/AOA drafting, Certificate of Incorporation, PAN & TAN.</p>
+              </div>
+              <button onclick="openUniversalPayment('Pvt Ltd Company Incorporation', 6999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Start Incorporation (₹6,999)</button>
+            </div>
+
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Partnerships</span>
+                <h4 class="font-bold text-slate-200 mt-1">LLP Incorporation & Deed</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,999 – ₹ 8,999</div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">FiLLiP filing, Run-LLP name reservation, customized partnership deed drafting, and Form 3 statutory filing.</p>
+              </div>
+              <button onclick="openUniversalPayment('LLP Incorporation & Deed', 4999)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Start LLP Filing (₹4,999)</button>
+            </div>
+
+            <div class="bg-brand-surface p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] text-brand-gold uppercase font-bold">Intellectual Property</span>
+                <h4 class="font-bold text-slate-200 mt-1">Trademark (IPR) Registration</h4>
+                <div class="text-base font-bold text-emerald-400 font-mono my-1.5">₹ 4,500 <span class="text-[10px] text-slate-400 font-normal">+ Govt Fees</span></div>
+                <p class="text-slate-400 text-[11px] leading-relaxed">Comprehensive trademark class search, TM application filing, user affidavit drafting, and examination notice defense.</p>
+              </div>
+              <button onclick="openUniversalPayment('Trademark Registration Advance', 4500)" class="w-full mt-3 bg-brand-midnight hover:bg-brand-surface border border-brand-gold/40 text-brand-goldLight py-1.5 rounded text-[11px] font-bold">Protect Brand (₹4,500)</button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -350,6 +427,7 @@
               </button>
             </div>
           </div>
+
           <div id="radar-results-card" class="hidden p-4 rounded-xl bg-brand-surface border border-brand-gold/40 space-y-3 text-xs"></div>
         </div>
 
@@ -452,7 +530,7 @@
       <div id="quant-dossier-hub" class="space-y-6"></div>
     </section>
 
-    <!-- TAB 5: REAL ESTATE DESK (MODALS FULLY RESTORED) -->
+    <!-- TAB 5: REAL ESTATE DESK -->
     <section id="tab-realestate" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -481,7 +559,7 @@
       </div>
     </section>
 
-    <!-- TAB 6: CS CAREERS DESK (MODALS FULLY RESTORED) -->
+    <!-- TAB 6: CS CAREERS DESK -->
     <section id="tab-careers" class="tab-page">
       <div class="max-w-6xl mx-auto space-y-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-brand-gold/20 pb-4">
@@ -542,7 +620,7 @@
             </button>
           </div>
 
-          <!-- Vault Staged Client Registrations Inspector with Full Document & Approval Actions -->
+          <!-- Vault Staged Client Registrations Inspector -->
           <div class="pt-4 border-t border-slate-800">
             <div class="flex justify-between items-center mb-3">
               <h4 class="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center">
@@ -584,7 +662,7 @@
 
         <div id="intel-feed-container" class="space-y-4"></div>
 
-        <!-- STRICTLY ADMIN PUBLISHER ENCLAVE (ACCESSIBLE TO ADMIN) -->
+        <!-- STRICTLY ADMIN PUBLISHER ENCLAVE -->
         <div id="admin-publisher-enclave" class="hidden pt-8 border-t border-slate-800">
           <div class="bg-brand-navy p-6 md:p-8 rounded-2xl gold-border-glow space-y-4">
             <h3 class="font-display font-bold text-brand-gold text-sm uppercase flex items-center">
@@ -673,11 +751,13 @@
           </button>
         </div>
 
+        <!-- Logged In View -->
         <div id="auth-logged-view" class="hidden text-center py-4">
           <h3 class="font-display font-bold text-slate-100 text-lg" id="profile-name">User</h3>
           <p class="text-xs text-brand-gold font-mono" id="profile-id">ID: 711-C-9396</p>
           <div class="mt-3 text-[10px] px-3 py-1 rounded-full bg-brand-surface border border-slate-700 inline-block text-slate-400" id="profile-status">Status: ACTIVE</div>
           
+          <!-- LATE UPLOAD BOX -->
           <div id="kyc-late-upload-box" class="mt-5 p-4 rounded-lg border border-amber-500/40 bg-amber-950/30 text-left hidden shadow-md">
              <div class="flex items-center justify-between mb-3">
                <h4 class="text-[10px] text-amber-400 font-bold uppercase"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Missing KYC Documents</h4>
@@ -687,9 +767,10 @@
              <button onclick="uploadKycLater()" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2 rounded text-[11px] shadow">Securely Upload to Vault</button>
           </div>
 
-          <div id="admin-helper-text" class="mt-5 p-3 rounded-lg border border-amber-500/40 bg-amber-950/30 text-amber-300 text-[10px] text-left leading-relaxed hidden shadow-md">
+          <!-- ADMIN WARNING MESSAGE -->
+          <div id="admin-helper-text" class="mt-5 p-3 rounded-lg border border-red-500/40 bg-red-950/30 text-red-300 text-[10px] text-left leading-relaxed hidden shadow-md">
             ⚠️ <strong>Standard Client Session Active.</strong> You are currently logged in as a normal client to test the portal. Normal clients are locked out of the Admin Publisher and KYC Approval Vaults.<br><br>
-            To access your administrative tools, log out below and sign in using your Master Admin ID.
+            To access your administrative tools, log out below and sign in using your Master Admin ID: <strong>711-C-9396</strong> and password <strong>7110</strong>.
           </div>
 
           <button onclick="handleUserLogout()" class="mt-6 w-full bg-brand-surface text-red-400 border border-red-900 py-2 rounded text-xs">Log Out of Current Session</button>
@@ -700,7 +781,7 @@
 
   <!-- ALL MODALS FULLY EMBEDDED & RESTORED -->
 
-  <!-- 1. UNIVERSAL PAYMENT MODAL (RESTORED) -->
+  <!-- 1. UNIVERSAL PAYMENT MODAL -->
   <div id="payment-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
     <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-lg w-full p-6 relative max-h-[92vh] overflow-y-auto shadow-2xl">
       <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -744,7 +825,7 @@
     </div>
   </div>
 
-  <!-- 2. REAL ESTATE POSTING MODAL (RESTORED) -->
+  <!-- 2. REAL ESTATE POSTING MODAL -->
   <div id="re-listing-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
     <div class="bg-brand-navy border border-amber-500/50 rounded-2xl max-w-lg w-full p-6 relative shadow-2xl max-h-[92vh] overflow-y-auto">
       <button onclick="closeRealEstateListingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -793,7 +874,7 @@
     </div>
   </div>
 
-  <!-- 3. CS VACANCY MODAL (RESTORED) -->
+  <!-- 3. CS VACANCY MODAL -->
   <div id="cs-vacancy-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
     <div class="bg-brand-navy border border-blue-500/50 rounded-2xl max-w-lg w-full p-6 relative shadow-2xl max-h-[92vh] overflow-y-auto">
       <button onclick="closeCsVacancyModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -847,7 +928,7 @@
     </div>
   </div>
 
-  <!-- 4. CS CANDIDATE RESUME MODAL (RESTORED) -->
+  <!-- 4. CS CANDIDATE RESUME MODAL -->
   <div id="cs-candidate-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
     <div class="bg-brand-navy border border-blue-500/50 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
       <button onclick="closeCsCandidateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
@@ -872,7 +953,7 @@
     </div>
   </div>
 
-  <!-- 5. AI ADVISORY ASSISTANT MODAL (RESTORED) -->
+  <!-- 5. AI ADVISORY ASSISTANT MODAL -->
   <div id="ai-modal" style="display: none;" class="fixed inset-0 z-[100] bg-black/85 backdrop-blur-sm items-center justify-center p-4">
     <div class="bg-brand-navy border border-brand-gold rounded-2xl max-w-xl w-full p-5 relative flex flex-col h-[560px] shadow-2xl">
       <div class="flex justify-between items-center pb-3 border-b border-slate-800">
@@ -1190,6 +1271,11 @@
     }
 
     // 6. MASTER ADMIN PUBLISHER
+    function verifyPublisherPin() {
+      // PIN requirement removed for Master Admin. If you see it, you are already admin.
+      document.getElementById('pub-pin-box').classList.add('hidden');
+      document.getElementById('pub-form-box').classList.remove('hidden');
+    }
     function commitPostAndBroadcast() {
       if (getUserRole() !== 'ADMIN') return alert('Access Denied: Only Master Admin can publish.');
       
@@ -1390,6 +1476,7 @@
       user.status = 'ACTIVE';
       localStorage.setItem('711_vault_users', JSON.stringify(users));
 
+      // Also update active session if current browser was logged into this profile
       let active = JSON.parse(localStorage.getItem('711_active_user') || 'null');
       if (active && active.id === userId) {
         active.status = 'ACTIVE';
@@ -1403,7 +1490,9 @@
       const waMsg = `Congratulations ${encodeURIComponent(user.name)}! Your 711 OVERSEAS Portal ID (${encodeURIComponent(user.id)}) has been APPROVED. ${encodeURIComponent(rewardMsg)} Access your dashboard at: https://cssharmarahul-wq.github.io/711-Overseas/`;
       
       const sendWa = confirm(`User ${user.id} has been Approved and Activated!\n\nWould you like to open WhatsApp now to notify them of their active ID and reward payout?`);
-      if (sendWa) window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
+      if (sendWa) {
+        window.open(`https://wa.me/91${user.phone}?text=${waMsg}`, '_blank');
+      }
     }
 
     function triggerAdminEmailSend(userId) {
@@ -1420,7 +1509,11 @@
       if(!confirm(`Are you sure you want to reject verification for ${userId}?`)) return;
       let users = JSON.parse(localStorage.getItem('711_vault_users') || '[]');
       const user = users.find(u => u.id === userId);
-      if (user) { user.status = 'REJECTED'; localStorage.setItem('711_vault_users', JSON.stringify(users)); renderVaultUsersTable(); }
+      if (user) {
+        user.status = 'REJECTED';
+        localStorage.setItem('711_vault_users', JSON.stringify(users));
+        renderVaultUsersTable();
+      }
     }
 
     function deleteVaultUser(userId) {
@@ -1603,7 +1696,7 @@
       const pubVaultNotice = document.getElementById('public-vault-notice');
 
       if (user) {
-        document.getElementById('header-user-label').textContent = user.id;
+        document.getElementById('header-user-label').textContent = user.id === '711-C-9396' ? '711-C-9396' : user.id;
         document.getElementById('profile-name').textContent = user.name;
         document.getElementById('profile-id').textContent = `ID: ${user.id}`;
         
@@ -1642,7 +1735,7 @@
           if(adminVaultEnclave) adminVaultEnclave.classList.add('hidden'); 
           if(pubVaultNotice) pubVaultNotice.classList.remove('hidden');
           if(pubEnclave) pubEnclave.classList.add('hidden');
-          if(helperText) helperText.classList.remove('hidden');
+          if(helperText) helperText.classList.remove('hidden'); // Warning to switch back to Admin
           
           if(lateUploadBox) {
             if(!user.doc1 || !user.doc1.data) lateUploadBox.classList.remove('hidden');
@@ -1650,6 +1743,7 @@
           }
         }
       } else {
+        // LOGGED OUT
         document.getElementById('header-user-label').textContent = "Login";
         if(loggedView) loggedView.classList.add('hidden'); 
         if(loginBox) loginBox.classList.remove('hidden'); 
@@ -1727,11 +1821,8 @@
       document.getElementById('utr-submit-box').classList.add('hidden'); 
       document.getElementById('utr-pending-box').classList.remove('hidden');
     }
-    function unlockWithModalKey() {
-      if (document.getElementById('modal-vip-key').value === '7110') {
-        alert('VIP Access unlocked!'); closePaymentModal();
-      } else alert('Invalid Key.');
-    }
+    function previewTaxInvoice() { document.getElementById('print-modal').classList.remove('hidden'); }
+    function closePrintModal() { document.getElementById('print-modal').classList.add('hidden'); }
 
     // 13. TABS & BOOT
     function switchTab(tabId) {
@@ -1799,6 +1890,8 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      // By default, no one is logged in on fresh load. 
+      // The user must actively enter their ID and Password to enter.
       updateAuthUI(); 
       renderIntelFeed(); 
       checkNotifications(); 
